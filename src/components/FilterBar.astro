@@ -1,0 +1,43 @@
+---
+// 定义排序选项
+const sortOptions = ["最热", "最新", "名称 A-Z"];
+---
+
+<div class="flex flex-col gap-4 mb-6">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <h2 class="text-xl font-bold text-gray-900">模型库</h2>
+      <span class="text-sm text-gray-400 font-mono bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+        2,693,217
+      </span>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <span class="text-[12px] text-gray-400 font-medium">排序:</span>
+      <select class="text-[13px] font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg px-3 py-1.5 outline-none focus:border-blue-500 cursor-pointer shadow-sm">
+        {sortOptions.map(option => <option>{option}</option>)}
+      </select>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3">
+    <div class="relative flex-1 min-w-[300px] group">
+      <span class="absolute left-3 top-2.5 text-gray-400">🔍</span>
+      <input 
+        type="text" 
+        placeholder="按名称搜索模型..." 
+        class="w-full bg-white border border-gray-200 rounded-lg py-2 pl-9 pr-3 text-[13px] focus:ring-4 focus:ring-blue-50 focus:border-blue-400 transition-all outline-none shadow-sm"
+      />
+    </div>
+
+    <button class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg text-[13px] font-medium text-gray-700 hover:bg-gray-50 transition-all shadow-sm group">
+      <span class="text-orange-400 group-hover:scale-110 transition-transform">☀️</span>
+      可在线推理
+    </button>
+
+    <button class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg text-[13px] font-medium text-gray-700 hover:bg-gray-50 transition-all shadow-sm">
+      <span class="text-blue-400">📄</span>
+      全文搜索
+    </button>
+  </div>
+</div>

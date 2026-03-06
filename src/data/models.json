@@ -1,0 +1,164 @@
+[
+  {
+    "uid": "001",
+    "slug": "tongyi-qianwen",
+    "sort": 1,
+    "logo": "https://openai.com/favicon.ico",
+    "aiProductName": "通义千问 (Qwen)",
+    "introduction": "阿里自研的大语言模型，在中文理解、逻辑推理及代码能力上表现卓越。",
+    "websiteUrl": "https://tongyi.aliyun.com",
+    "metrics": {
+      "productType": ["聊天", "写代码"],
+      "country": "中国",
+      "company": "阿里巴巴",
+      "useType": ["web", "ios", "android", "pc"],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "按量付费"],
+      "needVpn": false,
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "通义千问官网 - 阿里大模型对话助手",
+      "keywords": ["Qwen", "AI对话", "阿里AI"],
+      "description": "更懂中文的AI助手，提供文案创作、知识问答、代码辅助等功能。"
+    },
+    "lastUpdated": "2024-05-20"
+  },
+  {
+    "uid": "002",
+    "slug": "deepseek-chat",
+    "sort": 2,
+    "logo": "https://openai.com/favicon.ico",
+    "aiProductName": "DeepSeek",
+    "introduction": "国产大模型之光，极高性价比的推理模型，代码与数学能力顶尖。",
+    "websiteUrl": "https://chat.deepseek.com",
+    "metrics": {
+      "productType": ["聊天", "写代码"],
+      "country": "中国",
+      "company": "深度求索",
+      "useType": ["web", "ios", "pc"],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "按量付费"],
+      "needVpn": false,
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "DeepSeek - 探索未知的智能",
+      "keywords": ["DeepSeek", "国产模型", "开源大模型"],
+      "description": "提供极低延迟、超高性能的深度学习模型对话体验。"
+    },
+    "lastUpdated": "2024-05-18"
+  },
+  {
+    "uid": "003",
+    "slug": "midjourney",
+    "sort": 3,
+    "logo": "https://openai.com/favicon.ico",
+    "aiProductName": "Midjourney",
+    "introduction": "全球领先的AI绘图工具，生成的艺术图像精美度处于行业天花板。",
+    "websiteUrl": "https://www.midjourney.com",
+    "metrics": {
+      "productType": ["绘图"],
+      "country": "美国",
+      "company": "Midjourney Inc.",
+      "useType": ["web"],
+      "modelLevel": "S-Tier",
+      "hasApi": false,
+      "pricingModel": ["订阅制"],
+      "needVpn": true,
+      "languages": ["英语"],
+      "isInternal": false
+    },
+    "seo": {
+      "title": "Midjourney AI Art Generator",
+      "keywords": ["AI绘画", "Midjourney", "数字艺术"],
+      "description": "Enter a prompt and get stunning AI generated artwork in seconds."
+    },
+    "lastUpdated": "2024-05-15"
+  },
+  {
+    "uid": "004",
+    "slug": "kimi-chat",
+    "sort": 4,
+    "logo": "https://openai.com/favicon.ico",
+    "aiProductName": "Kimi 智能助手",
+    "introduction": "支持 200 万字超长文本输入，长文本处理能力的开创者。",
+    "websiteUrl": "https://kimi.moonshot.cn",
+    "metrics": {
+      "productType": ["聊天", "写代码"],
+      "country": "中国",
+      "company": "月之暗面",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "订阅制"],
+      "needVpn": false,
+      "languages": ["中文"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "Kimi.ai - 帮你看超长文档的AI",
+      "keywords": ["Kimi", "长文本AI", "月之暗面"],
+      "description": "支持长达200万字的文件分析，让海量资料阅读更轻松。"
+    },
+    "lastUpdated": "2024-05-21"
+  },
+  {
+    "uid": "005",
+    "slug": "sora",
+    "sort": 5,
+    "logo": "https://openai.com/favicon.ico",
+    "aiProductName": "OpenAI Sora",
+    "introduction": "颠覆性的视频生成模型，能够根据文本创建长达一分钟的写实视频。",
+    "websiteUrl": "https://openai.com/sora",
+    "metrics": {
+      "productType": ["视频生成"],
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": ["web"],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": ["混合模式"],
+      "needVpn": true,
+      "languages": ["英语"],
+      "isInternal": false
+    },
+    "seo": {
+      "title": "Sora - Text-to-Video by OpenAI",
+      "keywords": ["Sora", "AI视频生成", "OpenAI"],
+      "description": "Sora is an AI model that can create realistic and imaginative scenes from text instructions."
+    },
+    "lastUpdated": "2024-02-15"
+  },
+  {
+    "uid": "006",
+    "slug": "perplexity",
+    "sort": 6,
+    "logo": "https://openai.com/favicon.ico",
+    "aiProductName": "Perplexity AI",
+    "introduction": "AI 驱动的搜索引擎，提供带有引用来源的精准回答，替代传统搜索。",
+    "websiteUrl": "https://www.perplexity.ai",
+    "metrics": {
+      "productType": ["聊天"],
+      "country": "美国",
+      "company": "Perplexity",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "订阅制"],
+      "needVpn": true,
+      "languages": ["中文", "英语"],
+      "isInternal": false
+    },
+    "seo": {
+      "title": "Perplexity - AI Search Engine",
+      "keywords": ["AI搜索", "Perplexity", "引用来源"],
+      "description": "Where knowledge begins. Ask anything and get answers with sources."
+    },
+    "lastUpdated": "2024-05-10"
+  }
+]
