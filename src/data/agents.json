@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "uid": "1",
+    "slug": "auto-gpt",
+    "logo": "https://example.com/auto-gpt.png",
+    "agentName": "Auto-GPT",
+    "introduction": "自主 AI 代理，能够独立完成任务链",
+    "websiteUrl": "https://github.com/Significant-Gravitas/Auto-GPT",
+    "metrics": {
+      "agentType": ["编程", "自动化"],
+      "creator": "Significant Gravitas",
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "needVpn": true,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "2",
+    "slug": "babyagi",
+    "logo": "https://example.com/babyagi.png",
+    "agentName": "BabyAGI",
+    "introduction": "任务驱动的自主 AI 代理系统",
+    "websiteUrl": "https://github.com/yoheinakajima/babyagi",
+    "metrics": {
+      "agentType": ["任务管理", "自动化"],
+      "creator": "Yohei Nakajima",
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "needVpn": true,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "3",
+    "slug": "langchain-agent",
+    "logo": "https://example.com/langchain.png",
+    "agentName": "LangChain Agent",
+    "introduction": "基于 LangChain 框架构建的智能代理",
+    "websiteUrl": "https://github.com/langchain-ai/langchain",
+    "metrics": {
+      "agentType": ["编程", "对话"],
+      "creator": "LangChain",
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "needVpn": false,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "4",
+    "slug": "devika",
+    "logo": "https://example.com/devika.png",
+    "agentName": "Devika",
+    "introduction": "AI 软件工程师，能够理解高级指令并编写代码",
+    "websiteUrl": "https://github.com/stitionai/devika",
+    "metrics": {
+      "agentType": ["编程", "开发"],
+      "creator": "StitionAI",
+      "modelLevel": "S-Tier",
+      "hasApi": false,
+      "needVpn": true,
+      "isInternal": false
+    }
+  }
+]

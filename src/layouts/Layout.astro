@@ -21,21 +21,29 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <style>
+      :root {
+        --navbar-height: 64px;
+        --subnav-height: 57px;
+        --sidebar-top-single: 80px;
+        --sidebar-top-with-subnav: 137px;
+      }
+    </style>
   </head>
   <body class="bg-gray-50">
     <Navbar />
-    
+
     <!-- SubNav 二级导航（如果有） -->
     {subNav && (
       <div class="border-b border-gray-200 bg-white">
         <div class="max-w-[1600px] mx-auto px-4">
           <div class="flex space-x-2 py-3">
             {subNav.tabs.map(tab => (
-              <a 
+              <a
                 href={tab.href}
                 class={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                  subNav.activeTab === tab.id 
-                  ? 'bg-blue-600 text-white shadow-sm' 
+                  subNav.activeTab === tab.id
+                  ? 'bg-blue-600 text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >
@@ -46,7 +54,7 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
         </div>
       </div>
     )}
-    
+
     <div class="max-w-[1600px] mx-auto flex">
       <slot name="sidebar" />
       <div class="flex-1 min-w-0">
