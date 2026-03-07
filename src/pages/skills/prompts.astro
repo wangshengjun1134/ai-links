@@ -1,15 +1,23 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import SubNav from '../../components/SubNav.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import skills from '../../data/skills.json';
 
 const promptsData = skills.filter((s: any) => s.subCategory === 'prompts' || !s.subCategory);
 const itemCount = promptsData.length;
+
+const subNav = {
+  activeTab: 'prompts',
+  tabs: [
+    { name: '提示词', href: '/skills/prompts', id: 'prompts' },
+    { name: '插件 Skill', href: '/skills/tools', id: 'tools' },
+    { name: 'MCP 协议', href: '/skills/mcp', id: 'mcp' }
+  ]
+};
 ---
 
-<Layout title="提示词 - AI Links">
-  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-16 p-6">
+<Layout title="提示词 - AI Links" subNav={subNav}>
+  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[129px] p-6">
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">适用模型</h3>
     <div class="space-y-2 mb-6">
       <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
@@ -54,8 +62,6 @@ const itemCount = promptsData.length;
   </aside>
 
   <div class="p-6">
-    <SubNav activeTab="prompts" />
-
     <div class="flex items-center gap-4 mb-6">
       <div class="flex items-center gap-2">
         <h2 class="text-xl font-bold text-gray-900">提示词 Prompts</h2>
