@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SubNav from '../../components/SubNav.astro';
+import SkillCard from '../../components/SkillCard.astro';
+import skills from '../../data/skills.json';
+
+const toolsData = skills.filter((s: any) => s.subCategory === 'tools');
+const itemCount = toolsData.length;
+---
+
+<Layout title="插件 Skill - AI Links">
+  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-16 p-6">
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">开发语言</h3>
+    <div class="space-y-2 mb-6">
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> Python
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> JavaScript / TypeScript
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> Java
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> Go
+      </label>
+    </div>
+
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">授权方式</h3>
+    <div class="space-y-2 mb-6">
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> 开源 (MIT/Apache)
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> 商业许可
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" class="rounded" /> 免费使用
+      </label>
+    </div>
+
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">功能分类</h3>
+    <div class="flex flex-wrap gap-1">
+      <a href="?func=search" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🔍 搜索</a>
+      <a href="?func=automation" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">⚡ 自动化</a>
+      <a href="?func=data" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">📊 数据</a>
+      <a href="?func=api" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🔌 API</a>
+      <a href="?func=ui" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🎨 UI</a>
+    </div>
+  </aside>
+
+  <div class="p-6">
+    <SubNav activeTab="tools" />
+
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="text-xl font-bold text-gray-900">插件 Skill</h2>
+      <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{itemCount}</span>
+      <div class="flex-1"></div>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700">提交插件</button>
+    </div>
+
+    {itemCount > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {toolsData.map(s => <SkillCard {...s} />)}
+      </div>
+    ) : (
+      <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
+        <div class="text-6xl mb-4">🔌</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">暂无插件</h3>
+        <p class="text-gray-500">提交你的第一个 Skill 插件！</p>
+      </div>
+    )}
+  </div>
+</Layout>
