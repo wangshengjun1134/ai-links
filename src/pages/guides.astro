@@ -1,78 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Sidebar from '../components/Sidebar.astro';
 import GuideCard from '../components/GuideCard.astro';
 import guides from '../data/guides.json';
 
 const guideCount = guides.length;
-const pageTitle = '科普 & 教程';
 ---
 
 <Layout title="科普 & 教程 - AI Links">
-  <Navbar />
+  <aside slot="sidebar" class="w-64 shrink-0 p-6 border-r border-gray-100 h-fit sticky top-24">
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">教程类型</h3>
+    <div class="space-y-2">
+      <a href="?type=beginner" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">🌱 入门教程</a>
+      <a href="?type=advanced" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">🚀 进阶指南</a>
+      <a href="?type=comparison" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⚖️ 产品对比</a>
+      <a href="?type=review" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">📝 评测报告</a>
+    </div>
 
-  <div class="max-w-[1600px] mx-auto px-4 py-8 flex gap-8">
-    <Sidebar />
+    <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">内容标签</h3>
+    <div class="flex flex-wrap gap-1">
+      <a href="?tag=llm" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">大模型</a>
+      <a href="?tag=prompt" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">Prompt</a>
+      <a href="?tag=api" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">API</a>
+      <a href="?tag=deploy" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">部署</a>
+      <a href="?tag=fine-tune" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">微调</a>
+    </div>
 
-    <main class="flex-1 min-w-0">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="flex items-center gap-2 shrink-0">
-          <h2 class="text-xl font-bold text-gray-900 whitespace-nowrap">{pageTitle}</h2>
-          <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">
-            {guideCount}
-          </span>
-        </div>
+    <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">阅读时长</h3>
+    <div class="space-y-2">
+      <a href="?time=short" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⏱️ 5 分钟内</a>
+      <a href="?time=medium" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⏱️ 5-15 分钟</a>
+      <a href="?time=long" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⏱️ 15 分钟+</a>
+    </div>
+  </aside>
 
-        <div class="relative w-full max-w-md ml-2">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
-          <input
-            type="text"
-            placeholder="搜索教程..."
-            class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] placeholder:text-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 transition-all outline-none shadow-sm"
-          />
-        </div>
+  <div class="flex-1 p-6">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="text-xl font-bold text-gray-900">科普 & 教程</h2>
+      <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{guideCount}</span>
+      <div class="flex-1"></div>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700">撰写教程</button>
+    </div>
 
-        <div class="flex-1"></div>
-
-        <div class="flex items-center gap-2 shrink-0">
-          <button class="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[12px] font-bold text-gray-700 hover:bg-gray-50 transition-all shadow-sm">
-            <span class="text-blue-500">✍️</span>
-            <span class="hidden xl:inline">撰写教程</span>
-          </button>
-
-          <div class="h-4 w-px bg-gray-200 mx-1 hidden lg:block"></div>
-
-          <div class="flex items-center gap-2">
-            <span class="text-[12px] text-gray-400 font-medium hidden lg:inline">排序:</span>
-            <select class="text-[12px] font-bold text-gray-700 bg-white border border-gray-200 rounded-full px-3 py-1.5 outline-none focus:border-blue-400 cursor-pointer shadow-sm">
-              <option>趋势</option>
-              <option>最新</option>
-            </select>
-          </div>
-        </div>
+    {guideCount > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {guides.map(g => <GuideCard {...g} />)}
       </div>
-
-      {guideCount > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {guides.map(g => <GuideCard {...g} />)}
-        </div>
-      ) : (
-        <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
-          <div class="text-6xl mb-4">📚</div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">暂无教程</h3>
-          <p class="text-gray-500 mb-6">分享你的第一个 AI 教程！</p>
-          <button class="px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
-            撰写第一个教程
-          </button>
-        </div>
-      )}
-    </main>
+    ) : (
+      <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
+        <div class="text-6xl mb-4">📚</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">暂无教程</h3>
+        <p class="text-gray-500">分享你的第一个 AI 教程！</p>
+      </div>
+    )}
   </div>
 </Layout>
-
-<style>
-  main {
-    min-width: 0;
-  }
-</style>

@@ -1,72 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Sidebar from '../components/Sidebar.astro';
 import ProductCard from '../components/ProductCard.astro';
 import products from '../data/products.json';
 
 const productCount = products.length;
-const pageTitle = 'AI 产品';
 ---
 
 <Layout title="AI 产品 - AI Links">
-  <Navbar />
+  <aside slot="sidebar" class="w-80 shrink-0 flex flex-col gap-5 pr-6 border-r border-gray-100 h-fit sticky top-24 p-6">
+    <!-- 任务分类 -->
+    <div class="flex flex-col gap-2">
+      <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">任务分类</h4>
+      <div class="flex flex-wrap gap-1">
+        <a href="?task=text" class="bg-blue-50 border border-blue-400 px-2 py-0.5 rounded-md text-[12px]">📝 文本生成</a>
+        <a href="?task=image" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">🎨 图像生成</a>
+        <a href="?task=speech" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">🎙️ 语音识别</a>
+        <a href="?task=video" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">🎬 视频生成</a>
+      </div>
+    </div>
 
-  <div class="max-w-[1600px] mx-auto px-4 py-8 flex gap-8">
-    <Sidebar />
+    <!-- 所属公司 -->
+    <div class="flex flex-col gap-2">
+      <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">所属公司</h4>
+      <div class="flex flex-wrap gap-1">
+        <a href="?company=openai" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">OpenAI</a>
+        <a href="?company=anthropic" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">Anthropic</a>
+        <a href="?company=google" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">Google</a>
+        <a href="?company=alibaba" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">阿里巴巴</a>
+      </div>
+    </div>
 
-    <main class="flex-1 min-w-0">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="flex items-center gap-2 shrink-0">
-          <h2 class="text-xl font-bold text-gray-900 whitespace-nowrap">{pageTitle}</h2>
-          <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">
-            {productCount}
-          </span>
-        </div>
+    <!-- 收费模式 -->
+    <div class="flex flex-col gap-2">
+      <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">收费模式</h4>
+      <div class="space-y-2">
+        <label class="flex items-center gap-2 text-[12px] text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded border-gray-300" /> 完全免费
+        </label>
+        <label class="flex items-center gap-2 text-[12px] text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded border-gray-300" /> 按量计费
+        </label>
+        <label class="flex items-center gap-2 text-[12px] text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded border-gray-300" /> 会员订阅
+        </label>
+      </div>
+    </div>
 
-        <div class="relative w-full max-w-md ml-2">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
-          <input
-            type="text"
-            placeholder="按名称过滤产品..."
-            class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] placeholder:text-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 transition-all outline-none shadow-sm"
-          />
-        </div>
+    <!-- 搜索 -->
+    <div class="mt-auto pt-6 border-t border-gray-100">
+      <div class="relative">
+        <span class="absolute left-3 top-2.5 text-[14px] text-gray-400">🔍</span>
+        <input type="text" placeholder="搜索产品..." class="w-full bg-white border border-gray-200 rounded-full py-2 pl-9 pr-4 text-[12px] focus:border-blue-400 focus:ring-4 focus:ring-blue-50 outline-none" />
+      </div>
+    </div>
+  </aside>
 
-        <div class="flex-1"></div>
-
-        <div class="flex items-center gap-2 shrink-0">
-          <button class="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[12px] font-bold text-gray-700 hover:bg-gray-50 transition-all shadow-sm">
-            <span class="text-amber-400">☀️</span>
-            <span class="hidden xl:inline">在线预览</span>
-          </button>
-
-          <button class="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[12px] font-bold text-gray-700 hover:bg-gray-50 transition-all shadow-sm">
-            <span class="text-blue-500">📄</span>
-            <span class="hidden xl:inline">全文检索</span>
-          </button>
-
-          <div class="h-4 w-px bg-gray-200 mx-1 hidden lg:block"></div>
-
-          <div class="flex items-center gap-2">
-            <span class="text-[12px] text-gray-400 font-medium hidden lg:inline">排序:</span>
-            <select class="text-[12px] font-bold text-gray-700 bg-white border border-gray-200 rounded-full px-3 py-1.5 outline-none focus:border-blue-400 cursor-pointer shadow-sm">
-              <option>趋势</option>
-              <option>最新</option>
-            </select>
-          </div>
-        </div>
+  <div class="flex-1 p-6">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl font-bold text-gray-900">AI 产品</h2>
+        <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">{productCount}</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-3 gap-y-2">
-        {products.map(p => <ProductCard {...p} />)}
+      <div class="relative w-full max-w-md">
+        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
+        <input type="text" placeholder="按名称过滤产品..." class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 outline-none" />
       </div>
-    </main>
+
+      <div class="flex-1"></div>
+
+      <div class="flex items-center gap-2">
+        <select class="text-[12px] font-bold text-gray-700 bg-white border border-gray-200 rounded-full px-3 py-1.5 outline-none focus:border-blue-400">
+          <option>趋势</option>
+          <option>最新</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-3 gap-y-2">
+      {products.map(p => <ProductCard {...p} />)}
+    </div>
   </div>
 </Layout>
-
-<style>
-  main {
-    min-width: 0;
-  }
-</style>

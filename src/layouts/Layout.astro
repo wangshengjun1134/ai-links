@@ -4,7 +4,9 @@ interface Props {
   description?: string;
 }
 
-const { title = "Hugging Face – AI产品", description = "发现和探索数千个机器学习模型" } = Astro.props;
+import Navbar from '../components/Navbar.astro';
+
+const { title = "AI Links", description = "发现最好的 AI 工具、智能体、技能和学习资源" } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +19,13 @@ const { title = "Hugging Face – AI产品", description = "发现和探索数�
     <title>{title}</title>
   </head>
   <body class="bg-gray-50">
-    <slot />
+    <Navbar />
+    <div class="flex">
+      <slot name="sidebar" />
+      <main class="flex-1 min-w-0">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
 

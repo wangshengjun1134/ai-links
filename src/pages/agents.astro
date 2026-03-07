@@ -1,78 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Sidebar from '../components/Sidebar.astro';
 import AgentCard from '../components/AgentCard.astro';
 import agents from '../data/agents.json';
 
 const agentCount = agents.length;
-const pageTitle = '智能体 Agent';
 ---
 
 <Layout title="智能体 Agent - AI Links">
-  <Navbar />
+  <aside slot="sidebar" class="w-64 shrink-0 p-6 border-r border-gray-100 h-fit sticky top-24">
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">Agent 分类</h3>
+    <div class="space-y-2">
+      <a href="?type=code" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">💻 编程助手</a>
+      <a href="?type=design" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">🎨 设计创作</a>
+      <a href="?type=data" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">📊 数据分析</a>
+      <a href="?type=office" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">📝 办公效率</a>
+    </div>
 
-  <div class="max-w-[1600px] mx-auto px-4 py-8 flex gap-8">
-    <Sidebar />
+    <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">难度等级</h3>
+    <div class="space-y-2">
+      <label class="flex items-center gap-2 text-sm text-gray-700">
+        <input type="checkbox" class="rounded" /> 入门级
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700">
+        <input type="checkbox" class="rounded" /> 进阶级
+      </label>
+      <label class="flex items-center gap-2 text-sm text-gray-700">
+        <input type="checkbox" class="rounded" /> 专家级
+      </label>
+    </div>
+  </aside>
 
-    <main class="flex-1 min-w-0">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="flex items-center gap-2 shrink-0">
-          <h2 class="text-xl font-bold text-gray-900 whitespace-nowrap">{pageTitle}</h2>
-          <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">
-            {agentCount}
-          </span>
-        </div>
+  <div class="flex-1 p-6">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="text-xl font-bold text-gray-900">智能体 Agent</h2>
+      <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{agentCount}</span>
+      <div class="flex-1"></div>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700">提交 Agent</button>
+    </div>
 
-        <div class="relative w-full max-w-md ml-2">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
-          <input
-            type="text"
-            placeholder="搜索智能体..."
-            class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] placeholder:text-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 transition-all outline-none shadow-sm"
-          />
-        </div>
-
-        <div class="flex-1"></div>
-
-        <div class="flex items-center gap-2 shrink-0">
-          <button class="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[12px] font-bold text-gray-700 hover:bg-gray-50 transition-all shadow-sm">
-            <span class="text-blue-500">➕</span>
-            <span class="hidden xl:inline">提交 Agent</span>
-          </button>
-
-          <div class="h-4 w-px bg-gray-200 mx-1 hidden lg:block"></div>
-
-          <div class="flex items-center gap-2">
-            <span class="text-[12px] text-gray-400 font-medium hidden lg:inline">排序:</span>
-            <select class="text-[12px] font-bold text-gray-700 bg-white border border-gray-200 rounded-full px-3 py-1.5 outline-none focus:border-blue-400 cursor-pointer shadow-sm">
-              <option>趋势</option>
-              <option>最新</option>
-            </select>
-          </div>
-        </div>
+    {agentCount > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {agents.map(a => <AgentCard {...a} />)}
       </div>
-
-      {agentCount > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {agents.map(a => <AgentCard {...a} />)}
-        </div>
-      ) : (
-        <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
-          <div class="text-6xl mb-4">🤖</div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">暂无智能体</h3>
-          <p class="text-gray-500 mb-6">成为第一个提交智能体的人！</p>
-          <button class="px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
-            提交第一个 Agent
-          </button>
-        </div>
-      )}
-    </main>
+    ) : (
+      <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
+        <div class="text-6xl mb-4">🤖</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">暂无智能体</h3>
+        <p class="text-gray-500">成为第一个提交智能体的人！</p>
+      </div>
+    )}
   </div>
 </Layout>
-
-<style>
-  main {
-    min-width: 0;
-  }
-</style>

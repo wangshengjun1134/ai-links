@@ -1,78 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Sidebar from '../components/Sidebar.astro';
 import SkillCard from '../components/SkillCard.astro';
 import skills from '../data/skills.json';
 
 const skillCount = skills.length;
-const pageTitle = '技能 Skills';
 ---
 
 <Layout title="技能 Skills - AI Links">
-  <Navbar />
+  <aside slot="sidebar" class="w-64 shrink-0 p-6 border-r border-gray-100 h-fit sticky top-24">
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">技能类型</h3>
+    <div class="space-y-2">
+      <a href="?type=prompt" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">📝 Prompt 模板</a>
+      <a href="?type=workflow" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⚡ 工作流</a>
+      <a href="?type=automation" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">🤖 自动化</a>
+    </div>
 
-  <div class="max-w-[1600px] mx-auto px-4 py-8 flex gap-8">
-    <Sidebar />
+    <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">适用场景</h3>
+    <div class="flex flex-wrap gap-1">
+      <a href="?scene=writing" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">写作</a>
+      <a href="?scene=coding" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">编程</a>
+      <a href="?scene=design" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">设计</a>
+      <a href="?scene=marketing" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">营销</a>
+    </div>
+  </aside>
 
-    <main class="flex-1 min-w-0">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="flex items-center gap-2 shrink-0">
-          <h2 class="text-xl font-bold text-gray-900 whitespace-nowrap">{pageTitle}</h2>
-          <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">
-            {skillCount}
-          </span>
-        </div>
+  <div class="flex-1 p-6">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="text-xl font-bold text-gray-900">技能 Skills</h2>
+      <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{skillCount}</span>
+      <div class="flex-1"></div>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700">分享 Skill</button>
+    </div>
 
-        <div class="relative w-full max-w-md ml-2">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
-          <input
-            type="text"
-            placeholder="搜索技能..."
-            class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] placeholder:text-gray-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 transition-all outline-none shadow-sm"
-          />
-        </div>
-
-        <div class="flex-1"></div>
-
-        <div class="flex items-center gap-2 shrink-0">
-          <button class="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[12px] font-bold text-gray-700 hover:bg-gray-50 transition-all shadow-sm">
-            <span class="text-blue-500">➕</span>
-            <span class="hidden xl:inline">提交 Skill</span>
-          </button>
-
-          <div class="h-4 w-px bg-gray-200 mx-1 hidden lg:block"></div>
-
-          <div class="flex items-center gap-2">
-            <span class="text-[12px] text-gray-400 font-medium hidden lg:inline">排序:</span>
-            <select class="text-[12px] font-bold text-gray-700 bg-white border border-gray-200 rounded-full px-3 py-1.5 outline-none focus:border-blue-400 cursor-pointer shadow-sm">
-              <option>趋势</option>
-              <option>最新</option>
-            </select>
-          </div>
-        </div>
+    {skillCount > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {skills.map(s => <SkillCard {...s} />)}
       </div>
-
-      {skillCount > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {skills.map(s => <SkillCard {...s} />)}
-        </div>
-      ) : (
-        <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
-          <div class="text-6xl mb-4">⚡</div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">暂无技能</h3>
-          <p class="text-gray-500 mb-6">分享你的第一个 Prompt 技能！</p>
-          <button class="px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
-            提交第一个 Skill
-          </button>
-        </div>
-      )}
-    </main>
+    ) : (
+      <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
+        <div class="text-6xl mb-4">⚡</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">暂无技能</h3>
+        <p class="text-gray-500">分享你的第一个 Prompt 技能！</p>
+      </div>
+    )}
   </div>
 </Layout>
-
-<style>
-  main {
-    min-width: 0;
-  }
-</style>
