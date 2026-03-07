@@ -1,6 +1,12 @@
----
-import Layout from '../../layouts/Layout.astro';
-
-// 重定向到 prompts 页面
-Astro.redirect('/skills/prompts');
----
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=/skills/prompts">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/skills/prompts">/skills/prompts</a>...</p>
+  <script>window.location.href = '/skills/prompts';</script>
+</body>
+</html>
