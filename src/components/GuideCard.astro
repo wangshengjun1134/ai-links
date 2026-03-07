@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  author: string;
+  category: string;
+  readTime: string;
+  publishedAt: string;
+}
+
+const { title, description, author, category, readTime, publishedAt } = Astro.props;
+---
+
+<div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-lg transition-all hover:border-blue-200 group cursor-pointer">
+  <div class="flex items-center gap-2 mb-3">
+    <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase">
+      {category}
+    </span>
+    <span class="text-[10px] text-gray-400">{readTime}</span>
+  </div>
+  
+  <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+    {title}
+  </h3>
+  
+  <p class="text-sm text-gray-600 mb-4 line-clamp-2">
+    {description}
+  </p>
+  
+  <div class="flex items-center justify-between text-xs text-gray-500">
+    <span class="flex items-center gap-1">
+      <span class="w-5 h-5 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-[10px] font-bold">
+        {author.charAt(0)}
+      </span>
+      {author}
+    </span>
+    <span>{publishedAt}</span>
+  </div>
+</div>

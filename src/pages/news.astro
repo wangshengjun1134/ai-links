@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Sidebar from '../components/Sidebar.astro';
+import NewsCard from '../components/NewsCard.astro';
+import news from '../data/news.json';
+
+const newsCount = news.length;
+const pageTitle = 'AI 新闻';
+---
+
+<Layout title="AI 新闻 - AI Links">
+  <Navbar />
+
+  <div class="max-w-[1600px] mx-auto px-4 py-8 flex gap-8">
+    <Sidebar />
+
+    <main class="flex-1 min-w-0">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="flex items-center gap-2 shrink-0">
+          <h2 class="text-xl font-bold text-gray-900 whitespace-nowrap">{pageTitle}</h2>
+          <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">
+            {newsCount}
+          </span>
+        </div>
+
+        <div class="flex-1"></div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-[12px] text-gray-400 font-medium hidden lg:inline">排序:</span>
+          <select class="text-[12px] font-bold text-gray-700 bg-white border border-gray-200 rounded-full px-3 py-1.5 outline-none focus:border-blue-400 cursor-pointer shadow-sm">
+            <option>最新</option>
+            <option>最热</option>
+          </select>
+        </div>
+      </div>
+
+      {newsCount > 0 ? (
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div class="divide-y divide-gray-100">
+            {news.map(n => <NewsCard {...n} />)}
+          </div>
+        </div>
+      ) : (
+        <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
+          <div class="text-6xl mb-4">📰</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">暂无新闻</h3>
+          <p class="text-gray-500">暂无 AI 行业新闻</p>
+        </div>
+      )}
+    </main>
+  </div>
+</Layout>
+
+<style>
+  main {
+    min-width: 0;
+  }
+</style>
