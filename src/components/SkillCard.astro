@@ -1,0 +1,13 @@
+---
+// src/components/SkillCard.astro
+const { title, promptSnippet } = Astro.props;
+---
+<div class="relative group p-4 bg-zinc-900/50 rounded-lg border border-white/5 overflow-hidden">
+  <h4 class="text-sm font-medium text-blue-300 mb-2">{title}</h4>
+  <code class="text-xs text-gray-500 block bg-black/30 p-2 rounded italic">
+    "{promptSnippet}..."
+  </code>
+  <div class="absolute inset-0 bg-blue-600/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+    <span class="text-white text-sm font-bold">点击复制 Prompt</span>
+  </div>
+</div>

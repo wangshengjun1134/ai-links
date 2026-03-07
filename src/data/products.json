@@ -1,0 +1,98 @@
+[
+  {
+    "uid": "1",
+    "slug": "chatgpt",
+    "logo": "https://example.com/chatgpt.png",
+    "aiProductName": "ChatGPT",
+    "introduction": "OpenAI 开发的强大对话 AI 模型",
+    "websiteUrl": "https://chat.openai.com",
+    "metrics": {
+      "productType": ["对话", "文本生成"],
+      "company": "OpenAI",
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "needVpn": true,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "2",
+    "slug": "claude",
+    "logo": "https://example.com/claude.png",
+    "aiProductName": "Claude",
+    "introduction": "Anthropic 开发的智能 AI 助手",
+    "websiteUrl": "https://claude.ai",
+    "metrics": {
+      "productType": ["对话", "写作"],
+      "company": "Anthropic",
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "needVpn": true,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "3",
+    "slug": "gemini",
+    "logo": "https://example.com/gemini.png",
+    "aiProductName": "Gemini",
+    "introduction": "Google 的多模态 AI 模型",
+    "websiteUrl": "https://gemini.google.com",
+    "metrics": {
+      "productType": ["多模态", "对话"],
+      "company": "Google",
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "needVpn": true,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "4",
+    "slug": "wenxin-yiyan",
+    "logo": "https://example.com/yiyan.png",
+    "aiProductName": "文心一言",
+    "introduction": "百度开发的多模态大模型",
+    "websiteUrl": "https://yiyan.baidu.com",
+    "metrics": {
+      "productType": ["对话", "文本生成"],
+      "company": "百度",
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "needVpn": false,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "5",
+    "slug": "tongyi-qianwen",
+    "logo": "https://example.com/qianwen.png",
+    "aiProductName": "通义千问",
+    "introduction": "阿里巴巴开发的大语言模型",
+    "websiteUrl": "https://tongyi.aliyun.com",
+    "metrics": {
+      "productType": ["对话", "代码"],
+      "company": "阿里巴巴",
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "needVpn": false,
+      "isInternal": false
+    }
+  },
+  {
+    "uid": "6",
+    "slug": "kimi",
+    "logo": "https://example.com/kimi.png",
+    "aiProductName": "Kimi",
+    "introduction": "月之暗面开发的长文本 AI 助手",
+    "websiteUrl": "https://kimi.moonshot.cn",
+    "metrics": {
+      "productType": ["对话", "长文本"],
+      "company": "月之暗面",
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "needVpn": false,
+      "isInternal": false
+    }
+  }
+]
