@@ -20,11 +20,11 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
   </head>
   <body class="bg-gray-50">
     <Navbar />
-    <div class="flex">
+    <div class="max-w-[1600px] mx-auto flex">
       <slot name="sidebar" />
-      <main class="flex-1 min-w-0">
+      <div class="flex-1 min-w-0">
         <slot />
-      </main>
+      </div>
     </div>
   </body>
 </html>

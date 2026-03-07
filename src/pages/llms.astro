@@ -7,15 +7,15 @@ const llmCount = llms.length;
 ---
 
 <Layout title="大模型 LLMs - AI Links">
-  <aside slot="sidebar" class="w-64 shrink-0 p-6 border-r border-gray-100 h-fit sticky top-24">
+  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-16 p-6">
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">模型规模</h3>
-    <div class="space-y-2">
+    <div class="space-y-2 mb-6">
       <a href="?size=small" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">小型 (&lt;10B)</a>
       <a href="?size=medium" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">中型 (10B-100B)</a>
       <a href="?size=large" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">大型 (&gt;100B)</a>
     </div>
 
-    <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">能力领域</h3>
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">能力领域</h3>
     <div class="flex flex-wrap gap-1">
       <a href="?cap=text" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">文本</a>
       <a href="?cap=code" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">代码</a>
@@ -24,7 +24,7 @@ const llmCount = llms.length;
       <a href="?cap=audio" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">音频</a>
     </div>
 
-    <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">开源状态</h3>
+    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">开源状态</h3>
     <div class="space-y-2">
       <label class="flex items-center gap-2 text-sm text-gray-700">
         <input type="checkbox" class="rounded" /> 开源模型
@@ -35,7 +35,7 @@ const llmCount = llms.length;
     </div>
   </aside>
 
-  <div class="flex-1 p-6">
+  <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
       <h2 class="text-xl font-bold text-gray-900">大模型 LLMs</h2>
       <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{llmCount}</span>
