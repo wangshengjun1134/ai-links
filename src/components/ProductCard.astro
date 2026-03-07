@@ -16,6 +16,8 @@ interface Props {
   };
 }
 
+import logoImg from '../assets/logo.png';
+
 const { slug, logo, aiProductName, introduction, websiteUrl, metrics } = Astro.props;
 
 const tierColors = {
@@ -26,10 +28,10 @@ const tierColors = {
 ---
 
 <div class="group relative h-[64px]">
-  
+
   <div class="absolute inset-0 p-2.5 bg-white border border-gray-100 rounded-lg flex items-center gap-3 transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-md">
     <div class="w-9 h-9 rounded border border-gray-50 flex-shrink-0 bg-white p-1 flex items-center justify-center">
-      <img src={logo} alt="" class="w-full h-full object-contain" />
+      <img src={logoImg} alt="" class="w-full h-full object-contain" />
     </div>
     
     <div class="flex-1 min-w-0">
@@ -53,13 +55,13 @@ const tierColors = {
     </div>
   </div>
 
-  <div class="absolute -inset-x-2 -top-1 p-5 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-blue-50 
-              opacity-0 translate-y-2 pointer-events-none 
+  <div class="absolute -inset-x-2 -top-1 p-5 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-blue-50
+              opacity-0 translate-y-2 pointer-events-none
               group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:z-50
               transition-all duration-300 delay-150 ease-out"> <div class="flex items-start justify-between mb-4">
       <div class="flex items-center gap-2.5">
         <div class="p-1 bg-gray-50 rounded-lg border border-gray-100">
-          <img src={logo} class="w-7 h-7 object-contain" />
+          <img src={logoImg} class="w-7 h-7 object-contain" />
         </div>
         <div>
           <h4 class="font-bold text-gray-900 text-[15px] leading-tight">{aiProductName}</h4>
