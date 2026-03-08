@@ -10,14 +10,18 @@ interface Props {
 }
 
 const { uid, title, description, author, tags, icon } = Astro.props;
+
+// 提示词卡片使用 💡 emoji，其他使用传入的 icon
+const isPrompt = !icon || icon === '💡';
+const displayIcon = isPrompt ? '💡' : icon;
 ---
 
 <div class="group relative h-[64px]">
 
   <!-- 默认状态：紧凑卡片 -->
   <div class="absolute inset-0 p-2.5 bg-white border border-gray-100 rounded-lg flex items-center gap-3 transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-md">
-    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex-shrink-0 flex items-center justify-center text-lg">
-      {icon}
+    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex-shrink-0 flex items-center justify-center text-[22px] leading-none">
+      {displayIcon}
     </div>
 
     <div class="flex-1 min-w-0">
@@ -38,11 +42,11 @@ const { uid, title, description, author, tags, icon } = Astro.props;
               opacity-0 translate-y-2 pointer-events-none
               group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:z-50
               transition-all duration-300 delay-150 ease-out">
-    
+
     <div class="flex items-start justify-between mb-4">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-lg">
-          {icon}
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-[22px] leading-none">
+          {displayIcon}
         </div>
         <div>
           <h4 class="font-bold text-gray-900 text-[15px] leading-tight">{title}</h4>
