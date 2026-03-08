@@ -37,13 +37,13 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
     {subNav && (
       <div class="border-b border-gray-200 bg-white">
         <div class="max-w-[1600px] mx-auto px-4">
-          <div class="flex space-x-2 py-3">
+          <div class="flex gap-2 py-3">
             {subNav.tabs.map(tab => (
               <a
                 href={tab.href}
-                class={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                class={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
                   subNav.activeTab === tab.id
-                  ? 'bg-blue-600 text-white shadow-sm'
+                  ? 'bg-gray-500 text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >

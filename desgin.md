@@ -6,20 +6,6 @@
 大模型
 
 
-{
-    "uid":"001",
-    "sort":1,
-    "logo":"https://localhost/qianwen.png",
-    "aiProductName":"千问",
-    "introduction":"一句话介绍千问",
-    "websiteUrl":"https://qianwen.com",
-    "attrs":[
-        "productType"：["聊天","绘图"，"视频生成"]
-        "country":"中国",
-        "company":"阿里",
-        "useType":["web","desk","app","tui"]
-    ]
-}
 
 
 {
@@ -83,6 +69,8 @@ API价格
 
 
 ##Skills
+最好是每个技能都有个安装介绍、使用效果展示
+提示词和skill可以根据不同的分类选择不同的emoji
 
 skillsmp.com  从github上收录
 www.skill-cn.com

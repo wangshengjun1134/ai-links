@@ -9,19 +9,20 @@ interface Props {
   icon: string;
 }
 
-const { uid, title, description, author, tags, icon } = Astro.props;
+const { uid, title, description, author, tags, icon, subCategory } = Astro.props;
 
-// 提示词卡片使用 💡 emoji，其他使用传入的 icon
-const isPrompt = !icon || icon === '💡';
-const displayIcon = isPrompt ? '💡' : icon;
+// 提示词卡片使用 🖉 emoji，技能卡片使用 ⚙ emoji，其他使用传入的 icon
+const isPrompt = subCategory === 'prompts';
+const isSkill = subCategory === 'tools' || subCategory === 'mcp';
+const displayIcon = isPrompt ? '🖉' : (isSkill ? '⚙' : icon);
 ---
 
 <div class="group relative h-[64px]">
 
   <!-- 默认状态：紧凑卡片 -->
   <div class="absolute inset-0 p-2.5 bg-white border border-gray-100 rounded-lg flex items-center gap-3 transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-md">
-    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex-shrink-0 flex items-center justify-center text-[22px] leading-none">
-      {displayIcon}
+    <div class="w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center text-[22px] leading-none bg-gradient-to-br from-slate-400 to-slate-500">
+      <span class={isPrompt ? 'inline-block -rotate-45' : ''}>{displayIcon}</span>
     </div>
 
     <div class="flex-1 min-w-0">
@@ -45,8 +46,8 @@ const displayIcon = isPrompt ? '💡' : icon;
 
     <div class="flex items-start justify-between mb-4">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-[22px] leading-none">
-          {displayIcon}
+        <div class="w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center text-[22px] leading-none bg-gradient-to-br from-slate-400 to-slate-500">
+          <span class={isPrompt ? 'inline-block -rotate-45' : ''}>{displayIcon}</span>
         </div>
         <div>
           <h4 class="font-bold text-gray-900 text-[15px] leading-tight">{title}</h4>
