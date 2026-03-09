@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "uid": "g-1",
+    "slug": "llm-introduction",
+    "title": "什么是大语言模型？全面解析 LLM 的工作原理",
+    "description": "深入了解大语言模型的基本概念、训练方法和应用场景，适合 AI 初学者阅读",
+    "author": "AI Science",
+    "category": "SciencePopu",
+    "readTime": "8 分钟",
+    "publishedAt": "2026-03-01"
+  },
+  {
+    "uid": "g-2",
+    "slug": "prompt-engineering-intro",
+    "title": "Prompt Engineering 入门：如何与 AI 高效对话",
+    "description": "学习编写高质量提示词的技巧，让你的 AI 助手更好地理解你的需求",
+    "author": "Prompt Master",
+    "category": "SciencePopu",
+    "readTime": "6 分钟",
+    "publishedAt": "2026-03-05"
+  },
+  {
+    "uid": "g-3",
+    "slug": "ai-art-tools-comparison",
+    "title": "AI 绘画工具对比：Midjourney vs Stable Diffusion",
+    "description": "详细对比两款主流 AI 绘画工具的优缺点，帮助你选择适合的工具",
+    "author": "Art Tech",
+    "category": "ClawSection",
+    "readTime": "10 分钟",
+    "publishedAt": "2026-03-06"
+  },
+  {
+    "uid": "g-4",
+    "slug": "local-llm-deployment",
+    "title": "如何本地部署开源大模型？完整教程",
+    "description": "从零开始学习如何在本地服务器部署 LLaMA 等开源大模型",
+    "author": "DevOps Pro",
+    "category": "Tutorial",
+    "readTime": "15 分钟",
+    "publishedAt": "2026-03-07"
+  }
+]

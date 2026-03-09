@@ -1,49 +1,55 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import GuideCard from '../components/GuideCard.astro';
+import GuideRankCard from '../components/GuideRankCard.astro';
 import guides from '../data/guides.json';
 
 const guideCount = guides.length;
+
+// 模拟排行榜数据
+const rankData = [
+  { rank: 1, title: "什么是大语言模型？全面解析 LLM 的工作原理", author: "AI Science", views: "12.5k" },
+  { rank: 2, title: "Prompt Engineering 入门：如何与 AI 高效对话", author: "Prompt Master", views: "9.8k" },
+  { rank: 3, title: "AI 绘画工具对比：Midjourney vs Stable Diffusion", author: "Art Tech", views: "8.2k" },
+  { rank: 4, title: "如何本地部署开源大模型？完整教程", author: "DevOps Pro", views: "6.5k" },
+  { rank: 5, title: "Transformer 架构详解：从原理到实现", author: "Deep Learning", views: "5.3k" },
+];
 ---
 
-<Layout title="科普 & 教程 - AI Links">
-  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200">
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">教程类型</h3>
-    <div class="space-y-2 mb-6">
-      <a href="?type=beginner" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">🌱 入门教程</a>
-      <a href="?type=advanced" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">🚀 进阶指南</a>
-      <a href="?type=comparison" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⚖️ 产品对比</a>
-      <a href="?type=review" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">📝 评测报告</a>
-    </div>
-
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">内容标签</h3>
-    <div class="flex flex-wrap gap-1">
-      <a href="?tag=llm" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">大模型</a>
-      <a href="?tag=prompt" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">Prompt</a>
-      <a href="?tag=api" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">API</a>
-      <a href="?tag=deploy" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">部署</a>
-      <a href="?tag=fine-tune" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">微调</a>
-    </div>
-
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">阅读时长</h3>
-    <div class="space-y-2">
-      <a href="?time=short" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⏱️ 5 分钟内</a>
-      <a href="?time=medium" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⏱️ 5-15 分钟</a>
-      <a href="?time=long" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">⏱️ 15 分钟+</a>
-    </div>
-  </aside>
-
+<Layout title="🌱 SciencePopu - AI Links">
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
-      <h2 class="text-xl font-bold text-gray-900">科普 & 教程</h2>
-      <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{guideCount}</span>
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl font-bold text-gray-900">🌱 SciencePopu</h2>
+        <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{guideCount}</span>
+      </div>
+
+      <div class="relative w-full max-w-md">
+        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
+        <input type="text" placeholder="按名称过滤教程..." class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 outline-none" />
+      </div>
+
       <div class="flex-1"></div>
-      <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700">撰写教程</button>
     </div>
 
     {guideCount > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {guides.map(g => <GuideCard {...g} />)}
+      <div class="flex gap-6">
+        <!-- 左侧：卡片列表 -->
+        <div class="flex-1 flex flex-col gap-4">
+          {guides.map(g => <GuideCard {...g} />)}
+        </div>
+        
+        <!-- 右侧：排行榜 -->
+        <div class="w-80 shrink-0">
+          <div class="sticky top-20">
+            <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <span class="text-lg">🔥</span> 阅读排行榜
+            </h3>
+            <div class="flex flex-col gap-2">
+              {rankData.map(r => <GuideRankCard {...r} />)}
+            </div>
+          </div>
+        </div>
       </div>
     ) : (
       <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
