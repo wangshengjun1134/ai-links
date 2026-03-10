@@ -59,7 +59,7 @@ export function initMultiFilter() {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const selected = getSelectedFilters(paramName);
+    // 不读取 URL 状态，所有按钮初始为未选中
     const buttons = container.querySelectorAll('.filter-btn');
     
     buttons.forEach(btn => {
@@ -68,12 +68,10 @@ export function initMultiFilter() {
 
       const closeIcon = btn.querySelector('.close-icon') as HTMLElement;
       
-      // 初始化选中状态
-      if (selected.includes(value)) {
-        btn.classList.add('active', 'border-blue-400', 'bg-blue-50', 'text-blue-600');
-        btn.classList.remove('border-gray-100');
-        if (closeIcon) closeIcon.classList.remove('hidden');
-      }
+      // 初始状态：未选中
+      btn.classList.remove('active', 'border-blue-400', 'bg-blue-50', 'text-blue-600');
+      btn.classList.add('border-gray-100');
+      if (closeIcon) closeIcon.classList.add('hidden');
 
       // 绑定点击事件
       btn.addEventListener('click', (e: Event) => {
