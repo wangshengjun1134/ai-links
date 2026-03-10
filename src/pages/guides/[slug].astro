@@ -65,7 +65,7 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
     </article>
 
     <aside class="w-[320px] shrink-0 border-l border-slate-50 hidden xl:block">
-      <div class="sticky top-0 h-screen p-10">
+      <div class="sticky top-0 h-screen p-10 overflow-y-auto custom-scrollbar">
         <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Outline</h3>
         <nav class="space-y-1">
           {headings.filter(h => h.depth >= 2).map((h) => (
@@ -80,7 +80,32 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
 </Layout>
 
 <style is:global>
-  /* 核心排版：这是让它“变好看”的关键 */
+  /* 自定义滚动条样式 - 右侧导航栏 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+  }
+
+  /* 锚点定位偏移 - 防止被 sticky header 遮挡 */
+  #custom-article-content h2,
+  #custom-article-content h3,
+  #custom-article-content h4 {
+    scroll-margin-top: 120px;
+  }
+
+  /* 核心排版：这是让它"变好看"的关键 */
   #custom-article-content {
     font-family: 'Inter', system-ui, sans-serif;
     color: #334155; /* slate-700 */
