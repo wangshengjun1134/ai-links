@@ -2,34 +2,37 @@
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import llms from '../data/llms.json';
+import { sidebarFilters } from '../data/navigation';
 
-const llmCount = llms.length;
+const { sizes, capabilities } = sidebarFilters.llms;
 ---
 
 <Layout title="大模型 LLMs - AI Links">
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200">
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">模型规模</h3>
     <div class="space-y-2 mb-6">
-      <a href="?size=small" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">小型 (&lt;10B)</a>
-      <a href="?size=medium" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">中型 (10B-100B)</a>
-      <a href="?size=large" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">大型 (&gt;100B)</a>
+      {sizes.map((item) => (
+        <a href={item.path} class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+          {item.name}
+        </a>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">能力领域</h3>
     <div class="flex flex-wrap gap-1">
-      <a href="?cap=text" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">文本</a>
-      <a href="?cap=code" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">代码</a>
-      <a href="?cap=math" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">数学</a>
-      <a href="?cap=vision" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">视觉</a>
-      <a href="?cap=audio" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">音频</a>
+      {capabilities.map((item) => (
+        <a href={item.path} class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50 transition-colors">
+          {item.name}
+        </a>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">开源状态</h3>
     <div class="space-y-2">
-      <label class="flex items-center gap-2 text-sm text-gray-700">
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
         <input type="checkbox" class="rounded" /> 开源模型
       </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700">
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
         <input type="checkbox" class="rounded" /> 闭源商用
       </label>
     </div>
@@ -38,11 +41,10 @@ const llmCount = llms.length;
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
       <h2 class="text-xl font-bold text-gray-900">大模型 LLMs</h2>
-      <!-- <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{llmCount}</span> -->
       <div class="flex-1"></div>
     </div>
 
-    {llmCount > 0 ? (
+    {llms.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-3 gap-y-2">
         {llms.map(l => <ProductCard {...l} />)}
       </div>

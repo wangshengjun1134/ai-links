@@ -2,17 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import skills from '../../data/skills.json';
+import { skillsSubNav, sidebarFilters } from '../../data/navigation';
 
 const toolsData = skills.filter((s: any) => s.subCategory === 'tools');
-const itemCount = toolsData.length;
+const { languages, licenses, functions } = sidebarFilters.tools;
 
 const subNav = {
   activeTab: 'tools',
-  tabs: [
-    { name: '提示词', href: '/skills/prompts', id: 'prompts' },
-    { name: '插件 Skill', href: '/skills/tools', id: 'tools' },
-    { name: 'MCP 协议', href: '/skills/mcp', id: 'mcp' }
-  ]
+  tabs: skillsSubNav,
 };
 ---
 
@@ -20,49 +17,35 @@ const subNav = {
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200">
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">开发语言</h3>
     <div class="space-y-2 mb-6">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> Python
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> JavaScript / TypeScript
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> Java
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> Go
-      </label>
+      {languages.map((lang) => (
+        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded" /> {lang}
+        </label>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">授权方式</h3>
     <div class="space-y-2 mb-6">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 开源 (MIT/Apache)
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 商业许可
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 免费使用
-      </label>
+      {licenses.map((license) => (
+        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded" /> {license}
+        </label>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">功能分类</h3>
     <div class="flex flex-wrap gap-1">
-      <a href="?func=search" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🔍 搜索</a>
-      <a href="?func=automation" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">⚡ 自动化</a>
-      <a href="?func=data" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">📊 数据</a>
-      <a href="?func=api" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🔌 API</a>
-      <a href="?func=ui" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🎨 UI</a>
+      {functions.map((item) => (
+        <a href={item.path} class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50 transition-colors">
+          {item.icon} {item.name}
+        </a>
+      ))}
     </div>
   </aside>
 
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
-      <div class="flex items-center gap-2">
-        <h2 class="text-xl font-bold text-gray-900">插件 Skill</h2>
-        <!-- <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{itemCount}</span> -->
-      </div>
+      <h2 class="text-xl font-bold text-gray-900">插件 Skill</h2>
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
@@ -76,7 +59,7 @@ const subNav = {
       <div class="flex-1"></div>
     </div>
 
-    {itemCount > 0 ? (
+    {toolsData.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-2">
         {toolsData.map(s => <SkillCard {...s} />)}
       </div>

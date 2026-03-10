@@ -1,0 +1,94 @@
+---
+/**
+ * 通用侧边栏筛选组件
+ * 支持多种筛选类型：标签组、复选框组、链接列表
+ */
+interface Props {
+  title: string;
+  variant?: 'tags' | 'checkboxes' | 'links';
+  items: {
+    name: string;
+    path?: string;
+    icon?: string;
+    active?: boolean;
+  }[];
+  stickyTop?: string;
+}
+
+import type { HTMLAttributes } from 'astro/types';
+
+const { 
+  title, 
+  variant = 'tags', 
+  items = [], 
+  stickyTop = 'var(--sidebar-top-single)' 
+} = Astro.props;
+---
+
+<aside 
+  class="w-80 shrink-0 flex flex-col gap-5 pr-6 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200"
+  style={`top: ${stickyTop}`}
+>
+  {variant === 'tags' && (
+    <div class="flex flex-col gap-2">
+      <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest px-1">
+        {title}
+      </h4>
+      <div class="flex flex-wrap gap-1">
+        {items.map((item) => (
+          <a
+            href={item.path || '#'}
+            class={`
+              group flex items-center gap-1.5 px-2 py-0.5
+              border rounded-md transition-all duration-150
+              ${item.active 
+                ? 'bg-blue-50 border-blue-400' 
+                : 'bg-white border-gray-100 hover:border-blue-400 hover:bg-blue-50/30'
+              }
+            `}
+          >
+            {item.icon && <span class="text-[13px] shrink-0 leading-none">{item.icon}</span>}
+            <span class="text-[12px] font-medium leading-loose text-gray-900">
+              {item.name}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {variant === 'checkboxes' && (
+    <div class="flex flex-col gap-2">
+      <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest px-1">
+        {title}
+      </h4>
+      <div class="space-y-2">
+        {items.map((item) => (
+          <label class="flex items-center gap-2 text-[12px] text-gray-700 cursor-pointer">
+            <input type="checkbox" class="rounded border-gray-300" />
+            {item.name}
+          </label>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {variant === 'links' && (
+    <div class="flex flex-col gap-2">
+      <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest px-1">
+        {title}
+      </h4>
+      <div class="space-y-1">
+        {items.map((item) => (
+          <a
+            href={item.path || '#'}
+            class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            {item.icon && <span class="mr-2">{item.icon}</span>}
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+</aside>

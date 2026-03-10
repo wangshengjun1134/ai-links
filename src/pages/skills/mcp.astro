@@ -2,17 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import skills from '../../data/skills.json';
+import { skillsSubNav, sidebarFilters } from '../../data/navigation';
 
 const mcpData = skills.filter((s: any) => s.subCategory === 'mcp');
-const itemCount = mcpData.length;
+const { serverTypes, authMethods, deployments } = sidebarFilters.mcp;
 
 const subNav = {
   activeTab: 'mcp',
-  tabs: [
-    { name: '提示词', href: '/skills/prompts', id: 'prompts' },
-    { name: '插件 Skill', href: '/skills/tools', id: 'tools' },
-    { name: 'MCP 协议', href: '/skills/mcp', id: 'mcp' }
-  ]
+  tabs: skillsSubNav,
 };
 ---
 
@@ -20,51 +17,35 @@ const subNav = {
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200">
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">服务器类型</h3>
     <div class="space-y-2 mb-6">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 数据库 (SQLite/PostgreSQL)
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 文件存储 (GitHub/Drive)
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 搜索引擎 (Google/Bing)
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 社交媒体 (Twitter/Slack)
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 云服务 (AWS/Azure)
-      </label>
+      {serverTypes.map((type) => (
+        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded" /> {type}
+        </label>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">认证方式</h3>
     <div class="space-y-2 mb-6">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> API Key
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> OAuth 2.0
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 无需认证
-      </label>
+      {authMethods.map((method) => (
+        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded" /> {method}
+        </label>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">部署方式</h3>
     <div class="flex flex-wrap gap-1">
-      <a href="?deploy=local" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🖥️ 本地</a>
-      <a href="?deploy=docker" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🐳 Docker</a>
-      <a href="?deploy=cloud" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">☁️ 云端</a>
-      <a href="?deploy=npx" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">⚡ NPX</a>
+      {deployments.map((item) => (
+        <a href={item.path} class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50 transition-colors">
+          {item.icon} {item.name}
+        </a>
+      ))}
     </div>
   </aside>
 
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
-      <div class="flex items-center gap-2">
-        <h2 class="text-xl font-bold text-gray-900">MCP 协议资源</h2>
-        <!-- <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{itemCount}</span> -->
-      </div>
+      <h2 class="text-xl font-bold text-gray-900">MCP 协议资源</h2>
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
@@ -78,7 +59,7 @@ const subNav = {
       <div class="flex-1"></div>
     </div>
 
-    {itemCount > 0 ? (
+    {mcpData.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-2">
         {mcpData.map(s => <SkillCard {...s} />)}
       </div>

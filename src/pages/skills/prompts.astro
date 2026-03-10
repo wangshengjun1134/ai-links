@@ -2,17 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import skills from '../../data/skills.json';
+import { skillsSubNav, sidebarFilters } from '../../data/navigation';
 
 const promptsData = skills.filter((s: any) => s.subCategory === 'prompts' || !s.subCategory);
-const itemCount = promptsData.length;
+const { models, scenes, types } = sidebarFilters.prompts;
 
 const subNav = {
   activeTab: 'prompts',
-  tabs: [
-    { name: '提示词', href: '/skills/prompts', id: 'prompts' },
-    { name: '插件 Skill', href: '/skills/tools', id: 'tools' },
-    { name: 'MCP 协议', href: '/skills/mcp', id: 'mcp' }
-  ]
+  tabs: skillsSubNav,
 };
 ---
 
@@ -20,53 +17,35 @@ const subNav = {
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200">
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">适用模型</h3>
     <div class="space-y-2 mb-6">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> GPT-4 / ChatGPT
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> Claude
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> Gemini
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 文心一言
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 通义千问
-      </label>
+      {models.map((model) => (
+        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded" /> {model}
+        </label>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">应用场景</h3>
     <div class="flex flex-wrap gap-1">
-      <a href="?scene=writing" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">✍️ 写作</a>
-      <a href="?scene=code" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">💻 编程</a>
-      <a href="?scene=translate" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🌐 翻译</a>
-      <a href="?scene=design" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">🎨 设计</a>
-      <a href="?scene=marketing" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">📢 营销</a>
-      <a href="?scene=analysis" class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50">📊 分析</a>
+      {scenes.map((item) => (
+        <a href={item.path} class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50 transition-colors">
+          {item.icon} {item.name}
+        </a>
+      ))}
     </div>
 
     <h3 class="text-xs font-bold text-gray-500 mt-6 mb-4 uppercase tracking-wider">提示词类型</h3>
     <div class="space-y-2">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 结构化模板
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 角色设定
-      </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 工作流
-      </label>
+      {types.map((type) => (
+        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" class="rounded" /> {type}
+        </label>
+      ))}
     </div>
   </aside>
 
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
-      <div class="flex items-center gap-2">
-        <h2 class="text-xl font-bold text-gray-900">提示词 Prompts</h2>
-        <!-- <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full">{itemCount}</span> -->
-      </div>
+      <h2 class="text-xl font-bold text-gray-900">提示词 Prompts</h2>
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
@@ -80,7 +59,7 @@ const subNav = {
       <div class="flex-1"></div>
     </div>
 
-    {itemCount > 0 ? (
+    {promptsData.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-2">
         {promptsData.map(s => <SkillCard {...s} />)}
       </div>

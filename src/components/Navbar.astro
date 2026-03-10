@@ -1,12 +1,5 @@
 ---
-const navItems = [
-  { name: "AI 产品", path: "/products" },
-  { name: "智能体 Agent", path: "/agents" },
-  { name: "技能 Skills", path: "/skills" },
-  { name: "大模型", path: "/llms" },
-  { name: "科普&教程", path: "/guides" },
-  { name: "新闻", path: "/news" },
-];
+import { mainNavItems } from '../data/navigation';
 ---
 
 <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 h-16 flex items-center justify-between px-6">
@@ -20,7 +13,7 @@ const navItems = [
     </div>
   </div>
   <div class="flex items-center gap-6 text-sm font-semibold text-gray-600">
-    {navItems.map((item) => (
+    {mainNavItems.map((item) => (
       <a href={item.path} class="hover:text-black">{item.name}</a>
     ))}
     <div class="h-4 w-px bg-gray-200"></div>

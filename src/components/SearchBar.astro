@@ -1,0 +1,47 @@
+---
+/**
+ * 通用搜索栏组件
+ */
+interface Props {
+  placeholder?: string;
+  showFilters?: boolean;
+  filterOptions?: {
+    label: string;
+    icon?: string;
+    onClick?: () => void;
+  }[];
+}
+
+const { 
+  placeholder = '搜索...', 
+  showFilters = false, 
+  filterOptions = [] 
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-4">
+  <div class="flex items-center gap-3">
+    <div class="relative flex-1 min-w-[300px] group">
+      <span class="absolute left-3 top-2.5 text-gray-400">🔍</span>
+      <input
+        type="text"
+        placeholder={placeholder}
+        class="w-full bg-white border border-gray-200 rounded-lg py-2 pl-9 pr-3 text-[13px] focus:ring-4 focus:ring-blue-50 focus:border-blue-400 transition-all outline-none shadow-sm"
+      />
+    </div>
+
+    {showFilters && filterOptions.length > 0 && (
+      <>
+        {filterOptions.map((filter) => (
+          <button 
+            class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg text-[13px] font-medium text-gray-700 hover:bg-gray-50 transition-all shadow-sm group"
+            onclick={filter.onClick}
+          >
+            {filter.icon && <span class="text-orange-400 group-hover:scale-110 transition-transform">{filter.icon}</span>}
+            {filter.label}
+          </button>
+        ))}
+      </>
+    )}
+  </div>
+</div>

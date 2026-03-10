@@ -2,20 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import AgentCard from '../components/AgentCard.astro';
 import agents from '../data/agents.json';
+import { sidebarFilters } from '../data/navigation';
 
-const agentCount = agents.length;
+const { types, creators } = sidebarFilters.agents;
 ---
 
 <Layout title="智能体 Agent - AI Links">
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200">
-    <!-- 任务分类 -->
+    <!-- Agent 分类 -->
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Agent 分类</h4>
       <div class="flex flex-wrap gap-1">
-        <a href="?type=code" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">💻 编程助手</a>
-        <a href="?type=design" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">🎨 设计创作</a>
-        <a href="?type=data" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">📊 数据分析</a>
-        <a href="?type=office" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">📝 办公效率</a>
+        {types.map((item) => (
+          <a href={item.path} class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">
+            {item.icon && <span class="mr-1">{item.icon}</span>}
+            {item.name}
+          </a>
+        ))}
       </div>
     </div>
 
@@ -23,10 +26,11 @@ const agentCount = agents.length;
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">创建者</h4>
       <div class="flex flex-wrap gap-1">
-        <a href="?creator=openai" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">OpenAI</a>
-        <a href="?creator=anthropic" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">Anthropic</a>
-        <a href="?creator=google" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">Google</a>
-        <a href="?creator=community" class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">社区</a>
+        {creators.map((item) => (
+          <a href={item.path} class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[12px] hover:border-blue-400">
+            {item.name}
+          </a>
+        ))}
       </div>
     </div>
 
@@ -57,10 +61,7 @@ const agentCount = agents.length;
 
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
-      <div class="flex items-center gap-2">
-        <h2 class="text-xl font-bold text-gray-900">智能体 Agent</h2>
-        <!-- <span class="text-[12px] font-mono text-gray-500 bg-gray-100/50 px-2 py-0.5 rounded-full border border-gray-200/60">{agentCount}</span> -->
-      </div>
+      <h2 class="text-xl font-bold text-gray-900">智能体 Agent</h2>
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>

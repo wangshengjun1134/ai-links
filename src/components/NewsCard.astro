@@ -1,7 +1,13 @@
 ---
-// src/components/NewsCard.astro
+interface Props {
+  date: string;
+  title: string;
+  source: string;
+}
+
 const { date, title, source } = Astro.props;
 ---
+
 <div class="flex items-center space-x-4 p-3 hover:bg-white/5 rounded-lg transition-colors border-b border-white/5">
   <div class="text-xs text-gray-500 font-mono w-24 uppercase">{date}</div>
   <div class="flex-1 text-sm text-gray-200 hover:text-blue-400 cursor-pointer">{title}</div>

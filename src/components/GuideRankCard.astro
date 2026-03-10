@@ -8,7 +8,7 @@ interface Props {
 
 const { rank, title, author, views } = Astro.props;
 
-const rankColors = {
+const rankColors: Record<number, string> = {
   1: "bg-gradient-to-br from-yellow-400 to-yellow-600 text-white shadow-md shadow-yellow-500/20",
   2: "bg-gradient-to-br from-gray-300 to-gray-500 text-white shadow-md shadow-gray-400/20",
   3: "bg-gradient-to-br from-amber-600 to-amber-800 text-white shadow-md shadow-amber-600/20",

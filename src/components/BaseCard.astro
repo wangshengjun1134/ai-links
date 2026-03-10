@@ -1,0 +1,178 @@
+---
+/**
+ * 通用卡片组件 - 支持两种模式：
+ * - compact: 紧凑模式（默认），显示基本信息
+ * - expanded: 展开模式（hover 时），显示详细信息和操作按钮
+ */
+interface Props {
+  // 基础信息
+  title: string;
+  subtitle?: string;
+  description?: string;
+  icon?: string;
+  logo?: string;
+  logoAlt?: string;
+  
+  // 元数据
+  tier?: string;
+  author?: string;
+  tags?: string[];
+  
+  // 状态
+  needVpn?: boolean;
+  hasApi?: boolean;
+  
+  // 链接
+  detailUrl?: string;
+  externalUrl?: string;
+  
+  // 自定义内容插槽通过 slot 属性实现
+}
+
+import logoImg from '../assets/logo.png';
+
+const { 
+  title, 
+  subtitle, 
+  description, 
+  icon, 
+  logo, 
+  logoAlt = '', 
+  tier, 
+  author,
+  tags = [],
+  needVpn = false, 
+  hasApi = false, 
+  detailUrl, 
+  externalUrl 
+} = Astro.props;
+
+const tierColors: Record<string, string> = {
+  "S-Tier": "text-amber-500",
+  "A-Tier": "text-purple-500",
+  "B-Tier": "text-blue-500",
+};
+
+const tierLabel = tier ? tier.split('-')[0] : '';
+const displayLogo = logo || logoImg.src;
+---
+
+<div class="group relative h-[64px]">
+  <!-- 紧凑模式 -->
+  <div class="absolute inset-0 p-2.5 bg-white border border-gray-100 rounded-lg flex items-center gap-3 transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-md">
+    <div class="w-9 h-9 rounded border border-gray-50 flex-shrink-0 bg-white p-1 flex items-center justify-center">
+      {icon ? (
+        <span class="text-[22px] leading-none">{icon}</span>
+      ) : (
+        <img src={displayLogo} alt={logoAlt} class="w-full h-full object-contain" />
+      )}
+    </div>
+
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-1.5 min-w-0">
+          <h3 class="font-bold text-gray-900 text-[14px] truncate leading-none">{title}</h3>
+          {tier && (
+            <span class={`text-[10px] font-black shrink-0 ${tierColors[tier] || 'text-gray-400'}`}>
+              {tierLabel}
+            </span>
+          )}
+        </div>
+        {subtitle && (
+          <span class="text-[11px] text-gray-400 truncate text-right shrink-0">
+            {subtitle}
+          </span>
+        )}
+      </div>
+
+      {description && (
+        <p class="text-[11px] text-gray-600 truncate mt-2 leading-none font-medium">
+          {description}
+        </p>
+      )}
+    </div>
+  </div>
+
+  <!-- 展开模式 -->
+  <div class="absolute -inset-x-2 -top-1 p-5 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-blue-50
+              opacity-0 translate-y-2 pointer-events-none
+              group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:z-50
+              transition-all duration-300 delay-150 ease-out">
+    
+    <div class="flex items-start justify-between mb-4">
+      <div class="flex items-center gap-2.5">
+        <div class="p-1 bg-gray-50 rounded-lg border border-gray-100">
+          {icon ? (
+            <span class="text-[22px] leading-none">{icon}</span>
+          ) : (
+            <img src={displayLogo} class="w-7 h-7 object-contain" />
+          )}
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 text-[15px] leading-tight">{title}</h4>
+          {subtitle && (
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">{subtitle}</p>
+          )}
+          {author && (
+            <p class="text-[10px] text-gray-400 font-medium">By {author}</p>
+          )}
+        </div>
+      </div>
+      {tier && (
+        <span class={`text-[10px] font-black px-1.5 py-0.5 rounded bg-gray-50 ${tierColors[tier]}`}>
+          {tier}
+        </span>
+      )}
+    </div>
+
+    {description && (
+      <p class="text-[12px] text-gray-600 leading-relaxed mb-5 line-clamp-3">
+        {description}
+      </p>
+    )}
+
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mb-5">
+        {tags.map((tag) => (
+          <span class="px-2 py-0.5 bg-gray-100 text-gray-600 text-[11px] rounded-full hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    {(needVpn !== undefined || hasApi !== undefined) && (
+      <div class="grid grid-cols-2 gap-3 mb-5 p-3 bg-gray-50 rounded-xl">
+        {needVpn !== undefined && (
+          <div class="space-y-0.5">
+            <p class="text-[9px] text-gray-400 font-bold uppercase">网络环境</p>
+            <p class={`text-[12px] font-bold ${needVpn ? 'text-orange-500' : 'text-green-600'}`}>
+              {needVpn ? '需要代理' : '国内直连'}
+            </p>
+          </div>
+        )}
+        {hasApi !== undefined && (
+          <div class="space-y-0.5">
+            <p class="text-[9px] text-gray-400 font-bold uppercase">API 接口</p>
+            <p class="text-[12px] font-bold text-gray-800">{hasApi ? '已开放' : '暂无'}</p>
+          </div>
+        )}
+      </div>
+    )}
+
+    {(detailUrl || externalUrl) && (
+      <div class="flex gap-2.5">
+        {detailUrl && (
+          <a href={detailUrl} class="flex-1 text-center py-2 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg text-[12px] font-bold transition-all">
+            查看详情
+          </a>
+        )}
+        {externalUrl && (
+          <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[12px] font-bold transition-all shadow-md shadow-blue-100">
+            立即访问
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</div>

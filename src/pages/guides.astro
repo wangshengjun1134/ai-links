@@ -3,10 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import GuideCard from '../components/GuideCard.astro';
 import GuideRankCard from '../components/GuideRankCard.astro';
 import guides from '../data/guides.json';
+import { sidebarFilters } from '../data/navigation';
 
-const guideCount = guides.length;
+const { types } = sidebarFilters.guides;
 
-// 模拟排行榜数据
+// 排行榜数据
 const rankData = [
   { rank: 1, title: "什么是大语言模型？全面解析 LLM 的工作原理", author: "AI Science", views: "12.5k" },
   { rank: 2, title: "Prompt Engineering 入门：如何与 AI 高效对话", author: "Prompt Master", views: "9.8k" },
@@ -19,16 +20,12 @@ const rankData = [
 <Layout title="🌱 SciencePopu - AI Links">
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-slate-200 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white">
     <h3 class="text-xs font-bold text-slate-500 mb-4 uppercase tracking-wider">教程类型</h3>
-    <div class="space-y-2 mb-6">
-      <a href="?type=sciencepopu" class="group flex items-center gap-3 px-3 py-2.5 text-sm text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition-all">
-        <span class="text-lg group-hover:scale-110 transition-transform">🌱</span> 科普
-      </a>
-      <a href="?type=clawsection" class="group flex items-center gap-3 px-3 py-2.5 text-sm text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition-all">
-        <span class="text-lg group-hover:scale-110 transition-transform">🚀</span> 龙虾专区
-      </a>
-      <a href="?type=tutorial" class="group flex items-center gap-3 px-3 py-2.5 text-sm text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition-all">
-        <span class="text-lg group-hover:scale-110 transition-transform">⚖️</span> 教程
-      </a>
+    <div class="space-y-2">
+      {types.map((item) => (
+        <a href={item.path} class="group flex items-center gap-3 px-3 py-2.5 text-sm text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition-all">
+          <span class="text-lg group-hover:scale-110 transition-transform">{item.icon}</span> {item.name}
+        </a>
+      ))}
     </div>
   </aside>
 
@@ -38,7 +35,6 @@ const rankData = [
         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xl shadow-lg shadow-indigo-500/20">🌱</div>
         <div>
           <h2 class="text-xl font-bold text-slate-800">科普&教程</h2>
-          <!-- <span class="text-[11px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded-full border border-slate-200">{guideCount}</span> -->
         </div>
       </div>
 
@@ -48,24 +44,20 @@ const rankData = [
       </div>
 
       <div class="flex-1"></div>
-      
-      <div class="flex items-center gap-2">
-        <button class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full hover:shadow-lg hover:shadow-indigo-500/20 transition-all">
-          发布教程
-        </button>
-      </div>
+
+      <button class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full hover:shadow-lg hover:shadow-indigo-500/20 transition-all">
+        发布教程
+      </button>
     </div>
 
-    {guideCount > 0 ? (
+    {guides.length > 0 ? (
       <div class="flex gap-8">
-        <!-- 左侧：卡片列表 -->
         <div class="flex-1">
-          <!-- 网格卡片布局 -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {guides.map(g => (
               <div class="group relative p-5 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 hover:shadow-[0_0_30px_-10px_rgba(99,102,241,0.3)] transition-all duration-300 hover:-translate-y-1 cursor-pointer">
                 <a href={`/guides/${g.uid}`} target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
-                
+
                 <div class="flex items-start justify-between mb-3">
                   <div class="flex items-center gap-2">
                     <span class="px-2.5 py-1 text-[10px] font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full uppercase tracking-wider">{g.category}</span>
@@ -75,15 +67,15 @@ const rankData = [
                     </span>
                   </div>
                 </div>
-                
+
                 <h3 class="text-base font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors line-clamp-2">
                   {g.title}
                 </h3>
-                
+
                 <p class="text-sm text-slate-600 mb-4 line-clamp-2">
                   {g.description}
                 </p>
-                
+
                 <div class="flex items-center justify-between pt-3 border-t border-slate-100">
                   <div class="flex items-center gap-2">
                     <div class="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-[10px] font-bold shadow-md shadow-indigo-500/20">
@@ -98,10 +90,8 @@ const rankData = [
           </div>
         </div>
 
-        <!-- 右侧：排行榜 -->
         <div class="w-80 shrink-0">
           <div class="sticky top-20 space-y-6">
-            <!-- 排行榜卡片 -->
             <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
               <h3 class="text-sm font-bold text-slate-700 mb-4 flex items-center gap-2">
                 <span class="text-lg">🔥</span> 阅读排行榜
