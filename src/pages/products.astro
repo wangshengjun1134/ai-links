@@ -18,10 +18,11 @@ const { categories, companies, pricing } = sidebarFilters.products;
           return (
             <button
               data-task={task}
-              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer"
+              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
             >
-              {item.icon && <span class="mr-1">{item.icon}</span>}
-              {item.name}
+              {item.icon && <span class="mr-0.5">{item.icon}</span>}
+              <span>{item.name}</span>
+              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
             </button>
           );
         })}
@@ -37,10 +38,11 @@ const { categories, companies, pricing } = sidebarFilters.products;
           return (
             <button
               data-company={company}
-              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer"
+              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
             >
-              {item.icon && <span class="mr-1">{item.icon}</span>}
-              {item.name}
+              {item.icon && <span class="mr-0.5">{item.icon}</span>}
+              <span>{item.name}</span>
+              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
             </button>
           );
         })}
@@ -115,17 +117,20 @@ const { categories, companies, pricing } = sidebarFilters.products;
   function toggleFilter(paramName, value, btn) {
     const selected = getSelectedFilters(paramName);
     const index = selected.indexOf(value);
+    const closeIcon = btn.querySelector('.close-icon');
     
     if (index > -1) {
       selected.splice(index, 1);
       btn.classList.remove('active');
       btn.classList.add('border-gray-100');
       btn.classList.remove('border-blue-400', 'bg-blue-50', 'text-blue-600');
+      if (closeIcon) closeIcon.classList.add('hidden');
     } else {
       selected.push(value);
       btn.classList.add('active');
       btn.classList.remove('border-gray-100');
       btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+      if (closeIcon) closeIcon.classList.remove('hidden');
     }
     
     updateFilters(paramName, selected);
@@ -137,24 +142,58 @@ const { categories, companies, pricing } = sidebarFilters.products;
     const selectedTasks = getSelectedFilters('task');
     document.querySelectorAll('#task-filters .filter-btn').forEach(btn => {
       const task = btn.getAttribute('data-task');
+      const closeIcon = btn.querySelector('.close-icon');
+      
       if (selectedTasks.includes(task)) {
         btn.classList.add('active');
         btn.classList.remove('border-gray-100');
         btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+        if (closeIcon) closeIcon.classList.remove('hidden');
       }
-      btn.addEventListener('click', () => toggleFilter('task', task, btn));
+      
+      btn.addEventListener('click', (e) => {
+        // 如果点击的是关闭图标，阻止事件冒泡
+        if (e.target.classList.contains('close-icon')) {
+          e.stopPropagation();
+        }
+        toggleFilter('task', task, btn);
+      });
+      
+      // 关闭图标点击事件
+      if (closeIcon) {
+        closeIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFilter('task', task, btn);
+        });
+      }
     });
 
     // 初始化公司筛选
     const selectedCompanies = getSelectedFilters('company');
     document.querySelectorAll('#company-filters .filter-btn').forEach(btn => {
       const company = btn.getAttribute('data-company');
+      const closeIcon = btn.querySelector('.close-icon');
+      
       if (selectedCompanies.includes(company)) {
         btn.classList.add('active');
         btn.classList.remove('border-gray-100');
         btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+        if (closeIcon) closeIcon.classList.remove('hidden');
       }
-      btn.addEventListener('click', () => toggleFilter('company', company, btn));
+      
+      btn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('close-icon')) {
+          e.stopPropagation();
+        }
+        toggleFilter('company', company, btn);
+      });
+      
+      if (closeIcon) {
+        closeIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFilter('company', company, btn);
+        });
+      }
     });
   });
 </script>
