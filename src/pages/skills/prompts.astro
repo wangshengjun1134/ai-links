@@ -25,12 +25,20 @@ const subNav = {
     </div>
 
     <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">应用场景</h3>
-    <div class="flex flex-wrap gap-1">
-      {scenes.map((item) => (
-        <a href={item.path} class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 hover:border-blue-400">
-          {item.icon} {item.name}
-        </a>
-      ))}
+    <div class="flex flex-wrap gap-1" id="scene-filters">
+      {scenes.map((item) => {
+        const scene = item.path.replace('?scene=', '');
+        return (
+          <button
+            data-scene={scene}
+            class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+          >
+            {item.icon && <span class="mr-0.5">{item.icon}</span>}
+            <span>{item.name}</span>
+            <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+          </button>
+        );
+      })}
     </div>
 
     <h3 class="text-[14px] font-bold text-gray-400 mt-6 mb-4 uppercase tracking-widest">提示词类型</h3>
@@ -72,3 +80,65 @@ const subNav = {
     )}
   </div>
 </Layout>
+
+<script>
+  function getSelectedFilters(paramName) {
+    const params = new URLSearchParams(window.location.search);
+    return params.getAll(paramName);
+  }
+
+  function updateFilters(paramName, values) {
+    const params = new URLSearchParams(window.location.search);
+    params.delete(paramName);
+    values.forEach(v => params.append(paramName, v));
+    const newUrl = params.toString() 
+      ? `${window.location.pathname}?${params.toString()}` 
+      : window.location.pathname;
+    window.history.pushState({}, '', newUrl);
+  }
+
+  function toggleFilter(paramName, value, btn) {
+    const selected = getSelectedFilters(paramName);
+    const index = selected.indexOf(value);
+    const closeIcon = btn.querySelector('.close-icon');
+    
+    if (index > -1) {
+      selected.splice(index, 1);
+      btn.classList.remove('active');
+      btn.classList.add('border-gray-100');
+      btn.classList.remove('border-blue-400', 'bg-blue-50', 'text-blue-600');
+      if (closeIcon) closeIcon.classList.add('hidden');
+    } else {
+      selected.push(value);
+      btn.classList.add('active');
+      btn.classList.remove('border-gray-100');
+      btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+      if (closeIcon) closeIcon.classList.remove('hidden');
+    }
+    updateFilters(paramName, selected);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const selectedScenes = getSelectedFilters('scene');
+    document.querySelectorAll('#scene-filters .filter-btn').forEach(btn => {
+      const scene = btn.getAttribute('data-scene');
+      const closeIcon = btn.querySelector('.close-icon');
+      if (selectedScenes.includes(scene)) {
+        btn.classList.add('active');
+        btn.classList.remove('border-gray-100');
+        btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+        if (closeIcon) closeIcon.classList.remove('hidden');
+      }
+      btn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('close-icon')) e.stopPropagation();
+        toggleFilter('scene', scene, btn);
+      });
+      if (closeIcon) {
+        closeIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFilter('scene', scene, btn);
+        });
+      }
+    });
+  });
+</script>
