@@ -1,5 +1,23 @@
 [
   {
+    "uid": "10001",
+    "title": "工程师能力评估系统",
+    "description": "基于 GitHub / Gitee 的 commit、diff、仓库结构与协作信号，对工程师贡献者进行多维度能力评估的工具链",
+    "author": "System",
+    "category": "Tutorial",
+    "readTime": "30 分钟",
+    "publishedAt": "2026-03-01"
+  },
+  {
+    "uid": "10002",
+    "title": "Engineer Capability Assessment System (EN)",
+    "description": "AI-powered system for evaluating engineering capabilities by analyzing GitHub and Gitee commits, code changes, and collaboration patterns",
+    "author": "System",
+    "category": "Tutorial",
+    "readTime": "30 minutes",
+    "publishedAt": "2026-03-01"
+  },
+  {
     "uid": "g-1",
     "title": "什么是大语言模型？全面解析 LLM 的工作原理",
     "description": "深入了解大语言模型的基本概念、训练方法和应用场景，适合 AI 初学者阅读",
