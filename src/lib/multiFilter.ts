@@ -94,6 +94,26 @@ export function initMultiFilter() {
 
   // DOM 加载完成后初始化所有筛选器
   document.addEventListener('DOMContentLoaded', () => {
+    // 清除 URL 中的筛选参数（刷新后重置）
+    const params = new URLSearchParams(window.location.search);
+    const filterParams = ['task', 'company', 'type', 'creator', 'scene', 'func', 'deploy'];
+    let hasChanges = false;
+    
+    filterParams.forEach(param => {
+      if (params.has(param)) {
+        params.delete(param);
+        hasChanges = true;
+      }
+    });
+    
+    // 如果有参数被清除，更新 URL
+    if (hasChanges) {
+      const newUrl = params.toString() 
+        ? `${window.location.pathname}?${params.toString()}` 
+        : window.location.pathname;
+      window.history.replaceState({}, '', newUrl);
+    }
+
     // 自动查找所有带 data-filter 属性的容器
     const containers = document.querySelectorAll('[data-filter]');
     containers.forEach(container => {
