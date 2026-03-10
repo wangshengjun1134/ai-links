@@ -5,10 +5,6 @@ import products from '../data/products.json';
 import { sidebarFilters } from '../data/navigation';
 
 const { categories, companies, pricing } = sidebarFilters.products;
-
-// 选中的标签状态（通过 URL 参数判断）
-const selectedCategories = Astro.url.searchParams.getAll('task');
-const selectedCompanies = Astro.url.searchParams.getAll('company');
 ---
 
 <Layout title="AI 产品 - AI Links">
@@ -16,22 +12,17 @@ const selectedCompanies = Astro.url.searchParams.getAll('company');
     <!-- 任务分类 -->
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">任务分类</h4>
-      <div class="flex flex-wrap gap-1">
+      <div class="flex flex-wrap gap-1" id="task-filters">
         {categories.map((item) => {
           const task = item.path.replace('?task=', '');
-          const isActive = selectedCategories.includes(task);
           return (
-            <a 
-              href={item.path} 
-              class={`bg-white border px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all ${
-                isActive 
-                  ? 'border-blue-400 bg-blue-50 text-blue-600' 
-                  : 'border-gray-100 hover:border-blue-400'
-              }`}
+            <button
+              data-task={task}
+              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer"
             >
               {item.icon && <span class="mr-1">{item.icon}</span>}
               {item.name}
-            </a>
+            </button>
           );
         })}
       </div>
@@ -40,22 +31,17 @@ const selectedCompanies = Astro.url.searchParams.getAll('company');
     <!-- 所属公司 -->
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">所属公司</h4>
-      <div class="flex flex-wrap gap-1">
+      <div class="flex flex-wrap gap-1" id="company-filters">
         {companies.map((item) => {
           const company = item.path.replace('?company=', '');
-          const isActive = selectedCompanies.includes(company);
           return (
-            <a 
-              href={item.path} 
-              class={`bg-white border px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all ${
-                isActive 
-                  ? 'border-blue-400 bg-blue-50 text-blue-600' 
-                  : 'border-gray-100 hover:border-blue-400'
-              }`}
+            <button
+              data-company={company}
+              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer"
             >
               {item.icon && <span class="mr-1">{item.icon}</span>}
               {item.name}
-            </a>
+            </button>
           );
         })}
       </div>
@@ -101,3 +87,74 @@ const selectedCompanies = Astro.url.searchParams.getAll('company');
     </div>
   </div>
 </Layout>
+
+<script>
+  // 从 URL 获取当前选中的筛选条件
+  function getSelectedFilters(paramName) {
+    const params = new URLSearchParams(window.location.search);
+    return params.getAll(paramName);
+  }
+
+  // 更新 URL 参数（支持多选）
+  function updateFilters(paramName, values) {
+    const params = new URLSearchParams(window.location.search);
+    params.delete(paramName);
+    values.forEach(v => params.append(paramName, v));
+    
+    const newUrl = params.toString() 
+      ? `${window.location.pathname}?${params.toString()}` 
+      : window.location.pathname;
+    
+    window.history.pushState({}, '', newUrl);
+    
+    // 触发页面刷新以应用筛选
+    window.dispatchEvent(new CustomEvent('filters-change', { detail: params }));
+  }
+
+  // 切换筛选状态
+  function toggleFilter(paramName, value, btn) {
+    const selected = getSelectedFilters(paramName);
+    const index = selected.indexOf(value);
+    
+    if (index > -1) {
+      selected.splice(index, 1);
+      btn.classList.remove('active');
+      btn.classList.add('border-gray-100');
+      btn.classList.remove('border-blue-400', 'bg-blue-50', 'text-blue-600');
+    } else {
+      selected.push(value);
+      btn.classList.add('active');
+      btn.classList.remove('border-gray-100');
+      btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+    }
+    
+    updateFilters(paramName, selected);
+  }
+
+  // 初始化选中状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 初始化任务分类
+    const selectedTasks = getSelectedFilters('task');
+    document.querySelectorAll('#task-filters .filter-btn').forEach(btn => {
+      const task = btn.getAttribute('data-task');
+      if (selectedTasks.includes(task)) {
+        btn.classList.add('active');
+        btn.classList.remove('border-gray-100');
+        btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+      }
+      btn.addEventListener('click', () => toggleFilter('task', task, btn));
+    });
+
+    // 初始化公司筛选
+    const selectedCompanies = getSelectedFilters('company');
+    document.querySelectorAll('#company-filters .filter-btn').forEach(btn => {
+      const company = btn.getAttribute('data-company');
+      if (selectedCompanies.includes(company)) {
+        btn.classList.add('active');
+        btn.classList.remove('border-gray-100');
+        btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
+      }
+      btn.addEventListener('click', () => toggleFilter('company', company, btn));
+    });
+  });
+</script>
