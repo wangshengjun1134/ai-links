@@ -4,20 +4,27 @@
  * 1. 在页面引入此脚本
  * 2. 添加 data-filter 属性的容器，如 <div id="task-filters" data-filter="task">
  * 3. 按钮添加对应的 data-{filter} 属性
+ * 
+ * URL 格式：?task=text,image (逗号分隔)
  */
 
 export function initMultiFilter() {
-  // 从 URL 获取当前选中的筛选条件
+  // 从 URL 获取当前选中的筛选条件（逗号分隔）
   function getSelectedFilters(paramName: string): string[] {
     const params = new URLSearchParams(window.location.search);
-    return params.getAll(paramName);
+    const value = params.get(paramName);
+    if (!value) return [];
+    return value.split(',').filter(Boolean);
   }
 
-  // 更新 URL 参数（支持多选）
+  // 更新 URL 参数（逗号分隔）
   function updateFilters(paramName: string, values: string[]) {
     const params = new URLSearchParams(window.location.search);
-    params.delete(paramName);
-    values.forEach(v => params.append(paramName, v));
+    if (values.length > 0) {
+      params.set(paramName, values.join(','));
+    } else {
+      params.delete(paramName);
+    }
     
     const newUrl = params.toString() 
       ? `${window.location.pathname}?${params.toString()}` 
