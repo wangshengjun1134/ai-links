@@ -9,31 +9,31 @@ const { sizes, capabilities } = sidebarFilters.llms;
 
 <Layout title="大模型 LLMs - AI Links">
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200">
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">模型规模</h3>
+    <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">模型规模</h3>
     <div class="space-y-2 mb-6">
       {sizes.map((item) => (
-        <a href={item.path} class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <a href={item.path} class="block px-3 py-2 text-[13px] text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
           {item.name}
         </a>
       ))}
     </div>
 
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">能力领域</h3>
+    <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">能力领域</h3>
     <div class="flex flex-wrap gap-1">
       {capabilities.map((item) => (
-        <a href={item.path} class="px-2 py-1 bg-gray-100 text-xs rounded hover:bg-blue-50 transition-colors">
+        <a href={item.path} class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 hover:border-blue-400">
           {item.name}
         </a>
       ))}
     </div>
 
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">开源状态</h3>
+    <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">开源状态</h3>
     <div class="space-y-2">
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 开源模型
+      <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
+        <input type="checkbox" class="rounded border-gray-300" /> 开源模型
       </label>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-        <input type="checkbox" class="rounded" /> 闭源商用
+      <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
+        <input type="checkbox" class="rounded border-gray-300" /> 闭源商用
       </label>
     </div>
   </aside>
