@@ -5,15 +5,20 @@ import guides from '../../data/guides.json';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(entry => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  // 只生成 guides.json 中存在的教程路径
+  const guideUids = new Set(guides.map(g => g.uid));
+  return posts
+    .filter(entry => guideUids.has(entry.slug))
+    .map(entry => ({
+      params: { slug: entry.slug },
+      props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
+// 从 guides.json 获取额外元数据
 const guideMeta = guides.find(g => g.uid === entry.slug) || {
   title: entry.data.title,
   author: entry.data.author || 'Unknown',
@@ -21,32 +26,13 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
   readTime: entry.data.readTime || '5 min',
   publishedAt: entry.data.publishedAt || '2026-03-01',
 };
-
-const getTocStyles = (depth: number) => {
-  const styles: Record<number, string> = {
-    1: 'text-[13px] font-bold text-slate-800',
-    2: 'text-[12px] font-medium text-slate-500 ml-4',
-    3: 'text-[12px] text-slate-400 ml-8',
-  };
-  return styles[depth] || styles[1];
-};
-
-const getIconForHeading = (text: string): string => {
-  const iconMap: Record<string, string> = {
-    '引言': '💡', '概述': '📋', '快速开始': '🚀', '安装': '📦', '架构': '🏗️', '测试': '🧪',
-  };
-  for (const [key, icon] of Object.entries(iconMap)) {
-    if (text.includes(key)) return icon;
-  }
-  return '📑';
-};
 ---
 
 <Layout title={guideMeta.title}>
   <div class="flex min-h-screen bg-white">
     <article class="flex-1 min-w-0">
       <div class=" mx-auto px-8 md:px-16 py-20">
-        
+
         <header class="mb-16 pb-12 border-b border-slate-100">
           <div class="flex items-center gap-2 mb-8">
             <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 rounded border border-indigo-100">
@@ -56,11 +42,11 @@ const getIconForHeading = (text: string): string => {
               / {guideMeta.readTime} Read
             </span>
           </div>
-          
+
           <h1 class="text-[44px] font-black text-slate-900 leading-[1.1] tracking-tight mb-8">
             {guideMeta.title}
           </h1>
-          
+
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white text-[12px] font-black">
               {guideMeta.author.charAt(0).toUpperCase()}
@@ -82,9 +68,8 @@ const getIconForHeading = (text: string): string => {
       <div class="sticky top-0 h-screen p-10">
         <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Outline</h3>
         <nav class="space-y-1">
-          {headings.map((h) => (
-            <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${getTocStyles(h.depth)}`}>
-              <span class="mr-3 opacity-40 group-hover:opacity-100">{getIconForHeading(h.text)}</span>
+          {headings.filter(h => h.depth >= 2).map((h) => (
+            <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}>
               <span class="truncate">{h.text}</span>
             </a>
           ))}
