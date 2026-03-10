@@ -5,6 +5,10 @@ import products from '../data/products.json';
 import { sidebarFilters } from '../data/navigation';
 
 const { categories, companies, pricing } = sidebarFilters.products;
+
+// 选中的标签状态（通过 URL 参数判断）
+const selectedCategories = Astro.url.searchParams.getAll('task');
+const selectedCompanies = Astro.url.searchParams.getAll('company');
 ---
 
 <Layout title="AI 产品 - AI Links">
@@ -13,12 +17,23 @@ const { categories, companies, pricing } = sidebarFilters.products;
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">任务分类</h4>
       <div class="flex flex-wrap gap-1">
-        {categories.map((item) => (
-          <a href={item.path} class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 hover:border-blue-400">
-            {item.icon && <span class="mr-1">{item.icon}</span>}
-            {item.name}
-          </a>
-        ))}
+        {categories.map((item) => {
+          const task = item.path.replace('?task=', '');
+          const isActive = selectedCategories.includes(task);
+          return (
+            <a 
+              href={item.path} 
+              class={`bg-white border px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all ${
+                isActive 
+                  ? 'border-blue-400 bg-blue-50 text-blue-600' 
+                  : 'border-gray-100 hover:border-blue-400'
+              }`}
+            >
+              {item.icon && <span class="mr-1">{item.icon}</span>}
+              {item.name}
+            </a>
+          );
+        })}
       </div>
     </div>
 
@@ -26,12 +41,23 @@ const { categories, companies, pricing } = sidebarFilters.products;
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">所属公司</h4>
       <div class="flex flex-wrap gap-1">
-        {companies.map((item) => (
-          <a href={item.path} class="bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 hover:border-blue-400">
-            {item.icon && <span class="mr-1">{item.icon}</span>}
-            {item.name}
-          </a>
-        ))}
+        {companies.map((item) => {
+          const company = item.path.replace('?company=', '');
+          const isActive = selectedCompanies.includes(company);
+          return (
+            <a 
+              href={item.path} 
+              class={`bg-white border px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all ${
+                isActive 
+                  ? 'border-blue-400 bg-blue-50 text-blue-600' 
+                  : 'border-gray-100 hover:border-blue-400'
+              }`}
+            >
+              {item.icon && <span class="mr-1">{item.icon}</span>}
+              {item.name}
+            </a>
+          );
+        })}
       </div>
     </div>
 
