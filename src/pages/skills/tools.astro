@@ -34,7 +34,7 @@ const subNav = {
     </div>
 
     <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">功能分类</h3>
-    <div class="flex flex-wrap gap-1" id="func-filters">
+    <div class="flex flex-wrap gap-1" data-filter="func" id="func-filters">
       {functions.map((item) => {
         const func = item.path.replace('?func=', '');
         return (
@@ -82,63 +82,6 @@ const subNav = {
 </Layout>
 
 <script>
-  function getSelectedFilters(paramName) {
-    const params = new URLSearchParams(window.location.search);
-    return params.getAll(paramName);
-  }
-
-  function updateFilters(paramName, values) {
-    const params = new URLSearchParams(window.location.search);
-    params.delete(paramName);
-    values.forEach(v => params.append(paramName, v));
-    const newUrl = params.toString() 
-      ? `${window.location.pathname}?${params.toString()}` 
-      : window.location.pathname;
-    window.history.pushState({}, '', newUrl);
-  }
-
-  function toggleFilter(paramName, value, btn) {
-    const selected = getSelectedFilters(paramName);
-    const index = selected.indexOf(value);
-    const closeIcon = btn.querySelector('.close-icon');
-    
-    if (index > -1) {
-      selected.splice(index, 1);
-      btn.classList.remove('active');
-      btn.classList.add('border-gray-100');
-      btn.classList.remove('border-blue-400', 'bg-blue-50', 'text-blue-600');
-      if (closeIcon) closeIcon.classList.add('hidden');
-    } else {
-      selected.push(value);
-      btn.classList.add('active');
-      btn.classList.remove('border-gray-100');
-      btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
-      if (closeIcon) closeIcon.classList.remove('hidden');
-    }
-    updateFilters(paramName, selected);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const selectedFuncs = getSelectedFilters('func');
-    document.querySelectorAll('#func-filters .filter-btn').forEach(btn => {
-      const func = btn.getAttribute('data-func');
-      const closeIcon = btn.querySelector('.close-icon');
-      if (selectedFuncs.includes(func)) {
-        btn.classList.add('active');
-        btn.classList.remove('border-gray-100');
-        btn.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-600');
-        if (closeIcon) closeIcon.classList.remove('hidden');
-      }
-      btn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('close-icon')) e.stopPropagation();
-        toggleFilter('func', func, btn);
-      });
-      if (closeIcon) {
-        closeIcon.addEventListener('click', (e) => {
-          e.stopPropagation();
-          toggleFilter('func', func, btn);
-        });
-      }
-    });
-  });
+  import { initMultiFilter } from '../../lib/multiFilter';
+  initMultiFilter();
 </script>
