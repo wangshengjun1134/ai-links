@@ -123,9 +123,9 @@ export const sidebarFilters = {
   },
   guides: {
     types: [
-      { name: '科普', path: '?type=sciencepopu', icon: '🌱' },
-      { name: '龙虾专区', path: '?type=clawsection', icon: '🚀' },
-      { name: '教程', path: '?type=tutorial', icon: '⚖️' },
+      { name: '科普', path: '?type=sciencepopu', icon: '🔬' },
+      { name: '教程', path: '?type=tutorial', icon: '📖' },
+      { name: '龙虾专区', path: '?type=clawsection', icon: '🦞' },
     ],
   },
 };
