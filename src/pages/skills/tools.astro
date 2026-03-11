@@ -16,20 +16,22 @@ const subNav = {
 <Layout title="插件 Skill - AI Links" subNav={subNav}>
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200">
     <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">开发语言</h3>
-    <div class="space-y-2 mb-6">
+    <div class="flex flex-wrap gap-1" data-filter="language" id="language-filters">
       {languages.map((lang) => (
-        <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
-          <input type="checkbox" class="rounded border-gray-300" /> {lang}
-        </label>
+        <button data-language={lang} class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1">
+          <span>{lang}</span>
+          <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+        </button>
       ))}
     </div>
 
     <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">授权方式</h3>
-    <div class="space-y-2 mb-6">
+    <div class="flex flex-wrap gap-1" data-filter="license" id="license-filters">
       {licenses.map((license) => (
-        <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
-          <input type="checkbox" class="rounded border-gray-300" /> {license}
-        </label>
+        <button data-license={license} class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1">
+          <span>{license}</span>
+          <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+        </button>
       ))}
     </div>
 

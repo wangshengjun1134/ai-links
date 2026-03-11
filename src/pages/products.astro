@@ -52,14 +52,20 @@ const { categories, companies, pricing } = sidebarFilters.products;
     <!-- 收费模式 -->
     <div class="flex flex-col gap-2 mb-6">
       <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">收费模式</h4>
-      <div class="space-y-2">
-        {pricing.map((item) => (
-          <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
-            <input type="checkbox" class="rounded border-gray-300" />
-            {item.icon && <span class="mr-1">{item.icon}</span>}
-            {item.name}
-          </label>
-        ))}
+      <div class="flex flex-wrap gap-1" data-filter="pricing" id="pricing-filters">
+        {pricing.map((item) => {
+          const pricingType = item.path.replace('?pricing=', '');
+          return (
+            <button
+              data-pricing={pricingType}
+              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+            >
+              {item.icon && <span class="mr-0.5">{item.icon}</span>}
+              <span>{item.name}</span>
+              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+            </button>
+          );
+        })}
       </div>
     </div>
 

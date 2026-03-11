@@ -28,13 +28,17 @@ const { sizes, capabilities } = sidebarFilters.llms;
     </div>
 
     <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">开源状态</h3>
-    <div class="space-y-2">
-      <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
-        <input type="checkbox" class="rounded border-gray-300" /> 开源模型
-      </label>
-      <label class="flex items-center gap-2 text-[13px] text-gray-600 cursor-pointer">
-        <input type="checkbox" class="rounded border-gray-300" /> 闭源商用
-      </label>
+    <div class="flex flex-wrap gap-1" data-filter="opensource" id="opensource-filters">
+      <button data-opensource="open" class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1">
+        <span>🔓</span>
+        <span>开源模型</span>
+        <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+      </button>
+      <button data-opensource="closed" class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1">
+        <span>🔒</span>
+        <span>闭源商用</span>
+        <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+      </button>
     </div>
   </aside>
 
@@ -57,3 +61,8 @@ const { sizes, capabilities } = sidebarFilters.llms;
     )}
   </div>
 </Layout>
+
+<script>
+  import { initMultiFilter } from '../lib/multiFilter';
+  initMultiFilter();
+</script>

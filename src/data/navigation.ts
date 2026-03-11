@@ -12,7 +12,7 @@ export const mainNavItems = [
 export const skillsSubNav = [
   { name: '提示词', href: '/skills/prompts', id: 'prompts' },
   { name: '插件 Skill', href: '/skills/tools', id: 'tools' },
-  { name: 'MCP 协议', href: '/skills/mcp', id: 'mcp' },
+  { name: 'MCP 服务', href: '/skills/mcp', id: 'mcp' },
 ];
 
 // 侧边栏筛选数据

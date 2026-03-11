@@ -48,7 +48,7 @@
     "uid": "m-1",
     "subCategory": "mcp",
     "title": "PostgreSQL MCP Server",
-    "description": "通过 MCP 协议连接 PostgreSQL 数据库",
+    "description": "通过 MCP 服务连接 PostgreSQL 数据库",
     "author": "Database Labs",
     "tags": ["数据库", "PostgreSQL"],
     "icon": "🗄️"
