@@ -14,42 +14,57 @@ const subNav = {
 ---
 
 <Layout title="MCP 服务 - AI Links" subNav={subNav}>
-  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200">
-    <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">服务器类型</h3>
-    <div class="flex flex-wrap gap-1" data-filter="servertype" id="servertype-filters">
-      {serverTypes.map((type) => (
-        <button data-servertype={type} class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1">
-          <span>{type}</span>
-          <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
-        </button>
-      ))}
-    </div>
-
-    <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">认证方式</h3>
-    <div class="flex flex-wrap gap-1" data-filter="authtype" id="authtype-filters">
-      {authMethods.map((method) => (
-        <button data-authtype={method} class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1">
-          <span>{method}</span>
-          <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
-        </button>
-      ))}
-    </div>
-
-    <h3 class="text-[14px] font-bold text-gray-400 mb-4 uppercase tracking-widest">部署方式</h3>
-    <div class="flex flex-wrap gap-1" data-filter="deploy" id="deploy-filters">
-      {deployments.map((item) => {
-        const deploy = item.path.replace('?deploy=', '');
-        return (
+  <aside slot="sidebar" class="w-80 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200">
+    <!-- 服务器类型 -->
+    <div class="flex flex-col gap-2 mb-6">
+      <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">服务器类型</h4>
+      <div class="flex flex-wrap gap-1" data-filter="servertype" id="servertype-filters">
+        {serverTypes.map((type) => (
           <button
-            data-deploy={deploy}
+            data-servertype={type}
             class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
           >
-            {item.icon && <span class="mr-0.5">{item.icon}</span>}
-            <span>{item.name}</span>
+            <span>{type}</span>
             <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
           </button>
-        );
-      })}
+        ))}
+      </div>
+    </div>
+
+    <!-- 认证方式 -->
+    <div class="flex flex-col gap-2 mb-6">
+      <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">认证方式</h4>
+      <div class="flex flex-wrap gap-1" data-filter="authtype" id="authtype-filters">
+        {authMethods.map((method) => (
+          <button
+            data-authtype={method}
+            class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+          >
+            <span>{method}</span>
+            <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- 部署方式 -->
+    <div class="flex flex-col gap-2 mb-6">
+      <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">部署方式</h4>
+      <div class="flex flex-wrap gap-1" data-filter="deploy" id="deploy-filters">
+        {deployments.map((item) => {
+          const deploy = item.path.replace('?deploy=', '');
+          return (
+            <button
+              data-deploy={deploy}
+              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+            >
+              {item.icon && <span class="mr-0.5">{item.icon}</span>}
+              <span>{item.name}</span>
+              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   </aside>
 
