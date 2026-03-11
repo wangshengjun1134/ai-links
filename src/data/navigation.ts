@@ -65,11 +65,11 @@ export const sidebarFilters = {
       { name: '大型 (>100B)', path: '?size=large' },
     ],
     capabilities: [
-      { name: '文本', path: '?cap=text' },
-      { name: '代码', path: '?cap=code' },
-      { name: '数学', path: '?cap=math' },
-      { name: '视觉', path: '?cap=vision' },
-      { name: '音频', path: '?cap=audio' },
+      { name: '文本', path: '?cap=text', icon: '📝' },
+      { name: '代码', path: '?cap=code', icon: '💻' },
+      { name: '数学', path: '?cap=math', icon: '🔢' },
+      { name: '视觉', path: '?cap=vision', icon: '👁️' },
+      { name: '音频', path: '?cap=audio', icon: '🎵' },
     ],
   },
   prompts: {
