@@ -29,19 +29,11 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
 ---
 
 <Layout title={guideMeta.title}>
-  <div class="flex min-h-screen bg-white">
+  <div class="flex min-h-screen bg-white bg-clip-content px-[140px]">
     <article class="flex-1 min-w-0">
       <div class=" mx-auto px-8 md:px-16 py-20">
 
         <header class="mb-16 pb-12 border-b border-slate-100">
-          <div class="flex items-center gap-2 mb-8">
-            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 rounded border border-indigo-100">
-              {guideMeta.category}
-            </span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">
-              / {guideMeta.readTime} Read
-            </span>
-          </div>
 
           <h1 class="text-[44px] font-black text-slate-900 leading-[1.1] tracking-tight mb-8">
             {guideMeta.title}
@@ -66,7 +58,6 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
 
     <aside class="w-[320px] shrink-0 border-l border-slate-50 hidden xl:block">
       <div class="sticky top-0 h-screen p-10 overflow-y-auto custom-scrollbar">
-        <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Outline</h3>
         <nav class="space-y-1">
           {headings.filter(h => h.depth >= 2).map((h) => (
             <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}>

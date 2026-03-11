@@ -45,7 +45,7 @@ const { sizes, capabilities } = sidebarFilters.llms;
     </div>
 
     {llms.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-3 gap-y-2">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-3 gap-y-2">
         {llms.map(l => <ProductCard {...l} />)}
       </div>
     ) : (
