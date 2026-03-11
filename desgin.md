@@ -71,6 +71,7 @@ API价格
 ##Skills
 最好是每个技能都有个安装介绍、使用效果展示
 提示词和skill可以根据不同的分类选择不同的emoji
+**每个Skills，能搞个沙箱演示**
 
 skillsmp.com  从github上收录
 www.skill-cn.com
