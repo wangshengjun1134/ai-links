@@ -8,20 +8,20 @@ const { categories, timeRanges } = sidebarFilters.news;
 ---
 
 <Layout title="AI 新闻 - AI Links">
-  <aside slot="sidebar" class="w-64 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200">
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">新闻分类</h3>
-    <div class="space-y-2 mb-6">
+  <aside slot="sidebar" class="w-64 shrink-0 border-r border-[#E5E5E5] h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl">
+    <h3 class="text-[11.5px] font-bold text-[#A3A3A3] mb-4 uppercase tracking-wider">新闻分类</h3>
+    <div class="space-y-1.5 mb-6">
       {categories.map((item) => (
-        <a href={item.path} class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <a href={item.path} class="block px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer">
           {item.icon} {item.name}
         </a>
       ))}
     </div>
 
-    <h3 class="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">时间范围</h3>
-    <div class="space-y-2">
+    <h3 class="text-[11.5px] font-bold text-[#A3A3A3] mb-4 uppercase tracking-wider">时间范围</h3>
+    <div class="space-y-1.5">
       {timeRanges.map((range) => (
-        <a href={`?time=${range}`} class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <a href={`?time=${range}`} class="block px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer">
           {range}
         </a>
       ))}
@@ -29,19 +29,19 @@ const { categories, timeRanges } = sidebarFilters.news;
   </aside>
 
   <div class="p-6">
-    <h2 class="text-xl font-bold text-gray-900 mb-6">AI 新闻</h2>
+    <h2 class="text-2xl font-bold text-[#171717] mb-6">AI 新闻</h2>
 
     {news.length > 0 ? (
-      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-        <div class="divide-y divide-gray-100">
+      <div class="bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden">
+        <div class="divide-y divide-[#F0F0F0]">
           {news.map(n => <NewsCard {...n} />)}
         </div>
       </div>
     ) : (
-      <div class="text-center py-20 bg-white rounded-2xl border border-gray-200">
+      <div class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5]">
         <div class="text-6xl mb-4">📰</div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">暂无新闻</h3>
-        <p class="text-gray-500">暂无 AI 行业新闻</p>
+        <h3 class="text-xl font-bold text-[#171717] mb-2">暂无新闻</h3>
+        <p class="text-[#525252]">暂无 AI 行业新闻</p>
       </div>
     )}
   </div>

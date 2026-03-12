@@ -22,20 +22,20 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-[#F9FAFB]">
     <Navbar />
 
     {subNav && (
-      <div class="border-b border-gray-200 bg-white">
+      <div class="border-b border-[#E5E5E5] bg-white/80 backdrop-blur-md sticky top-[64px] z-40">
         <div class="max-w-[1600px] mx-auto px-4">
-          <div class="flex gap-2 py-3">
+          <div class="flex gap-2 py-2.5">
             {subNav.tabs.map(tab => (
               <a
                 href={tab.href}
-                class={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
+                class={`px-4 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                   subNav.activeTab === tab.id
-                  ? 'bg-gray-500 text-white shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                  ? 'bg-[#171717] text-white shadow-md'
+                  : 'text-[#525252] hover:text-[#171717] hover:bg-[#F0F0F0]'
                 }`}
               >
                 {tab.name}
@@ -66,7 +66,9 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
   }
 
   html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {

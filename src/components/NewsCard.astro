@@ -8,8 +8,8 @@ interface Props {
 const { date, title, source } = Astro.props;
 ---
 
-<div class="flex items-center space-x-4 p-3 hover:bg-white/5 rounded-lg transition-colors border-b border-white/5">
-  <div class="text-xs text-gray-500 font-mono w-24 uppercase">{date}</div>
-  <div class="flex-1 text-sm text-gray-200 hover:text-blue-400 cursor-pointer">{title}</div>
-  <div class="text-[10px] text-zinc-600">{source}</div>
+<div class="flex items-center space-x-4 p-4 hover:bg-[#F9FAFB] rounded-xl transition-all duration-200 border-b border-[#F0F0F0] cursor-pointer group">
+  <div class="text-[11.5px] text-[#A3A3A3] font-medium w-24 uppercase">{date}</div>
+  <div class="flex-1 text-[13.5px] text-[#171717] font-medium group-hover:text-[#171717] transition-colors">{title}</div>
+  <div class="text-[11px] text-[#A3A3A3] font-medium">{source}</div>
 </div>

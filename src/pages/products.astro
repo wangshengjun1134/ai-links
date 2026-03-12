@@ -8,21 +8,21 @@ const { categories, companies, pricing } = sidebarFilters.products;
 ---
 
 <Layout title="AI 产品 - AI Links">
-  <aside slot="sidebar" class="w-80 shrink-0 border-r border-gray-100 h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200">
+  <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl">
     <!-- 任务分类 -->
-    <div class="flex flex-col gap-2 mb-6">
-      <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">任务分类</h4>
-      <div class="flex flex-wrap gap-1" data-filter="task" id="task-filters">
+    <div class="flex flex-col gap-2.5 mb-7">
+      <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">任务分类</h4>
+      <div class="flex flex-wrap gap-1.5" data-filter="task" id="task-filters">
         {categories.map((item) => {
           const task = item.path.replace('?task=', '');
           return (
             <button
               data-task={task}
-              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+              class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
             >
               {item.icon && <span class="mr-0.5">{item.icon}</span>}
               <span>{item.name}</span>
-              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+              <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
             </button>
           );
         })}
@@ -30,19 +30,19 @@ const { categories, companies, pricing } = sidebarFilters.products;
     </div>
 
     <!-- 所属公司 -->
-    <div class="flex flex-col gap-2 mb-6">
-      <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">所属公司</h4>
-      <div class="flex flex-wrap gap-1" data-filter="company" id="company-filters">
+    <div class="flex flex-col gap-2.5 mb-7">
+      <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">所属公司</h4>
+      <div class="flex flex-wrap gap-1.5" data-filter="company" id="company-filters">
         {companies.map((item) => {
           const company = item.path.replace('?company=', '');
           return (
             <button
               data-company={company}
-              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+              class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
             >
               {item.icon && <span class="mr-0.5">{item.icon}</span>}
               <span>{item.name}</span>
-              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+              <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
             </button>
           );
         })}
@@ -50,19 +50,19 @@ const { categories, companies, pricing } = sidebarFilters.products;
     </div>
 
     <!-- 收费模式 -->
-    <div class="flex flex-col gap-2 mb-6">
-      <h4 class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">收费模式</h4>
-      <div class="flex flex-wrap gap-1" data-filter="pricing" id="pricing-filters">
+    <div class="flex flex-col gap-2.5 mb-7">
+      <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">收费模式</h4>
+      <div class="flex flex-wrap gap-1.5" data-filter="pricing" id="pricing-filters">
         {pricing.map((item) => {
           const pricingType = item.path.replace('?pricing=', '');
           return (
             <button
               data-pricing={pricingType}
-              class="filter-btn bg-white border border-gray-100 px-2 py-0.5 rounded-md text-[13px] text-gray-600 transition-all cursor-pointer flex items-center gap-1"
+              class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
             >
               {item.icon && <span class="mr-0.5">{item.icon}</span>}
               <span>{item.name}</span>
-              <span class="close-icon hidden ml-1 text-gray-400 hover:text-gray-600">×</span>
+              <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
             </button>
           );
         })}
@@ -70,27 +70,27 @@ const { categories, companies, pricing } = sidebarFilters.products;
     </div>
 
     <!-- 搜索 -->
-    <div class="pt-6 border-t border-gray-100">
+    <div class="pt-6 border-t border-[#E5E5E5]">
       <div class="relative">
-        <span class="absolute left-3 top-2.5 text-[14px] text-gray-400">🔍</span>
-        <input type="text" placeholder="搜索产品..." class="w-full bg-white border border-gray-200 rounded-full py-2 pl-9 pr-4 text-[12px] focus:border-blue-400 focus:ring-4 focus:ring-blue-50 outline-none" />
+        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
+        <input type="text" placeholder="搜索产品..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-10 pr-4 text-[12.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
       </div>
     </div>
   </aside>
 
   <div class="p-6">
     <div class="flex items-center gap-4 mb-6">
-      <h2 class="text-xl font-bold text-gray-900">AI 产品</h2>
+      <h2 class="text-2xl font-bold text-[#171717]">AI 产品</h2>
 
       <div class="relative w-full max-w-md">
-        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-gray-400">🔍</span>
-        <input type="text" placeholder="按名称过滤产品..." class="w-full bg-white border border-gray-200 rounded-full py-2 pl-10 pr-4 text-[13px] focus:border-blue-400 focus:ring-4 focus:ring-blue-50/50 outline-none" />
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
+        <input type="text" placeholder="按名称过滤产品..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
       </div>
 
       <div class="flex-1"></div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-3 gap-y-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
       {products.map(p => <ProductCard {...p} />)}
     </div>
   </div>
