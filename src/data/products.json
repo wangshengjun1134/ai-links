@@ -1,98 +1,218 @@
 [
   {
-    "uid": "1",
-    "slug": "chatgpt",
-    "logo": "https://example.com/chatgpt.png",
-    "aiProductName": "ChatGPT",
-    "introduction": "OpenAI 开发的强大对话 AI 模型",
-    "websiteUrl": "https://chat.openai.com",
-    "metrics": {
-      "productType": ["对话", "文本生成"],
-      "company": "OpenAI",
-      "modelLevel": "S-Tier",
-      "hasApi": true,
-      "needVpn": true,
-      "isInternal": false
-    }
-  },
-  {
-    "uid": "2",
-    "slug": "claude",
-    "logo": "https://example.com/claude.png",
-    "aiProductName": "Claude",
-    "introduction": "Anthropic 开发的智能 AI 助手",
-    "websiteUrl": "https://claude.ai",
-    "metrics": {
-      "productType": ["对话", "写作"],
-      "company": "Anthropic",
-      "modelLevel": "S-Tier",
-      "hasApi": true,
-      "needVpn": true,
-      "isInternal": false
-    }
-  },
-  {
-    "uid": "3",
-    "slug": "gemini",
-    "logo": "https://example.com/gemini.png",
-    "aiProductName": "Gemini",
-    "introduction": "Google 的多模态 AI 模型",
-    "websiteUrl": "https://gemini.google.com",
-    "metrics": {
-      "productType": ["多模态", "对话"],
-      "company": "Google",
-      "modelLevel": "A-Tier",
-      "hasApi": true,
-      "needVpn": true,
-      "isInternal": false
-    }
-  },
-  {
-    "uid": "4",
-    "slug": "wenxin-yiyan",
-    "logo": "https://example.com/yiyan.png",
-    "aiProductName": "文心一言",
-    "introduction": "百度开发的多模态大模型",
-    "websiteUrl": "https://yiyan.baidu.com",
-    "metrics": {
-      "productType": ["对话", "文本生成"],
-      "company": "百度",
-      "modelLevel": "A-Tier",
-      "hasApi": true,
-      "needVpn": false,
-      "isInternal": false
-    }
-  },
-  {
-    "uid": "5",
+    "uid": "001",
     "slug": "tongyi-qianwen",
-    "logo": "https://example.com/qianwen.png",
+    "sort": 1,
+    "logo": "https://localhost/qianwen.png",
     "aiProductName": "通义千问",
-    "introduction": "阿里巴巴开发的大语言模型",
+    "introduction": "阿里自研的大语言模型，具备极强的中文理解与创作能力。",
     "websiteUrl": "https://tongyi.aliyun.com",
     "metrics": {
-      "productType": ["对话", "代码"],
+      "productType": ["聊天", "绘图", "视频生成", "写代码"],
+      "country": "中国",
       "company": "阿里巴巴",
-      "modelLevel": "A-Tier",
+      "useType": ["web", "ios", "android", "pc"],
+      "modelLevel": "S-Tier",
       "hasApi": true,
+      "pricingModel": ["免费", "订阅制", "按量付费", "混合模式"],
       "needVpn": false,
-      "isInternal": false
-    }
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "通义千问官网 - 阿里大模型对话助手",
+      "keywords": ["Qwen", "AI 对话", "阿里 AI"],
+      "description": "更懂中文的 AI 助手，提供文案创作、知识问答、代码辅助等功能。"
+    },
+    "lastUpdated": "2024-05-20"
   },
   {
-    "uid": "6",
+    "uid": "002",
+    "slug": "chatgpt",
+    "sort": 2,
+    "logo": "https://localhost/chatgpt.png",
+    "aiProductName": "ChatGPT",
+    "introduction": "OpenAI 开发的强大对话 AI 模型，支持多轮对话和代码生成。",
+    "websiteUrl": "https://chat.openai.com",
+    "metrics": {
+      "productType": ["聊天", "写作", "代码", "翻译"],
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "订阅制"],
+      "needVpn": true,
+      "languages": ["中文", "英语", "日语", "法语", "德语"],
+      "isInternal": false
+    },
+    "seo": {
+      "title": "ChatGPT 官网 - OpenAI 智能对话助手",
+      "keywords": ["ChatGPT", "GPT-4", "OpenAI", "AI 对话"],
+      "description": "全球领先的 AI 对话模型，支持多语言交流和代码辅助。"
+    },
+    "lastUpdated": "2024-06-15"
+  },
+  {
+    "uid": "003",
+    "slug": "claude",
+    "sort": 3,
+    "logo": "https://localhost/claude.png",
+    "aiProductName": "Claude",
+    "introduction": "Anthropic 开发的智能 AI 助手，以安全性和长上下文著称。",
+    "websiteUrl": "https://claude.ai",
+    "metrics": {
+      "productType": ["聊天", "写作", "分析", "代码"],
+      "country": "美国",
+      "company": "Anthropic",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "订阅制"],
+      "needVpn": true,
+      "languages": ["中文", "英语"],
+      "isInternal": false
+    },
+    "seo": {
+      "title": "Claude 官网 - Anthropic 安全 AI 助手",
+      "keywords": ["Claude", "Anthropic", "AI 安全", "长文本"],
+      "description": "注重安全性的 AI 助手，支持超长文本分析和处理。"
+    },
+    "lastUpdated": "2024-06-10"
+  },
+  {
+    "uid": "004",
+    "slug": "wenxin-yiyan",
+    "sort": 4,
+    "logo": "https://localhost/yiyan.png",
+    "aiProductName": "文心一言",
+    "introduction": "百度开发的多模态大模型，中文能力出色。",
+    "websiteUrl": "https://yiyan.baidu.com",
+    "metrics": {
+      "productType": ["聊天", "写作", "绘图"],
+      "country": "中国",
+      "company": "百度",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "按量付费"],
+      "needVpn": false,
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "文心一言官网 - 百度大语言模型",
+      "keywords": ["文心一言", "百度 AI", "中文 AI"],
+      "description": "百度自主研发的新一代大语言模型，擅长中文创作。"
+    },
+    "lastUpdated": "2024-05-25"
+  },
+  {
+    "uid": "005",
     "slug": "kimi",
-    "logo": "https://example.com/kimi.png",
+    "sort": 5,
+    "logo": "https://localhost/kimi.png",
     "aiProductName": "Kimi",
-    "introduction": "月之暗面开发的长文本 AI 助手",
+    "introduction": "月之暗面开发的长文本 AI 助手，支持超长上下文理解。",
     "websiteUrl": "https://kimi.moonshot.cn",
     "metrics": {
-      "productType": ["对话", "长文本"],
+      "productType": ["聊天", "分析", "写作"],
+      "country": "中国",
       "company": "月之暗面",
-      "modelLevel": "B-Tier",
-      "hasApi": false,
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "按量付费"],
       "needVpn": false,
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "Kimi 官网 - 月之暗面长文本 AI 助手",
+      "keywords": ["Kimi", "月之暗面", "长文本", "AI 分析"],
+      "description": "支持超长文本理解的智能 AI 助手，适合文档分析和总结。"
+    },
+    "lastUpdated": "2024-06-01"
+  },
+  {
+    "uid": "006",
+    "slug": "gemini",
+    "sort": 6,
+    "logo": "https://localhost/gemini.png",
+    "aiProductName": "Gemini",
+    "introduction": "Google 的多模态 AI 模型，支持文本、图像、音频多种输入。",
+    "websiteUrl": "https://gemini.google.com",
+    "metrics": {
+      "productType": ["聊天", "多模态", "代码", "分析"],
+      "country": "美国",
+      "company": "Google",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "订阅制"],
+      "needVpn": true,
+      "languages": ["中文", "英语", "日语", "韩语"],
       "isInternal": false
-    }
+    },
+    "seo": {
+      "title": "Gemini 官网 - Google 多模态 AI 模型",
+      "keywords": ["Gemini", "Google AI", "多模态", " Bard"],
+      "description": "Google 最新多模态 AI，支持文本、图像、音频多种交互方式。"
+    },
+    "lastUpdated": "2024-06-12"
+  },
+  {
+    "uid": "007",
+    "slug": "doubao",
+    "sort": 7,
+    "logo": "https://localhost/doubao.png",
+    "aiProductName": "豆包",
+    "introduction": "字节跳动推出的多功能 AI 助手，支持聊天、创作、学习等多种场景。",
+    "websiteUrl": "https://www.doubao.com",
+    "metrics": {
+      "productType": ["聊天", "写作", "学习", "绘图"],
+      "country": "中国",
+      "company": "字节跳动",
+      "useType": ["web", "ios", "android"],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": ["免费"],
+      "needVpn": false,
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "豆包官网 - 字节跳动多功能 AI 助手",
+      "keywords": ["豆包", "字节 AI", "多功能 AI"],
+      "description": "字节跳动推出的全能型 AI 助手，覆盖学习、工作、生活多场景。"
+    },
+    "lastUpdated": "2024-06-08"
+  },
+  {
+    "uid": "008",
+    "slug": "hunyuan",
+    "sort": 8,
+    "logo": "https://localhost/hunyuan.png",
+    "aiProductName": "腾讯混元",
+    "introduction": "腾讯自主研发的大模型，在广告、游戏、金融等领域有深度应用。",
+    "websiteUrl": "https://hunyuan.tencent.com",
+    "metrics": {
+      "productType": ["聊天", "写作", "绘图", "视频生成"],
+      "country": "中国",
+      "company": "腾讯",
+      "useType": ["web", "ios", "android", "pc"],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": ["免费", "按量付费"],
+      "needVpn": false,
+      "languages": ["中文", "英语"],
+      "isInternal": true
+    },
+    "seo": {
+      "title": "腾讯混元官网 - 腾讯大模型平台",
+      "keywords": ["混元", "腾讯 AI", "大模型"],
+      "description": "腾讯自主研发的超大规模 AI 模型，赋能多业务场景。"
+    },
+    "lastUpdated": "2024-05-30"
   }
 ]
