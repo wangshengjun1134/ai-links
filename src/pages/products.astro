@@ -13,7 +13,7 @@ const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
 ---
 
 <Layout title="AI 产品 - AI Links">
-  <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-fit sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl">
+  <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <!-- 任务分类 -->
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">任务分类</h4>
