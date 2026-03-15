@@ -4,34 +4,99 @@ import ProductCard from '../components/ProductCard.astro';
 import products from '../data/products.json';
 
 // 从数据中提取唯一的筛选选项
-const productTypes = [...new Set(products.flatMap(p => p.metrics.productType || []))];
+const allProductTypes = [...new Set(products.flatMap(p => p.metrics.productType || []))];
 const companies = [...new Set(products.map(p => p.metrics.company).filter(Boolean))];
 const countries = [...new Set(products.map(p => p.metrics.country).filter(Boolean))];
 const pricingModels = [...new Set(products.flatMap(p => p.metrics.pricingModel || []))];
 const languages = [...new Set(products.flatMap(p => p.metrics.languages || []))];
 const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
+
+// 按组分类
+const typeGroups = {
+  '文本写作与内容创作': {
+    description: '涵盖文章、文案、学术写作及内容优化',
+    types: ['文本写作', '学术写作', '文本优化', '内容创作', '内容检测', '内容管理', '内容运营', '营销内容', '社交媒体']
+  },
+  '图像设计与视觉艺术': {
+    description: '涵盖绘图、设计、修图、风格转换及视觉生成',
+    types: ['图像生成', '图像设计', '图像编辑', '图像处理', '图像修复', '风格转换', '图像分析', '图像检索', '图像翻译', '图像转换', '数据可视化', '素材资源', 'AIGC 综合']
+  },
+  '视频制作与 3D 动画': {
+    description: '涵盖视频生成、编辑、特效、3D 及数字人视频',
+    types: ['视频生成', '视频编辑', '视频创作', '视频与 3D', '视频分析', '视频翻译', '数字人']
+  },
+  '音频处理与音乐创作': {
+    description: '涵盖音乐生成、编曲、语音合成及音频编辑',
+    types: ['音频音乐', '语音技术', '音频编辑']
+  },
+  '编程开发与模型技术': {
+    description: '涵盖代码工具、IDE、模型训练、API 及底层框架',
+    types: ['开发工具', '开发平台', '大模型', '模型资源', '模型服务', '机器学习', '模型技术', '开发技术', 'Web 开发', '移动开发', '桌面应用', '浏览器插件', '工作流', '智能体', 'SaaS 服务', '硬件软件']
+  },
+  '办公协作与效率工具': {
+    description: '涵盖文档、PPT、会议、思维导图及通用效率',
+    types: ['PPT 设计', '文档处理', '办公协作', '效率工具', '客户服务', '语言服务', '多模态 AI', '图像识别']
+  },
+  '数据分析与商业智能': {
+    description: '涵盖数据分析、电商分析、营销自动化及搜索',
+    types: ['数据分析', '数据处理', '数据服务', '电商营销', '营销推广', '搜索技术', '数据安全']
+  },
+  '教育培训与知识学习': {
+    description: '涵盖 K12、语言学习、课程及学术辅助',
+    types: ['教育培训', '教育资源', '知识管理', '知识问答']
+  },
+  '对话交互与智能体': {
+    description: '涵盖聊天机器人、角色扮演、虚拟伴侣',
+    types: ['对话交互', '社交娱乐']
+  },
+  '提示词与资源社区': {
+    description: '涵盖提示词工程、模型市场、素材库及社区',
+    types: ['提示词工程', '资讯媒体', '社区社群', '综合平台']
+  },
+  '其他垂直与综合服务': {
+    description: '云服务、硬件、特定行业及未归类项',
+    types: ['云服务', '智能硬件', '安全技术', '科研工具', '综合应用', '改写', '自动补全', '自然语言处理', '虚拟试衣', '语法检查', '降重', '头脑风暴工具', '媒体发稿', '代理服务', '信息检索', '信息管理']
+  }
+};
+
+// 过滤出实际存在的类型
+const activeGroups = Object.entries(typeGroups).map(([name, group]) => ({
+  name,
+  description: group.description,
+  types: group.types.filter(t => allProductTypes.includes(t)).sort()
+})).filter(g => g.types.length > 0);
 ---
 
 <Layout title="AI 产品 - AI Links">
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 任务分类 -->
-    <div class="flex flex-col gap-2.5 mb-7">
+    <!-- 任务分类（分组显示） -->
+    <div class="flex flex-col gap-6 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">任务分类</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="task" id="task-filters">
-        {productTypes.map((type) => (
-          <button
-            data-task={type}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{type}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
-      </div>
+      
+      {activeGroups.map((group) => (
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <h5 class="text-[12px] font-semibold text-[#171717]">{group.name}</h5>
+            <span class="text-[10px] text-[#A3A3A3]">({group.types.length})</span>
+          </div>
+          <p class="text-[10px] text-[#A3A3A3] ml-1">{group.description}</p>
+          <div class="flex flex-wrap gap-1.5" data-filter="task">
+            {group.types.map((type) => (
+              <button
+                data-task={type}
+                class="filter-btn bg-white border border-[#E5E5E5] px-2 py-1 rounded-md text-[11px] text-[#525252] font-medium transition-all duration-200 cursor-pointer hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+              >
+                <span>{type}</span>
+                <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- 所属公司 -->
-    <div class="flex flex-col gap-2.5 mb-7">
+    <!-- <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">所属公司</h4>
       <div class="flex flex-wrap gap-1.5" data-filter="company" id="company-filters">
         {companies.map((company) => (
@@ -44,10 +109,10 @@ const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
           </button>
         ))}
       </div>
-    </div>
+    </div> -->
 
     <!-- 所属国家 -->
-    <div class="flex flex-col gap-2.5 mb-7">
+    <!-- <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">所属国家</h4>
       <div class="flex flex-wrap gap-1.5" data-filter="country" id="country-filters">
         {countries.map((country) => (
@@ -60,10 +125,10 @@ const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
           </button>
         ))}
       </div>
-    </div>
+    </div> -->
 
     <!-- 收费模式 -->
-    <div class="flex flex-col gap-2.5 mb-7">
+    <!-- <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">收费模式</h4>
       <div class="flex flex-wrap gap-1.5" data-filter="pricing" id="pricing-filters">
         {pricingModels.map((model) => (
@@ -76,10 +141,10 @@ const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
           </button>
         ))}
       </div>
-    </div>
+    </div> -->
 
     <!-- 使用平台 -->
-    <div class="flex flex-col gap-2.5 mb-7">
+    <!-- <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">使用平台</h4>
       <div class="flex flex-wrap gap-1.5" data-filter="useType" id="useType-filters">
         {useTypes.map((type) => (
@@ -92,10 +157,10 @@ const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
           </button>
         ))}
       </div>
-    </div>
+    </div> -->
 
     <!-- 支持语言 -->
-    <div class="flex flex-col gap-2.5 mb-7">
+    <!-- <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">支持语言</h4>
       <div class="flex flex-wrap gap-1.5" data-filter="language" id="language-filters">
         {languages.map((lang) => (
@@ -108,7 +173,7 @@ const useTypes = [...new Set(products.flatMap(p => p.metrics.useType || []))];
           </button>
         ))}
       </div>
-    </div>
+    </div> -->
 
     <!-- 搜索 -->
     <div class="pt-6 border-t border-[#E5E5E5]">

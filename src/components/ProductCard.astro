@@ -9,6 +9,10 @@ interface Props {
   metrics: {
     productType: string[];
     company: string;
+    country: string;
+    pricingModel: string[];
+    useType: string[];
+    languages: string[];
     modelLevel: string;
     hasApi: boolean;
     needVpn: boolean;
@@ -18,7 +22,7 @@ interface Props {
 
 import BaseCard from './BaseCard.astro';
 
-const { slug, aiProductName, introduction, websiteUrl, metrics } = Astro.props;
+const { uid, slug, aiProductName, introduction, websiteUrl, metrics, logo } = Astro.props;
 ---
 
 <BaseCard
@@ -28,6 +32,13 @@ const { slug, aiProductName, introduction, websiteUrl, metrics } = Astro.props;
   tier={metrics.modelLevel}
   needVpn={metrics.needVpn}
   hasApi={metrics.hasApi}
+  logo={logo}
   detailUrl={`/detail/${slug}`}
   externalUrl={websiteUrl}
+  data-task={JSON.stringify(metrics.productType || [])}
+  data-company={metrics.company || ''}
+  data-country={metrics.country || ''}
+  data-pricing={JSON.stringify(metrics.pricingModel || [])}
+  data-useType={JSON.stringify(metrics.useType || [])}
+  data-language={JSON.stringify(metrics.languages || [])}
 />

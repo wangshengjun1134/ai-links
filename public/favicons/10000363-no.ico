@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M34 24 C34 24 38 32 50 32 C62 32 66 24 66 24 L 62 42 C 62 42 68 52 78 88 C 78 88 50 94 22 88 C 32 52 38 42 38 42 Z' fill='%23D4AF37'/%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="AI-powered virtual try-on and fashion design platform. Upload clothing images and see how they look on models, or create custom designs with AI." />
+    <title>Dressplay AI - Virtual Try-On & Fashion Design</title>
+
+    <!-- 内联关键CSS：最小化首屏样式 -->
+    <style>
+        *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid}
+        html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+        body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff}
+        #root{min-height:100vh}
+        .fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}
+        .flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}
+        .items-center{align-items:center}.items-start{align-items:flex-start}
+        .justify-between{justify-content:space-between}.justify-center{justify-content:center}
+        .flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}
+        .w-full{width:100%}.h-full{height:100%}.h-screen{height:100vh}.min-h-screen{min-height:100vh}
+        .overflow-hidden{overflow:hidden}
+        .p-4{padding:1rem}.p-2{padding:.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.gap-2{gap:.5rem}.gap-4{gap:1rem}
+        .text-sm{font-size:.875rem;line-height:1.25rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem}.text-2xl{font-size:1.5rem}.text-3xl{font-size:1.875rem}.text-5xl{font-size:3rem}
+        .font-bold{font-weight:700}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}
+        .tracking-widest{letter-spacing:.1em}
+        .text-white{color:#fff}.text-gray-900{color:#111827}.text-gray-500{color:#6b7280}
+        .bg-white{background:#fff}.bg-black{background:#000}
+        .rounded-full{border-radius:9999px}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}
+        .transition-colors{transition:color .3s,background-color .3s,border-color .3s}.transition-all{transition:all .3s}
+        .cursor-pointer{cursor:pointer}
+        .z-10{z-index:10}.z-20{z-index:20}.z-50{z-index:50}.z-[999]{z-index:999}
+        .top-1\/2{top:50%}.left-1\/2{left:50%}.-translate-x-1\/2{transform:translateX(-50%)}.-translate-y-1\/2{transform:translateY(-50%)}
+        .scale-150{transform:scale(1.5)}
+        .shadow-xl{box-shadow:0 20px 25px -5px rgb(0 0 0/.1),0 8px 10px -6px rgb(0 0 0/.1)}
+        .border{border-width:1px}.border-gray-200{border-color:#e5e7eb}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+        .animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1)infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+        .focus\\:not-sr-only:focus{position:static;width:auto;height:auto;padding:inherit;margin:inherit;overflow:visible;clip:auto;white-space:normal}
+    </style>
+
+    <!-- CSS 异步加载 -->
+    <noscript></noscript>
+
+    <!-- 预加载关键JS模块 - 加快首屏渲染 -->
+    <link rel="modulepreload" href="/assets/js/react-vendor-CmIehpky.js" fetchpriority="high">
+    <link rel="modulepreload" href="/assets/js/index-CrEAZUNP.js" fetchpriority="high">
+
+    <!-- 预加载首屏图片 - 加快LCP -->
+    <link rel="preload" href="/fit-check-4.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/fit-check-1.webp" as="image" fetchpriority="auto">
+    <link rel="preload" href="/model1.webp" as="image" fetchpriority="auto">
+    <link rel="preload" href="/model2.webp" as="image" fetchpriority="auto">
+    <link rel="preload" href="/model3.webp" as="image" fetchpriority="auto">
+
+    <!-- 字体延迟加载 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;0,700;1,400&family=Kaushan+Script&family=Rock+Salt&family=Comforter+Brush&family=Rubik+Wet+Paint&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;0,700;1,400&family=Kaushan+Script&family=Rock+Salt&family=Comforter+Brush&family=Rubik+Wet+Paint&display=swap" rel="stylesheet"></noscript>
+  <script type="module" crossorigin src="/assets/js/index-BserXmeJ.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/js/react-vendor-CmIehpky.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/i18n-DAJBDcJV.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/supabase-BaswEe3z.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/framer-motion-DaQiaE-0.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/zustand-DOvIn8Ev.js">
+  <link rel="stylesheet" crossorigin href="/assets/css/index-Cjzb_SGt.css">
+</head>
+  <body class="bg-white dark:bg-rich-black text-gray-900 dark:text-gray-200 selection:bg-gold-500 selection:text-black transition-colors duration-300">
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#root" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-denim-600 focus:text-white focus:rounded-lg focus:shadow-lg">
+      Skip to main content
+    </a>
+    <div id="root" tabindex="-1" role="main" aria-label="Main content"></div>
+
+    <!-- 主入口脚本 -->
+
+    <!-- 延迟加载 Google Analytics - 不阻塞首屏 -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() {
+              loadGoogleAnalytics();
+            }, { timeout: 2000 });
+          } else {
+            loadGoogleAnalytics();
+          }
+        }, 5000);
+      });
+
+      function loadGoogleAnalytics() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-LRK11XGHR1';
+        document.head.appendChild(script);
+
+        script.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LRK11XGHR1');
+        };
+      }
+    </script>
+  </body>
+</html>

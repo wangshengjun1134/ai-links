@@ -26,6 +26,14 @@ interface Props {
   detailUrl?: string;
   externalUrl?: string;
 
+  // 过滤属性
+  "data-task"?: string;
+  "data-company"?: string;
+  "data-country"?: string;
+  "data-pricing"?: string;
+  "data-useType"?: string;
+  "data-language"?: string;
+
   // 自定义内容插槽通过 slot 属性实现
 }
 
@@ -61,9 +69,19 @@ const tierBgColors: Record<string, string> = {
 
 const tierLabel = tier ? tier.split('-')[0] : '';
 const displayLogo = logo || logoImg.src;
+
+// 过滤属性
+const dataAttrs = {
+  'data-task': Astro.props['data-task'],
+  'data-company': Astro.props['data-company'],
+  'data-country': Astro.props['data-country'],
+  'data-pricing': Astro.props['data-pricing'],
+  'data-useType': Astro.props['data-useType'],
+  'data-language': Astro.props['data-language'],
+};
 ---
 
-<div class="group relative h-[72px]">
+<div class="group relative h-[72px]" {...dataAttrs}>
   <!-- 紧凑模式 -->
   <div class="absolute inset-0 p-3 bg-white border border-[#F0F0F0] rounded-xl flex items-center gap-3.5 transition-all duration-300 ease-out hover:border-[#171717]/30 hover:shadow-[0_4px_16px_-2px_rgba(0,0,0,0.08)] cursor-pointer">
     <div class="w-10 h-10 rounded-lg border border-[#F0F0F0] flex-shrink-0 bg-white flex items-center justify-center overflow-hidden">
