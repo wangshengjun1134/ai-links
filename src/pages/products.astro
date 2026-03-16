@@ -190,7 +190,7 @@ const activeGroups = Object.entries(typeGroups).map(([name, group]) => ({
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
-        <input type="text" placeholder="按名称过滤产品..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
+        <input type="text" id="product-search" placeholder="按名称过滤产品..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
       </div>
 
       <div class="flex-1"></div>
@@ -199,20 +199,24 @@ const activeGroups = Object.entries(typeGroups).map(([name, group]) => ({
     <!-- 按分类分组显示产品 -->
     {activeGroups.map((group) => {
       // 过滤出属于当前分类的产品
-      const groupProducts = products.filter(p => 
+      const groupProducts = products.filter(p =>
         p.metrics.productType?.some(type => group.types.includes(type))
       );
-      
+
       if (groupProducts.length === 0) return null;
-      
+
       return (
-        <div class="mb-10">
+        <div class="mb-10 product-group" data-group-name={group.name}>
           <div class="mb-4">
             <h3 class="text-[16px] font-bold text-[#171717] mb-1">{group.name}</h3>
             <p class="text-[12px] text-[#A3A3A3]">{group.description}</p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
-            {groupProducts.map(p => <ProductCard {...p} />)}
+            {groupProducts.map(p => (
+              <div class="product-item" data-product-name={p.aiProductName.toLowerCase()} data-company={p.metrics.company?.toLowerCase() || ''}>
+                <ProductCard {...p} />
+              </div>
+            ))}
           </div>
         </div>
       );
@@ -222,5 +226,40 @@ const activeGroups = Object.entries(typeGroups).map(([name, group]) => ({
 
 <script>
   import { initMultiFilter } from '../lib/multiFilter';
+  import { initCardClick } from '../scripts/cardClick';
+  
   initMultiFilter();
+  initCardClick();
+  
+  // 产品搜索功能
+  const searchInput = document.getElementById('product-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase().trim();
+      
+      document.querySelectorAll('.product-group').forEach((group) => {
+        const groupEl = group as HTMLElement;
+        let hasVisibleProducts = false;
+        
+        groupEl.querySelectorAll('.product-item').forEach((item) => {
+          const itemEl = item as HTMLElement;
+          const productName = itemEl.dataset.productName || '';
+          const companyName = itemEl.dataset.company || '';
+          
+          // 匹配产品名称或公司名称
+          const matches = productName.includes(searchTerm) || companyName.includes(searchTerm);
+          
+          if (matches) {
+            itemEl.style.display = '';
+            hasVisibleProducts = true;
+          } else {
+            itemEl.style.display = 'none';
+          }
+        });
+        
+        // 如果该组没有可见产品，隐藏整个组
+        groupEl.style.display = hasVisibleProducts ? '' : 'none';
+      });
+    });
+  }
 </script>

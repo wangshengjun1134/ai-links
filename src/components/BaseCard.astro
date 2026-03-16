@@ -1,8 +1,8 @@
 ---
 /**
  * 通用卡片组件 - 支持两种模式：
- * - compact: 紧凑模式（默认），显示基本信息
- * - expanded: 展开模式（hover 时），显示详细信息和操作按钮
+ * - compact: 紧凑模式（默认）显示基本信息
+ * - expanded: 展开模式，显示详细信息和操作按钮
  */
 interface Props {
   // 基础信息
@@ -81,9 +81,9 @@ const dataAttrs = {
 };
 ---
 
-<div class="group relative h-[72px]" {...dataAttrs}>
+<div class="card-container relative h-[72px]" {...dataAttrs} data-state="closed">
   <!-- 紧凑模式 -->
-  <div class="absolute inset-0 p-3 bg-white border border-[#F0F0F0] rounded-xl flex items-center gap-3.5 transition-all duration-300 ease-out hover:border-[#171717]/30 hover:shadow-[0_4px_16px_-2px_rgba(0,0,0,0.08)] cursor-pointer">
+  <div class="card-compact absolute inset-0 p-3 bg-white border border-[#F0F0F0] rounded-xl flex items-center gap-3.5 transition-all duration-300 ease-out hover:border-[#171717]/30 hover:shadow-[0_4px_16px_-2px_rgba(0,0,0,0.08)] cursor-pointer" data-trigger="card">
     <div class="w-10 h-10 rounded-lg border border-[#F0F0F0] flex-shrink-0 bg-white flex items-center justify-center overflow-hidden">
       {icon ? (
         <span class="text-[24px] leading-none">{icon}</span>
@@ -118,9 +118,8 @@ const dataAttrs = {
   </div>
 
   <!-- 展开模式 -->
-  <div class="absolute -inset-x-1 -top-2 p-6 bg-white rounded-2xl shadow-[0_20px_60px_-12px_rgba(0,0,0,0.18)] border border-[#171717]/10
-              opacity-0 translate-y-2 pointer-events-none
-              group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:z-50
+  <div class="card-expanded absolute -inset-x-1 -top-2 p-6 bg-white rounded-2xl shadow-[0_20px_60px_-12px_rgba(0,0,0,0.18)] border border-[#171717]/10
+              opacity-0 translate-y-2 pointer-events-none z-40
               transition-all duration-300 ease-out"
        style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);">
 
@@ -201,3 +200,17 @@ const dataAttrs = {
     )}
   </div>
 </div>
+
+<style>
+  .card-container[data-state='open'] .card-compact {
+    border-color: rgba(23, 23, 23, 0.3);
+    box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card-container[data-state='open'] .card-expanded {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 50;
+  }
+</style>
