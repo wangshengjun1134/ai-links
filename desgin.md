@@ -61,11 +61,55 @@
     "lastUpdated": "2024-05-20" // 建议保留，增加页面时效性评分
 }
 
+## Agent
+Manus
+Trae
+Genspark
+Aily
+Claude Code
+Copilot
+DeepMiner
+扣子
+Dify
+
+OpenClaw
+CoClaw
+
+序号,平台名称 / 厂商,核心定位与特点
+1,金智维 (Ki-AgentS + K-APA),企业级智能体与智能流程自动化双平台
+2,华为 · 盘古智能体,行业级大模型 + 企业级安全
+3,腾讯 · 元器,生态型企业智能体平台
+4,百度 · 文心智能体,搜索与知识驱动的智能体
+5,阿里 · 钉钉 AI 助理,办公协同智能体
+6,字节 · 扣子 Coze,低代码 / 内容型智能体
+7,Dify,开源低代码 Agent 平台
+8,智谱 · CoCo / 清言智能体,中文语义与知识型 Agent
+9,昆仑万维 · 天工 Agent,内容与研究型 Agent
+10,飞书 · 智能伙伴,企业协作场景 Agent
+11,网易 · 伏羲智能体,虚拟人 / 工业智能体
+12,面壁智能 · ChatDev,群体智能开发型 Agent
+13,阿里 · 魔搭智能体,模型与场景实验平台
+14,讯飞 · 星火智能体,语音与认知交互型 Agent
+
+Claude Code、OpenAI Codex、OpenCode、OpenClaw
+
+阿里 HiClaw、OpenClaw、ZeroClaw、TinyClaw、NanoClaw
+OpenClaw、CoPaw、QoderWork、Dify、n8n
+
+
+1 对话型 Agent
+2 知识型 Agent（RAG）
+3 工具型 Agent
+4 任务型 Agent
+5 工作流 Agent
+
 
 
 ## 资费
 API价格
 资源包
+
+
 
 
 ## Skills
