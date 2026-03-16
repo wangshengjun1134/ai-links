@@ -70,6 +70,38 @@ const tierBgColors: Record<string, string> = {
 const tierLabel = tier ? tier.split('-')[0] : '';
 const displayLogo = logo || logoImg.src;
 
+// 生成首字母占位符 SVG
+const getInitialsSVG = (text: string, size: number = 40) => {
+  const initial = text?.trim()?.[0]?.toUpperCase() || '?';
+  const colors = [
+    { bg: '#FEF3C7', text: '#D97706' }, // 琥珀色
+    { bg: '#DBEAFE', text: '#2563EB' }, // 蓝色
+    { bg: '#DCFCE7', text: '#16A34A' }, // 绿色
+    { bg: '#FCE7F3', text: '#DB2777' }, // 粉色
+    { bg: '#EDE9FE', text: '#7C3AED' }, // 紫色
+    { bg: '#FFE4E6', text: '#DC2626' }, // 红色
+    { bg: '#E0F2FE', text: '#0284C7' }, // 天蓝
+    { bg: '#F3E8FF', text: '#9333EA' }, // 紫罗兰
+  ];
+  const colorIndex = initial.charCodeAt(0) % colors.length;
+  const color = colors[colorIndex];
+
+  return `data:image/svg+xml;utf8,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      <rect fill="${color.bg}" width="${size}" height="${size}" rx="${size * 0.225}"/>
+      <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+            fill="${color.text}" font-size="${size * 0.5}" font-weight="700"
+            font-family="system-ui, -apple-system, sans-serif">
+        ${initial}
+      </text>
+    </svg>
+  `)}`;
+};
+
+// 为占位符生成使用 title 属性
+const placeholderSVG = getInitialsSVG(title, 40);
+const placeholderSVGSmall = getInitialsSVG(title, 32);
+
 // 过滤属性
 const dataAttrs = {
   'data-task': Astro.props['data-task'],
@@ -88,7 +120,14 @@ const dataAttrs = {
       {icon ? (
         <span class="text-[24px] leading-none">{icon}</span>
       ) : (
-        <img src={displayLogo} alt={logoAlt} class="w-full h-full object-contain p-1" />
+        <img
+          src={displayLogo}
+          alt={logoAlt}
+          class="w-full h-full object-contain p-1"
+          loading="lazy"
+          decoding="async"
+          style={`background-image: url("${placeholderSVG}"); background-size: cover;`}
+        />
       )}
     </div>
 
@@ -129,7 +168,13 @@ const dataAttrs = {
           {icon ? (
             <span class="text-[24px] leading-none">{icon}</span>
           ) : (
-            <img src={displayLogo} class="w-8 h-8 object-contain" />
+            <img
+              src={displayLogo}
+              class="w-8 h-8 object-contain"
+              loading="lazy"
+              decoding="async"
+              style={`background-image: url("${placeholderSVGSmall}"); background-size: cover;`}
+            />
           )}
         </div>
         <div>
@@ -206,11 +251,21 @@ const dataAttrs = {
     border-color: rgba(23, 23, 23, 0.3);
     box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.08);
   }
-  
+
   .card-container[data-state='open'] .card-expanded {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
     z-index: 50;
+  }
+
+  /* 图标加载过渡效果 */
+  .card-compact img[loading='lazy'] {
+    background-color: #F5F5F5;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .card-compact img[src]:not([src='']) {
+    opacity: 1;
   }
 </style>

@@ -117,11 +117,27 @@ export function initMultiFilter() {
       }
 
       // 应用显示/隐藏
+      // 注意：产品页面使用的是 product-group 分组结构，需要同时控制 product-item 和 product-group 的显示
+      const productItem = cardEl.classList.contains('product-item') ? cardEl : cardEl.closest('.product-item');
+      const productGroup = productItem?.closest('.product-group');
+
       if (shouldShow) {
-        cardEl.classList.remove('hidden');
+        if (productItem) productItem.style.display = '';
+        // 如果有分组，让 CSS 自动处理分组的显示（通过可见的子元素）
       } else {
-        cardEl.classList.add('hidden');
+        if (productItem) productItem.style.display = 'none';
       }
+    });
+
+    // 处理分组的显示/隐藏（如果该组所有产品都被隐藏，则隐藏该组）
+    document.querySelectorAll('.product-group').forEach((group) => {
+      const groupEl = group as HTMLElement;
+      const visibleItems = groupEl.querySelectorAll('.product-item[style=""], .product-item:not([style*="display: none"])');
+      const hasVisible = Array.from(visibleItems).some(item => {
+        const itemEl = item as HTMLElement;
+        return itemEl.style.display !== 'none';
+      });
+      groupEl.style.display = hasVisible ? '' : 'none';
     });
   }
 
