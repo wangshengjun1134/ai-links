@@ -3,87 +3,78 @@ import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import products from '../data/products.json';
 
-// 从数据中提取唯一的筛选选项
-const allProductTypes = [...new Set(products.flatMap(p => p.metrics.productType || []))];
+// 从数据中提取所有 level1 -> level2 -> tags 的层级结构
+interface ProductTypeHierarchy {
+  [level1: string]: {
+    [level2: string]: Set<string>;
+  };
+}
 
-// 按组分类
-const typeGroups = {
-  '✍️ 文本写作与内容创作': {
-    description: '涵盖文章、文案、学术写作及内容优化',
-    types: ['文本写作', '学术写作', '文本优化', '内容创作', '内容检测', '内容管理', '内容运营', '营销内容', '社交媒体']
-  },
-  '🎨 图像设计与视觉艺术': {
-    description: '涵盖绘图、设计、修图、风格转换及视觉生成',
-    types: ['图像生成', '图像设计', '图像编辑', '图像处理', '图像修复', '风格转换', '图像分析', '图像检索', '图像翻译', '图像转换', '数据可视化', '素材资源', 'AIGC 综合']
-  },
-  '🎬 视频制作与 3D 动画': {
-    description: '涵盖视频生成、编辑、特效、3D 及数字人视频',
-    types: ['视频生成', '视频编辑', '视频创作', '视频与 3D', '视频分析', '视频翻译', '数字人']
-  },
-  '🎧 音频处理与音乐创作': {
-    description: '涵盖音乐生成、编曲、语音合成及音频编辑',
-    types: ['音频音乐', '语音技术', '音频编辑']
-  },
-  '💻 编程开发与模型技术': {
-    description: '涵盖代码工具、IDE、模型训练、API 及底层框架',
-    types: ['开发工具', '开发平台', '大模型', '模型资源', '模型服务', '机器学习', '模型技术', '开发技术', 'Web 开发', '移动开发', '桌面应用', '浏览器插件', '工作流', '智能体', 'SaaS 服务', '硬件软件']
-  },
-  '📅 办公协作与效率工具': {
-    description: '涵盖文档、PPT、会议、思维导图及通用效率',
-    types: ['PPT 设计', '文档处理', '办公协作', '效率工具', '客户服务', '语言服务', '多模态 AI', '图像识别']
-  },
-  '📊 数据分析与商业智能': {
-    description: '涵盖数据分析、电商分析、营销自动化及搜索',
-    types: ['数据分析', '数据处理', '数据服务', '电商营销', '营销推广', '搜索技术', '数据安全']
-  },
-  '🎓 教育培训与知识学习': {
-    description: '涵盖 K12、语言学习、课程及学术辅助',
-    types: ['教育培训', '教育资源', '知识管理', '知识问答']
-  },
-  '🤖 对话交互与智能体': {
-    description: '涵盖聊天机器人、角色扮演、虚拟伴侣',
-    types: ['对话交互', '社交娱乐']
-  },
-  '🔍 提示词与资源社区': {
-    description: '涵盖提示词工程、模型市场、素材库及社区',
-    types: ['提示词工程', '资讯媒体', '社区社群', '综合平台']
-  },
-  '🧩 其他垂直与综合服务': {
-    description: '云服务、硬件、特定行业及未归类项',
-    types: ['云服务', '智能硬件', '安全技术', '科研工具', '综合应用', '改写', '自动补全', '自然语言处理', '虚拟试衣', '语法检查', '降重', '头脑风暴工具', '媒体发稿', '代理服务', '信息检索', '信息管理']
+const typeHierarchy: ProductTypeHierarchy = {};
+
+products.forEach(p => {
+  const pt = p.metrics?.productType;
+  if (pt && typeof pt === 'object' && !Array.isArray(pt)) {
+    const level1 = pt.level1;
+    const level2 = pt.level2;
+    const tags = pt.tags || [];
+    
+    // 只处理有 level1 和 level2 的数据
+    if (level1 && level2) {
+      if (!typeHierarchy[level1]) {
+        typeHierarchy[level1] = {};
+      }
+      if (!typeHierarchy[level1][level2]) {
+        typeHierarchy[level1][level2] = new Set<string>();
+      }
+      
+      // 只添加有效的 tags
+      tags.forEach(tag => {
+        if (tag && tag.trim()) {
+          typeHierarchy[level1][level2].add(tag);
+        }
+      });
+    }
   }
-};
+});
 
-// 过滤出实际存在的类型
-const activeGroups = Object.entries(typeGroups).map(([name, group]) => ({
-  name,
-  description: group.description,
-  types: group.types.filter(t => allProductTypes.includes(t)).sort()
-})).filter(g => g.types.length > 0);
+// 转换为数组结构用于渲染
+const hierarchyData = Object.entries(typeHierarchy).map(([level1, level2Data]) => ({
+  level1,
+  level2s: Object.entries(level2Data).map(([level2, tags]) => ({
+    level2,
+    tags: Array.from(tags).sort()
+  }))
+}));
 ---
 
 <Layout title="AI 产品 - AI Links">
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 任务分类（分组显示） -->
-    <div class="flex flex-col gap-6 mb-7">
-      {activeGroups.map((group) => (
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-2">
-            <h5 class="text-[12px] font-semibold text-[#171717]">{group.name}</h5>
-            <span class="text-[10px] text-[#A3A3A3]">({group.types.length})</span>
-          </div>
-          <p class="text-[10px] text-[#A3A3A3] ml-1">{group.description}</p>
-          <div class="flex flex-wrap gap-1.5" data-filter="task">
-            {group.types.map((type) => (
-              <button
-                data-task={type}
-                class="filter-btn bg-white border border-[#E5E5E5] px-2 py-1 rounded-md text-[11px] text-[#525252] font-medium transition-all duration-200 cursor-pointer hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-              >
-                <span>{type}</span>
-                <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-              </button>
-            ))}
-          </div>
+    <!-- 任务分类（三级结构显示） -->
+    <div class="flex flex-col gap-5 mb-7">
+      {hierarchyData.map((group) => (
+        <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0] last:border-0">
+          <!-- 一级分类 -->
+          <h5 class="text-[13px] font-bold text-[#171717]">{group.level1}</h5>
+          
+          <!-- 二级分类 -->
+          {group.level2s.map((level2Item) => (
+            <div class="flex flex-col gap-2">
+              <div class="text-[11px] text-[#525252] font-medium">{level2Item.level2}</div>
+              <!-- 三级标签（可点击） -->
+              <div class="flex flex-wrap gap-1.5" data-filter="task">
+                {level2Item.tags.map((tag) => (
+                  <button
+                    data-task={tag}
+                    class="filter-btn bg-white border border-[#E5E5E5] px-2 py-1 rounded-md text-[11px] text-[#525252] font-medium transition-all duration-200 cursor-pointer hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+                  >
+                    <span>{tag}</span>
+                    <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       ))}
     </div>
@@ -111,17 +102,32 @@ const activeGroups = Object.entries(typeGroups).map(([name, group]) => ({
 
     <!-- 平铺显示所有产品（分页） -->
     <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
-      {products.map(p => (
-        <div 
-          class="product-item" 
-          data-product-name={p.aiProductName.toLowerCase()}
-          data-company={p.metrics.company?.toLowerCase() || ''}
-          data-task={JSON.stringify(p.metrics.productType || [])}
-          data-introduction={p.introduction.toLowerCase()}
-        >
-          <ProductCard {...p} />
-        </div>
-      ))}
+      {products.map(p => {
+        // 提取三级 tags 用于过滤
+        const getProductTags = (): string[] => {
+          const pt = p.metrics.productType;
+          if (!pt) return [];
+          // 如果是对象结构，只提取 tags
+          if (typeof pt === 'object' && !Array.isArray(pt)) {
+            return pt.tags || [];
+          }
+          // 如果是数组（兼容旧数据）
+          return pt;
+        };
+        const productTags = getProductTags();
+
+        return (
+          <div
+            class="product-item"
+            data-product-name={p.aiProductName.toLowerCase()}
+            data-company={p.metrics.company?.toLowerCase() || ''}
+            data-task={JSON.stringify(productTags)}
+            data-introduction={p.introduction.toLowerCase()}
+          >
+            <ProductCard {...p} />
+          </div>
+        );
+      })}
     </div>
 
     <!-- 分页组件 -->

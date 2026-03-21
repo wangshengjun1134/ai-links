@@ -1,13 +1,13 @@
 ---
 interface Props {
   uid: string;
-  slug: string;
+  slug?: string;
   logo: string;
   aiProductName: string;
   introduction: string;
   websiteUrl: string;
   metrics: {
-    productType: string[];
+    productType: string[] | { level1?: string; level2?: string; tags?: string[] };
     company: string;
     country: string;
     pricingModel: string[];
@@ -17,12 +17,35 @@ interface Props {
     hasApi: boolean;
     needVpn: boolean;
     isInternal: boolean;
+    rawProductType?: string[];
   };
 }
 
 import BaseCard from './BaseCard.astro';
 
 const { uid, slug, aiProductName, introduction, websiteUrl, metrics, logo } = Astro.props;
+
+// 处理 productType 可能是对象或数组的情况
+const getProductTypes = (): string[] => {
+  const pt = metrics.productType;
+  if (Array.isArray(pt)) {
+    return pt;
+  }
+  // 如果是对象，合并 level1, level2, tags
+  const types: string[] = [];
+  if (pt?.level1) types.push(pt.level1);
+  if (pt?.level2) types.push(pt.level2);
+  if (pt?.tags) types.push(...pt.tags);
+  // 也包含 rawProductType
+  if (metrics.rawProductType) types.push(...metrics.rawProductType);
+  return types;
+};
+
+const productTypes = getProductTypes();
+
+// 生成详情页 URL：优先使用 slug，如果没有则使用 uid
+const detailSlug = slug && slug.trim() !== '' ? slug : uid;
+const detailUrl = `/product/${detailSlug}`;
 ---
 
 <BaseCard
@@ -33,9 +56,9 @@ const { uid, slug, aiProductName, introduction, websiteUrl, metrics, logo } = As
   needVpn={metrics.needVpn}
   hasApi={metrics.hasApi}
   logo={logo}
-  detailUrl={`/detail/${slug}`}
+  detailUrl={detailUrl}
   externalUrl={websiteUrl}
-  data-task={JSON.stringify(metrics.productType || [])}
+  data-task={JSON.stringify(productTypes)}
   data-company={metrics.company || ''}
   data-country={metrics.country || ''}
   data-pricing={JSON.stringify(metrics.pricingModel || [])}
