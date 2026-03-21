@@ -1,0 +1,62 @@
+<!--
+ * @Author: huhaibiao
+ * @Date: 2023-04-21 22:11:20
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="baidu-site-verification" content="codeva-epHhZ3l6uq" />
+    <meta
+      name="description"
+      content="Clone voice, control emotion, and create lifelike speech with Noiz AI. Emotional TTS, multilingual dubbing, voice library, and developer-ready APIs in Noiz."
+    />
+    <meta
+      name="description"
+      content="Noiz AI 提供自然流畅、富有表现力的智能语音合成服务。依托自主研发的大规模语音模型，在成本效益、生成效率和个性化服务方面具有行业优势，提供从即时生成到专业级音色定制的多样化解决方案。应用场景包括文本转语音(TTS)、音色定制、多媒体配音及跨语言音视频翻译。
+"
+    />
+    <title>Noiz AI: AI Text to Speech, Voice Clone & Voice Design Tool</title>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-N44BZ3SL');
+    </script>
+    <!-- End Google Tag Manager -->
+    <script type="module" crossorigin src="/assets/index-DRUHzQ5Z.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CxBMuu9Q.css">
+  </head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+  </script>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-N44BZ3SL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      >
+      </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- 内容关键词自然分布 -->
+    <h1 style="font-size: 0">Voice cloning & 声音克隆</h1>
+    <div id="app"></div>
+  </body>
+</html>

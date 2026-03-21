@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://assets.qsxt.info/frontend/prod/dist/uxbot/uxbot-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta property="og:image" content="https://uxbot.cn/logo-dark.png" />
+    <meta property="og:site_name" content="UXbot" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.uxbot.cn/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="UXbot：AI Web App 生成平台｜无需代码，从想法到应用" />
+    <meta name="twitter:description" content="UXbot将产品构思快速转化为 Web 与移动端APP应用原型与工程代码。AI 覆盖界面设计、交互原型、支持云端部署与在线实时模拟，并输出可直接用于开发的标准化原生代码。" />
+    <meta name="twitter:image" content="https://uxbot.cn/logo-dark.png" />
+    <script src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+    <script>
+      ;(function (w, d, t, r, u) {
+        const env = 'prod'
+        const enable = env === 'prod'
+        if (!enable) {
+          return
+        }
+        let f, n, i
+        ;((w[u] = w[u] || []),
+          (f = function () {
+            const o = { ti: '343198949', enableAutoSpaTracking: true }
+            ;((o.q = w[u]), (w[u] = new UET(o)), w[u].push('pageLoad'))
+          }),
+          (n = d.createElement(t)),
+          (n.src = r),
+          (n.async = 1),
+          (n.onload = n.onreadystatechange =
+            function () {
+              const s = this.readyState
+              ;(s && s !== 'loaded' && s !== 'complete') || (f(), (n.onload = n.onreadystatechange = null))
+            }),
+          (i = d.getElementsByTagName(t)[0]),
+          i.parentNode.insertBefore(n, i))
+      })(window, document, 'script', '//bat.bing.com/bat.js', 'uetq')
+    </script>
+    <title>AI Web App 生成平台｜无需代码，从想法到应用| Uxbot</title>
+    <meta
+      name="keywords"
+      content="AI设计工具, AI生成代码, 设计转代码, 交互原型, UI转代码, 网站App构建器, MVP开发工具, 快速产品开发"
+    />
+    <meta
+      name="description"
+      content="UXbot将产品构思快速转化为 Web 与移动端APP应用原型与工程代码。AI 覆盖界面设计、交互原型、支持云端部署与在线实时模拟，并输出可直接用于开发的标准化原生代码。仅需一条指令，无需手写编码。"
+    />
+    <meta property="og:title" content="UXbot：AI Web App 生成平台｜无需代码，从想法到应用" />
+    <meta
+      property="og:description"
+      content="只需简单描述您的产品构想，UXbot即可用AI自动构建用户流程、生成精美UI、创建可实时交互的演示，并一键导出可用于生产的代码。无论是网站还是App，都能帮您从概念直达可运行的MVP。"
+    />
+    <script type="module" crossorigin src="https://assets.qsxt.info/frontend/prod/dist/uxbot/assets/main.CRevNmb9-1773922214479.js"></script>
+    <link rel="modulepreload" crossorigin href="https://assets.qsxt.info/frontend/prod/dist/uxbot/assets/dep-DXMRAeO7.js">
+    <link rel="stylesheet" crossorigin href="https://assets.qsxt.info/frontend/prod/dist/uxbot/assets/main-M44IGEce.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="https://assets.qsxt.info/frontend/prod/dist/uxbot/assets/polyfills-legacy.QBVQqlKo-1773922214479.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="https://assets.qsxt.info/frontend/prod/dist/uxbot/assets/main-legacy.ClRqruxM-1773922214479.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

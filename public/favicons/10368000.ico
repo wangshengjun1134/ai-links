@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUX dev: Revolutionary Open-Weight AI Image Generation Model</title>
+    <link rel="canonical" href="https://fluxdev.net/" />
+    <meta name="description" content="Explore FLUX dev, the advanced open-weight AI image generation model. Discover its features for non-commercial use and try it now for free.">
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "pup32wrjiu");
+    </script>
+    
+    <!-- Google AdSense -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3454873340467864"
+    crossorigin="anonymous"></script> -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-68GG9SKTW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-68GG9SKTW8');
+    </script>
+    <style>
+        :root {
+            --primary-color: #7B68EE;
+            --secondary-color: #1E293B;
+            --accent-color: #10B981;
+            --text-color: #334155;
+            --background-color: #F8FAFC;
+            --card-background: #FFFFFF;
+            --gradient-start: #7B68EE;
+            --gradient-end: #4F46E5;
+        }
+        
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 更新导航栏样式 */
+        .nav-bar {
+            background: linear-gradient(to right, var(--secondary-color), #2D3B55);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            align-items: center;
+        }
+        
+        .logo {
+            margin-right: auto;
+        }
+        
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-1px);
+        }
+        
+        .nav-link:hover:before {
+            width: 80%;
+        }
+        
+        .nav-link.active {
+            background: rgba(16,185,129,0.15);
+            color: #ffffff;
+            font-weight: 600;
+            border: 1px solid rgba(16,185,129,0.3);
+        }
+        
+        .nav-link.active:before {
+            width: 80%;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6a5acd);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 80px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        section {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .footer-content {
+            text-align: left;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .footer-links {
+            flex: 1;
+            height: 160px;  /* 调整高度以显示5行 */
+            margin-top: 0;
+        }
+        
+        .footer-links-title {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .links-container {
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .links-list {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .links-list li {
+            margin-bottom: 0.5rem;  /* 减小行间距 */
+            display: flex;
+            align-items: center;
+            height: 24px;  /* 固定每行高度 */
+        }
+        
+        /* 为包含图片的列表项添加特殊样式 */
+        .links-list li:has(img) {
+            height: 64px;  /* 增加包含图片的列表项高度 */
+            margin-bottom: 1rem;  /* 增加底部间距 */
+        }
+        
+        .links-list li:last-child {
+            margin-bottom: 0;  /* 最后一行不需要底部间距 */
+        }
+        
+        .links-list img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .links-list img:hover {
+            transform: scale(1.05);
+        }
+        
+        .links-list a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .links-list a:hover {
+            color: var(--accent-color);
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Scrollbar styles for WebKit browsers */
+        .links-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .links-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .links-container::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .links-container::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            footer .container {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .footer-links {
+                width: 100%;
+                margin-left: 0;
+                height: 200px;  /* 移动端减小高度 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="/" class="logo-link">
+                    <svg width="120" height="40" viewBox="0 0 120 40">
+                        <text x="10" y="28" fill="#ffffff" font-family="'Segoe UI', sans-serif" font-size="24" font-weight="600">
+                            FLUX<tspan fill="#10B981">dev</tspan>
+                        </text>
+                        <circle cx="100" cy="20" r="6" fill="none" stroke="#10B981" stroke-width="2">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="https://flux-1.net/" class="nav-link active">FLUX dev</a>
+                <a href="https://fluxdev.net/iclightv2" class="nav-link">IC Light V2</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header>
+        <div class="container">
+            <h1>FLUX dev: Pioneering Open-Weight AI Image Generation</h1>
+            <p>Empowering researchers, developers, and creators with state-of-the-art technology</p>
+            <a href="https://flux-1.net" class="button">Try FLUX dev for Free</a>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section>
+            <h2>Introducing FLUX dev: The Future of AI Image Creation</h2>
+            <p>FLUX dev, developed by the innovative team at Black Forest Labs, represents a significant leap forward in open-weight, guidance-distilled AI image generation models. As a cornerstone of the groundbreaking FLUX suite, FLUX dev brings unparalleled text-to-image synthesis capabilities to researchers, developers, AI enthusiasts, and creative professionals alike.</p>
+            <p>Built on the foundation of the powerful FLUX [pro] model, FLUX dev offers a unique combination of accessibility and high-performance capabilities. This open-weight model empowers users to explore, experiment, and innovate in the realm of AI-driven image creation, all while maintaining the exceptional quality and efficiency that defines the FLUX family of models.</p>
+            
+            <h3>The Evolution of FLUX dev</h3>
+            <p>FLUX dev is the result of years of research and development in the field of generative AI. It builds upon the success of previous models, incorporating cutting-edge techniques and optimizations to deliver a truly next-generation image generation experience.</p>
+            
+            <h4>Key Milestones in FLUX dev Development</h4>
+            <ul>
+                <li>Inception of the FLUX project by Black Forest Labs</li>
+                <li>Development of the core FLUX architecture</li>
+                <li>Integration of guidance distillation techniques</li>
+                <li>Extensive testing and refinement phases</li>
+                <li>Public release of FLUX dev as an open-weight model</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Unparalleled Features of FLUX dev</h2>
+            <ul class="feature-list">
+                <li>Open-weight architecture ensuring transparency and fostering community-driven innovation</li>
+                <li>Direct distillation from FLUX [pro], guaranteeing superior image quality and performance</li>
+                <li>Exceptional prompt adherence for precise control over generated images</li>
+                <li>Optimized efficiency without compromising on output quality</li>
+                <li>Ideal for research, experimentation, and non-commercial creative projects</li>
+                <li>Support for a wide range of aspect ratios and resolutions, offering versatility in image creation</li>
+                <li>Enhanced typography capabilities for text-rich image generation</li>
+                <li>Improved output diversity, enabling a broader range of creative possibilities</li>
+            </ul>
+            
+            <h3>Deep Dive into FLUX dev Capabilities</h3>
+            <p>FLUX dev's capabilities extend far beyond basic image generation. Let's explore some of its advanced features in detail:</p>
+            
+            <h4>Precision in Text Rendering</h4>
+            <p>FLUX dev excels at accurately reproducing text within images, making it ideal for designs requiring legible words or phrases. Whether it's signage, book covers, or branded content, FLUX dev delivers clear and correct text integration.</p>
+            
+            <h4>Mastery of Complex Compositions</h4>
+            <p>Create intricate scenes with ease using FLUX dev's advanced understanding of spatial relationships. From elaborate fantasy worlds to detailed product layouts, this model interprets and executes multi-element prompts with remarkable accuracy.</p>
+            
+            <h4>Enhanced Anatomical Accuracy</h4>
+            <p>FLUX dev takes a significant leap forward in rendering human features, particularly hands. While not flawless, it consistently produces more realistic and proportionate body parts compared to previous open-source models, elevating the quality of character-based images.</p>
+        </section>
+
+        <section>
+            <h2>Why FLUX dev Stands Out in AI Image Generation</h2>
+            <p>In the rapidly evolving landscape of AI image generation, FLUX dev distinguishes itself through a combination of cutting-edge technology and user-centric design:</p>
+            <ul class="feature-list">
+                <li>State-of-the-art visual quality that rivals and often surpasses commercial models</li>
+                <li>Advanced prompt following capabilities, allowing for nuanced and precise image creation</li>
+                <li>Seamless support for diverse aspect ratios and resolutions, adapting to various creative needs</li>
+                <li>Enhanced typography and output diversity, pushing the boundaries of AI-generated imagery</li>
+                <li>Open-source nature that encourages innovation, collaboration, and continuous improvement</li>
+                <li>Efficient performance, making it suitable for both high-end systems and more modest setups</li>
+            </ul>
+            <p>FLUX dev empowers users to create stunning, high-fidelity images that capture the imagination and push the boundaries of what's possible with AI-assisted creativity.</p>
+            
+            <h3>Comparative Advantages of FLUX dev</h3>
+            <p>When compared to other AI image generation models, FLUX dev offers several distinct advantages:</p>
+            
+            <h4>Accessibility and Transparency</h4>
+            <p>As an open-weight model, FLUX dev provides unparalleled access to its inner workings, allowing researchers and developers to study, modify, and improve upon its architecture.</p>
+            
+            <h4>Performance-to-Resource Ratio</h4>
+            <p>FLUX dev achieves exceptional image quality while maintaining efficient resource utilization, making it suitable for a wide range of hardware configurations.</p>
+            
+            <h4>Community-Driven Development</h4>
+            <p>The open nature of FLUX dev fosters a vibrant community of contributors, leading to rapid improvements and innovative applications of the technology.</p>
+        </section>
+
+        <section>
+            <h2>FLUX dev in Action: Versatility and Performance</h2>
+            <p>FLUX dev showcases its versatility across various image generation tasks:</p>
+            <ul class="feature-list">
+                <li>Photorealistic Renderings: Create lifelike images for architectural visualizations, product designs, and virtual environments</li>
+                <li>Artistic Creations: Generate unique artworks, illustrations, and concept art for games and films</li>
+                <li>Text-to-Image Synthesis: Transform written descriptions into vivid visual representations</li>
+                <li>Style Transfer: Apply artistic styles to existing images or generate new images in specific artistic styles</li>
+                <li>Image Editing and Manipulation: Enhance, modify, or completely transform existing images</li>
+            </ul>
+            <p>With FLUX dev, the possibilities are limited only by your imagination. Whether you're a researcher exploring the frontiers of AI or a creative professional seeking to enhance your workflow, FLUX dev provides the tools to bring your ideas to life.</p>
+            
+            <h3>Real-World Applications of FLUX dev</h3>
+            <p>The versatility of FLUX dev makes it suitable for a wide range of industries and applications:</p>
+            
+            <h4>Entertainment and Media</h4>
+            <p>FLUX dev can revolutionize content creation for films, games, and digital media by generating concept art, character designs, and environmental assets with unprecedented speed and quality.</p>
+            
+            <h4>E-commerce and Product Design</h4>
+            <p>Retailers and product designers can leverage FLUX dev to create realistic product renderings, explore design variations, and generate marketing visuals with ease.</p>
+            
+            <h4>Education and Research</h4>
+            <p>FLUX dev serves as an invaluable tool for researchers and educators, enabling the creation of visual aids, simulations, and interactive learning materials across various disciplines.</p>
+        </section>
+
+        <section>
+            <h2>Getting Started with FLUX dev</h2>
+            <p>Accessing and utilizing FLUX dev is straightforward, allowing researchers and developers to quickly integrate this powerful tool into their workflows:</p>
+            <ul class="feature-list">
+                <li>Experience FLUX dev firsthand on flux-1.net, our dedicated platform for AI image generation</li>
+                <li>Join the vibrant FLUX community to share your creations, insights, and collaborate with fellow enthusiasts</li>
+                <li>Explore comprehensive documentation and tutorials to maximize your use of FLUX dev</li>
+                <li>Participate in regular workshops and webinars to stay updated on the latest FLUX dev features and techniques</li>
+                <li>Access FLUX dev through popular AI platforms like Hugging Face and Replicate for seamless integration into your projects</li>
+            </ul>
+            <p>Whether you're a seasoned AI researcher or a curious developer looking to explore the possibilities of AI image generation, FLUX dev provides the tools and resources you need to bring your creative visions to life.</p>
+            
+            <h3>FLUX dev Integration Guide</h3>
+            <p>Integrating FLUX dev into your projects is a straightforward process. Here's a quick guide to get you started:</p>
+            
+            <h4>Step 1: Set Up Your Environment</h4>
+            <p>Ensure you have the necessary dependencies installed, including Python and the required AI libraries.</p>
+            
+            <h4>Step 2: Install FLUX dev</h4>
+            <p>Download the FLUX dev model from official repository or install it via pip.</p>
+            
+            <h4>Step 3: Load the Model</h4>
+            <p>Import FLUX dev into your project and initialize the model with the appropriate parameters.</p>
+            
+            <h4>Step 4: Generate Images</h4>
+            <p>Use FLUX dev's intuitive API to generate images based on your text prompts or other inputs.</p>
+            
+            <h4>Step 5: Experiment and Refine</h4>
+            <p>Explore FLUX dev's capabilities by experimenting with different prompts, settings, and post-processing techniques.</p>
+        </section>
+
+        <section>
+            <h2>The Technology Behind FLUX dev</h2>
+            <p>FLUX dev is built on a foundation of cutting-edge AI technology, incorporating the latest advancements in generative models:</p>
+            <ul class="feature-list">
+                <li>Hybrid architecture combining multimodal and parallel diffusion transformer blocks for enhanced performance</li>
+                <li>Scaled to an impressive 12B parameters, ensuring robust and versatile image generation capabilities</li>
+                <li>Utilization of advanced techniques such as flow matching and rotary positional embeddings</li>
+                <li>Optimized for efficiency without sacrificing output quality, making it suitable for a wide range of applications</li>
+                <li>Incorporates lessons learned from previous models in the FLUX suite, resulting in improved stability and consistency</li>
+                <li>Leverages guidance distillation techniques to achieve high-quality outputs with improved inference speed</li>
+            </ul>
+            <p>This sophisticated technological foundation allows FLUX dev to deliver exceptional results across a wide range of image generation tasks, from photorealistic renderings to abstract artistic creations.</p>
+            
+            <h3>Core Components of FLUX dev Architecture</h3>
+            <p>Let's delve deeper into the key technological components that make FLUX dev a powerhouse in AI image generation:</p>
+            
+            <h4>Multimodal Diffusion Transformers</h4>
+            <p>FLUX dev utilizes a novel approach combining the strengths of diffusion models and transformer architectures, allowing for more coherent and contextually aware image generation.</p>
+            
+            <h4>Flow Matching Optimization</h4>
+            <p>By incorporating flow matching techniques, FLUX dev achieves faster convergence and improved sample quality compared to traditional diffusion models.</p>
+            
+            <h4>Rotary Positional Embeddings</h4>
+            <p>This advanced embedding technique enables FLUX dev to better understand and maintain spatial relationships within generated images, resulting in more coherent and realistic outputs.</p>
+        </section>
+
+        <section>
+            <h2>The Future of AI Image Generation with FLUX dev</h2>
+            <p>FLUX dev represents just the beginning of Black Forest Labs' commitment to advancing generative AI technology:</p>
+            <ul class="feature-list">
+                <li>Ongoing research and development to continuously improve model capabilities and performance</li>
+                <li>Upcoming text-to-video systems that promise to revolutionize content creation across industries</li>
+                <li>Continued focus on open-source contributions, fostering a collaborative ecosystem in the AI community</li>
+                <li>Exploration of multimodal AI systems that combine image generation with other forms of content creation</li>
+                <li>Development of more efficient training and fine-tuning methods to make AI image generation more accessible</li>
+                <li>Integration with emerging technologies like augmented and virtual reality for immersive content creation</li>
+            </ul>
+            <p>As FLUX dev evolves, it will continue to shape the future of AI-driven creative content, opening up new possibilities for artists, designers, researchers, and innovators across various fields.</p>
+            
+            <h3>Roadmap for FLUX dev Development</h3>
+            <p>The future of FLUX dev is bright, with several exciting developments on the horizon:</p>
+            
+            <h4>Enhanced Multi-Modal Capabilities</h4>
+            <p>Future iterations of FLUX dev will explore the integration of text, audio, and video inputs for even more versatile content generation.</p>
+            
+            <h4>Improved Fine-Tuning Mechanisms</h4>
+            <p>We're working on making it easier for users to fine-tune FLUX dev on custom datasets, allowing for more specialized and targeted image generation.</p>
+            
+            <h4>Expanded Ecosystem Integration</h4>
+            <p>FLUX dev will become increasingly integrated with popular creative tools and platforms, streamlining workflows for professionals across various industries.</p>
+        </section>
+
+        <section>
+            <h2>FLUX dev in the AI Ecosystem</h2>
+            <p>FLUX dev is not just a standalone model; it's part of a broader ecosystem of AI tools and platforms:</p>
+            <ul class="feature-list">
+                <li>Seamless integration with popular AI frameworks and libraries</li>
+                <li>Compatibility with cloud-based AI platforms for scalable deployment</li>
+                <li>Potential for integration with other AI models for enhanced capabilities</li>
+                <li>Open API access for developers to build custom applications and services</li>
+                <li>Collaboration opportunities with other AI research institutions and companies</li>
+            </ul>
+            <p>By positioning FLUX dev at the heart of this ecosystem, we aim to foster innovation and drive the field of AI image generation forward.</p>
+            
+            <h3>Collaborative Opportunities with FLUX dev</h3>
+            <p>The open nature of FLUX dev creates numerous opportunities for collaboration and innovation:</p>
+            
+            <h4>Academic Partnerships</h4>
+            <p>We actively seek partnerships with universities and research institutions to push the boundaries of AI image generation technology.</p>
+            
+            <h4>Industry Collaborations</h4>
+            <p>FLUX dev is open to collaborations with industry leaders to develop specialized applications and use cases for AI-generated imagery.</p>
+            
+            <h4>Community Contributions</h4>
+            <p>We encourage developers and researchers to contribute to the FLUX dev project, whether through code improvements, documentation, or novel applications of the technology.</p>
+        </section>
+
+        <section>
+            <h2>Embark on Your FLUX dev Journey Today</h2>
+            <p>Ready to explore the boundless possibilities of AI-powered image generation? FLUX dev is your gateway to a world of creative potential. Visit our website to access the model and start creating breathtaking AI-generated images for your projects, research, or personal exploration.</p>
+            <p>Join the growing community of FLUX dev users who are pushing the boundaries of what's possible in AI-assisted creativity. Whether you're working on cutting-edge research, developing innovative applications, or simply exploring the artistic potential of AI, FLUX dev provides the tools and capabilities you need to bring your visions to life.</p>
+            <p>Experience the power of FLUX dev today and be part of the AI-driven creative revolution. Your journey into the future of image generation starts here.</p>
+            <a href="https://flux-1.net" class="button">Start Creating with FLUX dev Now</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© fluxdev.net | All rights reserved</p>
+                <ul class="links-list">
+                    <li><a href="/privacy" target="_blank">Privacy Policy</a></li>
+                    <li><a href="/terms" target="_blank">Terms of Service</a></li>
+                    <li><a href="/graffiti-generator" target="_blank">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-links-title">Blog</h3>
+                <div class="links-container">
+                    <ul class="links-list">
+                        <li><a href="/vidu-q3-ai-video-generator" target="_blank" rel="noopener">Vidu Q3 AI Video Generator</a></li>
+                        <li><a href="/make-cute-pet-video" target="_blank" rel="noopener">Make Cute Pet Video</a></li>
+                        <li><a href="/nana-banana-2" target="_blank" rel="noopener">Nana Banana 2</a></li>
+                        <li><a href="/nano-banana-2" target="_blank" rel="noopener">Nano Banana 2</a></li>
+                        <li><a href="/flux2-klein" target="_blank" rel="noopener">FLUX2 klein</a></li>
+                        <li><a href="/vidu-q3" target="_blank" rel="noopener">Vidu Q3</a></li>
+                        <li><a href="/video-quality-enhancer-1080p-online" target="_blank" rel="noopener">Video Quality Enhancer 1080p Online</a></li>
+                        <li><a href="/animate-image-ai" target="_blank" rel="noopener">Animate Image AI</a></li>
+                        <li><a href="/seedance-1-5-pro" target="_blank" rel="noopener">Seedance 1.5 Pro</a></li>
+                        <li><a href="/dress-made-of-water-ai" target="_blank" rel="noopener">dress made of water ai</a></li>
+                        <li><a href="/christmas-party-decorations" target="_blank" rel="noopener">christmas party decorations</a></li>
+                        <li><a href="/esports-character" target="_blank" rel="noopener">esports character</a></li>
+                        <li><a href="/roaring-tiger" target="_blank" rel="noopener">roaring tiger</a></li>
+                        <li><a href="/esports-character2" target="_blank" rel="noopener">esports character 2</a></li>
+                        <li><a href="/graffiti-generator" target="_blank" rel="noopener">graffiti generator</a></li>
+                        <li><a href="/wildstyle-graffiti-maker" target="_blank" rel="noopener">wildstyle graffiti maker</a></li>
+                        <li><a href="/whirlpool-image-generator" target="_blank" rel="noopener">whirlpool image generator</a></li>
+                        <li><a href="/orange-sky-character-ai-generator" target="_blank" rel="noopener">Orange Sky Character AI Generator</a></li>
+                        <li><a href="/epic-3d-yemaya" target="_blank" rel="noopener">Epic 3D Yemaya</a></li>
+                        <li><a href="/floral-arrangement-scenario-generator" target="_blank" rel="noopener">Floral Arrangement Scenario Generator</a></li>
+                        <li><a href="/little-caesars-receipt" target="_blank" rel="noopener">Little Caesars Receipt</a></li>
+                        <li><a href="/flux-dev-download" target="_blank" rel="noopener">FLUX Dev Download</a></li>
+                        <li><a href="/flux-dev-no-restrictions" target="_blank" rel="noopener">FLUX Dev No Restrictions</a></li>
+                        <li><a href="/flux-dev-vs-flux-schnell" target="_blank" rel="noopener">FLUX Dev vs FLUX Schnell</a></li>
+                        <li><a href="/flux-dev-ai" target="_blank" rel="noopener">FLUX Dev AI</a></li>
+                        <li><a href="/flux-dev-model" target="_blank" rel="noopener">FLUX Dev Model</a></li>
+                        <li><a href="/ai-with-no-restrictions" target="_blank" rel="noopener">AI With No Restrictions</a></li>
+                        <li><a href="/flux-1-dev" target="_blank" rel="noopener">FLUX.1 DEV</a></li>
+                        <li><a href="/flux1-dev" target="_blank" rel="noopener">FLUX1 DEV</a></li>
+                        <li><a href="/flux-dev-free" target="_blank" rel="noopener">FLUX Dev Free</a></li>
+                        <li><a href="/flux-dev-image-generator" target="_blank" rel="noopener">FLUX Dev Image Generator</a></li>
+                        <li><a href="/flux-free" target="_blank" rel="noopener">FLUX Free</a></li>
+                        <li><a href="/graffiti-creator" target="_blank" rel="noopener">Graffiti Creator</a></li>
+                        <li><a href="/no-restrictions-ai" target="_blank" rel="noopener">No Restrictions AI</a></li>
+                        <li><a href="/ai-image-generator-no-restrictions" target="_blank" rel="noopener">AI Image Generator No Restrictions</a></li>
+                        <li><a href="/flux-context" target="_blank" rel="noopener">FLUX Context</a></li>
+                        <li><a href="/flux-kontext" target="_blank" rel="noopener">FLUX Kontext</a></li>    
+                        <li><a href="/flux-context-ai" target="_blank" rel="noopener">FLUX Context AI</a></li>
+                        <li><a href="/flux-kontex" target="_blank" rel="noopener">FLUX Kontex</a></li>
+                        <li><a href="/kontext-flux" target="_blank" rel="noopener">Kontext Flux</a></li>
+                        <li><a href="/kontext-dev" target="_blank" rel="noopener">Kontext Dev</a></li>
+                        <li><a href="/flux-kontext-dev" target="_blank" rel="noopener">FLUX Kontext Dev</a></li>
+                        <li><a href="/flux-context-dev" target="_blank" rel="noopener">FLUX Context Dev</a></li>
+                        <li><a href="/flux-1-kontext" target="_blank" rel="noopener">FLUX.1 Kontext</a></li>
+                        <li><a href="/flux-kontext-pro" target="_blank" rel="noopener">FLUX Kontext Pro</a></li>
+                        <li><a href="/flux-kontext-max" target="_blank" rel="noopener">FLUX Kontext Max</a></li>
+                        <li><a href="/flux-krea" target="_blank" rel="noopener">FLUX Krea</a></li>
+                        <li><a href="/flux-krea-dev" target="_blank" rel="noopener">FLUX Krea Dev</a></li>
+                        <li><a href="/qwen-image" target="_blank" rel="noopener">Qwen Image</a></li>
+                        <li><a href="/flux-crea-dev" target="_blank" rel="noopener">FLUX CREA DEV</a></li>
+                        <li><a href="/flux-1-krea" target="_blank" rel="noopener">FLUX.1 KREA</a></li>
+                        <li><a href="/earth-zoom-out" target="_blank" rel="noopener">Earth Zoom Out</a></li>
+                        <li><a href="/earth-zoom-template" target="_blank" rel="noopener">Earth Zoom Template</a></li>
+                        <li><a href="/earth-zoom-in-ai" target="_blank" rel="noopener">Earth Zoom In AI</a></li>
+                        <li><a href="/nano-banana-ai" target="_blank" rel="noopener">Nano Banana AI</a></li>
+                        <li><a href="/ai-kissing-video-generator" target="_blank" rel="noopener">AI Kissing Video Generator</a></li>
+                        <li><a href="/qwen-image-edit" target="_blank" rel="noopener">Qwen Image Edit</a></li>
+                        <li><a href="/qwen-image-editing" target="_blank" rel="noopener">Qwen Image Editing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-links-title">Friend Links</h3>
+                <div class="links-container">
+                    <ul class="links-list">
+                        <a href="https://startupfa.me/s/flux-dev?utm_source=fluxdev.net" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Featured on Startup Fame" width="224" height="36" /></a>
+                        <li><a href="https://www.zhuoshang.net/" title="AI软件大全">AI软件大全</a></li>
+                        <li><a href="https://ai-toolify.com/" title="ai-toolify">ai-toolify</a></li>
+                        <li><a href="https://perchance-ai.net" target="_blank" rel="noopener noreferrer">Perchance AI</a></li>
+                        <li><a href="https://www.aimonstr.com" title="AIMonstr">AIMonstr</a></li>
+                        <li><a href="https://whatisaitools.com/" title="What Is Ai Tools">What Is Ai Tools</a></li>
+                        <li><a href="https://www.toolpilot.ai/" target="_blank" rel="noopener"><img src="images/toolpilot.jpg" alt="Tool Pilot AI" style="width: 150px; height: 54px;" width="150" height="54"/></a></li>
+                        <li><a href='https://sprunkiretake.world/' title='Sprunki Retake World' target="_blank" rel="noopener">Sprunki Retake World</a></li>
+                        <li><a title="All The Best AI Tools" href="https://allinai.tools" target="_blank" rel="noopener">All in AI Tools</a></li>
+                        <li><a href="https://navs.site" title="AI Sites | 2025" target="_blank" rel="noopener">AI Nav Site</a></li>
+                        <li><a href="https://magicbox.tools/" title="MagicBox.Tools - AI Tools Directory" target="_blank" rel="noopener">MagicBox.Tools - AI Tools Directory</a></li>
+                        <li><a href="https://SeekAIs.com/" title="SeekAIs" target="_blank" rel="noopener">SeekAIs - AI Tools Directory</a></li>
+                        <li><a href="https://aijustworks.com" title="AI Just Works" target="_blank" rel="noopener">AI Just Works</a></li>
+                        <li><a href="https://www.ai138.com" title="AI工具网(Ai138.com) | AI工具导航和推荐 | 快速找到最佳AI工具" target="_blank" rel="noopener">AI工具网</a></li>
+                        <li><a href="https://ainvp.com/" title="AI导航站" target="_blank" rel="noopener">AI导航站</a></li>
+                        <li><a href="https://toolsify.ai/" title="Toolsify AI Tools Directory" target="_blank" rel="noopener">Toolsify AI Tools Directory</a></li>
+                        <li><a href="https://www.showmebest.ai" title="ShowMeBestAI" target="_blank" rel="noopener">ShowMeBestAI</a></li>
+                        <li><a href="https://navai.me/" title="Navai AI" target="_blank" rel="noopener">Navai AI</a></li>
+                        <li><a href="https://aitoolcenter.com/" title="AI Tool Center" target="_blank" rel="noopener">AI Tool Center</a></li>
+                        <li><a href="https://www.huntagi.com/" title="未来百科AI导航" target="_blank" rel="noopener">未来百科AI导航</a></li>
+                        <li><a href="https://www.108ai.com/" target="_blank" rel="noopener">108 AI</a></li>
+                        <li><a href="https://sprunkiocmod.org/" target="_blank" rel="noopener">SprunkIOC Mod</a></li>
+                        <li><a href="https://toolsfine.com/" target="_blank" rel="noopener">toolsfine</a></li>
+                        <li><a href="https://aiwith.me/" title="AI With Me: Discover thousands of AI Tools" target="_blank" rel="noopener">AI With Me</a></li>
+                        <li><a href="https://iuu.ai/" title="iuu AI: AI Tools for Everyone" target="_blank" rel="noopener">iuu AI</a></li>
+                        <li><a href="https://AIToolly.com/" title="AIToolly AI Tools Directory" target="_blank" rel="noopener">AIToolly</a></li>
+                        <li><a href="https://AI-Tools.com/" title="AI Tools: AI Tools Directory" target="_blank" rel="noopener">AI Tools</a></li>
+                        <li><a href="https://dang.ai/" target="_blank" rel="noopener"><img src="https://cdn.prod.website-files.com/63d8afd87da01fb58ea3fbcb/6487e2868c6c8f93b4828827_dang-badge.png" alt="Dang.ai" style="width: 150px; height: 54px;" width="150" height="54"/></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"94044c8dce28474ca4be406500d6d6f7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -139,6 +139,12 @@ export function initMultiFilter() {
       });
       groupEl.style.display = hasVisible ? '' : 'none';
     });
+
+    // 触发过滤完成事件，通知分页组件更新
+    const event = new CustomEvent('filtersChanged', {
+      detail: { activeFilters }
+    });
+    document.dispatchEvent(event);
   }
 
   // 初始化筛选器容器

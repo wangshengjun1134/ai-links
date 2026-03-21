@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crea canciones con IA gratis. Genera música profesional con inteligencia artificial en segundos sin experiencia musical, con una duración de hasta 4 minutos.">
+    <title>Generador de Canciones con IA </title>
+    <link rel="canonical" href="https://cancionesconia.org/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #f1c40f;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box {
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            background: var(--white);
+            height: 100%;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .text-center .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background-color: var(--light-bg);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background-color: var(--white);
+        }
+
+        footer {
+            background-color: var(--light-bg);
+            padding: 60px 0 30px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white py-3 shadow-sm">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <h2 class="m-0 text-primary">CancionesAI</h2>
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" title="Menú de navegación" aria-label="Menú de navegación">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="#features">Características</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#what-is">¿Qué Es?</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#how-to">Cómo Usar</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#why">¿Por qué?</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                                <li class="nav-item"><a class="nav-link btn btn-primary text-white ms-2" href="#demo-section">Probar Gratis</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 text-center mb-5">
+                    <h1 class="display-4 fw-bold mb-4">Generador de Canciones con IA: Crea Música en Segundos</h1>
+                    <p class="lead mb-4" style="max-width: 800px; margin-left: auto; margin-right: auto;">Nuestro generador de canciones con IA te permite crear música profesional sin experiencia previa. Transforma tus ideas en canciones completas con inteligencia artificial avanzada, con una duración de hasta 4 minutos.</p>
+                    <div class="d-flex justify-content-center gap-3 mb-4">
+                        <a href="#demo-section" class="btn btn-primary btn-lg">Crear Canciones con IA Ahora</a>
+                        <a href="#how-to" class="btn btn-outline-dark btn-lg">Cómo Funciona</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span class="badge bg-light text-dark me-2 p-2 fs-6">Sin Registro</span>
+                        <span class="badge bg-light text-dark p-2 fs-6">Resultados Instantáneos</span>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    <section class="demo" id="demo-section">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center py-5" style="min-height: 250px;">
+                <div class="text-center">
+                    <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700;">Prueba Gratuita: Crea Canciones con IA Ahora</h2>
+                    <p class="mb-5" style="font-size: 1.25rem; max-width: 800px; margin-left: auto; margin-right: auto;">Experimenta el poder de las canciones con IA y descubre cómo la inteligencia artificial revoluciona la creación musical</p>
+                </div>
+            </div>
+            <div class="demo-container" style="background: var(--card-bg); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px var(--card-shadow); max-width: 100%; margin: 0 auto;">
+                <iframe 
+                    id="demo-iframe"
+                    src="https://aslp-lab-diffrhythm.hf.space/?__theme=light" 
+                    style="width: 100%; height: 1200px; border: none; border-radius: 5px; display: block;"
+                    title="Generador de Canciones IA Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+              
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="section bg-light" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block position-relative">Características Principales de Nuestro Generador de Canciones con IA</h2>
+                <p class="lead mt-4">Descubre por qué miles de usuarios confían en nuestro creador de canciones con IA para sus proyectos musicales</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="mb-4 text-primary">
+                            <i class="fas fa-magic fa-3x"></i>
+                        </div>
+                        <h3>Genera Canciones con IA en Segundos</h3>
+                        <p>Crea canciones completas con un solo clic. Nuestro generador de canciones con IA produce música de alta calidad en segundos, sin necesidad de conocimientos musicales.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="mb-4 text-primary">
+                            <i class="fas fa-music fa-3x"></i>
+                        </div>
+                        <h3>Música Personalizada con IA</h3>
+                        <p>Personaliza el estilo, género y ritmo de tus canciones con IA. Desde pop hasta rock, nuestra tecnología se adapta a tus preferencias musicales.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="mb-4 text-primary">
+                            <i class="fas fa-download fa-3x"></i>
+                        </div>
+                        <h3>Descarga Canciones con IA Libremente</h3>
+                        <p>Todas las canciones generadas con nuestra IA son de uso libre. Descárgalas en formato MP3 de alta calidad para usar en tus proyectos personales o comerciales.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="mb-4 text-primary">
+                            <i class="fas fa-edit fa-3x"></i>
+                        </div>
+                        <h3>Editor de Canciones con IA</h3>
+                        <p>Refina y ajusta tus canciones con IA utilizando nuestro editor integrado. Modifica la estructura, tempo y elementos individuales para crear la canción perfecta.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="mb-4 text-primary">
+                            <i class="fas fa-microphone fa-3x"></i>
+                        </div>
+                        <h3>Voces Realistas en Canciones con IA</h3>
+                        <p>Añade voces generadas por IA a tus canciones que suenan increíblemente realistas. Elige entre diferentes estilos vocales para complementar tu música.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="mb-4 text-primary">
+                            <i class="fas fa-cloud fa-3x"></i>
+                        </div>
+                        <h3>Canciones con IA en la Nube</h3>
+                        <p>Accede a tus canciones generadas desde cualquier dispositivo. Nuestro almacenamiento en la nube te permite gestionar tu biblioteca musical desde donde estés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What Is Section -->
+    <section class="section" id="what-is">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="/images/diffrhythm.jpg" alt="¿Qué son las canciones con IA?" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">¿Qué son las Canciones con IA?</h2>
+                    <p>Las <strong>canciones con IA</strong> son composiciones musicales creadas utilizando algoritmos de inteligencia artificial avanzados. Nuestro generador emplea tecnología de aprendizaje profundo para componer melodías, armonías y ritmos que suenan como si fueran creados por músicos humanos.</p>
+                    
+                    <p>Según un <a href="https://es.wikipedia.org/wiki/AI_Song_Contest_2023" target="_blank" rel="noopener">estudio de Wikipedia</a>, la música generada por IA ha revolucionado la industria musical, democratizando la creación de contenido musical y permitiendo a cualquier persona crear canciones profesionales sin necesidad de años de formación.</p>
+                    
+                    <p>De acuerdo con <a href="https://techcrunch.com/2024/08/12/meta-universal-music-group-address-ai-generated-content/" target="_blank" rel="noopener">TechCrunch</a>, grandes empresas como Meta y Universal Music Group están abordando el tema de "contenido no autorizado generado por IA" en sus nuevos acuerdos de licencia. Esto refleja la creciente preocupación en la industria musical sobre el uso de canciones protegidas por derechos de autor para entrenar modelos de IA sin el consentimiento de los creadores originales.</p>
+                    
+                
+                    
+                    <div class="mt-4">
+                        <a href="#demo-section" class="btn btn-primary">Probar Nuestro Generador</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How To Use Section -->
+    <section class="section bg-light" id="how-to">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block position-relative">Cómo Usar Nuestro Generador de Canciones con IA</h2>
+                <p class="lead mt-4">Crear música profesional nunca ha sido tan fácil. Sigue estos sencillos pasos</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timeline">
+                        <div class="row g-5">
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-primary text-white rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                                <span class="fw-bold">1</span>
+                                            </div>
+                                            <h3 class="mb-0">Ingresa Tus Letras</h3>
+                                        </div>
+                                        <p>Comienza escribiendo las letras de tu canción. Nuestro generador de IA convertirá tus palabras en una melodía vocal profesional, manteniendo la emoción y el significado de tu texto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-primary text-white rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                                <span class="fw-bold">2</span>
+                                            </div>
+                                            <h3 class="mb-0">Elige un Estilo</h3>
+                                        </div>
+                                        <p>Selecciona el género musical que mejor se adapte a tu visión. Usa un simple prompt como "pop", "rock", "balada" o "jazz" para especificar el estilo deseado. Cada opción aporta una atmósfera única a tu composición.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-primary text-white rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                                <span class="fw-bold">3</span>
+                                            </div>
+                                            <h3 class="mb-0">Genera y Descarga</h3>
+                                        </div>
+                                        <p>Haz clic en el botón "Generar" y nuestra IA compondrá una canción completa que combina tus letras con una instrumentación profesional. En segundos tendrás tu creación lista para descargar y compartir con el mundo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#demo-section" class="btn btn-primary btn-lg">Crear Mi Primera Canción con IA</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Us Section -->
+    <section class="section" id="why">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block position-relative">Por Qué Elegir Nuestro Generador de Canciones con IA</h2>
+                <p class="lead mt-4">Descubre las ventajas que hacen de nuestro generador la mejor opción para crear música con IA</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="feature-card p-4 p-lg-5 rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-4">
+                                <i class="fas fa-microchip text-primary fa-3x"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-2">Tecnología de IA de Vanguardia</h3>
+                                <p class="mb-0">Nuestro generador de canciones con IA utiliza los algoritmos más avanzados del mercado para crear música que suena natural y profesional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="feature-card p-4 p-lg-5 rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-4">
+                                <i class="fas fa-gift text-primary fa-3x"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-2">Creación de Canciones con IA Gratuita</h3>
+                                <p class="mb-0">Ofrecemos un plan gratuito que te permite generar canciones con IA sin costo alguno. Sin compromisos ni tarjetas de crédito.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+          
+                
+                <div class="col-lg-6">
+                    <div class="feature-card p-4 p-lg-5 rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-4">
+                                <i class="fas fa-music text-primary fa-3x"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-2">Calidad de Estudio Profesional</h3>
+                                <p class="mb-0">Nuestro generador produce canciones con calidad de estudio, incluyendo mezcla y masterización profesional. Cada composición suena como si fuera grabada en un estudio de alta gama.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="feature-card p-4 p-lg-5 rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-4">
+                                <i class="fas fa-headset text-primary fa-3x"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-2">Soporte Técnico Personalizado</h3>
+                                <p class="mb-0">Nuestro equipo está disponible para ayudarte con cualquier duda sobre la creación de canciones con IA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block position-relative">Lo Que Dicen Nuestros Usuarios</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100">
+                        <p class="fst-italic">"He creado más de 20 canciones con IA para mi canal de YouTube sin ningún conocimiento musical. ¡Es increíble lo profesionales que suenan!"</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">Carlos Rodríguez</h5>
+                                <p class="text-muted mb-0">Creador de Contenido</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100">
+                        <p class="fst-italic">"Como pequeña empresa, necesitábamos música para nuestros anuncios. Las canciones con IA que hemos creado han elevado la calidad de nuestro marketing."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">María González</h5>
+                                <p class="text-muted mb-0">Propietaria de Negocio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100">
+                        <p class="fst-italic">"Soy profesor de música y utilizo el generador de canciones con IA para mostrar a mis estudiantes diferentes estilos y composiciones. Es una herramienta educativa fantástica."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">Antonio Pérez</h5>
+                                <p class="text-muted mb-0">Profesor de Música</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section bg-light" id="faq">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block position-relative">Preguntas Frecuentes sobre Canciones con IA</h2>
+                <p class="lead mt-4">Encuentra respuestas a las preguntas más comunes sobre nuestro generador de canciones con IA</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="faq-item">
+                            <h3 class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                ¿Qué es un generador de canciones con IA?
+                                <i class="fas fa-chevron-down float-end"></i>
+                            </h3>
+                            <div id="faq1" class="collapse show faq-answer" data-bs-parent="#faqAccordion">
+                                <p>Un generador de canciones con IA es una herramienta que utiliza algoritmos de inteligencia artificial para componer música original. Nuestro generador analiza patrones musicales y crea composiciones únicas basadas en los parámetros que especifiques, como género, estado de ánimo o estilo.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                ¿Puedo usar las canciones con IA comercialmente?
+                                <i class="fas fa-chevron-down float-end"></i>
+                            </h3>
+                            <div id="faq2" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                                <p>Absolutamente, depende del plan que elijas. Nuestro plan Business está diseñado para necesidades comerciales y viene con las licencias necesarias. Solo recuerda verificar la originalidad de la música creada, reconocer el uso de IA y asegurarte de no violar ningún estilo musical o contenido protegido.</p>
+                            </div>
+                        </div>
+                        
+                       
+                        
+                       
+                        
+                        <div class="faq-item">
+                            <h3 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                ¿Qué géneros musicales soporta el generador de canciones con IA?
+                                <i class="fas fa-chevron-down float-end"></i>
+                            </h3>
+                            <div id="faq5" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                                <p>Nuestro generador de canciones con IA soporta una amplia variedad de géneros musicales, incluyendo pop, rock, electrónica, hip-hop, jazz, clásica, ambiental, country, R&B, reggae, latina y muchos más. Constantemente entrenamos nuestra IA con nuevos estilos para ofrecerte más opciones.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                ¿Necesito conocimientos musicales para usar el generador de canciones con IA?
+                                <i class="fas fa-chevron-down float-end"></i>
+                            </h3>
+                            <div id="faq6" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                                <p>No, no necesitas ningún conocimiento musical para utilizar nuestro generador. La interfaz es intuitiva y está diseñada para ser accesible para todos. Solo describe lo que quieres, y nuestra IA se encargará de la composición musical.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                ¿En qué formato puedo descargar mis canciones con IA?
+                                <i class="fas fa-chevron-down float-end"></i>
+                            </h3>
+                            <div id="faq7" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                                <p>Puedes descargar tus canciones generadas en varios formatos, incluyendo MP3, WAV y OGG. </p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                ¿Las canciones con IA son realmente únicas?
+                                <i class="fas fa-chevron-down float-end"></i>
+                            </h3>
+                            <div id="faq8" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                                <p>Sí, cada canción generada por nuestra IA es completamente única. Aunque la IA ha sido entrenada con millones de composiciones musicales para aprender patrones y estructuras, crea nuevas combinaciones que no son copias de canciones existentes.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="section" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h2 class="display-5 fw-bold mb-4">¿Listo Para Crear Tu Primera Canción con IA?</h2>
+                    <p class="lead mb-5" style="max-width: 800px; margin-left: auto; margin-right: auto;">Prueba ahora nuestro generador y transforma tus ideas en música profesional en segundos. ¡No se requiere experiencia musical!</p>
+                    <a href="#demo-section" class="btn btn-primary btn-lg px-5 py-3 fs-5">Crear Mi Canción Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="mb-4">CancionesAI</h3>
+                    <p>El generador de canciones con IA más avanzado. Crea música profesional en segundos sin conocimientos musicales previos.</p>
+                    
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Enlaces Amigos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="https://www.ai138.com" title="AI工具网(Ai138.com) | AI工具导航和推荐 – 快速找到最佳AI工具" class="text-decoration-none text-secondary" target="_blank" rel="noopener">AI工具网</a></li>
+                        <li class="mb-2"><a href="https://navs.site" title="AI Sites | 2025" class="text-decoration-none text-secondary" target="_blank" rel="noopener">AI Nav Site</a></li>
+                        <li class="mb-2"><a href="https://AIToolly.com/" title="AIToolly AI Tools Directory" class="text-decoration-none text-secondary" target="_blank" rel="noopener">AIToolly</a></li>
+                    </ul>
+                </div>
+
+     
+                
+            </div>
+            
+            <hr class="my-5">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-md-0"> 2025 © Cancionesconia.org Todos los derechos reservados. </p>
+                </div>
+              
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize accordions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make accordion items clickable
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-bs-target');
+                    const isCollapsed = this.classList.contains('collapsed');
+                    
+                    // Toggle icon
+                    if (isCollapsed) {
+                        this.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
+                    } else {
+                        this.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+                    }
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"3e26d290d5c44cab942d276eb9ed2f1f","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
