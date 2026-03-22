@@ -20,6 +20,17 @@ const { Content, headings } = await entry.render();
 
 // 从 entry.data 获取元数据
 const productData = entry.data;
+
+// 从 products.json 中获取完整的 metrics 数据
+const fullProduct = products.find(p => p.uid === productData.uid);
+const metrics = fullProduct?.metrics;
+
+// 提取 productType 信息
+const productType = metrics?.productType;
+const isProductTypeObject = productType && typeof productType === 'object' && !Array.isArray(productType);
+const level1 = isProductTypeObject ? productType.level1 : null;
+const level2 = isProductTypeObject ? productType.level2 : null;
+const tags = isProductTypeObject ? productType.tags || [] : [];
 ---
 
 <Layout title={productData.aiProductName}>
@@ -75,6 +86,30 @@ const productData = entry.data;
               </div>
             )}
 
+            <!-- 产品分类 -->
+            {(level1 || level2) && (
+              <div class="flex items-center gap-2 px-4 py-2 bg-indigo-50 rounded-full border border-indigo-100">
+                <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-wider">分类</span>
+                <div class="flex items-center gap-1.5">
+                  {level1 && (
+                    <span class="text-[13px] font-black text-indigo-700">
+                      {level1}
+                    </span>
+                  )}
+                  {level1 && level2 && (
+                    <svg class="w-3 h-3 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  )}
+                  {level2 && (
+                    <span class="text-[13px] font-black text-indigo-700">
+                      {level2}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
             <!-- 访问链接 -->
             {productData.websiteUrl && (
               <a
@@ -99,8 +134,21 @@ const productData = entry.data;
 
         <!-- 底部信息 -->
         <footer class="mt-20 pt-8 border-t border-slate-200">
-          <div class="flex items-center justify-between text-[12px] text-slate-400">
-            <span>产品 UID: {productData.uid}</span>
+          <div class="flex items-center justify-between">
+            <div class="flex flex-col gap-4">
+              <span class="text-[12px] text-slate-400">产品 UID: {productData.uid}</span>
+              
+              <!-- Tags 标签 -->
+              {tags.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {tags.map((tag: string) => (
+                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[12px] rounded-full font-medium">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </footer>
       </div>
