@@ -68,10 +68,9 @@ export function initMultiFilter() {
 
   // 执行过滤逻辑
   function applyFilters() {
-    // 查找所有产品卡片（通过 data-task 属性识别，因为所有产品卡片都应该有这个属性）
-    // 使用更通用的选择器，查找主内容区域中带有任意 data-* 过滤属性的元素
+    // 查找所有产品卡片（通过 data-task 属性识别）
     const cardsContainer = document.querySelector('main') || document.body;
-    const cards = cardsContainer.querySelectorAll('[data-task], [data-company], [data-country], [data-pricing], [data-useType], [data-language]');
+    const cards = cardsContainer.querySelectorAll('[data-task]');
 
     cards.forEach(card => {
       const cardEl = card as HTMLElement;
@@ -96,14 +95,19 @@ export function initMultiFilter() {
           break;
         }
 
-        // 解析卡片数据（数组格式）
+        // 解析卡片数据：
+        // - 可能是单个字符串（如 level2）
+        // - 也可能是 JSON 数组格式（如 tags）
         let cardValues: string[] = [];
         try {
-          cardValues = JSON.parse(cardDataStr);
-          if (!Array.isArray(cardValues)) {
-            cardValues = [cardValues];
+          const parsed = JSON.parse(cardDataStr);
+          if (Array.isArray(parsed)) {
+            cardValues = parsed;
+          } else {
+            cardValues = [String(parsed)];
           }
         } catch {
+          // 不是 JSON，直接作为字符串处理
           cardValues = [cardDataStr];
         }
 
@@ -117,27 +121,13 @@ export function initMultiFilter() {
       }
 
       // 应用显示/隐藏
-      // 注意：产品页面使用的是 product-group 分组结构，需要同时控制 product-item 和 product-group 的显示
       const productItem = cardEl.classList.contains('product-item') ? cardEl : cardEl.closest('.product-item');
-      const productGroup = productItem?.closest('.product-group');
 
       if (shouldShow) {
         if (productItem) productItem.style.display = '';
-        // 如果有分组，让 CSS 自动处理分组的显示（通过可见的子元素）
       } else {
         if (productItem) productItem.style.display = 'none';
       }
-    });
-
-    // 处理分组的显示/隐藏（如果该组所有产品都被隐藏，则隐藏该组）
-    document.querySelectorAll('.product-group').forEach((group) => {
-      const groupEl = group as HTMLElement;
-      const visibleItems = groupEl.querySelectorAll('.product-item[style=""], .product-item:not([style*="display: none"])');
-      const hasVisible = Array.from(visibleItems).some(item => {
-        const itemEl = item as HTMLElement;
-        return itemEl.style.display !== 'none';
-      });
-      groupEl.style.display = hasVisible ? '' : 'none';
     });
 
     // 触发过滤完成事件，通知分页组件更新
