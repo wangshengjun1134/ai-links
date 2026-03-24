@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "generate": "node scripts/generate-product-md.js",
+    "generate": "node scripts/generate-product-md.js && node scripts/generate-agent-md.js",
     "dev": "npm run generate && astro dev",
     "build": "npm run generate && astro build",
     "preview": "astro preview",

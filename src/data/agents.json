@@ -1,66 +1,5897 @@
 [
   {
-    "uid": "1",
-    "slug": "auto-gpt",
-    "logo": "https://example.com/auto-gpt.png",
-    "agentName": "Auto-GPT",
-    "introduction": "自主 AI 代理，能够独立完成任务链",
-    "websiteUrl": "https://github.com/Significant-Gravitas/Auto-GPT",
+    "uid": "20001000",
+    "slug": "astron-claw",
+    "sort": 1,
+    "logo": "/agents-favicons/20001000.ico",
+    "aiProductName": "AstronClaw",
+    "introduction": "科大讯飞推出的云端 OpenClaw 服务，能够自主执行多步骤任务，支持 10,000+ Skills 生态",
+    "websiteUrl": "https://agent.xfyun.cn/astron-claw",
     "metrics": {
-      "agentType": ["编程", "自动化"],
-      "creator": "Significant Gravitas",
-      "modelLevel": "S-Tier",
-      "hasApi": true,
-      "needVpn": true,
-      "isInternal": false
-    }
-  },
-  {
-    "uid": "2",
-    "slug": "babyagi",
-    "logo": "https://example.com/babyagi.png",
-    "agentName": "BabyAGI",
-    "introduction": "任务驱动的自主 AI 代理系统",
-    "websiteUrl": "https://github.com/yoheinakajima/babyagi",
-    "metrics": {
-      "agentType": ["任务管理", "自动化"],
-      "creator": "Yohei Nakajima",
-      "modelLevel": "A-Tier",
+      "productType": {
+        "level1": "效率工具",
+        "level2": "任务自动化",
+        "tags": [
+          "AI 智能体",
+          "任务自动化",
+          "云端服务"
+        ]
+      },
+      "country": "中国",
+      "company": "科大讯飞股份有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
       "hasApi": false,
-      "needVpn": true,
-      "isInternal": false
-    }
-  },
-  {
-    "uid": "3",
-    "slug": "langchain-agent",
-    "logo": "https://example.com/langchain.png",
-    "agentName": "LangChain Agent",
-    "introduction": "基于 LangChain 框架构建的智能代理",
-    "websiteUrl": "https://github.com/langchain-ai/langchain",
-    "metrics": {
-      "agentType": ["编程", "对话"],
-      "creator": "LangChain",
-      "modelLevel": "A-Tier",
-      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
       "needVpn": false,
-      "isInternal": false
-    }
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI Agent",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "AstronClaw - 科大讯飞云端 AI 智能体",
+      "keywords": [
+        "AstronClaw",
+        "科大讯飞",
+        "AI 智能体",
+        "OpenClaw",
+        "任务自动化"
+      ],
+      "description": "科大讯飞推出的云端 OpenClaw 服务，能够自主执行多步骤任务，支持 10,000+ Skills 生态"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAstronClaw 是科大讯飞推出的云端 OpenClaw 服务，能够自主执行多步骤任务，支持 10,000+ Skills 生态。网站暂时无法访问，信息来源于原始数据。"
   },
   {
-    "uid": "4",
-    "slug": "devika",
-    "logo": "https://example.com/devika.png",
-    "agentName": "Devika",
-    "introduction": "AI 软件工程师，能够理解高级指令并编写代码",
-    "websiteUrl": "https://github.com/stitionai/devika",
+    "uid": "20002000",
+    "slug": "coze-space",
+    "sort": 2,
+    "logo": "/agents-favicons/20002000.ico",
+    "aiProductName": "扣子空间 (Coze Space)",
+    "introduction": "字节跳动推出的 AI Agent 协同办公平台，支持多智能体协同完成任务",
+    "websiteUrl": "https://space.coze.cn/",
     "metrics": {
-      "agentType": ["编程", "开发"],
-      "creator": "StitionAI",
+      "productType": {
+        "level1": "效率工具",
+        "level2": "协同办公",
+        "tags": [
+          "AI 智能体",
+          "协同办公",
+          "多智能体"
+        ]
+      },
+      "country": "中国",
+      "company": "北京抖音信息服务有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI Agent",
+        "协同办公"
+      ]
+    },
+    "seo": {
+      "title": "扣子空间 (Coze Space) - 字节跳动 AI Agent 协同办公平台",
+      "keywords": [
+        "扣子空间",
+        "Coze Space",
+        "字节跳动",
+        "AI 智能体",
+        "协同办公"
+      ],
+      "description": "字节跳动推出的 AI Agent 协同办公平台，支持多智能体协同完成任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n扣子空间 (Coze Space) 是字节跳动推出的 AI Agent 协同办公平台，支持多智能体协同完成任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20003000",
+    "slug": "manus",
+    "sort": 3,
+    "logo": "/agents-favicons/20003000.ico",
+    "aiProductName": "Manus",
+    "introduction": "Manus 是一款多功能 AI 工具，可创建幻灯片、构建网站、开发应用和设计，现已加入 Meta 集团。",
+    "websiteUrl": "https://manus.im/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "多功能创作",
+        "tags": [
+          "AI",
+          "生产力工具",
+          "网站构建",
+          "幻灯片",
+          "应用开发",
+          "设计"
+        ]
+      },
+      "country": "美国",
+      "company": "Meta",
+      "useType": [
+        "web",
+        "desktop",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI",
+        "生产力工具",
+        "网站构建",
+        "幻灯片",
+        "应用开发",
+        "设计"
+      ]
+    },
+    "seo": {
+      "title": "Manus - Hands On AI 多功能 AI 创作工具",
+      "keywords": [
+        "Manus",
+        "AI",
+        "幻灯片",
+        "网站构建",
+        "应用开发",
+        "设计工具"
+      ],
+      "description": "Manus 是一款多功能 AI 工具，可创建幻灯片、构建网站、开发应用和设计，现已加入 Meta 集团。"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nManus: Hands On AI 是一款多功能 AI 工具，可创建幻灯片、构建网站、开发应用和设计。\n\n## 核心功能\n- 创建幻灯片\n- 构建网站\n- 开发应用\n- 设计\n- 更多功能\n\n## 产品系列\n- 定价\n- Web 应用\n- AI 设计\n- AI 幻灯片\n- Manus 浏览器操作器\n- Wide Research\n- Mail Manus\n- Slack 集成\n\n## 下载\n- 移动应用\n- 桌面应用\n- 我的浏览器"
+  },
+  {
+    "uid": "20004000",
+    "slug": "devin",
+    "sort": 4,
+    "logo": "/agents-favicons/20004000.ico",
+    "aiProductName": "Devin",
+    "introduction": "Devin 是一款 AI 软件工程师助手，可独立处理代码迁移、重构、Bug 修复等任务。支持与 Slack、Linear、GitHub 等工具集成。",
+    "websiteUrl": "https://devin.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "编程辅助",
+        "tags": [
+          "AI 软件工程师",
+          "代码迁移",
+          "自动化重构",
+          "DevOps",
+          "企业级 AI",
+          "工程效率"
+        ]
+      },
+      "country": "美国",
+      "company": "Cognition Labs",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 软件工程师",
+        "代码迁移",
+        "自动化重构",
+        "DevOps"
+      ]
+    },
+    "seo": {
+      "title": "Devin - AI 软件工程师助手",
+      "keywords": [
+        "Devin",
+        "AI 软件工程师",
+        "代码迁移",
+        "自动化重构",
+        "DevOps",
+        "工程效率"
+      ],
+      "description": "Devin 是一款 AI 软件工程师助手，可独立处理代码迁移、重构、Bug 修复等任务，实现 8-12 倍效率增益。"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nDevin 是一款 AI 软件工程师助手，可独立处理代码迁移、重构、Bug 修复等任务。\n\n## 核心功能\n\n### 代码迁移与重构\n- 语言迁移\n- 版本升级\n- 代码库重构\n\n### 数据工程与分析\n- 数据仓库迁移\n- ETL 开发\n- 数据清洗和预处理\n\n### Bug 修复与待办事项\n- 工单解决\n- CI/CD\n- 待办任务 PR 创建\n\n### 应用开发\n- 前端 Bug 和边界情况处理\n- 单元测试和 E2E 测试\n- SaaS 集成构建\n\n## 工作流程\n1. 工单集成 - 连接 Slack、Teams、Linear、Jira\n2. 方案规划 - 快速审查 Devin 的提案\n3. 自动测试 - Devin 自行测试更改\n4. PR 审查 - 本地审查更改\n\n## 成功案例\nNubank 使用 Devin 完成 8 年期、600 万行代码的 ETL 单体架构迁移，实现 8-12 倍效率提升和 20 倍成本节省。"
+  },
+  {
+    "uid": "20005000",
+    "slug": "wukong",
+    "sort": 5,
+    "logo": "/agents-favicons/20005000.ico",
+    "aiProductName": "悟空",
+    "introduction": "阿里推出的企业级 AI 原生工作平台，支持多 Agent 协同工作",
+    "websiteUrl": "https://wukong.dingtalk.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "企业管理",
+        "tags": [
+          "CRM",
+          "客户关系管理",
+          "开源系统",
+          "销售管理",
+          "钉钉集成",
+          "企业管理"
+        ]
+      },
+      "country": "中国",
+      "company": "阿里巴巴集团",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "CRM",
+        "企业管理",
+        "AI Agent"
+      ]
+    },
+    "seo": {
+      "title": "悟空 - 阿里企业级 AI 原生工作平台",
+      "keywords": [
+        "悟空",
+        "阿里",
+        "企业管理",
+        "CRM",
+        "钉钉集成",
+        "AI Agent"
+      ],
+      "description": "阿里推出的企业级 AI 原生工作平台，支持多 Agent 协同工作"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n悟空是阿里推出的企业级 AI 原生工作平台，支持多 Agent 协同工作。\n\n## 主要功能\n- 客户管理：全面管理客户信息、联系人、跟进记录\n- 销售自动化：支持销售流程管理、商机跟踪、合同管理\n- 数据分析：提供多维度数据报表和可视化分析\n- 移动办公：支持钉钉集成，实现移动办公"
+  },
+  {
+    "uid": "20006000",
+    "slug": "qclaw",
+    "sort": 6,
+    "logo": "/agents-favicons/20006000.ico",
+    "aiProductName": "QClaw",
+    "introduction": "腾讯推出的电脑端 AI 助手，能直接操作电脑执行任务",
+    "websiteUrl": "https://guanjia.qq.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "安全防护",
+          "病毒查杀",
+          "系统清理",
+          "软件管理",
+          "免费软件",
+          "腾讯"
+        ]
+      },
+      "country": "中国",
+      "company": "腾讯科技（深圳）有限公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "桌面工具"
+      ]
+    },
+    "seo": {
+      "title": "QClaw - 腾讯电脑端 AI 助手",
+      "keywords": [
+        "QClaw",
+        "腾讯",
+        "AI 助手",
+        "电脑管家",
+        "桌面工具"
+      ],
+      "description": "腾讯推出的电脑端 AI 助手，能直接操作电脑执行任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nQClaw 是腾讯推出的电脑端 AI 助手，能直接操作电脑执行任务。\n\n## 核心功能\n- 病毒查杀：采用腾讯自研 TAV 引擎，高效查杀各类病毒木马\n- 系统清理：深度清理系统垃圾，释放磁盘空间\n- 软件管理：提供软件下载、安装、升级、卸载一站式服务\n- 实时防护：全天候保护电脑安全，防止恶意程序入侵\n- 加速优化：智能优化系统性能，提升电脑运行速度"
+  },
+  {
+    "uid": "20007000",
+    "slug": "workbuddy",
+    "sort": 7,
+    "logo": "/agents-favicons/20007000.svg",
+    "aiProductName": "WorkBuddy",
+    "introduction": "腾讯云推出的 AI Agent 办公工具，全场景职场智能体桌面工作台",
+    "websiteUrl": "https://www.codebuddy.cn/work/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "办公自动化",
+        "tags": [
+          "AI Agent",
+          "办公工具",
+          "桌面工作台",
+          "职场智能体"
+        ]
+      },
+      "country": "中国",
+      "company": "腾讯云",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI Agent",
+        "办公工具"
+      ]
+    },
+    "seo": {
+      "title": "WorkBuddy - 腾讯云 AI Agent 办公工具",
+      "keywords": [
+        "WorkBuddy",
+        "腾讯云",
+        "AI Agent",
+        "办公工具",
+        "桌面工作台"
+      ],
+      "description": "腾讯云推出的 AI Agent 办公工具，全场景职场智能体桌面工作台"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWorkBuddy 是腾讯云推出的 AI Agent 办公工具，全场景职场智能体桌面工作台。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20008000",
+    "slug": "roboneo",
+    "sort": 8,
+    "logo": "/agents-favicons/20008000.ico",
+    "aiProductName": "RoboNeo",
+    "introduction": "美图推出的 AI 视觉设计智能体，通过自然语言完成视觉创作任务",
+    "websiteUrl": "https://www.roboneo.com/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "视觉设计",
+        "tags": [
+          "AI 视觉",
+          "设计工具",
+          "图像生成",
+          "自然语言处理"
+        ]
+      },
+      "country": "中国",
+      "company": "美图公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 视觉",
+        "设计工具"
+      ]
+    },
+    "seo": {
+      "title": "RoboNeo - 美图 AI 视觉设计智能体",
+      "keywords": [
+        "RoboNeo",
+        "美图",
+        "AI 视觉",
+        "设计工具",
+        "图像生成"
+      ],
+      "description": "美图推出的 AI 视觉设计智能体，通过自然语言完成视觉创作任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nRoboNeo 是美图推出的 AI 视觉设计智能体，通过自然语言完成视觉创作任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20009000",
+    "slug": "autoclaw",
+    "sort": 9,
+    "logo": "/agents-favicons/20009000.png",
+    "aiProductName": "AutoClaw (澳龙)",
+    "introduction": "一键激活 AI 智能体分身，自主调用专业工具，让复杂任务在飞书对话框中自动达成。",
+    "websiteUrl": "https://autoglm.zhipuai.cn/autoclaw/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "任务自动化",
+        "tags": [
+          "AI 智能体",
+          "飞书集成",
+          "任务自动化",
+          "AGENT 执行",
+          "本地执行"
+        ]
+      },
+      "country": "中国",
+      "company": "北京智谱华章科技股份有限公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 智能体",
+        "任务自动化",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "AutoClaw (澳龙) - 智谱 AI 本地版 OpenClaw",
+      "keywords": [
+        "AutoClaw",
+        "澳龙",
+        "智谱 AI",
+        "AI 智能体",
+        "飞书集成",
+        "OpenClaw"
+      ],
+      "description": "智谱推出的本地版 OpenClaw 产品，能在本地执行任务并通过 IM 协同"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAutoClaw 是一个基于飞书的 AI 智能体执行平台，用户在一个对话框发起目标，系统自动拆解、执行，并将结果与上下文回流到飞书。\n\n## 核心功能\n- 发起任务：任务入口就是一条对话，不是配置页，也不是另一套任务系统\n- 分身执行：分身继续推进，本地工具真实执行，步骤和状态都在同一条轨道里展开\n- 飞书回流：飞书接住的不只是结论，还有上下文、进展和下一步接力点\n\n## 产品特点\n- 本地执行，飞书同步，实时回传"
+  },
+  {
+    "uid": "20010000",
+    "slug": "deep-research",
+    "sort": 10,
+    "logo": "/default.png",
+    "aiProductName": "Deep Research",
+    "introduction": "OpenAI 推出的 AI 智能体，可自主执行多步骤研究任务生成专业报告",
+    "websiteUrl": "https://openai.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "研究分析",
+        "tags": [
+          "AI 研究",
+          "深度分析",
+          "报告生成",
+          "自主执行"
+        ]
+      },
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 研究",
+        "深度分析"
+      ]
+    },
+    "seo": {
+      "title": "Deep Research - OpenAI AI 研究智能体",
+      "keywords": [
+        "Deep Research",
+        "OpenAI",
+        "AI 研究",
+        "深度分析",
+        "报告生成"
+      ],
+      "description": "OpenAI 推出的 AI 智能体，可自主执行多步骤研究任务生成专业报告"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nDeep Research 是 OpenAI 推出的 AI 智能体，可自主执行多步骤研究任务生成专业报告。网站暂时无法访问（403 错误），信息来源于原始数据。"
+  },
+  {
+    "uid": "20011000",
+    "slug": "lovart",
+    "sort": 11,
+    "logo": "/agents-favicons/20011000.ico",
+    "aiProductName": "Lovart",
+    "introduction": "全球首个设计 AI 智能体平台，通过对话生成设计方案",
+    "websiteUrl": "https://www.lovart.ai",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "设计工具",
+        "tags": [
+          "AI 设计",
+          "创意生成",
+          "对话式创作",
+          "设计方案"
+        ]
+      },
+      "country": "美国",
+      "company": "N/A",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 设计",
+        "创意生成"
+      ]
+    },
+    "seo": {
+      "title": "Lovart - 全球首个设计 AI 智能体平台",
+      "keywords": [
+        "Lovart",
+        "AI 设计",
+        "创意生成",
+        "对话式创作",
+        "设计方案"
+      ],
+      "description": "全球首个设计 AI 智能体平台，通过对话生成设计方案"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nLovart 是全球首个设计 AI 智能体平台，通过对话生成设计方案。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20012000",
+    "slug": "openmanus",
+    "sort": 12,
+    "logo": "/default.png",
+    "aiProductName": "OpenManus",
+    "introduction": "MetaGPT 团队推出的开源 AI 智能体，复刻 Manus 功能",
+    "websiteUrl": "https://github.com/mannaandpoem/OpenManus",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "开源框架",
+        "tags": [
+          "开源",
+          "AI 智能体",
+          "Manus",
+          "Python",
+          "自动化"
+        ]
+      },
+      "country": "中国",
+      "company": "MetaGPT 团队",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "开源",
+        "AI 智能体"
+      ]
+    },
+    "seo": {
+      "title": "OpenManus - MetaGPT 团队开源 AI 智能体",
+      "keywords": [
+        "OpenManus",
+        "MetaGPT",
+        "开源",
+        "AI 智能体",
+        "Manus"
+      ],
+      "description": "MetaGPT 团队推出的开源 AI 智能体，复刻 Manus 功能"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOpenManus 是 MetaGPT 团队推出的开源 AI 智能体，复刻 Manus 功能。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20013000",
+    "slug": "autoglm",
+    "sort": 13,
+    "logo": "/agents-favicons/20013000.png",
+    "aiProductName": "AutoGLM",
+    "introduction": "智谱推出的 AI 智能体应用，能模拟人类操作手机完成任务",
+    "websiteUrl": "https://www.zhipuai.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "任务自动化",
+        "tags": [
+          "GLM 大模型",
+          "智能体",
+          "MaaS 服务",
+          "视觉推理",
+          "企业级 AI",
+          "开源模型"
+        ]
+      },
+      "country": "中国",
+      "company": "北京智谱华章科技股份有限公司",
+      "useType": [
+        "mobile",
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "GLM 大模型",
+        "智能体",
+        "MaaS 服务"
+      ]
+    },
+    "seo": {
+      "title": "AutoGLM - 智谱 AI 智能体应用",
+      "keywords": [
+        "AutoGLM",
+        "智谱 AI",
+        "GLM 大模型",
+        "智能体",
+        "任务自动化"
+      ],
+      "description": "智谱推出的 AI 智能体应用，能模拟人类操作手机完成任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n智谱 AI 提供新一代 GLM 大模型全栈技术体系，涵盖基座模型、MaaS 服务、智能体应用及企业级开发套件。\n\n## 核心产品矩阵\n\n### GLM 模型系列\n- GLM-5-TURBO: 专为智能体场景打造的基座模型\n- GLM-5: 在 SWE-bench Verified 等智能体编程榜单上达到开源模型 SOTA\n- GLM-4.6V: 全球 100B 级效果出众的开源视觉推理模型\n- AutoGLM: 具备自主规划、推理与执行能力的智能体模型\n\n### MaaS 服务\n- 高效能模型服务 API\n- 精选智能体应用（通用翻译、GLM PPT/海报等）\n- 全流程开发套件（模型微调、AI 搜索工具）"
+  },
+  {
+    "uid": "20014000",
+    "slug": "zhixiaobao",
+    "sort": 14,
+    "logo": "/agents-favicons/20014000.png",
+    "aiProductName": "支小宝",
+    "introduction": "支付宝推出的 AI 生活管家，能连接支付宝生态完成生活服务",
+    "websiteUrl": "https://www.alipay.com/",
+    "metrics": {
+      "productType": {
+        "level1": "生活服务",
+        "level2": "智能助手",
+        "tags": [
+          "支付平台",
+          "移动支付",
+          "金融科技",
+          "支付宝",
+          "阿里巴巴",
+          "数字钱包"
+        ]
+      },
+      "country": "中国",
+      "company": "蚂蚁科技集团股份有限公司",
+      "useType": [
+        "mobile",
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "支付平台",
+        "AI 助手"
+      ]
+    },
+    "seo": {
+      "title": "支小宝 - 支付宝 AI 生活管家",
+      "keywords": [
+        "支小宝",
+        "支付宝",
+        "AI 助手",
+        "生活服务",
+        "金融科技"
+      ],
+      "description": "支付宝推出的 AI 生活管家，能连接支付宝生态完成生活服务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n支小宝是支付宝推出的 AI 生活管家，能连接支付宝生态完成生活服务。\n\n## 核心功能\n- 在线支付：支持网购、缴费、充值等多种支付场景\n- 转账服务：个人对个人、个人对商户的快速转账\n- 理财服务：余额宝、基金、保险等金融产品\n- 生活服务：水电煤缴费、信用卡还款、手机充值\n\n## 安全保障\n- 多重加密技术保护资金安全\n- 实名认证体系\n- 风险监控系统"
+  },
+  {
+    "uid": "20015000",
+    "slug": "qingyan-ppt",
+    "sort": 15,
+    "logo": "/agents-favicons/20015000.ico",
+    "aiProductName": "清言 PPT",
+    "introduction": "清言和 AiPPT 联合推出的 AI 智能 PPT 生成工具",
+    "websiteUrl": "https://www.chatglm.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "办公文档",
+        "tags": [
+          "PPT 生成",
+          "AI 办公",
+          "文档工具",
+          "智能创作"
+        ]
+      },
+      "country": "中国",
+      "company": "北京智谱华章科技股份有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "PPT 生成",
+        "AI 办公"
+      ]
+    },
+    "seo": {
+      "title": "清言 PPT - AI 智能 PPT 生成工具",
+      "keywords": [
+        "清言 PPT",
+        "AI PPT",
+        "智谱 AI",
+        "文档生成",
+        "办公工具"
+      ],
+      "description": "清言和 AiPPT 联合推出的 AI 智能 PPT 生成工具"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n清言 PPT 是清言和 AiPPT 联合推出的 AI 智能 PPT 生成工具。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20016000",
+    "slug": "iflow-cli",
+    "sort": 16,
+    "logo": "/default.png",
+    "aiProductName": "iFlow CLI",
+    "introduction": "心流团队推出的终端 AI 智能体，能在命令行中执行各类任务",
+    "websiteUrl": "https://github.com/iflow-ai/iflow-cli",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "命令行工具",
+        "tags": [
+          "CLI",
+          "终端工具",
+          "AI 智能体",
+          "任务自动化"
+        ]
+      },
+      "country": "中国",
+      "company": "心流团队",
+      "useType": [
+        "cli"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "CLI",
+        "AI 智能体"
+      ]
+    },
+    "seo": {
+      "title": "iFlow CLI - 心流团队终端 AI 智能体",
+      "keywords": [
+        "iFlow CLI",
+        "心流团队",
+        "终端工具",
+        "AI 智能体",
+        "命令行"
+      ],
+      "description": "心流团队推出的终端 AI 智能体，能在命令行中执行各类任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\niFlow CLI 是心流团队推出的终端 AI 智能体，能在命令行中执行各类任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20017000",
+    "slug": "oiioii",
+    "sort": 17,
+    "logo": "/agents-favicons/20017000.ico",
+    "aiProductName": "OiiOii",
+    "introduction": "全球首个专注于动画创作的 AI Agent 智能体，7 个专业角色 AI 团队协作",
+    "websiteUrl": "https://www.oiioii.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "动画制作",
+        "tags": [
+          "AI 动画",
+          "动画创作",
+          "多智能体",
+          "创意生成"
+        ]
+      },
+      "country": "中国",
+      "company": "N/A",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 动画",
+        "多智能体"
+      ]
+    },
+    "seo": {
+      "title": "OiiOii - 全球首个动画创作 AI Agent",
+      "keywords": [
+        "OiiOii",
+        "AI 动画",
+        "动画创作",
+        "多智能体",
+        "创意生成"
+      ],
+      "description": "全球首个专注于动画创作的 AI Agent 智能体，7 个专业角色 AI 团队协作"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOiiOii 是全球首个专注于动画创作的 AI Agent 智能体，7 个专业角色 AI 团队协作。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20018000",
+    "slug": "openhands",
+    "sort": 18,
+    "logo": "/agents-favicons/20018000.ico",
+    "aiProductName": "OpenHands",
+    "introduction": "OpenHands 是开源、模型无关的云编码代理平台，支持从 1 到数千个代理的规模化部署。",
+    "websiteUrl": "https://www.all-hands.dev/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "编码辅助",
+        "tags": [
+          "开源",
+          "编码代理",
+          "AI 自动化",
+          "模型无关",
+          "企业级",
+          "云原生"
+        ]
+      },
+      "country": "美国",
+      "company": "OpenHands (All Hands AI)",
+      "useType": [
+        "web",
+        "cli",
+        "sdk"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "开源",
+        "编码代理",
+        "AI 自动化"
+      ]
+    },
+    "seo": {
+      "title": "OpenHands - 开源云编码代理平台",
+      "keywords": [
+        "OpenHands",
+        "开源",
+        "编码代理",
+        "AI 自动化",
+        "云原生"
+      ],
+      "description": "OpenHands 是开源、模型无关的云编码代理平台，可自动化代码审查、测试、文档生成等工程任务。"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOpenHands 是开源、模型无关的云编码代理平台，支持从 1 到数千个代理的规模化部署。\n\n## 核心能力\n\n### 三大使用方式\n- SDK：将 OpenHands 嵌入应用和工作流\n- CLI：在终端中直接使用代理能力\n- Web GUI：通过桌面或移动端网页执行复杂任务\n\n### 核心优势\n- 模型无关：适配任何模型、CI/CD 流水线或代码库\n- 安全沙箱：支持 Docker/Kubernetes 隔离部署\n- 开源透明：代码和工件完全可见\n- 可扩展：从单个任务到数千次并行运行\n\n### 自动化场景\n- 加速代码审查（总结 PR、修复测试）\n- 扩展测试覆盖率\n- 自动生成文档和发布说明\n- 重构旧代码、消除技术债务\n- 修复安全漏洞"
+  },
+  {
+    "uid": "20019000",
+    "slug": "agent-tars",
+    "sort": 19,
+    "logo": "/agents-favicons/20019000.png",
+    "aiProductName": "Agent TARS",
+    "introduction": "字节跳动开源的多模态 AI 代理工具，可视觉化解读网页并简化浏览器操作",
+    "websiteUrl": "https://agent-tars.com",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "多模态 AI",
+        "tags": [
+          "多模态",
+          "AI 代理",
+          "浏览器自动化",
+          "开源",
+          "视觉理解"
+        ]
+      },
+      "country": "中国",
+      "company": "字节跳动",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "多模态",
+        "AI 代理",
+        "开源"
+      ]
+    },
+    "seo": {
+      "title": "Agent TARS - 字节跳动多模态 AI 代理",
+      "keywords": [
+        "Agent TARS",
+        "字节跳动",
+        "多模态",
+        "AI 代理",
+        "浏览器自动化"
+      ],
+      "description": "字节跳动开源的多模态 AI 代理工具，可视觉化解读网页并简化浏览器操作"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAgent TARS 是字节跳动开源的多模态 AI 代理工具，可视觉化解读网页并简化浏览器操作。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20020000",
+    "slug": "jvs-claw",
+    "sort": 20,
+    "logo": "/agents-favicons/20020000.ico",
+    "aiProductName": "JVS Claw",
+    "introduction": "阿里云无影团队推出的 OpenClaw 平台，支持云端与本地双模式部署",
+    "websiteUrl": "https://jvs.wuying.aliyun.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "任务自动化",
+        "tags": [
+          "AI 智能体",
+          "OpenClaw",
+          "云端部署",
+          "本地部署",
+          "阿里云"
+        ]
+      },
+      "country": "中国",
+      "company": "阿里巴巴集团",
+      "useType": [
+        "web",
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 智能体",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "JVS Claw - 阿里云无影 OpenClaw 平台",
+      "keywords": [
+        "JVS Claw",
+        "阿里云",
+        "无影",
+        "OpenClaw",
+        "AI 智能体"
+      ],
+      "description": "阿里云无影团队推出的 OpenClaw 平台，支持云端与本地双模式部署"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nJVS Claw 是阿里云无影团队推出的 OpenClaw 平台，支持云端与本地双模式部署。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20021000",
+    "slug": "macaron",
+    "sort": 21,
+    "logo": "/agents-favicons/20021000.png",
+    "aiProductName": "Macaron (马卡龙)",
+    "introduction": "世界首个个人 AI 智能体，一句话生成专属工具，管理日常生活",
+    "websiteUrl": "https://macaron.im/",
+    "metrics": {
+      "productType": {
+        "level1": "生活服务",
+        "level2": "个人助手",
+        "tags": [
+          "个人 AI 助手",
+          "深度记忆",
+          "生活助手",
+          "强化学习",
+          "情感陪伴",
+          "个性化"
+        ]
+      },
+      "country": "美国",
+      "company": "N/A",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "个人 AI 助手",
+        "生活助手"
+      ]
+    },
+    "seo": {
+      "title": "Macaron - 世界首个个人 AI 智能体",
+      "keywords": [
+        "Macaron",
+        "个人 AI",
+        "生活助手",
+        "深度记忆",
+        "情感陪伴"
+      ],
+      "description": "世界首个个人 AI 智能体，一句话生成专属工具，管理日常生活"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nMacaron 是全球首款个人 AI 助手，它不是让你工作更努力，而是帮助你生活得更好。\n\n## 主要特点\n- 真正独特的个人体验：通过个性化测试和深度记忆功能\n- 真实解决方案：构建你实际需要的日常生活工具\n- 情感陪伴：像朋友一样记住你的喜好和经历\n\n## 技术实力\n- 自主研发的强化学习（RL）平台\n- 支持高达 1 万亿参数的 LLM 模型\n- 高效低成本的运行架构"
+  },
+  {
+    "uid": "20022000",
+    "slug": "glm-pc",
+    "sort": 22,
+    "logo": "/agents-favicons/20022000.ico",
+    "aiProductName": "GLM-PC",
+    "introduction": "智谱 AI 推出的电脑智能体，具备视觉理解和任务规划能力",
+    "websiteUrl": "https://cogagent.aminer.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "电脑智能体",
+          "视觉理解",
+          "任务规划",
+          "GLM 模型",
+          "AI 助手"
+        ]
+      },
+      "country": "中国",
+      "company": "北京智谱华章科技股份有限公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "电脑智能体",
+        "视觉理解"
+      ]
+    },
+    "seo": {
+      "title": "GLM-PC - 智谱 AI 电脑智能体",
+      "keywords": [
+        "GLM-PC",
+        "智谱 AI",
+        "电脑智能体",
+        "视觉理解",
+        "任务规划"
+      ],
+      "description": "智谱 AI 推出的电脑智能体，具备视觉理解和任务规划能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nGLM-PC 是智谱 AI 推出的电脑智能体，具备视觉理解和任务规划能力。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20023000",
+    "slug": "qoderwork",
+    "sort": 23,
+    "logo": "/agents-favicons/20023000.svg",
+    "aiProductName": "QoderWork",
+    "introduction": "QoderWork 是一款桌面端智能代理助手，支持自然语言交互，可自动执行文件整理、数据分析、文档生成等任务。",
+    "websiteUrl": "https://qoder.com/qoderwork",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "AI 代理",
+          "桌面助手",
+          "浏览器自动化",
+          "文件处理",
+          "数据分析",
+          "文档生成"
+        ]
+      },
+      "country": "新加坡",
+      "company": "BRIGHT ZENITH PRIVATE LIMITED",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 代理",
+        "桌面助手",
+        "浏览器自动化"
+      ]
+    },
+    "seo": {
+      "title": "QoderWork - 桌面端智能代理助手",
+      "keywords": [
+        "QoderWork",
+        "AI 代理",
+        "桌面助手",
+        "浏览器自动化",
+        "数据分析"
+      ],
+      "description": "QoderWork 是一款桌面端智能代理助手，支持自然语言交互，可自动执行文件整理、数据分析等任务。"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nQoderWork Desktop 是一款桌面端智能代理助手。\n\n## 核心功能\n- 自然语言交互：描述需求，QoderWork 自动规划、执行并交付结果\n- 浏览器自动化：内置网页浏览和数据抓取能力\n- 多格式输出：直接生成 Word/Excel/PPT/PDF 等专业格式文件\n- AI 图像生成：内置 AI 绘图功能\n- 技能市场：支持扩展技能\n\n## 应用场景\n- 用户研究：分析 Reddit 讨论（2-3 天 → 16 分钟）\n- 教育动画：自动生成算法演示视频（1.5 天 → 5 分钟）\n- 销售数据分析：识别产品趋势（30-60 分钟 → 8 分钟）\n\n## 安全特性\n- 本地优先：仅访问用户明确授权的文件夹\n- 文件恢复：删除文件进入恢复区，可随时还原"
+  },
+  {
+    "uid": "20024000",
+    "slug": "operator",
+    "sort": 24,
+    "logo": "/default.png",
+    "aiProductName": "Operator",
+    "introduction": "OpenAI 推出的智能代理工具，能自动化浏览网页执行任务",
+    "websiteUrl": "https://openai.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "浏览器自动化",
+        "tags": [
+          "AI 代理",
+          "浏览器自动化",
+          "任务执行",
+          "OpenAI"
+        ]
+      },
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 代理",
+        "浏览器自动化"
+      ]
+    },
+    "seo": {
+      "title": "Operator - OpenAI 智能代理工具",
+      "keywords": [
+        "Operator",
+        "OpenAI",
+        "AI 代理",
+        "浏览器自动化",
+        "任务执行"
+      ],
+      "description": "OpenAI 推出的智能代理工具，能自动化浏览网页执行任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOperator 是 OpenAI 推出的智能代理工具，能自动化浏览网页执行任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20025000",
+    "slug": "autogpt",
+    "sort": 25,
+    "logo": "/default.png",
+    "aiProductName": "AutoGPT",
+    "introduction": "基于 GPT-4 的开源自主 AI 机器人，能自主分析和执行任务",
+    "websiteUrl": "https://github.com/torantulino/auto-gpt",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "开源框架",
+        "tags": [
+          "开源",
+          "AI 自主执行",
+          "GPT-4",
+          "任务自动化",
+          "Python"
+        ]
+      },
+      "country": "美国",
+      "company": "N/A (开源项目)",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "开源",
+        "AI 自主执行"
+      ]
+    },
+    "seo": {
+      "title": "AutoGPT - 基于 GPT-4 的开源自主 AI",
+      "keywords": [
+        "AutoGPT",
+        "开源",
+        "GPT-4",
+        "AI 自主执行",
+        "任务自动化"
+      ],
+      "description": "基于 GPT-4 的开源自主 AI 机器人，能自主分析和执行任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAutoGPT 是基于 GPT-4 的开源自主 AI 机器人，能自主分析和执行任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20026000",
+    "slug": "arkclaw",
+    "sort": 26,
+    "logo": "/agents-favicons/20026000.png",
+    "aiProductName": "ArkClaw",
+    "introduction": "火山引擎推出的云端 AI 智能体服务，一键云端部署 OpenClaw",
+    "websiteUrl": "https://www.volcengine.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "云服务",
+        "tags": [
+          "AI 智能体",
+          "OpenClaw",
+          "云服务",
+          "火山引擎",
+          "云端部署"
+        ]
+      },
+      "country": "中国",
+      "company": "火山引擎",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 智能体",
+        "云服务"
+      ]
+    },
+    "seo": {
+      "title": "ArkClaw - 火山引擎云端 AI 智能体",
+      "keywords": [
+        "ArkClaw",
+        "火山引擎",
+        "AI 智能体",
+        "OpenClaw",
+        "云服务"
+      ],
+      "description": "火山引擎推出的云端 AI 智能体服务，一键云端部署 OpenClaw"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nArkClaw 是火山引擎推出的云端 AI 智能体服务，一键云端部署 OpenClaw。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20027000",
+    "slug": "easyclaw",
+    "sort": 27,
+    "logo": "/agents-favicons/20027000.png",
+    "aiProductName": "EasyClaw",
+    "introduction": "基于 OpenClaw 框架的 AI 桌面助手，一键安装、零配置、无需 API 密钥，可原生驱动系统和 Web 应用。",
+    "websiteUrl": "https://easyclaw.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "AI 助手",
+          "桌面自动化",
+          "零配置",
+          "隐私保护",
+          "跨平台",
+          "远程控制"
+        ]
+      },
+      "country": "新加坡",
+      "company": "DOCUAGILE PTE. LTD.",
+      "useType": [
+        "desktop",
+        "mobile"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "桌面自动化",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "EasyClaw - 零配置 AI 桌面助手",
+      "keywords": [
+        "EasyClaw",
+        "AI 助手",
+        "桌面自动化",
+        "零配置",
+        "OpenClaw"
+      ],
+      "description": "基于 OpenClaw 框架的 AI 桌面助手，一键安装、零配置、无需 API 密钥"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nEasyClaw 是基于 OpenClaw 框架的 AI 桌面助手。\n\n## 核心特性\n- 隐私优先：AI 功能通过安全云连接处理，自动化动作本地执行\n- 桌面原生：像人类一样与系统级 UI 和 Web 应用交互\n- 零配置：真正的即插即用，无需 Python、Docker 或脚本\n\n## 多端控制\n通过手机应用（支持 WhatsApp、Telegram、Discord、Slack、飞书）远程控制电脑。\n\n## 应用场景\n- 办公自动化：实时翻译、邮件管理、文档摘要\n- 生活服务：价格比较、旅行预订、智能食谱\n- 开发运维：代码审查、数据清洗、备份自动化"
+  },
+  {
+    "uid": "20028000",
+    "slug": "copaw",
+    "sort": 28,
+    "logo": "/agents-favicons/20028000.svg",
+    "aiProductName": "CoPaw",
+    "introduction": "阿里云 AgentScope 团队开源的个人 AI 助理，支持多平台接入",
+    "websiteUrl": "https://copaw.agentscope.io/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "个人助手",
+        "tags": [
+          "多智能体协作",
+          "AgentScope",
+          "工作流引擎",
+          "可视化编程",
+          "开源",
+          "个人 AI 助理"
+        ]
+      },
+      "country": "中国",
+      "company": "阿里巴巴集团",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "多智能体协作",
+        "开源",
+        "AgentScope"
+      ]
+    },
+    "seo": {
+      "title": "CoPaw - 阿里云 AgentScope 个人 AI 助理",
+      "keywords": [
+        "CoPaw",
+        "AgentScope",
+        "阿里云",
+        "个人 AI",
+        "多智能体"
+      ],
+      "description": "阿里云 AgentScope 团队开源的个人 AI 助理，支持多平台接入"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nCoPaw (Collaborative Pattern Workshop) 是一个基于 AgentScope 框架的协作模式工作坊平台。\n\n## 核心功能\n- 可视化工作流设计：通过拖拽方式设计多智能体协作流程\n- 模式库管理：支持协作模式的存储、复用和分享\n- 实时协作：支持多人同时编辑和调试工作流\n- 智能体编排：灵活配置不同类型的智能体角色和职责\n\n## 技术特点\n- 基于 AgentScope 分布式架构\n- 支持 WebSocket 实时通信\n- 提供 RESTful API 接口"
+  },
+  {
+    "uid": "20029000",
+    "slug": "owl",
+    "sort": 29,
+    "logo": "/default.png",
+    "aiProductName": "OWL",
+    "introduction": "CAMEL-AI 开源的通用多智能体项目，支持任务规划和跨平台控制，在 GAIA 基准测试中取得 69.09 分。",
+    "websiteUrl": "https://github.com/camel-ai/owl",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "多智能体框架",
+        "tags": [
+          "多智能体系统",
+          "任务自动化",
+          "人工智能",
+          "AI 协作",
+          "开源框架",
+          "GAIA 基准"
+        ]
+      },
+      "country": "美国",
+      "company": "CAMEL-AI",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "多智能体系统",
+        "开源框架",
+        "GAIA 基准"
+      ]
+    },
+    "seo": {
+      "title": "OWL - CAMEL-AI 多智能体协作框架",
+      "keywords": [
+        "OWL",
+        "CAMEL-AI",
+        "多智能体",
+        "任务自动化",
+        "开源框架",
+        "GAIA"
+      ],
+      "description": "CAMEL-AI 开源的通用多智能体项目，GAIA 基准测试 69.09 分，开源框架排名第一"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOWL 是一个用于多智能体协作的尖端框架，推动了任务自动化的边界。\n\n## 核心成就\n- GAIA 基准测试：69.09 平均分，开源框架中排名 #1\n- NeurIPS 2025 收录：论文已被 NeurIPS 2025 接受\n\n## 核心功能\n- 在线搜索：支持多种搜索引擎（Wikipedia、Google、DuckDuckGo、百度等）\n- 多模态处理：支持处理网络或本地视频、图像和音频数据\n- 浏览器自动化：使用 Playwright 框架模拟浏览器交互\n- 文档解析：从 Word、Excel、PDF、PowerPoint 提取内容\n- 代码执行：使用解释器编写和执行 Python 代码\n- 内置工具包：MCP、ArxivToolkit、CodeExecutionToolkit、SearchToolkit 等\n\n## 支持模型\nOpenAI、Claude、Qwen、DeepSeek、Gemini、Azure OpenAI、Ollama 等"
+  },
+  {
+    "uid": "20030000",
+    "slug": "autodev",
+    "sort": 30,
+    "logo": "/agents-favicons/20030000.ico",
+    "aiProductName": "AutoDev",
+    "introduction": "微软发布的 AI 编程和软件开发智能体框架，能自主完成软件工程任务",
+    "websiteUrl": "https://arxiv.org/pdf/2403.08299.pdf",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "研究框架",
+        "tags": [
+          "AI 编程",
+          "软件开发",
+          "智能体框架",
+          "学术研究",
+          "微软"
+        ]
+      },
+      "country": "美国",
+      "company": "微软 (Microsoft)",
+      "useType": [
+        "research"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "N/A"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 编程",
+        "研究框架"
+      ]
+    },
+    "seo": {
+      "title": "AutoDev - 微软 AI 编程智能体框架",
+      "keywords": [
+        "AutoDev",
+        "微软",
+        "AI 编程",
+        "软件开发",
+        "智能体框架"
+      ],
+      "description": "微软发布的 AI 编程和软件开发智能体框架，能自主完成软件工程任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAutoDev 是微软发布的 AI 编程和软件开发智能体框架，能自主完成软件工程任务。这是一个学术研究项目，相关论文发布在 arXiv 平台（编号 2403.08299）。"
+  },
+  {
+    "uid": "20031000",
+    "slug": "lobsterai",
+    "sort": 31,
+    "logo": "/agents-favicons/20031000.ico",
+    "aiProductName": "LobsterAI (有道龙虾)",
+    "introduction": "网易有道推出的全场景个人助理 Agent，能在本地沙箱中自主操作电脑",
+    "websiteUrl": "https://lobsterai.youdao.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "个人助手",
+        "tags": [
+          "AI 助理",
+          "个人助理",
+          "本地沙箱",
+          "任务自动化",
+          "网易有道"
+        ]
+      },
+      "country": "中国",
+      "company": "网易有道",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助理",
+        "个人助理"
+      ]
+    },
+    "seo": {
+      "title": "LobsterAI (有道龙虾) - 网易有道全场景个人助理",
+      "keywords": [
+        "LobsterAI",
+        "有道龙虾",
+        "网易有道",
+        "个人助理",
+        "AI Agent"
+      ],
+      "description": "网易有道推出的全场景个人助理 Agent，能在本地沙箱中自主操作电脑"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nLobsterAI (有道龙虾) 是网易有道推出的全场景个人助理 Agent，能在本地沙箱中自主操作电脑。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20032000",
+    "slug": "tongyi-lingma",
+    "sort": 32,
+    "logo": "/agents-favicons/20032000.png",
+    "aiProductName": "通义灵码 AI 程序员",
+    "introduction": "阿里云推出的 AI 编程辅助智能体，具备自主理解需求、代码生成等能力",
+    "websiteUrl": "https://lingma.aliyun.com/lingma",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "编程辅助",
+        "tags": [
+          "AI 编程",
+          "代码生成",
+          "编程辅助",
+          "阿里云",
+          "通义大模型"
+        ]
+      },
+      "country": "中国",
+      "company": "阿里巴巴集团",
+      "useType": [
+        "desktop",
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 编程",
+        "编程辅助"
+      ]
+    },
+    "seo": {
+      "title": "通义灵码 AI 程序员 - 阿里云编程辅助智能体",
+      "keywords": [
+        "通义灵码",
+        "阿里云",
+        "AI 编程",
+        "代码生成",
+        "编程辅助"
+      ],
+      "description": "阿里云推出的 AI 编程辅助智能体，具备自主理解需求、代码生成等能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n通义灵码 AI 程序员是阿里云推出的 AI 编程辅助智能体，具备自主理解需求、代码生成等能力。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20033000",
+    "slug": "data-agent",
+    "sort": 33,
+    "logo": "/agents-favicons/20033000.png",
+    "aiProductName": "Data Agent",
+    "introduction": "火山引擎推出的企业级 AI 数据智能体，能主动思考拆解数据任务",
+    "websiteUrl": "https://www.volcengine.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "数据分析",
+        "tags": [
+          "AI 数据",
+          "数据分析",
+          "企业级",
+          "火山引擎",
+          "智能体"
+        ]
+      },
+      "country": "中国",
+      "company": "火山引擎",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 数据",
+        "企业级"
+      ]
+    },
+    "seo": {
+      "title": "Data Agent - 火山引擎企业级 AI 数据智能体",
+      "keywords": [
+        "Data Agent",
+        "火山引擎",
+        "AI 数据",
+        "数据分析",
+        "企业级"
+      ],
+      "description": "火山引擎推出的企业级 AI 数据智能体，能主动思考拆解数据任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nData Agent 是火山引擎推出的企业级 AI 数据智能体，能主动思考拆解数据任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20034000",
+    "slug": "xinxiang-app",
+    "sort": 34,
+    "logo": "/agents-favicons/20034000.ico",
+    "aiProductName": "心响 App",
+    "introduction": "百度推出的手机端超级智能体应用，采用多智能体协同架构",
+    "websiteUrl": "https://www.baidu.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "移动助手",
+        "tags": [
+          "搜索引擎",
+          "中文搜索",
+          "互联网",
+          "信息服务",
+          "人工智能",
+          "百度"
+        ]
+      },
+      "country": "中国",
+      "company": "百度公司",
+      "useType": [
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "移动应用"
+      ]
+    },
+    "seo": {
+      "title": "心响 App - 百度手机端超级智能体",
+      "keywords": [
+        "心响 App",
+        "百度",
+        "超级智能体",
+        "多智能体",
+        "移动助手"
+      ],
+      "description": "百度推出的手机端超级智能体应用，采用多智能体协同架构"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n心响 App 是百度推出的手机端超级智能体应用，采用多智能体协同架构。\n\n## 百度简介\n百度是全球最大的中文搜索引擎，成立于 2000 年，总部位于中国北京。\n\n### 核心功能\n- 网页搜索：海量中文网页索引\n- 新闻搜索：实时新闻资讯\n- 图片搜索：亿级图片资源\n- 视频搜索：全网视频聚合\n- 地图服务：精准定位导航\n- 云服务：百度网盘、百度云等"
+  },
+  {
+    "uid": "20035000",
+    "slug": "openmaic",
+    "sort": 35,
+    "logo": "/agents-favicons/20035000.ico",
+    "aiProductName": "OpenMAIC",
+    "introduction": "清华大学团队开源的多智能体 AI 互动课堂平台，提供编程、科学、数学、趣味等多学科精选课程。",
+    "websiteUrl": "https://open.maic.chat",
+    "metrics": {
+      "productType": {
+        "level1": "教育工具",
+        "level2": "在线学习",
+        "tags": [
+          "AI 教育",
+          "多代理系统",
+          "互动课堂",
+          "生成式学习",
+          "开源项目",
+          "在线课程"
+        ]
+      },
+      "country": "中国",
+      "company": "清华大学团队",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 教育",
+        "多代理系统",
+        "开源"
+      ]
+    },
+    "seo": {
+      "title": "OpenMAIC - 多代理互动课堂生成式学习平台",
+      "keywords": [
+        "OpenMAIC",
+        "AI 教育",
+        "多代理系统",
+        "互动课堂",
+        "生成式学习",
+        "清华大学"
+      ],
+      "description": "清华大学团队开源的多智能体 AI 互动课堂平台，提供多学科精选课程"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOpenMAIC 多代理互动课堂（Multi-Agent Interactive Classroom）AI 教育平台，提供编程、科学、数学、趣味等多学科精选课程，支持生成式学习体验。\n\n### 平台特色\n- 生成式学习：基于多代理技术的互动式学习体验\n- 多学科覆盖：编程、科学、数学、趣味等课程类别\n- AI 辅助教学：甲木老师等 AI 导师引导学习\n\n### 精选课程\n- 编程类：OpenCLAW 介绍与部署\n- 趣味类：个人所得税汇算清缴、阿瓦隆桌游入门\n- 科学类：花朵分类、牛顿第三定律与火箭方程\n- 数学类：分数的概念、泰勒公式讲解"
+  },
+  {
+    "uid": "20036000",
+    "slug": "codex-cli",
+    "sort": 36,
+    "logo": "/default.png",
+    "aiProductName": "Codex CLI",
+    "introduction": "Codex CLI 是 OpenAI 推出的轻量级编程代理工具，可在终端中本地运行，帮助开发者自动化完成编码任务。",
+    "websiteUrl": "https://github.com/openai/codex",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "命令行工具",
+        "tags": [
+          "编程代理",
+          "终端工具",
+          "OpenAI",
+          "自动化编码",
+          "Rust",
+          "开源工具"
+        ]
+      },
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": [
+        "cli"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "编程代理",
+        "终端工具",
+        "OpenAI"
+      ]
+    },
+    "seo": {
+      "title": "Codex CLI - OpenAI 轻量级编程代理工具",
+      "keywords": [
+        "Codex CLI",
+        "OpenAI",
+        "编程代理",
+        "终端工具",
+        "自动化编码"
+      ],
+      "description": "OpenAI 推出的轻量级编程代理工具，可在终端中本地运行，自动化完成编码任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nCodex CLI 是一个来自 OpenAI 的编程代理工具，可在您的计算机本地运行。\n\n### 主要特性\n- 终端运行：轻量级编码代理，直接在终端中运行\n- 多种安装方式：支持 npm、Homebrew 或直接下载二进制文件\n- ChatGPT 集成：可使用 ChatGPT Plus、Pro、Team、Edu 或 Enterprise 计划\n- 跨平台支持：支持 macOS (Apple Silicon/x86_64) 和 Linux (x86_64/arm64)\n\n### 技术栈\n- Rust (95.6%)\n- Python (2.3%)\n- TypeScript (1.3%)\n- JavaScript (0.3%)\n\n### 开源信息\n- 许可证：Apache-2.0\n- Stars: 67.1k+\n- Forks: 9k+"
+  },
+  {
+    "uid": "20037000",
+    "slug": "autoglm-research",
+    "sort": 37,
+    "logo": "/agents-favicons/20037000.png",
+    "aiProductName": "AutoGLM 沉思",
+    "introduction": "智谱 AI 推出的自主智能体应用，具备类人推理和行动能力",
+    "websiteUrl": "https://autoglm-research.zhipuai.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "研究分析",
+        "tags": [
+          "AI 研究",
+          "自主智能体",
+          "推理能力",
+          "智谱 AI",
+          "报告生成"
+        ]
+      },
+      "country": "中国",
+      "company": "北京智谱华章科技股份有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 研究",
+        "自主智能体"
+      ]
+    },
+    "seo": {
+      "title": "AutoGLM 沉思 - 智谱 AI 自主智能体应用",
+      "keywords": [
+        "AutoGLM 沉思",
+        "智谱 AI",
+        "自主智能体",
+        "推理能力",
+        "报告生成"
+      ],
+      "description": "智谱 AI 推出的自主智能体应用，具备类人推理和行动能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAutoGLM 沉思是智谱 AI 推出的自主智能体应用，具备类人推理和行动能力。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20038000",
+    "slug": "minimax-agent",
+    "sort": 38,
+    "logo": "/default.png",
+    "aiProductName": "MiniMax Agent",
+    "introduction": "MiniMax 推出的 AI 通用智能体，可完成长程复杂任务，支持多步规划",
+    "websiteUrl": "https://agent.minimax.io/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "任务自动化",
+        "tags": [
+          "AI 智能体",
+          "通用智能体",
+          "任务规划",
+          "长程任务",
+          "MiniMax"
+        ]
+      },
+      "country": "中国",
+      "company": "MiniMax",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 智能体",
+        "通用智能体"
+      ]
+    },
+    "seo": {
+      "title": "MiniMax Agent - MiniMax AI 通用智能体",
+      "keywords": [
+        "MiniMax Agent",
+        "MiniMax",
+        "AI 智能体",
+        "通用智能体",
+        "任务规划"
+      ],
+      "description": "MiniMax 推出的 AI 通用智能体，可完成长程复杂任务，支持多步规划"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nMiniMax Agent 是 MiniMax 推出的 AI 通用智能体，可完成长程复杂任务，支持多步规划。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20039000",
+    "slug": "project-astra",
+    "sort": 39,
+    "logo": "/agents-favicons/20039000.ico",
+    "aiProductName": "Project Astra",
+    "introduction": "Project Astra 是 Google DeepMind 研发的原型 AI 助手，探索突破性功能，旨在构建通用人工智能助手。",
+    "websiteUrl": "https://deepmind.google/technologies/project-astra/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "多模态交互",
+          "Google DeepMind",
+          "视觉理解",
+          "个性化 AI",
+          "无障碍技术"
+        ]
+      },
+      "country": "美国",
+      "company": "Google DeepMind",
+      "useType": [
+        "mobile"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "N/A"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "多模态交互",
+        "Google DeepMind"
+      ]
+    },
+    "seo": {
+      "title": "Project Astra - Google DeepMind 通用 AI 助手",
+      "keywords": [
+        "Project Astra",
+        "Google DeepMind",
+        "AI 助手",
+        "多模态交互",
+        "视觉理解"
+      ],
+      "description": "Google DeepMind 研发的原型 AI 助手，探索突破性功能，旨在构建通用人工智能助手"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nProject Astra 是 Google DeepMind 的研究原型，正在探索为 Google 产品带来突破性功能，是构建通用 AI 助手的重要一步。\n\n### 核心功能\n\n#### 1. 自然交互\n- 改进的音频输入输出，支持跨语言流畅沟通\n- 生成内容速度显著快于以往最快的模型\n- 无中断、无延迟的对话体验\n\n#### 2. 主动响应\n- 直观地发起对话，即时响应\n- 情境感知对话，忽略背景干扰\n\n#### 3. 行动智能\n- Agent 高亮：理解上下文中的物体，用屏幕高亮显示重要内容\n- 工具使用：使用 Search、Gmail、Calendar、Maps 等工具完成任务\n\n#### 4. 智能个性化\n- 个性化推理：利用深度推理和记忆理解用户偏好\n- 内容检索：检索 PDF 手册、食谱等内容提供定制帮助\n- 多模态记忆：整合不同类型数据，记住过往交互细节\n\n### 跨设备支持\n- 移动端：Android 手机，支持摄像头和屏幕共享\n- 眼镜：原型眼镜，提供更沉浸式体验\n- 跨设备记忆：切换设备可继续同一对话"
+  },
+  {
+    "uid": "20040000",
+    "slug": "smolagents",
+    "sort": 40,
+    "logo": "/agents-favicons/20040000.png",
+    "aiProductName": "Smolagents",
+    "introduction": "Smolagents 是由 Hugging Face 团队开发的极简主义 AI 代理框架，仅需几行代码即可部署强大的 AI 代理。",
+    "websiteUrl": "https://smolagents.org/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 框架",
+        "tags": [
+          "AI Agent",
+          "Hugging Face",
+          "代码代理",
+          "大语言模型",
+          "Python 框架",
+          "开源工具"
+        ]
+      },
+      "country": "美国",
+      "company": "Hugging Face Inc.",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI Agent",
+        "Hugging Face",
+        "代码代理"
+      ]
+    },
+    "seo": {
+      "title": "Smolagents - Hugging Face 极简 AI 代理框架",
+      "keywords": [
+        "Smolagents",
+        "Hugging Face",
+        "AI Agent",
+        "代码代理",
+        "Python 框架"
+      ],
+      "description": "Hugging Face 团队开发的极简主义 AI 代理框架，仅需几行代码即可部署强大的 AI 代理"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nSmolagents 是由 Hugging Face 团队开发的极简主义 AI 代理框架。\n\n### 核心特性\n- 极简设计：核心代码仅约 1000 行，抽象最少\n- 代码代理：代理编写并执行 Python 代码片段\n- 高效执行：相比标准工具调用方法，减少约 30% 的步骤和 LLM 调用\n- 安全执行：支持 E2B 沙箱环境进行隔离代码执行\n- 多模型支持：无缝集成 Hugging Face Hub、OpenAI、Anthropic 等模型\n\n### 快速开始\n```python\nfrom smolagents import CodeAgent, DuckDuckGoSearchTool, HfApiModel\nagent = CodeAgent(tools=[DuckDuckGoSearchTool()], model=HfApiModel())\nagent.run(\"Your task here\")\n```"
+  },
+  {
+    "uid": "20041000",
+    "slug": "codex",
+    "sort": 41,
+    "logo": "/default.png",
+    "aiProductName": "Codex",
+    "introduction": "OpenAI 推出的云端软件工程智能体，可在沙箱环境中并行处理多个编程任务",
+    "websiteUrl": "https://chatgpt.com/codex",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "编程辅助",
+        "tags": [
+          "AI 编程",
+          "软件工程",
+          "OpenAI",
+          "沙箱环境",
+          "并行处理"
+        ]
+      },
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 编程",
+        "软件工程"
+      ]
+    },
+    "seo": {
+      "title": "Codex - OpenAI 云端软件工程智能体",
+      "keywords": [
+        "Codex",
+        "OpenAI",
+        "AI 编程",
+        "软件工程",
+        "沙箱环境"
+      ],
+      "description": "OpenAI 推出的云端软件工程智能体，可在沙箱环境中并行处理多个编程任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nCodex 是 OpenAI 推出的云端软件工程智能体，可在沙箱环境中并行处理多个编程任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20042000",
+    "slug": "pippit-ai",
+    "sort": 42,
+    "logo": "/agents-favicons/20042000.ico",
+    "aiProductName": "Pippit AI",
+    "introduction": "字节跳动 CapCut 推出的智能内容创作平台，具备自动化内容生成、智能发布和数据分析能力。",
+    "websiteUrl": "https://pippit.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "短视频创作",
+        "tags": [
+          "短剧生成",
+          "AI 创作",
+          "内容制作",
+          "Seedance2.0",
+          "爆款成片",
+          "一站式助手"
+        ]
+      },
+      "country": "中国",
+      "company": "深圳市脸萌科技有限公司",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "短剧生成",
+        "AI 创作",
+        "内容制作"
+      ]
+    },
+    "seo": {
+      "title": "Pippit AI - 字节跳动智能内容创作平台",
+      "keywords": [
+        "Pippit AI",
+        "字节跳动",
+        "CapCut",
+        "内容创作",
+        "短剧生成"
+      ],
+      "description": "字节跳动 CapCut 推出的智能内容创作平台，具备自动化内容生成、智能发布和数据分析能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nPippit AI (Seedance2.0 短剧 Agent) 是全球首个短剧生成 Agent，打造爆款内容的一站式创作助手。\n\n### 核心功能\n- 一句话生成完整短剧\n- 一站式内容创作\n- 快速成片\n\n### 使用方式\n- Android App\n- iOS App\n- 网页版"
+  },
+  {
+    "uid": "20043000",
+    "slug": "kimi-researcher",
+    "sort": 43,
+    "logo": "/agents-favicons/20043000.ico",
+    "aiProductName": "Kimi-Researcher",
+    "introduction": "月之暗面推出的深度研究 AI 助手，能够理解问题、主动搜索信息、调用工具并生成深度研究报告。",
+    "websiteUrl": "https://kimi.com",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "研究分析",
+        "tags": [
+          "AI 助手",
+          "智能对话",
+          "文档处理",
+          "深度研究",
+          "Agent 集群",
+          "月之暗面"
+        ]
+      },
+      "country": "中国",
+      "company": "北京月之暗面科技有限公司",
+      "useType": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "深度研究",
+        "Agent 集群"
+      ]
+    },
+    "seo": {
+      "title": "Kimi-Researcher - 月之暗面深度研究 AI 助手",
+      "keywords": [
+        "Kimi-Researcher",
+        "Kimi",
+        "月之暗面",
+        "深度研究",
+        "AI 助手"
+      ],
+      "description": "月之暗面推出的深度研究 AI 助手，能够理解问题、主动搜索信息、调用工具并生成深度研究报告"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nKimi 是由北京月之暗面科技有限公司开发的智能助手。\n\n### 主要功能\n- 网站：支持网页内容分析与处理\n- 文档：文档阅读与理解\n- PPT：演示文稿处理\n- 表格：表格数据分析\n- 深度研究：深度内容研究功能\n- Agent 集群 (Beta)：智能体集群协作功能\n\n### 产品版本\n- Kimi Code\n- Kimi Claw\n\n### 平台支持\n- 网页版\n- 手机应用\n- 电脑版客户端"
+  },
+  {
+    "uid": "20044000",
+    "slug": "chatgpt-agent",
+    "sort": 44,
+    "logo": "/default.png",
+    "aiProductName": "ChatGPT Agent",
+    "introduction": "OpenAI 推出的具备自主思考与行动能力的 AI 工具，能够在虚拟计算机环境中自主执行复杂的多步骤任务",
+    "websiteUrl": "https://chatgpt.com",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "通用助手",
+        "tags": [
+          "AI 助手",
+          "自主思考",
+          "任务执行",
+          "OpenAI",
+          "虚拟计算机"
+        ]
+      },
+      "country": "美国",
+      "company": "OpenAI",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "自主思考"
+      ]
+    },
+    "seo": {
+      "title": "ChatGPT Agent - OpenAI 自主思考 AI 工具",
+      "keywords": [
+        "ChatGPT Agent",
+        "OpenAI",
+        "AI 助手",
+        "自主思考",
+        "任务执行"
+      ],
+      "description": "OpenAI 推出的具备自主思考与行动能力的 AI 工具，能够在虚拟计算机环境中自主执行复杂任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nChatGPT Agent 是 OpenAI 推出的具备自主思考与行动能力的 AI 工具，能够在虚拟计算机环境中自主执行复杂的多步骤任务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20045000",
+    "slug": "nova-act",
+    "sort": 45,
+    "logo": "/agents-favicons/20045000.png",
+    "aiProductName": "Nova Act",
+    "introduction": "Amazon 推出的首个通用 AI 智能体产品，具备自动操控网页浏览器的能力",
+    "websiteUrl": "https://nova.amazon.com",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "浏览器自动化",
+        "tags": [
+          "AI 智能体",
+          "浏览器自动化",
+          "通用 AI",
+          "Amazon",
+          "任务执行"
+        ]
+      },
+      "country": "美国",
+      "company": "Amazon",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 智能体",
+        "浏览器自动化"
+      ]
+    },
+    "seo": {
+      "title": "Nova Act - Amazon 通用 AI 智能体",
+      "keywords": [
+        "Nova Act",
+        "Amazon",
+        "AI 智能体",
+        "浏览器自动化",
+        "通用 AI"
+      ],
+      "description": "Amazon 推出的首个通用 AI 智能体产品，具备自动操控网页浏览器的能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nNova Act 是 Amazon 推出的首个通用 AI 智能体产品，具备自动操控网页浏览器的能力。网站暂时无法访问（403 错误），信息来源于原始数据。"
+  },
+  {
+    "uid": "20046000",
+    "slug": "rabbitos-intern",
+    "sort": 46,
+    "logo": "/agents-favicons/20046000.png",
+    "aiProductName": "rabbitOS intern",
+    "introduction": "Rabbit OS Intern 是一款 AI 驱动的项目构建工具，只需输入需求，几分钟内即可创建交互式网站、专业 PDF、研究报告等。",
+    "websiteUrl": "https://www.rabbit.tech/rabbit-os",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "无代码开发",
+        "tags": [
+          "AI 助手",
+          "无代码开发",
+          "项目生成",
+          "Rabbit OS",
+          "自动化构建",
+          "创意工具"
+        ]
+      },
+      "country": "美国",
+      "company": "Rabbit Inc.",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "无代码开发"
+      ]
+    },
+    "seo": {
+      "title": "rabbitOS intern - AI 驱动的项目构建工具",
+      "keywords": [
+        "rabbitOS",
+        "intern",
+        "AI 助手",
+        "无代码开发",
+        "项目生成"
+      ],
+      "description": "Rabbit OS Intern 是一款 AI 驱动的项目构建工具，只需输入需求，几分钟内即可创建交互式网站、专业 PDF、研究报告等"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nRabbit OS Intern 是一款 AI 驱动的项目构建工具。\n\n### 核心能力\n- 快速创建项目：只需在提示框中输入项目详情，Intern 即可自动构建\n- 零代码要求：无需任何编程技能\n- 多样化输出：可创建交互式网站、专业设计 PDF、详细研究报告等\n\n### 应用场景\n- 项目管理工具、交互式学习网站、研究报告生成\n- 音乐制作工具、社交媒体图片比例转换\n- 婚礼策划场地搜索、公司财务分析\n- PDF 书籍转交互式网站、儿童教育游戏\n\n### 定价方案\n- 按量付费：$29.99，3 个任务，永不过期\n- 订阅制：$69.99/月（年付），每月 30 个任务"
+  },
+  {
+    "uid": "20047000",
+    "slug": "duclaw",
+    "sort": 47,
+    "logo": "/agents-favicons/20047000.ico",
+    "aiProductName": "DuClaw",
+    "introduction": "百度智能云推出的零部署 OpenClaw 服务，基于 OpenClaw 框架构建，可执行自动化任务和工具调用",
+    "websiteUrl": "https://cloud.baidu.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "云服务",
+        "tags": [
+          "大模型",
+          "AI 云服务",
+          "文心一言",
+          "企业智能化",
+          "Agent 开发",
+          "全模态"
+        ]
+      },
+      "country": "中国",
+      "company": "百度智能云",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "大模型",
+        "AI 云服务",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "DuClaw - 百度智能云零部署 OpenClaw 服务",
+      "keywords": [
+        "DuClaw",
+        "百度智能云",
+        "OpenClaw",
+        "AI 云服务",
+        "Agent 开发"
+      ],
+      "description": "百度智能云推出的零部署 OpenClaw 服务，基于 OpenClaw 框架构建，可执行自动化任务和工具调用"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nDuClaw 是百度智能云推出的零部署 OpenClaw 服务。\n\n## 百度智能云核心产品与服务\n\n### 大模型服务\n- 文心 5.0 正式版：原生全模态大模型\n- 百度千帆·大模型服务及 Agent 开发平台\n- 百度千帆·数据智能平台\n\n### AI 计算平台\n- 百度百舸·AI 计算平台 5.0\n- 百舸 DeepSeek 一体机\n\n### 热门产品\n- 云服务器 BCC、GPU 服务器、容器引擎\n- 对象存储、云磁盘、文件存储\n- 语音技术、人脸识别、智能文档分析"
+  },
+  {
+    "uid": "20048000",
+    "slug": "websailor",
+    "sort": 48,
+    "logo": "/default.png",
+    "aiProductName": "WebSailor",
+    "introduction": "阿里通义开源的网络智能体，具备强大的推理和检索能力",
+    "websiteUrl": "https://github.com/Alibaba-NLP/WebAgent",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "开源框架",
+        "tags": [
+          "网络智能体",
+          "开源",
+          "推理能力",
+          "检索能力",
+          "阿里通义"
+        ]
+      },
+      "country": "中国",
+      "company": "阿里巴巴集团",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "网络智能体",
+        "开源"
+      ]
+    },
+    "seo": {
+      "title": "WebSailor - 阿里通义开源网络智能体",
+      "keywords": [
+        "WebSailor",
+        "阿里通义",
+        "网络智能体",
+        "开源",
+        "推理能力"
+      ],
+      "description": "阿里通义开源的网络智能体，具备强大的推理和检索能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWebSailor 是阿里通义开源的网络智能体，具备强大的推理和检索能力。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20049000",
+    "slug": "openclaw",
+    "sort": 49,
+    "logo": "/agents-favicons/20049000.svg",
+    "aiProductName": "OpenClaw",
+    "introduction": "OpenClaw 是一款开源个人 AI 助手，可通过 WhatsApp、Telegram 等聊天应用控制，运行在用户自己的设备上。",
+    "websiteUrl": "https://openclaw.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "个人助手",
+        "tags": [
+          "AI 助手",
+          "开源",
+          "个人 AI",
+          "自动化",
+          "聊天机器人",
+          "自托管"
+        ]
+      },
+      "country": "美国",
+      "company": "Molty (独立项目)",
+      "useType": [
+        "desktop",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "开源",
+        "个人 AI"
+      ]
+    },
+    "seo": {
+      "title": "OpenClaw - 开源个人 AI 助手",
+      "keywords": [
+        "OpenClaw",
+        "开源",
+        "个人 AI",
+        "AI 助手",
+        "自动化",
+        "自托管"
+      ],
+      "description": "OpenClaw 是一款开源个人 AI 助手，可通过聊天应用控制，运行在用户自己的设备上"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOpenClaw 是一款开源个人 AI 助手。\n\n### 核心功能\n- 运行在你的设备上：支持 Mac、Windows、Linux，数据私有\n- 任意聊天应用：WhatsApp、Telegram、Discord、Slack、Signal、iMessage\n- 持久记忆：记住你的偏好和上下文\n- 浏览器控制：浏览网页、填写表单、提取数据\n- 完整系统访问：文件读写、执行命令和脚本\n- 技能与插件：可扩展社区技能或自建\n\n### 快速安装\n```bash\ncurl -fsSL https://openclaw.ai/install.sh | bash\n# 或 npm 安装\nnpm i -g openclaw\n```\n\n### 集成支持\n支持 50+ 集成：Claude、GPT、Spotify、Gmail、GitHub、Obsidian 等"
+  },
+  {
+    "uid": "20050000",
+    "slug": "doubao",
+    "sort": 50,
+    "logo": "/agents-favicons/20050000.png",
+    "aiProductName": "豆包 (Doubao)",
+    "introduction": "字节跳动推出的 AI 助手，具备多模态交互能力",
+    "websiteUrl": "https://www.doubao.com",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "多模态",
+          "字节跳动",
+          "智能对话",
+          "移动应用"
+        ]
+      },
+      "country": "中国",
+      "company": "北京抖音信息服务有限公司",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "多模态"
+      ]
+    },
+    "seo": {
+      "title": "豆包 (Doubao) - 字节跳动 AI 助手",
+      "keywords": [
+        "豆包",
+        "Doubao",
+        "字节跳动",
+        "AI 助手",
+        "多模态"
+      ],
+      "description": "字节跳动推出的 AI 助手，具备多模态交互能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n豆包 (Doubao) 是字节跳动推出的 AI 助手，具备多模态交互能力。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20051000",
+    "slug": "coze",
+    "sort": 51,
+    "logo": "/agents-favicons/20051000.ico",
+    "aiProductName": "扣子 (Coze)",
+    "introduction": "字节跳动旗下职场 AI 与一站式 AI 开发平台，提供开箱即用的 Agent 技能",
+    "websiteUrl": "https://www.coze.cn",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 开发平台",
+        "tags": [
+          "AI 开发平台",
+          "Agent 开发",
+          "字节跳动",
+          "职场 AI",
+          "一站式平台"
+        ]
+      },
+      "country": "中国",
+      "company": "北京抖音信息服务有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 开发平台",
+        "Agent 开发"
+      ]
+    },
+    "seo": {
+      "title": "扣子 (Coze) - 字节跳动一站式 AI 开发平台",
+      "keywords": [
+        "扣子",
+        "Coze",
+        "字节跳动",
+        "AI 开发平台",
+        "Agent 开发"
+      ],
+      "description": "字节跳动旗下职场 AI 与一站式 AI 开发平台，提供开箱即用的 Agent 技能"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n扣子 (Coze) 是字节跳动旗下职场 AI 与一站式 AI 开发平台，提供开箱即用的 Agent 技能。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20052000",
+    "slug": "pagepop",
+    "sort": 52,
+    "logo": "/default.png",
+    "aiProductName": "PagePop",
+    "introduction": "AI 驱动的内容创作工具，支持多种内容类型生成",
+    "websiteUrl": "https://data.pagepop.cn",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "内容生成",
+        "tags": [
+          "AI 创作",
+          "内容生成",
+          "自动化工具"
+        ]
+      },
+      "country": "中国",
+      "company": "N/A",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 创作",
+        "内容生成"
+      ]
+    },
+    "seo": {
+      "title": "PagePop - AI 驱动的内容创作工具",
+      "keywords": [
+        "PagePop",
+        "AI 创作",
+        "内容生成",
+        "自动化工具"
+      ],
+      "description": "AI 驱动的内容创作工具，支持多种内容类型生成"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nPagePop 是 AI 驱动的内容创作工具，支持多种内容类型生成。网站暂时无法访问（仅显示 Nginx 默认页面），信息来源于原始数据。"
+  },
+  {
+    "uid": "20053000",
+    "slug": "gaoding-agent",
+    "sort": 53,
+    "logo": "/agents-favicons/20053000.ico",
+    "aiProductName": "稿定 Agent",
+    "introduction": "一站式 AI 设计工具平台，提供图像生成、视频制作、电商海报、模特试穿、商品摄影等功能。",
+    "websiteUrl": "https://www.gaoding.art/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "设计工具",
+        "tags": [
+          "AI 设计",
+          "电商营销",
+          "图像生成",
+          "视频制作",
+          "模特试穿",
+          "海报设计"
+        ]
+      },
+      "country": "中国",
+      "company": "深圳田心网络科技有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 设计",
+        "电商营销",
+        "图像生成"
+      ]
+    },
+    "seo": {
+      "title": "稿定 Agent - 一站式 AI 设计工具平台",
+      "keywords": [
+        "稿定 Agent",
+        "AI 设计",
+        "电商营销",
+        "图像生成",
+        "视频制作",
+        "海报设计"
+      ],
+      "description": "一站式 AI 设计工具平台，提供图像生成、视频制作、电商海报、模特试穿、商品摄影等功能"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nGAODING.ART 是一站式 AI 设计工具平台。\n\n### 核心功能\n\n#### 图像生成\n- 高画质图像生成、一句话创意创作、Agent 模式智能生成\n\n#### 电商设计\n- 电商主图一键生成、AI 模特多件试穿、爆款营销海报生成\n- 商品场景融合、模特替换与姿势调整\n\n#### AI 视频\n- 卖点口播视频生成、智能环绕展示、商品创意营销视频\n\n#### 商品摄影\n- 360 度商品展示、多视图设计、0 成本商拍图、商品试戴/试穿\n\n#### 平面设计\n- 图片转真人、线稿转多风格、IP 图像转立体玩偶、配色海报生成\n\n#### 品牌&IP\n- Logo 视觉设计、产品包装设计、IP 多视角生成、手绘稿转 IP 形象"
+  },
+  {
+    "uid": "20054000",
+    "slug": "askmanyai",
+    "sort": 54,
+    "logo": "/agents-favicons/20054000.ico",
+    "aiProductName": "AskManyAI",
+    "introduction": "全能的 AI 聊天机器人和 Agent 平台，由世界顶级大语言模型驱动",
+    "websiteUrl": "https://www.askmanyai.cn",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 聊天机器人",
+          "Agent 平台",
+          "大语言模型",
+          "生产力工具"
+        ]
+      },
+      "country": "中国",
+      "company": "N/A",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 聊天机器人",
+        "Agent 平台"
+      ]
+    },
+    "seo": {
+      "title": "AskManyAI - 全能 AI 聊天机器人和 Agent 平台",
+      "keywords": [
+        "AskManyAI",
+        "AI 聊天机器人",
+        "Agent 平台",
+        "大语言模型"
+      ],
+      "description": "全能的 AI 聊天机器人和 Agent 平台，由世界顶级大语言模型驱动"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAskManyAI 是一个多合一的 AI 聊天机器人和 Agent 平台，集成全球顶级大语言模型，帮助用户释放生产力潜能。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20055000",
+    "slug": "gilin-ai",
+    "sort": 55,
+    "logo": "/agents-favicons/20055000.png",
+    "aiProductName": "金灵 AI",
+    "introduction": "您的个人 AI 金融分析师，通过自然语言指令，解锁机构级的投资分析能力。",
+    "websiteUrl": "https://www.gilin.com.cn",
+    "metrics": {
+      "productType": {
+        "level1": "金融服务",
+        "level2": "投资分析",
+        "tags": [
+          "AI 金融分析师",
+          "投资分析",
+          "金融 AGENT",
+          "实时数据",
+          "智能投研"
+        ]
+      },
+      "country": "中国",
+      "company": "Ginlix AI",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 金融分析师",
+        "投资分析"
+      ]
+    },
+    "seo": {
+      "title": "金灵 AI - 个人 AI 金融分析师",
+      "keywords": [
+        "金灵 AI",
+        "AI 金融分析师",
+        "投资分析",
+        "金融 AGENT",
+        "智能投研"
+      ],
+      "description": "您的个人 AI 金融分析师，通过自然语言指令，解锁机构级的投资分析能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n金灵 AI 是您的个人 AI 金融分析师。\n\n### 核心优势\n- GROUNDED AGENT: 每一步推理都有事实根基，可追溯、可验证\n- TEMPORAL-AWARE CONTEXT: 以时间为核心的上下文工程\n- MULTI-MODAL FUSION: 实时行情×非结构化信息的统一决策表征\n- NARRATIVE-DRIVEN REASONING: 用叙事逻辑组织推理\n\n### 数据支持\n- 财报数据、股息分红、市场表现、技术指标\n- 内幕交易、基金数据、SEC 文件、实时行情\n- 新闻资讯、评级分析"
+  },
+  {
+    "uid": "20056000",
+    "slug": "aipyaipy",
+    "sort": 56,
+    "logo": "/agents-favicons/20056000.png",
+    "aiProductName": "爱派 AiPy",
+    "introduction": "AiPy 是 LLM 大模型+Python 程序的人工智能助手，能操作电脑、手机、服务器等设备自动完成任务。",
+    "websiteUrl": "https://www.aipyaipy.com",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "人工智能助手",
+          "LLM+Python",
+          "自动化任务",
+          "本地部署",
+          "开源免费",
+          "AI Agent"
+        ]
+      },
+      "country": "中国",
+      "company": "北京知道创宇信息技术股份有限公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "人工智能助手",
+        "LLM+Python",
+        "AI Agent"
+      ]
+    },
+    "seo": {
+      "title": "爱派 AiPy - LLM+Python 人工智能助手",
+      "keywords": [
+        "爱派",
+        "AiPy",
+        "人工智能助手",
+        "LLM+Python",
+        "自动化任务",
+        "AI Agent"
+      ],
+      "description": "AiPy 是 LLM 大模型+Python 程序的人工智能助手，能操作电脑、手机、服务器等设备自动完成任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAiPy（爱派）—— 最强人工智能助手\n\n### 核心理念\n- LLM 大模型 + Python 程序和生态 = 最强人工智能助手\n- Ai Think Do！让 AI 觉醒「战甲触手」\n\n### 主要功能\n1. 分析医院病情检查单 - 自动识别检查单照片，提取内容并分析指标\n2. 视频文件提取语音 - 调用本地开源语音识别模型，全自动分析视频\n3. 定时整理报告发邮件 - 自动生成报告内容，编写邮件脚本\n4. 控制手机刷抖音 - 自动连接手机，识别并打开 APP\n5. 用文字生成多音色语音 - 调用本地开源音色生成模型\n\n### 技术优势\n- 支持本地部署，数据处理完全在本地进行\n- 开源免费，用户只需承担大模型 API 调用费用\n- 支持多种大模型（DeepSeek、Ollama、LMStudio 等）\n- 跨平台支持：Windows、Mac、Linux 桌面版"
+  },
+  {
+    "uid": "20057000",
+    "slug": "wordware",
+    "sort": 57,
+    "logo": "/agents-favicons/20057000.png",
+    "aiProductName": "Wordware",
+    "introduction": "Wordware 是旧金山的 AI 上下文实验室，主打产品 Sauna 是一款智能工作助手，可学习用户偏好、发现隐藏模式、增强大脑上下文并主动工作。",
+    "websiteUrl": "https://www.wordware.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "生产力工具",
+        "tags": [
+          "AI 助手",
+          "生产力工具",
+          "上下文管理",
+          "深度工作",
+          "智能协作"
+        ]
+      },
+      "country": "美国",
+      "company": "Wordware",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "生产力工具",
+        "上下文管理"
+      ]
+    },
+    "seo": {
+      "title": "Wordware - AI 上下文实验室",
+      "keywords": [
+        "Wordware",
+        "AI 助手",
+        "生产力工具",
+        "上下文管理",
+        "Sauna"
+      ],
+      "description": "Wordware 是旧金山的 AI 上下文实验室，主打产品 Sauna 是一款智能工作助手"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWordware 是一个位于旧金山的 AI 上下文实验室，成立于 2023 年。\n\n### 核心理念\n- 坚信「文字是下一代编程语言」\n\n### 主要成就\n- 加入 Y Combinator\n- 获得 YC 历史上最大的种子轮融资（3000 万美元）\n- 成为 Product Hunt 史上 #1 产品发布\n\n### 核心产品：Sauna\nSauna 是一款为「累积上下文」打造的 AI 助手：\n- 学习你的品味和偏好\n- 检测隐藏模式\n- 增强你的大脑上下文\n- 主动工作，预测下一步\n- 消除繁琐工作，将待办事项变为已完成"
+  },
+  {
+    "uid": "20058000",
+    "slug": "evomap",
+    "sort": 58,
+    "logo": "/agents-favicons/20058000.svg",
+    "aiProductName": "EvoMap",
+    "introduction": "EvoMap 是 AI 自进化的开放基础设施，通过基因组进化协议 (GEP) 实现 AI 智能体之间的能力共享、验证和继承。",
+    "websiteUrl": "https://evomap.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 基础设施",
+        "tags": [
+          "AI 自进化",
+          "智能体协议",
+          "GEP",
+          "多智能体协作",
+          "知识图谱",
+          "开放基础设施"
+        ]
+      },
+      "country": "美国",
+      "company": "AutoGame Limited / EvoMap.AI",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 自进化",
+        "智能体协议",
+        "GEP"
+      ]
+    },
+    "seo": {
+      "title": "EvoMap - AI 自进化开放基础设施",
+      "keywords": [
+        "EvoMap",
+        "AI 自进化",
+        "智能体协议",
+        "GEP",
+        "多智能体协作",
+        "知识图谱"
+      ],
+      "description": "EvoMap 是 AI 自进化的开放基础设施，通过基因组进化协议实现 AI 智能体之间的能力共享、验证和继承"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nEvoMap 是 AI 自进化的开放基础设施。\n\n### 核心架构\n\n#### 协议层\n- GEP (Genome Evolution Protocol): 智能体到智能体的能力继承协议\n- A2A 连接：POST https://evomap.ai/a2a/hello（无需 API 密钥）\n\n#### 核心资产\n- Gene: 可复用的策略模板\n- Capsule: 带审计追踪的已验证修复方案\n\n#### 评分系统\n- GDI (Global Desirability Index): 按质量、使用量、社交信号、新鲜度对资产排名\n\n#### 主要功能\n- AI 智能体市场、知识图谱 (KG)、多智能体协作\n- 自主 AI 治理、沙箱测试环境"
+  },
+  {
+    "uid": "20059000",
+    "slug": "atoms",
+    "sort": 59,
+    "logo": "/agents-favicons/20059000.ico",
+    "aiProductName": "Atoms",
+    "introduction": "Atoms 是一个 AI 驱动的开发平台，可将您的想法转化为可销售的产品。通过多代理工作流，无需编码即可在几分钟内完成研究、规划、构建、测试和发布应用。",
+    "websiteUrl": "https://atoms.dev/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "无代码开发",
+        "tags": [
+          "AI 开发平台",
+          "无代码",
+          "多代理工作流",
+          "全栈应用",
+          "SEO 自动化",
+          "快速部署"
+        ]
+      },
+      "country": "美国",
+      "company": "MetaGPT",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 开发平台",
+        "无代码",
+        "多代理工作流"
+      ]
+    },
+    "seo": {
+      "title": "Atoms - AI 驱动的开发平台",
+      "keywords": [
+        "Atoms",
+        "AI 开发平台",
+        "无代码",
+        "多代理工作流",
+        "全栈应用",
+        "快速部署"
+      ],
+      "description": "Atoms 是一个 AI 驱动的开发平台，通过多代理工作流，无需编码即可在几分钟内完成应用开发"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAtoms 是一个 AI 驱动的开发平台。\n\n### AI 团队代理\n- Iris (Deep Researcher): 通过深度研究找到真实需求和细分市场\n- Bob (Architect): 设计系统蓝图，确保应用可扩展且可靠\n- Emma (Product Manager): 将想法转化为清晰的规格和范围\n- Mike (Team Leader): 端到端运行计划，协调各代理\n- Sarah (SEO Specialist): 快速发布 SEO 页面，自动化优化\n- Alex (Engineer): 构建生产就绪的全栈应用\n- David (Data Analyst): 分析数据，提供营销洞察\n\n### 主要特性\n- 可视化编辑器、开箱即用的后端\n- Race Mode: 跨多个模型运行提示\n- 即时 AI 集成、SEO 代理\n- 深度研究和主题\n\n### 适用场景\n- SaaS 应用、电子商务、内部工具、个人项目"
+  },
+  {
+    "uid": "20060000",
+    "slug": "ahacreator",
+    "sort": 60,
+    "logo": "/agents-favicons/20060000.ico",
+    "aiProductName": "AhaCreator",
+    "introduction": "AhaCreator 是一款 AI 原生的红人营销平台，帮助品牌在全球范围内规模化运营红人合作，自动化完成从寻找红人、谈判定价到内容追踪的全流程。",
+    "websiteUrl": "https://www.aha.inc/",
+    "metrics": {
+      "productType": {
+        "level1": "营销工具",
+        "level2": "红人营销",
+        "tags": [
+          "AI 营销平台",
+          "红人营销",
+          "创作者经济",
+          "UGC 合作",
+          "自动化营销",
+          "全球营销"
+        ]
+      },
+      "country": "美国",
+      "company": "Ahalab.ai Inc.",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 营销平台",
+        "红人营销",
+        "创作者经济"
+      ]
+    },
+    "seo": {
+      "title": "AhaCreator - AI 原生红人营销平台",
+      "keywords": [
+        "AhaCreator",
+        "AI 营销平台",
+        "红人营销",
+        "创作者经济",
+        "UGC 合作",
+        "自动化营销"
+      ],
+      "description": "AhaCreator 是一款 AI 原生的红人营销平台，帮助品牌在全球范围内规模化运营红人合作"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAhaCreator 是一款 AI 原生的红人营销平台。\n\n### 主要能力\n- 全球规模化红人合作 - 支持 140+ 国家，500 万 + 认证红人\n- 红人主导的 UGC 合作 - 运行创作者主导的内容合作\n- 本地化产品推广 - 推动本地化产品认知和购买意向\n- 品牌相关红人发现 - 精准匹配品牌调性的红人\n- 自动化外联和跟进 - 自动发送合作邀请和跟进消息\n- 费率收集与公平定价 - 收集红人报价并协商公平价格\n- 内容进度追踪 - 监控内容创作进度和按时交付\n- 交易安全保障 - 多重保护确保交易安全\n\n### 工作流程\n1. 创建营销活动\n2. 确认红人名单\n3. 审核红人内容\n\n### 服务保障\n- 交付后付款 - 如创作者未按约定交付，全额退款\n- 双向合同保护 - 每次合作均有法律约束力合同保障\n- 验证真实流量 - 所有流量和参与度均经过认证"
+  },
+  {
+    "uid": "20061000",
+    "slug": "loomy",
+    "sort": 61,
+    "logo": "/agents-favicons/20061000.png",
+    "aiProductName": "Loomy",
+    "introduction": "比 OpenClaw 更易用、更安全的办公助手，从整理信息、写内容、看数据到执行网页任务，用更轻松的方式帮你完成各种办公任务。",
+    "websiteUrl": "https://loomy.xunfei.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "办公助手",
+        "tags": [
+          "办公助手",
+          "自媒体运营",
+          "智能办公",
+          "本地运行",
+          "隐私安全",
+          "电商运营"
+        ]
+      },
+      "country": "中国",
+      "company": "合肥科讯创想软件开发有限公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "办公助手",
+        "智能办公",
+        "本地运行"
+      ]
+    },
+    "seo": {
+      "title": "Loomy - 科大讯飞智能办公助手",
+      "keywords": [
+        "Loomy",
+        "科大讯飞",
+        "办公助手",
+        "自媒体运营",
+        "智能办公",
+        "隐私安全"
+      ],
+      "description": "比 OpenClaw 更易用、更安全的办公助手，从整理信息、写内容、看数据到执行网页任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nLoomy 是科大讯飞推出的智能办公助手。\n\n### 核心优势\n- 低门槛易安装：小白也能快速安装，打开即可体验\n- 场景丰富，兼容国内生态：覆盖自媒体、办公、内容、电商等各类场景\n- 安全可靠，隐私不外泄：本地运行，不会上传任何密钥数据\n\n### 应用场景\n- 自媒体运营：自动完成从选题规划到数据复盘的全流程\n- 高效办公：智能汇总邮件、整理会议纪要，并同步聊天软件\n- 投资盯盘：汇总行情资讯，分析持仓并制定预警与复盘提醒\n- 日程提醒：调用系统日历，实现日程录入与提醒自动化\n- 远程移动办公：远程管理文件并整理未完成任务\n- 电商运营：自动生成商品文案、客服话术，并筛选异常订单"
+  },
+  {
+    "uid": "20062000",
+    "slug": "kimi-claw-bot",
+    "sort": 62,
+    "logo": "/agents-favicons/20062000.ico",
+    "aiProductName": "Kimi (Kimi Claw)",
+    "introduction": "月之暗面开发的 AI 智能助手，具备文档处理、内容分析、深度研究等能力",
+    "websiteUrl": "https://www.kimi.com/bot/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "月之暗面",
+          "智能对话",
+          "代码生成",
+          "文档处理"
+        ]
+      },
+      "country": "中国",
+      "company": "北京月之暗面科技有限公司",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "智能对话",
+        "文档处理"
+      ]
+    },
+    "seo": {
+      "title": "Kimi (Kimi Claw) - 月之暗面 AI 智能助手",
+      "keywords": [
+        "Kimi",
+        "Kimi Claw",
+        "月之暗面",
+        "AI 助手",
+        "智能对话",
+        "文档处理"
+      ],
+      "description": "月之暗面开发的 AI 智能助手，具备文档处理、内容分析、深度研究等能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nKimi 是由月之暗面（Moonshot AI）开发的 AI 智能助手。\n\n### 主要功能\n- 新建会话：快速开始新的对话\n- Kimi Code：代码生成与辅助编程\n- Kimi Claw：智能工具功能\n- 多格式支持：网站、文档、PPT、表格、深度研究等\n- 历史会话：查看和管理对话历史\n- 多端支持：提供手机应用"
+  },
+  {
+    "uid": "20063000",
+    "slug": "qoderwork-desktop",
+    "sort": 63,
+    "logo": "/agents-favicons/20063000.svg",
+    "aiProductName": "QoderWork Desktop",
+    "introduction": "QoderWork 是一款桌面级 AI 智能体助手，支持自然语言交互、浏览器自动化、多格式文件输出。",
+    "websiteUrl": "https://qoder.com/qoderwork",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "AI 智能体",
+          "桌面自动化",
+          "浏览器自动化",
+          "文件处理",
+          "数据分析",
+          "文档生成"
+        ]
+      },
+      "country": "新加坡",
+      "company": "BRIGHT ZENITH PRIVATE LIMITED",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文",
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 智能体",
+        "桌面自动化",
+        "浏览器自动化"
+      ]
+    },
+    "seo": {
+      "title": "QoderWork Desktop - 桌面级 AI 智能体助手",
+      "keywords": [
+        "QoderWork Desktop",
+        "AI 智能体",
+        "桌面自动化",
+        "浏览器自动化",
+        "文件处理"
+      ],
+      "description": "QoderWork 是一款桌面级 AI 智能体助手，支持自然语言交互、浏览器自动化、多格式文件输出"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nQoderWork Desktop 是一款桌面级 AI 智能体助手。\n\n### 核心功能\n- 自然语言交互：描述需求，QoderWork 自动规划、执行并交付结果\n- 浏览器自动化：内置浏览器自动化能力，可自主浏览网站、抓取数据\n- 多格式输出：直接生成 Word/Excel/PPT/PDF 等专业格式文件\n- AI 图像生成：内置 AI 图像生成功能\n- 技能市场：提供 PPT 制作、数据分析、文件整理、文档转换等专业技能\n\n### 应用场景\n- Reddit 用户反馈研究（2-3 天 → 16 分钟）\n- 教育动画演示视频生成（1.5 天 → 5 分钟）\n- 销售数据深度分析（30-60 分钟 → 8 分钟）\n- 博客配图生成（30-60 分钟/篇 → 自动生成）\n\n### 安全特性\n- 本地文件访问：仅访问用户明确授权的文件夹\n- 自主规划：任务执行过程透明可控\n- 文件恢复：删除的文件进入恢复区，可随时还原"
+  },
+  {
+    "uid": "20064000",
+    "slug": "dumate",
+    "sort": 64,
+    "logo": "/agents-favicons/20064000.ico",
+    "aiProductName": "DuMate",
+    "introduction": "百度智能云推出的 AI 智能助手，支持一键安装、自然语言交互，内置多种 Skills，本地运行保障数据安全。",
+    "websiteUrl": "https://cloud.baidu.com/product/dumate.html",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "办公助手",
+        "tags": [
+          "AI 助手",
+          "办公自动化",
+          "文件管理",
+          "数据安全",
+          "自然语言交互",
+          "智能归档"
+        ]
+      },
+      "country": "中国",
+      "company": "百度智能云",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "办公自动化",
+        "文件管理"
+      ]
+    },
+    "seo": {
+      "title": "DuMate - 百度智能云 AI 智能助手",
+      "keywords": [
+        "DuMate",
+        "百度智能云",
+        "AI 助手",
+        "办公自动化",
+        "文件管理",
+        "数据安全"
+      ],
+      "description": "极致易用的 AI 智能助手，支持一键安装、自然语言交互，内置多种 Skills"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nDuMate 是百度智能云推出的 AI 智能助手。\n\n### 核心特性\n- 极致易用，零门槛上手：无需复杂配置，app 一键安装、开箱即用\n- 灵活扩展，场景无边界：内置多种优质 Skills，支持自动创建新技能\n- 本地运行，数据不外流：文件夹级权限控制，风险操作二次确认\n\n### 应用场景\n\n#### 文件智能管理\n- 智能分类归档：按类型、项目、时间自动分类\n- 批量格式转换：WORD / EXCEL / PPT ↔ PDF\n- 关键信息提取：从合同、纪要、报告中自动提取条款\n\n#### 多源数据分析\n#### 办公操作自动化"
+  },
+  {
+    "uid": "20065000",
+    "slug": "vidu-claw",
+    "sort": 65,
+    "logo": "/agents-favicons/20065000.svg",
+    "aiProductName": "Vidu Claw",
+    "introduction": "你的第一个 AI 创意员工，输入想法即刻解锁无限场景，可自动生成包含分镜、脚本与配乐的完整短片。",
+    "websiteUrl": "https://www.vidu.cn/vidu-claw",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "视频生成",
+        "tags": [
+          "AI 视频生成",
+          "创意工具",
+          "文生视频",
+          "图生视频",
+          "营销视频",
+          "内容创作"
+        ]
+      },
+      "country": "中国",
+      "company": "北京生数科技有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 视频生成",
+        "创意工具",
+        "文生视频"
+      ]
+    },
+    "seo": {
+      "title": "Vidu Claw - AI 创意员工视频生成工具",
+      "keywords": [
+        "Vidu Claw",
+        "AI 视频生成",
+        "创意工具",
+        "文生视频",
+        "图生视频",
+        "营销视频"
+      ],
+      "description": "你的第一个 AI 创意员工，输入想法即刻解锁无限场景，可自动生成包含分镜、脚本与配乐的完整短片"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nVidu Claw 是你的第一个 AI 创意员工。\n\n### 核心功能\n- 参考生视频\n- 图生视频\n- 文生视频\n\n### 适用场景\n1. 社媒创作者 - 只需输入简单想法，即可自动生成包含分镜、脚本与配乐的完整短片\n2. 电商运营 - 将产品图瞬间转化为生动的实景短视频，真实展示产品魅力\n3. 内容增长专家 - 自动读取产品文档，提炼创意点并转化为适配 LinkedIn 或 YouTube 风格的演示视频\n4. 个体经营者 - 将碎片化的想法转化为专业的营销视频和社媒素材\n\n### Vidu Skills 集成\n1. 通过对话安装 vidu-skills\n2. 获取 VIDU_TOKEN 并配置环境变量\n3. 集成成功后，直接通过对话调用生成视频"
+  },
+  {
+    "uid": "20066000",
+    "slug": "redfinger",
+    "sort": 66,
+    "logo": "/agents-favicons/20066000.png",
+    "aiProductName": "Redfinger (红手指)",
+    "introduction": "万能 AI 助手，定位为通用型 AI 辅助工具",
+    "websiteUrl": "https://operator.gc.com.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "万能助手",
+          "智能应用",
+          "移动应用"
+        ]
+      },
+      "country": "中国",
+      "company": "湖南微算互联信息技术有限公司",
+      "useType": [
+        "mobile"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "万能助手"
+      ]
+    },
+    "seo": {
+      "title": "Redfinger (红手指) - 万能 AI 助手",
+      "keywords": [
+        "Redfinger",
+        "红手指",
+        "AI 助手",
+        "万能助手",
+        "智能应用"
+      ],
+      "description": "万能 AI 助手，让想法直接发生"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n红手指 (Redfinger) 是一款万能 AI 助手产品，致力于让用户想法直接实现。\n\n由湖南微算互联信息技术有限公司开发运营。"
+  },
+  {
+    "uid": "20067000",
+    "slug": "360-claw",
+    "sort": 67,
+    "logo": "/agents-favicons/20067000.ico",
+    "aiProductName": "360 爪 (360 Claw)",
+    "introduction": "360 公司推出的 AI Agent 产品，具备多模型支持能力和技能生态系统",
+    "websiteUrl": "https://claw.360.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "多模型",
+          "技能生态",
+          "安全",
+          "360",
+          "智能应用"
+        ]
+      },
+      "country": "中国",
+      "company": "360 公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "多模型",
+        "技能生态"
+      ]
+    },
+    "seo": {
+      "title": "360 爪 (360 Claw) - 360 公司 AI 智能助手",
+      "keywords": [
+        "360 爪",
+        "360 Claw",
+        "360 公司",
+        "AI 助手",
+        "多模型",
+        "技能生态"
+      ],
+      "description": "360 公司推出的 AI Agent 产品，具备多模型支持能力和技能生态系统"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n360 爪是一款提供多模型能力、技能生态和安全保障的智能助手应用。\n\n### 功能特点\n- 多模型能力：支持多种 AI 模型\n- 技能生态：丰富的技能扩展\n- 安全保障：安全可靠的使用体验\n- 权益：用户专属权益\n\n### 下载信息\n- 支持平台：Windows\n- MacOS 版本：敬请期待"
+  },
+  {
+    "uid": "20068000",
+    "slug": "windclaw",
+    "sort": 68,
+    "logo": "/agents-favicons/20068000.png",
+    "aiProductName": "WindClaw",
+    "introduction": "万得推出的金融垂直领域 AI Agent，结合金融数据资源和 AI 技术",
+    "websiteUrl": "https://claw.wind.com.cn/strategy/view/ab1/WindClaw.html",
+    "metrics": {
+      "productType": {
+        "level1": "金融服务",
+        "level2": "投资分析",
+        "tags": [
+          "AI 金融",
+          "投资分析",
+          "金融数据",
+          "万得",
+          "智能投研"
+        ]
+      },
+      "country": "中国",
+      "company": "上海万得信息技术股份有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 金融",
+        "投资分析"
+      ]
+    },
+    "seo": {
+      "title": "WindClaw - 万得金融 AI Agent",
+      "keywords": [
+        "WindClaw",
+        "万得",
+        "AI 金融",
+        "投资分析",
+        "金融数据",
+        "智能投研"
+      ],
+      "description": "万得推出的金融垂直领域 AI Agent，结合金融数据资源和 AI 技术"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWindClaw 是万得推出的金融垂直领域 AI Agent，结合金融数据资源和 AI 技术。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20069000",
+    "slug": "nanobot",
+    "sort": 69,
+    "logo": "/agents-favicons/20069000.png",
+    "aiProductName": "Nanobot",
+    "introduction": "Nanobot 是一个开源框架，用于构建 MCP 智能体，具备推理能力、系统提示、工具编排和丰富的 MCP-UI 支持。",
+    "websiteUrl": "https://www.nanobot.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 框架",
+        "tags": [
+          "MCP",
+          "AI Agent",
+          "开源框架",
+          "MCP-UI",
+          "智能体开发",
+          "React 组件"
+        ]
+      },
+      "country": "美国",
+      "company": "Obot AI, Inc.",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "MCP",
+        "AI Agent",
+        "开源框架"
+      ]
+    },
+    "seo": {
+      "title": "Nanobot - 开源 MCP Agent 框架",
+      "keywords": [
+        "Nanobot",
+        "MCP",
+        "AI Agent",
+        "开源框架",
+        "MCP-UI",
+        "智能体开发"
+      ],
+      "description": "Nanobot 是一个开源框架，用于构建 MCP 智能体，具备推理能力、系统提示、工具编排能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nNanobot 是一个开源框架，用于构建 MCP 智能体。\n\n### 核心功能\n- MCP 原生框架：从头开始编写以支持 MCP 生态系统\n- 每个智能体都是 MCP：Nanobot 是完整的 AI 智能体，同时作为 MCP 服务器暴露\n- MCP-UI 集成：支持 MCP-UI 规范，可在聊天客户端内直接渲染交互式 React 组件\n- 随处嵌入：Nanobot 是完整的 MCP 主机，带有交互式聊天客户端\n- 利用 MCP 生态系统：每月有数千个新 MCP 服务器上线\n- 开源：灵活、可扩展、社区驱动\n\n### 快速开始\n1. 通过 Homebrew 安装：brew install nanobot-ai/tap/nanobot\n2. 创建配置文件 nanobot.yaml\n3. 运行：nanobot run ./nanobot.yaml"
+  },
+  {
+    "uid": "20070000",
+    "slug": "goose",
+    "sort": 70,
+    "logo": "/agents-favicons/20070000.ico",
+    "aiProductName": "Goose",
+    "introduction": "Goose 是一款本地运行的开源 AI 代理，可自动执行工程任务，支持自定义 LLM 和扩展连接。",
+    "websiteUrl": "https://block.github.io/goose/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "工程自动化",
+        "tags": [
+          "AI 代理",
+          "开源",
+          "本地运行",
+          "工程自动化",
+          "可扩展",
+          "LLM"
+        ]
+      },
+      "country": "美国",
+      "company": "Block, Inc.",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 代理",
+        "开源",
+        "工程自动化"
+      ]
+    },
+    "seo": {
+      "title": "Goose - Block 开源本地 AI 代理",
+      "keywords": [
+        "Goose",
+        "Block",
+        "AI 代理",
+        "开源",
+        "本地运行",
+        "工程自动化"
+      ],
+      "description": "Goose 是一款本地运行的开源 AI 代理，可自动执行工程任务，支持自定义 LLM 和扩展连接"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nGoose 是一款开源的本地 AI 代理工具，能够无缝自动化工程任务。\n\n### 核心特性\n- 开源：以透明和协作为理念构建，允许开发者贡献、定制和创新\n- 本地运行：在本地执行任务，保持用户对数据的控制\n- 可扩展：支持自定义首选 LLM，可连接任何外部 MCP 服务器或 API\n- 自主运行：独立处理复杂任务，从调试到部署\n\n### 用户评价\n多位工程师分享了使用体验：自动化测试数据生成、Google Scripts 开发、本地化资源处理、CLI 命令开发、Google Docs 扩展开发等，显著提升了开发效率。"
+  },
+  {
+    "uid": "20071000",
+    "slug": "moltbot",
+    "sort": 71,
+    "logo": "/agents-favicons/20071000.svg",
+    "aiProductName": "Moltbot (OpenClaw)",
+    "introduction": "OpenClaw 是一款开源个人 AI 助手，可在 WhatsApp、Telegram 等聊天应用中使用，具有持久记忆、浏览器控制、系统访问等能力。",
+    "websiteUrl": "https://clawd.bot/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "个人助手",
+        "tags": [
+          "个人 AI 助手",
+          "开源",
+          "聊天机器人",
+          "自动化",
+          "持久记忆",
+          "可黑入"
+        ]
+      },
+      "country": "美国",
+      "company": "N/A (独立开源项目)",
+      "useType": [
+        "desktop",
+        "mobile"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "个人 AI 助手",
+        "开源",
+        "聊天机器人"
+      ]
+    },
+    "seo": {
+      "title": "Moltbot (OpenClaw) - 开源个人 AI 助手",
+      "keywords": [
+        "Moltbot",
+        "OpenClaw",
+        "个人 AI 助手",
+        "开源",
+        "聊天机器人",
+        "自动化"
+      ],
+      "description": "OpenClaw 是一款开源个人 AI 助手，可在聊天应用中使用，具有持久记忆、浏览器控制等能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOpenClaw 是一款开源个人 AI 助手。\n\n### 核心功能\n- 运行在你的机器上：支持 Mac、Windows、Linux，数据私有\n- 任意聊天应用：WhatsApp、Telegram、Discord、Slack、Signal、iMessage\n- 持久记忆：记住你的偏好和上下文\n- 浏览器控制：浏览网页、填写表单、提取数据\n- 完整系统访问：读写文件、运行命令、执行脚本\n- 技能与插件：可扩展社区技能或自建\n\n### 支持集成\nClaude、GPT、Spotify、Hue、Obsidian、Twitter、Gmail、GitHub 等 50+ 集成\n\n### 安装方式\n- 一键安装脚本\n- npm 全局安装\n- 源码编译（Git）"
+  },
+  {
+    "uid": "20072000",
+    "slug": "suna",
+    "sort": 72,
+    "logo": "/agents-favicons/20072000.ico",
+    "aiProductName": "Suna",
+    "introduction": "Kortix 推出的开源通用型 AI 智能体平台，支持自然语言驱动的任务执行",
+    "websiteUrl": "https://www.suna.so",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "多模态工具",
+        "tags": [
+          "AI 工具",
+          "内容创作",
+          "多模态",
+          "模板",
+          "移动端"
+        ]
+      },
+      "country": "美国",
+      "company": "Kortix",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 工具",
+        "内容创作",
+        "多模态"
+      ]
+    },
+    "seo": {
+      "title": "Suna - Kortix 开源通用型 AI 智能体平台",
+      "keywords": [
+        "Suna",
+        "Kortix",
+        "AI 工具",
+        "内容创作",
+        "多模态",
+        "开源"
+      ],
+      "description": "Kortix 推出的开源通用型 AI 智能体平台，支持自然语言驱动的任务执行"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nSuna 是一个多功能 AI 工具平台，提供多种模式帮助用户快速开始：\n\n- Slides - 幻灯片制作\n- Data - 数据处理\n- Docs - 文档生成\n- Canvas - 画布设计\n- Video - 视频创作\n- Research - 研究分析\n- Image - 图像生成\n\n支持移动端使用，提供模板和示例。"
+  },
+  {
+    "uid": "20073000",
+    "slug": "project-mariner",
+    "sort": 73,
+    "logo": "/agents-favicons/20073000.ico",
+    "aiProductName": "Project Mariner",
+    "introduction": "Google DeepMind 开发的 AI 智能代理，能够像人类一样操作浏览器完成各种任务",
+    "websiteUrl": "https://deepmind.google/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "浏览器自动化",
+        "tags": [
+          "人工智能",
+          "机器学习",
+          "深度学习",
+          "AI 模型",
+          "科学研究",
+          "机器人技术"
+        ]
+      },
+      "country": "英国",
+      "company": "Google DeepMind",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "S-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "N/A"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "人工智能",
+        "AI 模型",
+        "浏览器自动化"
+      ]
+    },
+    "seo": {
+      "title": "Project Mariner - Google DeepMind AI 智能代理",
+      "keywords": [
+        "Project Mariner",
+        "Google DeepMind",
+        "AI 智能代理",
+        "浏览器自动化",
+        "机器学习"
+      ],
+      "description": "Google DeepMind 开发的 AI 智能代理，能够像人类一样操作浏览器完成各种任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nProject Mariner 是 Google DeepMind 开发的 AI 智能代理，能够像人类一样操作浏览器完成各种任务。网站暂时无法访问，信息来源于原始数据。\n\n## Google DeepMind 简介\n\nGoogle DeepMind 致力于负责任地构建 AI 以造福人类。\n\n### 核心产品\n- Gemini: 最智能的 AI 模型\n- Veo: 电影级视频生成模型\n- Imagen: 高质量文本到图像生成\n- Lyria: 高保真音乐和音频生成\n- Genie 3: 交互式世界生成与探索\n- Gemini Robotics: 机器人感知、推理与交互\n- Gemma: 开源负责任 AI 应用模型\n\n### 科学发现\n- AlphaFold: 蛋白质结构预测\n- AlphaGenome: 基因疾病研究\n- AlphaMissense: 遗传疾病根源分析"
+  },
+  {
+    "uid": "20074000",
+    "slug": "kimi-claw",
+    "sort": 74,
+    "logo": "/agents-favicons/20074000.ico",
+    "aiProductName": "Kimi Claw",
+    "introduction": "月之暗面推出的云端化 OpenClaw 产品，国内首个由基础模型厂商直接推出的 OpenClaw 形态服务",
+    "websiteUrl": "https://www.kimi.com/bot",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "月之暗面",
+          "OpenClaw",
+          "智能对话",
+          "云端服务"
+        ]
+      },
+      "country": "中国",
+      "company": "北京月之暗面科技有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "OpenClaw",
+        "云端服务"
+      ]
+    },
+    "seo": {
+      "title": "Kimi Claw - 月之暗面云端 OpenClaw 服务",
+      "keywords": [
+        "Kimi Claw",
+        "月之暗面",
+        "OpenClaw",
+        "AI 助手",
+        "云端服务"
+      ],
+      "description": "月之暗面推出的云端化 OpenClaw 产品，国内首个由基础模型厂商直接推出的 OpenClaw 形态服务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nKimi Claw 是月之暗面推出的云端化 OpenClaw 产品，国内首个由基础模型厂商直接推出的 OpenClaw 形态服务。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20075000",
+    "slug": "alphaevolve",
+    "sort": 75,
+    "logo": "/agents-favicons/20075000.ico",
+    "aiProductName": "AlphaEvolve",
+    "introduction": "Google DeepMind 开发的 AI 编程智能体，通过 AI 进化优化算法解决数学和计算领域的复杂问题",
+    "websiteUrl": "https://deepmind.google/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 研究",
+        "tags": [
+          "AI 编程",
+          "进化算法",
+          "Google DeepMind",
+          "数学优化",
+          "计算科学"
+        ]
+      },
+      "country": "英国",
+      "company": "Google DeepMind",
+      "useType": [
+        "research"
+      ],
       "modelLevel": "S-Tier",
       "hasApi": false,
+      "pricingModel": [
+        "N/A"
+      ],
       "needVpn": true,
-      "isInternal": false
-    }
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 编程",
+        "进化算法",
+        "AI 研究"
+      ]
+    },
+    "seo": {
+      "title": "AlphaEvolve - Google DeepMind AI 编程智能体",
+      "keywords": [
+        "AlphaEvolve",
+        "Google DeepMind",
+        "AI 编程",
+        "进化算法",
+        "数学优化"
+      ],
+      "description": "Google DeepMind 开发的 AI 编程智能体，通过 AI 进化优化算法解决数学和计算领域的复杂问题"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nAlphaEvolve 是 Google DeepMind 开发的 AI 编程智能体，通过 AI 进化优化算法解决数学和计算领域的复杂问题。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20076000",
+    "slug": "windclaw-wande",
+    "sort": 76,
+    "logo": "/agents-favicons/20076000.png",
+    "aiProductName": "WindClaw (万得)",
+    "introduction": "万得基于 OpenClaw 框架推出的投研专属 AI Agent 工作台，深度耦合 Wind 专业金融数据库",
+    "websiteUrl": "https://claw.wind.com.cn",
+    "metrics": {
+      "productType": {
+        "level1": "金融服务",
+        "level2": "投资分析",
+        "tags": [
+          "AI 金融",
+          "投资分析",
+          "金融数据",
+          "万得",
+          "智能投研",
+          "OpenClaw"
+        ]
+      },
+      "country": "中国",
+      "company": "上海万得信息技术股份有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 金融",
+        "投资分析",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "WindClaw (万得) - 投研专属 AI Agent 工作台",
+      "keywords": [
+        "WindClaw",
+        "万得",
+        "AI 金融",
+        "投资分析",
+        "智能投研",
+        "OpenClaw"
+      ],
+      "description": "万得基于 OpenClaw 框架推出的投研专属 AI Agent 工作台，深度耦合 Wind 专业金融数据库"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWindClaw 是万得基于 OpenClaw 框架推出的投研专属 AI Agent 工作台，深度耦合 Wind 专业金融数据库。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20077000",
+    "slug": "genspark-super-agent",
+    "sort": 77,
+    "logo": "/agents-favicons/20077000.ico",
+    "aiProductName": "Genspark Super Agent",
+    "introduction": "MainFunc 公司推出的通用 AI 智能体应用，基于 Mixture-of-Agents 系统，具备自主思考、规划与执行任务的能力",
+    "websiteUrl": "https://www.genspark.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "通用助手",
+        "tags": [
+          "AI 智能体",
+          "Mixture-of-Agents",
+          "自主思考",
+          "任务规划",
+          "通用 AI"
+        ]
+      },
+      "country": "美国",
+      "company": "MainFunc",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 智能体",
+        "Mixture-of-Agents",
+        "通用 AI"
+      ]
+    },
+    "seo": {
+      "title": "Genspark Super Agent - MainFunc 通用 AI 智能体",
+      "keywords": [
+        "Genspark",
+        "Super Agent",
+        "MainFunc",
+        "AI 智能体",
+        "Mixture-of-Agents"
+      ],
+      "description": "MainFunc 公司推出的通用 AI 智能体应用，基于 Mixture-of-Agents 系统，具备自主思考、规划与执行任务的能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nGenspark Super Agent 是 MainFunc 公司推出的通用 AI 智能体应用，基于 Mixture-of-Agents 系统，具备自主思考、规划与执行任务的能力。网站暂时无法访问（403 错误），信息来源于原始数据。"
+  },
+  {
+    "uid": "20078000",
+    "slug": "mirofish",
+    "sort": 78,
+    "logo": "/default.png",
+    "aiProductName": "MiroFish",
+    "introduction": "基于多智能体技术的 AI 预测引擎，采用群体智能镜像映射现实",
+    "websiteUrl": "https://github.com/mirofish",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 框架",
+        "tags": [
+          "多智能体",
+          "AI 预测",
+          "群体智能",
+          "开源项目"
+        ]
+      },
+      "country": "N/A",
+      "company": "N/A",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "多智能体",
+        "AI 预测"
+      ]
+    },
+    "seo": {
+      "title": "MiroFish - 多智能体 AI 预测引擎",
+      "keywords": [
+        "MiroFish",
+        "多智能体",
+        "AI 预测",
+        "群体智能",
+        "开源"
+      ],
+      "description": "基于多智能体技术的 AI 预测引擎，采用群体智能镜像映射现实"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nMiroFish 是基于多智能体技术的 AI 预测引擎，采用群体智能镜像映射现实。GitHub 组织页面暂无公开仓库信息，信息来源于原始数据。"
+  },
+  {
+    "uid": "20079000",
+    "slug": "redclaw",
+    "sort": 79,
+    "logo": "/agents-favicons/20079000.ico",
+    "aiProductName": "RedClaw (红手指 Operator)",
+    "introduction": "RedClaw 是原红手指 operator 升级版本，你的专属手机 AI 助理，依托 VLA 大模型，可全天候为你执行自动化任务。",
+    "websiteUrl": "https://sj.qq.com/appdetail/com.redfinger.operator",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "移动助手",
+        "tags": [
+          "AI 助理",
+          "VLA 大模型",
+          "语音交互",
+          "自动化任务",
+          "云端服务",
+          "智能问答"
+        ]
+      },
+      "country": "中国",
+      "company": "湖南微算互联信息技术有限公司",
+      "useType": [
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助理",
+        "VLA 大模型",
+        "语音交互"
+      ]
+    },
+    "seo": {
+      "title": "RedClaw (红手指 Operator) - 专属手机 AI 助理",
+      "keywords": [
+        "RedClaw",
+        "红手指",
+        "Operator",
+        "AI 助理",
+        "VLA 大模型",
+        "语音交互"
+      ],
+      "description": "你的专属手机 AI 助理，依托 VLA 大模型，支持 AI 智能问答和自然语言指令"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nRedClaw（红手指 Operator）是原红手指 operator 升级版本，你的专属手机 AI 助理。\n\n### 核心功能/场景\n- 智能语音交互：轻松语音交互，体验更便捷；可一键切换 OpenClaw 畅养\"龙虾\"\n- 自动信息聚合：追热点、看股票，定时任务帮你汇总每天重要信息\n- 全能生活助手：规划出行方案、完成旅行订票、协助行程安排等轻松搞定\n- 自动任务处理：支持签到、打卡等日常重复性事务，省心高效"
+  },
+  {
+    "uid": "20080000",
+    "slug": "coco-zhipu",
+    "sort": 80,
+    "logo": "/agents-favicons/20080000.ico",
+    "aiProductName": "CoCo (智谱)",
+    "introduction": "智谱推出的企业级超级助手 Agent，具备交付导向、记忆机制和无缝嵌入三大企业级特性",
+    "websiteUrl": "https://aiworker.aminer.cn/ai_worker/verification",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "企业助手",
+        "tags": [
+          "企业级 Agent",
+          "超级助手",
+          "智谱 AI",
+          "交付导向",
+          "记忆机制"
+        ]
+      },
+      "country": "中国",
+      "company": "北京智谱华章科技股份有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "企业级 Agent",
+        "超级助手"
+      ]
+    },
+    "seo": {
+      "title": "CoCo (智谱) - 企业级超级助手 Agent",
+      "keywords": [
+        "CoCo",
+        "智谱",
+        "企业级 Agent",
+        "超级助手",
+        "智谱 AI"
+      ],
+      "description": "智谱推出的企业级超级助手 Agent，具备交付导向、记忆机制和无缝嵌入三大企业级特性"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nCoCo 是智谱推出的企业级超级助手 Agent，具备交付导向、记忆机制和无缝嵌入三大企业级特性。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20081000",
+    "slug": "xiaomi-miclaw",
+    "sort": 81,
+    "logo": "/agents-favicons/20081000.ico",
+    "aiProductName": "Xiaomi miclaw",
+    "introduction": "小米推出的移动端 AI Agent 测试产品，基于 MiMo 大模型构建，重点验证大模型在人车家全生态中的任务执行能力",
+    "websiteUrl": "https://www.mi.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "移动助手",
+        "tags": [
+          "小米",
+          "智能手机",
+          "智能家居",
+          "IoT",
+          "小米汽车",
+          "澎湃 OS",
+          "AI Agent"
+        ]
+      },
+      "country": "中国",
+      "company": "小米",
+      "useType": [
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI Agent",
+        "移动应用",
+        "小米生态"
+      ]
+    },
+    "seo": {
+      "title": "Xiaomi miclaw - 小米移动端 AI Agent",
+      "keywords": [
+        "Xiaomi miclaw",
+        "小米",
+        "AI Agent",
+        "移动端",
+        "MiMo 大模型",
+        "人车家生态"
+      ],
+      "description": "小米推出的移动端 AI Agent 测试产品，基于 MiMo 大模型构建，重点验证大模型在人车家全生态中的任务执行能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nXiaomi miclaw 是小米推出的移动端 AI Agent 测试产品，基于 MiMo 大模型构建。\n\n## 小米官网简介\n\n小米商城官方平台，涵盖以下核心业务：\n- 小米澎湃 OS\n- 小米汽车\n- 小米影像\n- 云服务\n- IoT 智能家居\n- 有品电商\n- 小爱开放平台"
+  },
+  {
+    "uid": "20082000",
+    "slug": "ufo2",
+    "sort": 82,
+    "logo": "/default.png",
+    "aiProductName": "UFO²",
+    "introduction": "UFO³ 是微软开源的多设备编排框架，用于跨平台智能自动化。包含 Galaxy（多设备编排）和 UFO²（Windows 桌面 AgentOS）两大核心组件。",
+    "websiteUrl": "https://microsoft.github.io/UFO/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "自动化框架",
+        "tags": [
+          "多设备编排",
+          "智能自动化",
+          "跨平台",
+          "Agent 框架",
+          "Windows 自动化",
+          "DAG 任务规划"
+        ]
+      },
+      "country": "美国",
+      "company": "Microsoft（微软）",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "多设备编排",
+        "智能自动化",
+        "Agent 框架"
+      ]
+    },
+    "seo": {
+      "title": "UFO² - 微软多设备编排框架",
+      "keywords": [
+        "UFO²",
+        "UFO³",
+        "微软",
+        "多设备编排",
+        "智能自动化",
+        "Agent 框架"
+      ],
+      "description": "微软推出的新一代桌面代理操作系统，基于自然语言控制多应用操作"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nUFO³ 是一个可扩展的通用跨设备 Agent 框架，支持为不同平台和应用开发设备 Agent。\n\n### 核心组件\n\n#### Galaxy（多设备编排）\n- 基于 DAG 的任务编排（Constellation Planning）\n- 智能设备分配与匹配\n- 并行执行与实时监控\n- 支持 Windows、Linux、macOS、Android、Web\n\n#### UFO²（桌面 AgentOS）\n- 深度 Windows 集成（UIA、Win32、WinCOM）\n- 混合 GUI+API 操作\n- 推测性多动作预测（减少 51% LLM 调用）\n- 视觉+UIA 混合检测\n- 知识库增强（RAG）\n\n### 技术特性\n- Agent 交互协议 (AIP)：基于 WebSocket 的安全协调层\n- MCP 集成：Model Context Protocol 工具增强\n- 事件驱动架构：实时状态监控与观察者模式\n\n### 应用场景\n- 跨平台数据流水线\n- 分布式测试与部署\n- 多设备监控与日志聚合\n- Office 自动化、Web 自动化、文件管理"
+  },
+  {
+    "uid": "20083000",
+    "slug": "zulu",
+    "sort": 83,
+    "logo": "/agents-favicons/20083000.ico",
+    "aiProductName": "Zulu (百度文心快码)",
+    "introduction": "百度文心快码推出的自动编程 AI 智能体，支持从需求到代码的端到端生成",
+    "websiteUrl": "https://comate.baidu.com/",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "编程辅助",
+        "tags": [
+          "AI 编程",
+          "自动编程",
+          "百度",
+          "文心快码",
+          "代码生成"
+        ]
+      },
+      "country": "中国",
+      "company": "百度公司",
+      "useType": [
+        "web",
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 编程",
+        "自动编程"
+      ]
+    },
+    "seo": {
+      "title": "Zulu (百度文心快码) - 自动编程 AI 智能体",
+      "keywords": [
+        "Zulu",
+        "百度文心快码",
+        "AI 编程",
+        "自动编程",
+        "代码生成"
+      ],
+      "description": "百度文心快码推出的自动编程 AI 智能体，支持从需求到代码的端到端生成"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nZulu 是百度文心快码推出的自动编程 AI 智能体，支持从需求到代码的端到端生成。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20084000",
+    "slug": "proxy",
+    "sort": 84,
+    "logo": "/default.png",
+    "aiProductName": "Proxy",
+    "introduction": "Convergence 推出的自动化 AI 助手，通过自然语言交互帮助用户完成日常任务",
+    "websiteUrl": "https://convergence.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "自动化",
+          "自然语言交互",
+          "任务管理"
+        ]
+      },
+      "country": "美国",
+      "company": "Convergence",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "自动化"
+      ]
+    },
+    "seo": {
+      "title": "Proxy - Convergence 自动化 AI 助手",
+      "keywords": [
+        "Proxy",
+        "Convergence",
+        "AI 助手",
+        "自动化",
+        "自然语言交互"
+      ],
+      "description": "Convergence 推出的自动化 AI 助手，通过自然语言交互帮助用户完成日常任务"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nProxy 是 Convergence 推出的自动化 AI 助手，通过自然语言交互帮助用户完成日常任务。网站暂时无法访问（403 错误），信息来源于原始数据。"
+  },
+  {
+    "uid": "20085000",
+    "slug": "xiaoyi-claw",
+    "sort": 85,
+    "logo": "/agents-favicons/20085000.ico",
+    "aiProductName": "小艺 Claw",
+    "introduction": "华为推出的基于 OpenClaw 框架的智能助理产品，面向鸿蒙生态用户",
+    "websiteUrl": "https://developer.huawei.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "鸿蒙",
+          "华为云",
+          "鲲鹏",
+          "昇腾",
+          "开发者生态",
+          "AI",
+          "OpenClaw"
+        ]
+      },
+      "country": "中国",
+      "company": "华为",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "OpenClaw",
+        "鸿蒙生态"
+      ]
+    },
+    "seo": {
+      "title": "小艺 Claw - 华为 OpenClaw 智能助理",
+      "keywords": [
+        "小艺 Claw",
+        "华为",
+        "OpenClaw",
+        "智能助理",
+        "鸿蒙生态"
+      ],
+      "description": "华为推出的基于 OpenClaw 框架的智能助理产品，面向鸿蒙生态用户"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n小艺 Claw 是华为推出的基于 OpenClaw 框架的智能助理产品，面向鸿蒙生态用户。\n\n## 华为开发者平台简介\n\n为开发者提供从开发到上架全流程服务，聚合鸿蒙、华为云、鲲鹏、昇腾等生态资源。\n\n### 核心开发者生态\n- 鸿蒙开发者：提供从开发到上架全流程服务\n- 华为云开发者：资源工具、应用实践、商业变现\n- 鲲鹏开发者：从入门到进阶，了解和学习鲲鹏开发技能\n- 昇腾开发者：从入门到进阶，与昇腾 AI 一起成长\n\n### 开发者成长体系\n- 开发产品库：多场景工具合集\n- 活动赛事：赛事活动大全\n- 社区交流：开发者朋友圈\n- 学习认证：学练考一站式"
+  },
+  {
+    "uid": "20086000",
+    "slug": "basis",
+    "sort": 86,
+    "logo": "/agents-favicons/20086000.png",
+    "aiProductName": "Basis",
+    "introduction": "Basis 是专为会计师打造的 AI 代理平台，可自动执行会计工作流，帮助事务所从执行者转变为审核者。",
+    "websiteUrl": "https://www.getbasis.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "金融服务",
+        "level2": "会计工具",
+        "tags": [
+          "AI 会计",
+          "自动化工作流",
+          "事务所管理",
+          "税务处理",
+          "审计",
+          "咨询"
+        ]
+      },
+      "country": "美国",
+      "company": "Basis",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 会计",
+        "自动化工作流",
+        "事务所管理"
+      ]
+    },
+    "seo": {
+      "title": "Basis - AI 会计代理平台",
+      "keywords": [
+        "Basis",
+        "AI 会计",
+        "自动化工作流",
+        "事务所管理",
+        "税务处理",
+        "审计"
+      ],
+      "description": "专为会计师打造的 AI 代理平台，可自动执行会计工作流，帮助事务所从执行者转变为审核者"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nBasis 是专为会计师打造的 AI 代理平台。\n\n### 核心功能\n- AI 代理执行工作：Basis 在后台运行，端到端执行会计工作流\n- 适配工作方式：基于基础会计原则构建，适应事务所、实践和参与的标准\n- 从执行到审核：会计师从执行工作转变为审核工作\n- 扩展收入能力：帮助事务所应对客户增长、利润收紧和人手不足的挑战\n\n### 核心模块\n- CAS（会计服务）\n- Tax（税务）\n- Audit（审计）\n- Advisory（咨询）\n\n### 客户评价\n来自 Wiss、BPB、UHY、Clark Nuber 等领先事务所的认可"
+  },
+  {
+    "uid": "20087000",
+    "slug": "weixin-clawbot",
+    "sort": 87,
+    "logo": "/agents-favicons/20087000.ico",
+    "aiProductName": "微信 Clawbot",
+    "introduction": "微信官方推出的 AI 助手插件，基于 OpenClaw 协议开发，可在微信界面内调用 AI 能力",
+    "websiteUrl": "https://weixin.qq.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "即时通讯",
+          "社交",
+          "移动支付",
+          "小程序",
+          "视频号",
+          "开放平台",
+          "OpenClaw"
+        ]
+      },
+      "country": "中国",
+      "company": "腾讯 (Tencent)",
+      "useType": [
+        "mobile",
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "OpenClaw",
+        "微信生态"
+      ]
+    },
+    "seo": {
+      "title": "微信 Clawbot - 微信官方 AI 助手插件",
+      "keywords": [
+        "微信 Clawbot",
+        "微信",
+        "AI 助手",
+        "OpenClaw",
+        "腾讯"
+      ],
+      "description": "微信官方推出的 AI 助手插件，基于 OpenClaw 协议开发，可在微信界面内调用 AI 能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n微信 Clawbot 是微信官方推出的 AI 助手插件，基于 OpenClaw 协议开发。\n\n## 微信简介\n\n微信是腾讯公司推出的一款多功能即时通讯应用，已发展成为一种生活方式。\n\n### 主要功能\n- 即时通讯：支持文字、语音、视频聊天\n- 微信支付：便捷的移动支付服务\n- 小程序：无需下载安装的应用生态\n- 视频号：短视频内容平台\n- 公众号：内容创作与分发平台\n\n### 支持平台\n- Android、iOS、Windows、macOS、Linux、HarmonyOS\n- 儿童手表版、车载版\n\n### 开放生态\n- 企业微信、微信小店、小游戏、微信广告、硬件平台"
+  },
+  {
+    "uid": "20088000",
+    "slug": "hailuo-video-agent",
+    "sort": 88,
+    "logo": "/agents-favicons/20088000.png",
+    "aiProductName": "Hailuo Video Agent (海螺视频 Agent)",
+    "introduction": "MiniMax 稀宇科技推出的视频创作 Agent，基于用户输入的文字或图片自动生成完整视频内容。",
+    "websiteUrl": "https://hailuoai.com/",
+    "metrics": {
+      "productType": {
+        "level1": "内容创作",
+        "level2": "视频生成",
+        "tags": [
+          "AI 创作",
+          "视频生成",
+          "图片生成",
+          "风格转绘",
+          "创意工具",
+          "视觉大片"
+        ]
+      },
+      "country": "中国",
+      "company": "MiniMax 稀宇科技",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 创作",
+        "视频生成",
+        "创意工具"
+      ]
+    },
+    "seo": {
+      "title": "Hailuo Video Agent - MiniMax 视频创作 Agent",
+      "keywords": [
+        "Hailuo Video Agent",
+        "海螺视频",
+        "MiniMax",
+        "AI 创作",
+        "视频生成",
+        "风格转绘"
+      ],
+      "description": "MiniMax 稀宇科技推出的视频创作 Agent，基于用户输入的文字或图片自动生成完整视频内容"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nHailuo Video Agent (海螺 AI) 是 MiniMax 稀宇科技推出的视频创作 Agent。\n\n### 核心功能\n- 视频创作：支持首帧、尾帧控制，将创意转化为视觉大片\n- 图片创作：多种风格模板可选\n- 音频创作：完整的音频生成能力\n\n### 特色模板分类\n- 推荐模板：海影节、展映、变身写真、搞怪整活等\n- 风格转绘：广告电商、怦然心动、萌宠来袭、Q 版童趣、炫酷场景等\n- 特效模板：ASMR、恐惧降临、圣诞狂欢等\n\n### 活动与招募\n- 海螺 AI 超级创作者招募（限时开放）\n- 上海国际电影节「AI 片场」合作\n- 戛纳 WAIFF 世界人工智能电影节征集\n- 人民日报·未来已来 AI 创意活动"
+  },
+  {
+    "uid": "20089000",
+    "slug": "langmanus",
+    "sort": 89,
+    "logo": "/agents-favicons/20089000.ico",
+    "aiProductName": "LangManus",
+    "introduction": "社区驱动的 AI 自动化框架，采用分层多智能体系统，结合语言模型与专业工具实现复杂任务的自动化处理",
+    "websiteUrl": "https://github.com/langmanus/langmanus",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 框架",
+        "tags": [
+          "AI 自动化",
+          "多智能体系统",
+          "开源框架",
+          "语言模型",
+          "任务自动化"
+        ]
+      },
+      "country": "N/A",
+      "company": "社区驱动 (开源项目)",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 自动化",
+        "多智能体系统",
+        "开源"
+      ]
+    },
+    "seo": {
+      "title": "LangManus - 社区驱动 AI 自动化框架",
+      "keywords": [
+        "LangManus",
+        "AI 自动化",
+        "多智能体系统",
+        "开源框架",
+        "语言模型"
+      ],
+      "description": "社区驱动的 AI 自动化框架，采用分层多智能体系统，结合语言模型与专业工具实现复杂任务的自动化处理"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nLangManus 是社区驱动的 AI 自动化框架，采用分层多智能体系统，结合语言模型与专业工具实现复杂任务的自动化处理。网站暂时无法访问（404 错误），信息来源于原始数据。"
+  },
+  {
+    "uid": "20090000",
+    "slug": "stepclaw",
+    "sort": 90,
+    "logo": "/agents-favicons/20090000.png",
+    "aiProductName": "StepClaw",
+    "introduction": "阶跃星辰基于 OpenClaw 框架打造的云端 AI 助手，集成在阶跃 AI App 中，7×24 持续在线",
+    "websiteUrl": "https://www.jieyue.ai/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "OpenClaw",
+          "云端服务",
+          "阶跃星辰",
+          "7x24 在线"
+        ]
+      },
+      "country": "中国",
+      "company": "阶跃星辰",
+      "useType": [
+        "web",
+        "mobile"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "OpenClaw",
+        "云端服务"
+      ]
+    },
+    "seo": {
+      "title": "StepClaw - 阶跃星辰云端 AI 助手",
+      "keywords": [
+        "StepClaw",
+        "阶跃星辰",
+        "AI 助手",
+        "OpenClaw",
+        "云端服务"
+      ],
+      "description": "阶跃星辰基于 OpenClaw 框架打造的云端 AI 助手，集成在阶跃 AI App 中，7×24 持续在线"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nStepClaw 是阶跃星辰基于 OpenClaw 框架打造的云端 AI 助手，集成在阶跃 AI App 中，7×24 持续在线。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20091000",
+    "slug": "molili",
+    "sort": 91,
+    "logo": "/agents-favicons/20091000.ico",
+    "aiProductName": "Molili (莫哩哩)",
+    "introduction": "当贝科技推出的 AI 智能体桌面应用，具备屏幕视觉感知与软件操控能力，能看懂屏幕并操控软件",
+    "websiteUrl": "https://www.dangbei.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "AI 智能体",
+          "屏幕感知",
+          "软件操控",
+          "桌面应用",
+          "当贝",
+          "视觉理解"
+        ]
+      },
+      "country": "中国",
+      "company": "当贝 (DangBei)",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 智能体",
+        "屏幕感知",
+        "桌面应用"
+      ]
+    },
+    "seo": {
+      "title": "Molili (莫哩哩) - 当贝 AI 智能体桌面应用",
+      "keywords": [
+        "Molili",
+        "莫哩哩",
+        "当贝",
+        "AI 智能体",
+        "屏幕感知",
+        "软件操控"
+      ],
+      "description": "当贝科技推出的 AI 智能体桌面应用，具备屏幕视觉感知与软件操控能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nMolili (莫哩哩) 是当贝科技推出的 AI 智能体桌面应用，具备屏幕视觉感知与软件操控能力。网站暂时无法访问，信息来源于原始数据。\n\n## 当贝公司简介\n\n当贝是一家专注于智能大屏领域的科技公司，提供当贝市场、当贝投影、当贝盒子等软硬件产品，拥有 2 亿大屏用户。\n\n### 软件产品\n- 当贝市场、当贝桌面、当贝音乐、当贝投屏\n- 当贝播放器、当贝健身、哈趣影视\n\n### 硬件产品\n- 当贝投影系列、当贝 AI 盒子、当贝 AI 耳机\n- 当贝 AI 鱼缸、当贝 PadGO 闺蜜机\n\n### 系统解决方案\n- 当贝 OS 5.0 - 轻、快、自由"
+  },
+  {
+    "uid": "20092000",
+    "slug": "maxclaw",
+    "sort": 92,
+    "logo": "/agents-favicons/20092000.png",
+    "aiProductName": "MaxClaw",
+    "introduction": "MiniMax 推出的基于开源框架 OpenClaw 开发的云端 AI 助手服务，支持 7×24 小时随叫随到的自动化办公",
+    "websiteUrl": "https://agent.minimaxi.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "云端助手",
+        "tags": [
+          "AI 助手",
+          "OpenClaw",
+          "云端服务",
+          "MiniMax",
+          "7x24 在线",
+          "自动化办公"
+        ]
+      },
+      "country": "中国",
+      "company": "MiniMax",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "OpenClaw",
+        "云端服务"
+      ]
+    },
+    "seo": {
+      "title": "MaxClaw - MiniMax 云端 AI 助手",
+      "keywords": [
+        "MaxClaw",
+        "MiniMax",
+        "AI 助手",
+        "OpenClaw",
+        "云端服务",
+        "自动化办公"
+      ],
+      "description": "MiniMax 推出的基于开源框架 OpenClaw 开发的云端 AI 助手服务，支持 7×24 小时随叫随到的自动化办公"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nMaxClaw 是 MiniMax 推出的基于开源框架 OpenClaw 开发的云端 AI 助手服务，支持 7×24 小时随叫随到的自动化办公。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20093000",
+    "slug": "oneclaw",
+    "sort": 93,
+    "logo": "/agents-favicons/20093000.svg",
+    "aiProductName": "OneClaw",
+    "introduction": "OneClaw = OpenClaw 一键安装包。无需命令行，一键安装，1 分钟上手，让 AI 自动操控浏览器、读写文件、生成报告。",
+    "websiteUrl": "https://oneclaw.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "桌面助手",
+        "tags": [
+          "AI 助手",
+          "浏览器自动化",
+          "一键安装",
+          "数据抓取",
+          "跨平台",
+          "OpenClaw"
+        ]
+      },
+      "country": "中国",
+      "company": "N/A",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "浏览器自动化",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "OneClaw - OpenClaw 一键安装包",
+      "keywords": [
+        "OneClaw",
+        "OpenClaw",
+        "AI 助手",
+        "浏览器自动化",
+        "一键安装",
+        "数据抓取"
+      ],
+      "description": "OneClaw = OpenClaw 一键安装包。无需命令行，一键安装，1 分钟上手"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nOneClaw 是 OpenClaw 一键安装包。\n\n### 核心功能\n- 一键安装：DMG 或 EXE 双击即用，告别命令行、Node.js、Git 等繁琐依赖安装\n- 5 大 AI 模型：内置 Anthropic、Moonshot、OpenAI、Google 及自定义 OpenAI 兼容 API\n- 内嵌运行时：自带 Node.js 22 运行环境，无需额外安装任何开发工具\n- 浏览器自动化：AI 自动操控浏览器，抓取数据、填写表单、完成复杂的网页操作\n- 跨平台支持：macOS 和 Windows 双平台，支持 arm64 与 x64 架构\n- 中国网络优化：预置 npm 镜像源，无需翻墙即可顺畅安装和使用"
+  },
+  {
+    "uid": "20094000",
+    "slug": "clawhub",
+    "sort": 94,
+    "logo": "/agents-favicons/20094000.ico",
+    "aiProductName": "ClawHub",
+    "introduction": "OpenClaw 官方推出的 Agent Skills 技能市场，是 OpenClaw 生态的技能分发基础设施",
+    "websiteUrl": "https://clawhub.ai/skills",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "技能市场",
+        "tags": [
+          "ClawHub",
+          "OpenClaw",
+          "Skills",
+          "Plugins",
+          "Open Source",
+          "技能市场"
+        ]
+      },
+      "country": "美国",
+      "company": "Peter Steinberger (独立项目)",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "ClawHub",
+        "OpenClaw",
+        "技能市场"
+      ]
+    },
+    "seo": {
+      "title": "ClawHub - OpenClaw 技能市场",
+      "keywords": [
+        "ClawHub",
+        "OpenClaw",
+        "Skills",
+        "Plugins",
+        "技能市场",
+        "开源"
+      ],
+      "description": "OpenClaw 官方推出的 Agent Skills 技能市场，是 OpenClaw 生态的技能分发基础设施"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nClawHub 是 OpenClaw 官方推出的 Agent Skills 技能市场，是 OpenClaw 生态的技能分发基础设施。\n\n### 平台功能\n- 技能/插件上传和导入\n- 搜索功能\n- 明暗主题切换\n- GitHub 登录\n- 按下载量、安装量、星级、名称排序\n\n### 技术信息\n- 开源项目（MIT 许可）\n- 由 Peter Steinberger 开发\n- 部署在 Vercel 上\n- 使用 Convex 作为后端服务"
+  },
+  {
+    "uid": "20095000",
+    "slug": "loomy-xunfei",
+    "sort": 95,
+    "logo": "/agents-favicons/20095000.png",
+    "aiProductName": "Loomy (科大讯飞)",
+    "introduction": "科大讯飞推出的桌面端 AI 智能助理，面向真实办公场景，定位为 AI 工作搭子",
+    "websiteUrl": "https://loomy.xunfei.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "办公助手",
+        "tags": [
+          "智能办公助手",
+          "自媒体运营",
+          "本地运行",
+          "隐私安全",
+          "电商运营",
+          "自动化任务"
+        ]
+      },
+      "country": "中国",
+      "company": "合肥科讯创想软件开发有限公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "智能办公助手",
+        "本地运行",
+        "自动化任务"
+      ]
+    },
+    "seo": {
+      "title": "Loomy (科大讯飞) - 桌面端 AI 智能助理",
+      "keywords": [
+        "Loomy",
+        "科大讯飞",
+        "智能办公助手",
+        "自媒体运营",
+        "本地运行",
+        "隐私安全"
+      ],
+      "description": "科大讯飞推出的桌面端 AI 智能助理，面向真实办公场景，定位为 AI 工作搭子"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nLoomy 是科大讯飞推出的桌面端 AI 智能助理。\n\n### 核心优势\n- 低门槛易安装：小白也能快速安装，打开即可体验，无需复杂配置\n- 场景丰富，兼容国内生态：覆盖自媒体、办公、内容、电商等各类场景和任务\n- 安全可靠，隐私不外泄：本地运行，不会上传任何密钥数据\n\n### 应用场景\n- 自媒体运营：自动完成从选题规划到数据复盘的全流程\n- 高效办公：智能汇总邮件、整理会议纪要，并同步聊天软件\n- 投资盯盘：汇总行情资讯，分析持仓并制定预警与复盘提醒\n- 日程提醒：调用系统日历，实现日程录入与提醒自动化\n- 远程移动办公：远程管理文件并整理未完成任务\n- 电商运营：自动生成商品文案、客服话术，筛选异常订单"
+  },
+  {
+    "uid": "20096000",
+    "slug": "dapr-agents",
+    "sort": 96,
+    "logo": "/default.png",
+    "aiProductName": "Dapr Agents",
+    "introduction": "Dapr 官方推出的开源智能体开发框架，专为构建高可扩展、多智能体协作的 LLM 应用而设计",
+    "websiteUrl": "https://github.com/dapr/dapr-agents",
+    "metrics": {
+      "productType": {
+        "level1": "开发工具",
+        "level2": "AI 框架",
+        "tags": [
+          "AI 代理",
+          "工作流编排",
+          "分布式系统",
+          "LLM",
+          "Kubernetes",
+          "开源框架"
+        ]
+      },
+      "country": "美国",
+      "company": "CNCF (开源项目)",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 代理",
+        "工作流编排",
+        "开源框架"
+      ]
+    },
+    "seo": {
+      "title": "Dapr Agents - CNCF 开源智能体开发框架",
+      "keywords": [
+        "Dapr Agents",
+        "CNCF",
+        "AI 代理",
+        "工作流编排",
+        "分布式系统",
+        "Kubernetes"
+      ],
+      "description": "Dapr 官方推出的开源智能体开发框架，专为构建高可扩展、多智能体协作的 LLM 应用而设计"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nDapr Agents 是一个开发者框架，专为构建生产级、可扩展的 AI 代理系统设计。\n\n### 核心特性\n- 高效扩展：单核可运行数千个代理，支持分布式部署和生命周期管理\n- 工作流弹性：自动重试代理工作流，确保任务完成\n- Kubernetes 原生：轻松在 K8s 环境中部署和管理代理\n- 数据驱动：可连接 50+ 企业数据源，支持结构化和非结构化数据\n- 多代理系统：安全且可观测，支持代理间协作\n- 供应商中立：开源项目，避免厂商锁定\n\n### 技术优势\n- 可扩展工作流：使用持久化执行工作流引擎\n- 成本效益：基于 Virtual Actor 模型，支持 Scale-to-Zero 架构\n- 加速开发：提供多代理通信、结构化输出、多 LLM 提供商支持\n- 集成安全与可靠性：支持超时、重试/退避、熔断器等弹性策略\n- 内置消息与状态基础设施：支持服务间调用、发布订阅、持久化工作流\n\n### 开源信息\n- CNCF 旗下开源项目\n- Apache-2.0 许可证"
+  },
+  {
+    "uid": "20097000",
+    "slug": "nineclaw",
+    "sort": 97,
+    "logo": "/agents-favicons/20097000.ico",
+    "aiProductName": "九章龙虾 (NineClaw)",
+    "introduction": "好未来发布的教师专属 AI 原生桌面超级智能体，将好未来的教研能力、题库积累与本地化智能体能力结合",
+    "websiteUrl": "https://www.laoshibang.com/",
+    "metrics": {
+      "productType": {
+        "level1": "教育工具",
+        "level2": "教师助手",
+        "tags": [
+          "AI 教育",
+          "教师助手",
+          "桌面智能体",
+          "好未来",
+          "教研能力",
+          "题库"
+        ]
+      },
+      "country": "中国",
+      "company": "好未来",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 教育",
+        "教师助手",
+        "桌面智能体"
+      ]
+    },
+    "seo": {
+      "title": "九章龙虾 (NineClaw) - 好未来教师专属 AI 智能体",
+      "keywords": [
+        "九章龙虾",
+        "NineClaw",
+        "好未来",
+        "AI 教育",
+        "教师助手",
+        "桌面智能体"
+      ],
+      "description": "好未来发布的教师专属 AI 原生桌面超级智能体，将好未来的教研能力、题库积累与本地化智能体能力结合"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n九章龙虾 (NineClaw) 是好未来发布的教师专属 AI 原生桌面超级智能体，将好未来的教研能力、题库积累与本地化智能体能力结合。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20098000",
+    "slug": "360-safe-claw",
+    "sort": 98,
+    "logo": "/agents-favicons/20098000.ico",
+    "aiProductName": "360 安全龙虾",
+    "introduction": "360 推出的安全型桌面端 AI 智能体应用，集多模型调用、技能生态、任务执行、安全防护和 IM 接入于一体",
+    "websiteUrl": "https://claw.360.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "多模型",
+          "技能生态",
+          "安全",
+          "360",
+          "智能工具"
+        ]
+      },
+      "country": "中国",
+      "company": "360 公司",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 助手",
+        "多模型",
+        "技能生态",
+        "安全"
+      ]
+    },
+    "seo": {
+      "title": "360 安全龙虾 - 360 安全型 AI 智能体",
+      "keywords": [
+        "360 安全龙虾",
+        "360",
+        "AI 助手",
+        "多模型",
+        "技能生态",
+        "安全防护"
+      ],
+      "description": "360 推出的安全型桌面端 AI 智能体应用，集多模型调用、技能生态、任务执行、安全防护和 IM 接入于一体"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n360 安全龙虾是 360 推出的安全型桌面端 AI 智能体应用。\n\n### 核心功能\n- 多模型能力：支持多种 AI 模型\n- 技能生态：丰富的技能扩展\n- 安全保障：安全可靠的使用体验\n- 权益：用户权益保障\n\n### 下载支持\n- Windows 客户端：可下载\n- MacOS 版：敬请期待"
+  },
+  {
+    "uid": "20099000",
+    "slug": "winclaw",
+    "sort": 99,
+    "logo": "/agents-favicons/20099000.ico",
+    "aiProductName": "WinClaw",
+    "introduction": "威努特基于 OpenClaw 框架推出的 AI 智能体应用",
+    "websiteUrl": "https://winclaw.winicssec.com/",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "智能助手",
+        "tags": [
+          "AI 助手",
+          "OpenClaw",
+          "威努特",
+          "桌面应用",
+          "智能体"
+        ]
+      },
+      "country": "中国",
+      "company": "威努特",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 助手",
+        "OpenClaw"
+      ]
+    },
+    "seo": {
+      "title": "WinClaw - 威努特 OpenClaw 智能体应用",
+      "keywords": [
+        "WinClaw",
+        "威努特",
+        "AI 助手",
+        "OpenClaw",
+        "桌面应用"
+      ],
+      "description": "威努特基于 OpenClaw 框架推出的 AI 智能体应用"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWinClaw 是威努特基于 OpenClaw 框架推出的 AI 智能体应用。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20100000",
+    "slug": "feishu-aily",
+    "sort": 100,
+    "logo": "/agents-favicons/20100000.png",
+    "aiProductName": "飞书 Aily",
+    "introduction": "飞书旗下推出的 AI 智能体平台，深度集成飞书生态，既面向个人用户提供 AI 工作伙伴，也为企业提供 Agent 开发和部署能力",
+    "websiteUrl": "https://aily.feishu.cn",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "企业平台",
+        "tags": [
+          "AI 智能体",
+          "飞书生态",
+          "企业平台",
+          "Agent 开发",
+          "工作伙伴",
+          "字节跳动"
+        ]
+      },
+      "country": "中国",
+      "company": "北京抖音信息服务有限公司",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 智能体",
+        "飞书生态",
+        "企业平台"
+      ]
+    },
+    "seo": {
+      "title": "飞书 Aily - 飞书 AI 智能体平台",
+      "keywords": [
+        "飞书 Aily",
+        "飞书",
+        "AI 智能体",
+        "企业平台",
+        "Agent 开发",
+        "字节跳动"
+      ],
+      "description": "飞书旗下推出的 AI 智能体平台，深度集成飞书生态，既面向个人用户提供 AI 工作伙伴，也为企业提供 Agent 开发和部署能力"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\n飞书 Aily 是飞书旗下推出的 AI 智能体平台，深度集成飞书生态。\n\n### 主要特性\n- 面向个人用户：提供 AI 工作伙伴\n- 面向企业：提供 Agent 开发和部署能力\n- 深度集成飞书生态\n\n网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20101000",
+    "slug": "moltbook",
+    "sort": 101,
+    "logo": "/agents-favicons/20101000.ico",
+    "aiProductName": "Moltbook",
+    "introduction": "全球首个 AI Agent 社交网络，以 AI Agent 为核心，让智能体在平台内进行内容发布、讨论与互动",
+    "websiteUrl": "https://www.moltbook.com/",
+    "metrics": {
+      "productType": {
+        "level1": "社交工具",
+        "level2": "AI 社交",
+        "tags": [
+          "AI Agent",
+          "社交网络",
+          "智能体互动",
+          "内容发布",
+          "AI 社区"
+        ]
+      },
+      "country": "美国",
+      "company": "Moltbook",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "B-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": true,
+      "languages": [
+        "英文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI Agent",
+        "社交网络",
+        "智能体互动"
+      ]
+    },
+    "seo": {
+      "title": "Moltbook - 全球首个 AI Agent 社交网络",
+      "keywords": [
+        "Moltbook",
+        "AI Agent",
+        "社交网络",
+        "智能体互动",
+        "内容发布",
+        "AI 社区"
+      ],
+      "description": "全球首个 AI Agent 社交网络，以 AI Agent 为核心，让智能体在平台内进行内容发布、讨论与互动"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nMoltbook 是全球首个 AI Agent 社交网络，以 AI Agent 为核心，让智能体在平台内进行内容发布、讨论与互动。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20102000",
+    "slug": "wiseclaw",
+    "sort": 102,
+    "logo": "/default.png",
+    "aiProductName": "WiseClaw",
+    "introduction": "智诊科技推出的面向医疗健康行业的 AI Agent Operating System，通过 Agent+Skill 可组装架构整合医疗资源",
+    "websiteUrl": "https://www.wiseclaw.cn/",
+    "metrics": {
+      "productType": {
+        "level1": "医疗健康",
+        "level2": "医疗 AI",
+        "tags": [
+          "AI 医疗",
+          "Agent OS",
+          "医疗健康",
+          "智诊科技",
+          "Skill 架构",
+          "医疗资源"
+        ]
+      },
+      "country": "中国",
+      "company": "智诊科技",
+      "useType": [
+        "web"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": true,
+      "pricingModel": [
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": false,
+      "rawProductType": [
+        "AI 医疗",
+        "Agent OS",
+        "医疗健康"
+      ]
+    },
+    "seo": {
+      "title": "WiseClaw - 智诊科技医疗 AI Agent 操作系统",
+      "keywords": [
+        "WiseClaw",
+        "智诊科技",
+        "AI 医疗",
+        "Agent OS",
+        "医疗健康",
+        "Skill 架构"
+      ],
+      "description": "智诊科技推出的面向医疗健康行业的 AI Agent Operating System，通过 Agent+Skill 可组装架构整合医疗资源"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nWiseClaw 是智诊科技推出的面向医疗健康行业的 AI Agent Operating System，通过 Agent+Skill 可组装架构整合医疗资源。网站暂时无法访问，信息来源于原始数据。"
+  },
+  {
+    "uid": "20103000",
+    "slug": "dumate-baidu",
+    "sort": 103,
+    "logo": "/agents-favicons/20103000.ico",
+    "aiProductName": "DuMate (百度)",
+    "introduction": "百度推出的面向个人及团队的桌面级 AI 智能体，能够看见屏幕、操作软件、处理本地文件、串联业务系统",
+    "websiteUrl": "https://cloud.baidu.com/product/dumate.html",
+    "metrics": {
+      "productType": {
+        "level1": "效率工具",
+        "level2": "办公助手",
+        "tags": [
+          "AI 办公助手",
+          "文件智能管理",
+          "自动化办公",
+          "数据隐私安全",
+          "自然语言交互",
+          "智能归档"
+        ]
+      },
+      "country": "中国",
+      "company": "百度智能云",
+      "useType": [
+        "desktop"
+      ],
+      "modelLevel": "A-Tier",
+      "hasApi": false,
+      "pricingModel": [
+        "免费",
+        "付费"
+      ],
+      "needVpn": false,
+      "languages": [
+        "中文"
+      ],
+      "isInternal": false,
+      "websiteReachable": true,
+      "rawProductType": [
+        "AI 办公助手",
+        "文件智能管理",
+        "自动化办公"
+      ]
+    },
+    "seo": {
+      "title": "DuMate (百度) - 百度桌面级 AI 智能体",
+      "keywords": [
+        "DuMate",
+        "百度",
+        "AI 办公助手",
+        "文件智能管理",
+        "自动化办公",
+        "桌面级 AI"
+      ],
+      "description": "百度推出的面向个人及团队的桌面级 AI 智能体，能够看见屏幕、操作软件、处理本地文件、串联业务系统"
+    },
+    "lastUpdated": "2026-03-24",
+    "detail": "## 【产品概述】\n\nDuMate 是百度智能云推出的 AI 办公助手。\n\n### 核心优势\n- 极致易用：零门槛上手，无需复杂配置，app 一键安装、开箱即用，自然语言交互\n- 灵活扩展：内置多种优质 Skills，支持自动创建新技能\n- 本地运行：文件夹级权限控制，风险操作二次确认，数据不出设备，全方位保障隐私安全\n\n### 应用场景\n\n#### 文件智能管理\n杂乱文件夹秒变有序知识库，告别手动翻找，AI 自动整理、提取、归档\n\n#### 多源数据分析\n从指令下达、任务规划到多模态成果交付，一站式体验高效办公新范式\n\n#### 办公操作自动化\n- 智能分类归档：按类型、项目、时间自动分类，清理重复和无效文件\n- 批量格式转换：WORD / EXCEL / PPT ↔ PDF，跨文档读取解析\n- 关键信息提取：从合同、纪要、报告中自动提取条款，生成结构化摘要"
   }
 ]

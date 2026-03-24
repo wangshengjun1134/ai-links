@@ -3,31 +3,42 @@ interface Props {
   uid: string;
   slug: string;
   logo: string;
-  agentName: string;
+  aiProductName: string;
   introduction: string;
   websiteUrl: string;
   metrics: {
-    agentType: string[];
-    creator: string;
+    productType: {
+      level1: string;
+      level2: string;
+      tags: string[];
+    };
+    company: string;
+    country: string;
+    useType: string[];
     modelLevel: string;
     hasApi: boolean;
+    pricingModel: string[];
     needVpn: boolean;
+    languages: string[];
     isInternal: boolean;
+    websiteReachable: boolean;
+    rawProductType: string[];
   };
 }
 
 import BaseCard from './BaseCard.astro';
 
-const { slug, agentName, introduction, websiteUrl, metrics } = Astro.props;
+const { slug, logo, aiProductName, introduction, websiteUrl, metrics } = Astro.props;
 ---
 
 <BaseCard
-  title={agentName}
-  subtitle={metrics.creator}
+  title={aiProductName}
+  subtitle={metrics.company}
   description={introduction}
   tier={metrics.modelLevel}
   needVpn={metrics.needVpn}
   hasApi={metrics.hasApi}
-  detailUrl={`/detail/${slug}`}
+  logo={logo}
+  detailUrl={`/agent/${slug}`}
   externalUrl={websiteUrl}
 />

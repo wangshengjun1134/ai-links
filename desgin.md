@@ -136,6 +136,30 @@ ToDesk ToClaw
 
 
 
+| 序号 | 产品名称         | 所属厂商      | 核心定位         | 官网地址                                                                                             |
+| -- | ------------ | --------- | ------------ | ------------------------------------------------------------------------------------------------ |
+| 1  | Manus        | —         | 通用AI Agent平台 | [https://manus.ai](https://manus.ai)                                                             |
+| 2  | Trae         | 字节跳动      | AI开发工具       | [https://trae.ai](https://trae.ai)                                                               |
+| 3  | Genspark     | —         | AI搜索 / Agent | [https://www.genspark.ai](https://www.genspark.ai)                                               |
+| 4  | Aily         | —         | AI Agent平台   | [https://www.aily.ai](https://www.aily.ai)                                                       |
+| 5  | Claude Code  | Anthropic | AI编程助手       | [https://www.anthropic.com](https://www.anthropic.com)                                           |
+| 6  | Copilot      | Microsoft | AI办公 / 编程助手  | [https://copilot.microsoft.com](https://copilot.microsoft.com)                                   |
+| 7  | 扣子 Coze      | 字节跳动      | 低代码Agent平台   | [https://www.coze.cn](https://www.coze.cn)                                                       |
+| 8  | Dify         | Dify      | 开源Agent平台    | [https://dify.ai](https://dify.ai)                                                               |
+| 9  | 盘古大模型 / 智能体  | 华为        | 行业级AI平台      | [https://www.huaweicloud.com/product/pangu.html](https://www.huaweicloud.com/product/pangu.html) |
+| 10 | 腾讯元器         | 腾讯        | 企业Agent平台    | [https://yuanqi.tencent.com](https://yuanqi.tencent.com)                                         |
+| 11 | 文心智能体（文心一言）  | 百度        | 搜索+知识Agent   | [https://yiyan.baidu.com](https://yiyan.baidu.com)                                               |
+| 12 | 钉钉 AI 助理     | 阿里巴巴      | 办公协同Agent    | [https://www.dingtalk.com](https://www.dingtalk.com)                                             |
+| 13 | 飞书智能伙伴       | 飞书        | 企业协作Agent    | [https://www.feishu.cn](https://www.feishu.cn)                                                   |
+| 14 | 讯飞星火智能体      | 讯飞        | 语音+认知AI      | [https://xinghuo.xfyun.cn](https://xinghuo.xfyun.cn)                                             |
+| 15 | 智谱清言 / CoCo  | 智谱AI      | 中文大模型Agent   | [https://chatglm.cn](https://chatglm.cn)                                                         |
+| 16 | 天工 AI        | 昆仑万维      | 内容/研究型Agent  | [https://tiangong.kunlun.com](https://tiangong.kunlun.com)                                       |
+| 17 | 网易伏羲         | 网易        | 工业/虚拟人AI     | [https://fuxi.163.com](https://fuxi.163.com)                                                     |
+| 18 | OpenAI Codex | OpenAI    | 编程Agent      | [https://platform.openai.com](https://platform.openai.com)                                       |
+| 19 | n8n          | n8n       | 工作流自动化       | [https://n8n.io](https://n8n.io)                                                                 |
+
+
+
 1 对话型 Agent
 2 知识型 Agent（RAG）
 3 工具型 Agent
