@@ -198,12 +198,24 @@ const dataAttrs = {
     {(detailUrl || externalUrl) && (
       <div class="flex gap-2.5">
         {detailUrl && (
-          <a href={detailUrl} target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 bg-white border border-[#E5E5E5] hover:border-[#171717] hover:bg-[#F9FAFB] text-[#171717] rounded-xl text-[12.5px] font-bold transition-all duration-200 cursor-pointer">
+          <a
+            href={detailUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 text-center py-2.5 bg-white border border-[#E5E5E5] hover:border-[#171717] hover:bg-[#F9FAFB] text-[#171717] rounded-xl text-[12.5px] font-bold transition-all duration-200 cursor-pointer"
+            data-close-card
+          >
             查看详情
           </a>
         )}
         {externalUrl && (
-          <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 bg-[#171717] hover:bg-[#262626] text-white rounded-xl text-[12.5px] font-bold transition-all duration-200 shadow-md shadow-[#171717]/20 cursor-pointer">
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 text-center py-2.5 bg-[#171717] hover:bg-[#262626] text-white rounded-xl text-[12.5px] font-bold transition-all duration-200 shadow-md shadow-[#171717]/20 cursor-pointer"
+            data-close-card
+          >
             立即访问
           </a>
         )}
@@ -211,6 +223,19 @@ const dataAttrs = {
     )}
   </div>
 </div>
+
+<script>
+  // 点击链接时关闭卡片
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.hasAttribute('data-close-card')) {
+      const cardContainer = target.closest('.card-container') as HTMLElement;
+      if (cardContainer) {
+        cardContainer.setAttribute('data-state', 'closed');
+      }
+    }
+  });
+</script>
 
 <style>
   .card-container[data-state='open'] .card-compact {
@@ -230,7 +255,7 @@ const dataAttrs = {
     background-color: #F5F5F5;
     transition: opacity 0.2s ease-in-out;
   }
-  
+
   .card-compact img[src]:not([src='']) {
     opacity: 1;
   }

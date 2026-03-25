@@ -101,6 +101,8 @@ logo: "${escapeFrontmatterValue(agent.logo || '')}"
 
     // 生成 Markdown 内容（清理控制字符）
     let markdownContent = agent.detail || '';
+    // 将字面的 \n 转换为真正的换行符
+    markdownContent = markdownContent.replace(/\\n/g, '\n');
     markdownContent = cleanText(markdownContent);
 
     // 写入文件

@@ -1,5 +1,19 @@
 ---
 import { mainNavItems } from '../data/navigation';
+
+// 获取当前页面路径
+const url = Astro.url;
+const currentPath = url.pathname.replace(/\/$/, '') || '/';
+
+// 判断当前菜单项是否激活
+const isActive = (path: string) => {
+  // 首页特殊处理
+  if (path === '/products' && currentPath === '/') {
+    return true;
+  }
+  // 检查路径是否匹配
+  return currentPath.startsWith(path);
+};
 ---
 
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-[#E5E5E5] h-16 flex items-center justify-between px-6 shadow-sm">
@@ -14,7 +28,16 @@ import { mainNavItems } from '../data/navigation';
   </div>
   <div class="flex items-center gap-5 text-[13.5px] font-semibold text-[#525252]">
     {mainNavItems.map((item) => (
-      <a href={item.path} class="hover:text-[#171717] transition-colors cursor-pointer">{item.name}</a>
+      <a
+        href={item.path}
+        class={`transition-all duration-200 cursor-pointer ${
+          isActive(item.path)
+            ? 'text-[#171717] font-bold'
+            : 'text-[#525252] hover:text-[#171717]'
+        }`}
+      >
+        {item.name}
+      </a>
     ))}
     <div class="h-4 w-px bg-[#E5E5E5]"></div>
     <a href="#" class="hover:text-[#171717] transition-colors cursor-pointer">Log In</a>
