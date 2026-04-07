@@ -22,6 +22,9 @@ const filterToDataAttr: Record<string, string> = {
   pricing: 'data-pricing',
   useType: 'data-useType',
   language: 'data-language',
+  // Agent 相关
+  category: 'data-category',
+  agentLevel: 'data-agentLevel',
 };
 
 export function initMultiFilter() {
@@ -68,9 +71,10 @@ export function initMultiFilter() {
 
   // 执行过滤逻辑
   function applyFilters() {
-    // 查找所有产品卡片（通过 data-task 属性识别）
+    // 查找所有产品/Agent 卡片
     const cardsContainer = document.querySelector('main') || document.body;
-    const cards = cardsContainer.querySelectorAll('[data-task]');
+    // 同时查找 product-item 和 agent-item
+    const cards = cardsContainer.querySelectorAll('.product-item, .agent-item');
 
     cards.forEach(card => {
       const cardEl = card as HTMLElement;
@@ -98,6 +102,7 @@ export function initMultiFilter() {
         // 解析卡片数据：
         // - 可能是单个字符串（如 level2）
         // - 也可能是 JSON 数组格式（如 tags）
+        // - 也可能是空格分隔的字符串（多值数组）
         let cardValues: string[] = [];
         try {
           const parsed = JSON.parse(cardDataStr);
@@ -107,8 +112,12 @@ export function initMultiFilter() {
             cardValues = [String(parsed)];
           }
         } catch {
-          // 不是 JSON，直接作为字符串处理
-          cardValues = [cardDataStr];
+          // 不是 JSON，检查是否包含空格（多值空格分隔）
+          if (cardDataStr.includes(' ')) {
+            cardValues = cardDataStr.split(' ').filter(Boolean);
+          } else {
+            cardValues = [cardDataStr];
+          }
         }
 
         // OR 关系：卡片值包含任一选中值即匹配
@@ -121,12 +130,14 @@ export function initMultiFilter() {
       }
 
       // 应用显示/隐藏
-      const productItem = cardEl.classList.contains('product-item') ? cardEl : cardEl.closest('.product-item');
+      const itemEl = cardEl.classList.contains('product-item') || cardEl.classList.contains('agent-item')
+        ? cardEl
+        : cardEl.closest('.product-item, .agent-item');
 
       if (shouldShow) {
-        if (productItem) productItem.style.display = '';
+        if (itemEl) itemEl.style.display = '';
       } else {
-        if (productItem) productItem.style.display = 'none';
+        if (itemEl) itemEl.style.display = 'none';
       }
     });
 
