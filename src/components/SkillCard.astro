@@ -1,22 +1,26 @@
 ---
 interface Props {
-  uid: string;
+  uid?: string;
+  id?: string;
   subCategory?: string;
   title: string;
   description: string;
-  author: string;
+  author?: string;
   tags: string[];
-  icon: string;
+  icon?: string;
 }
 
 import BaseCard from './BaseCard.astro';
 
-const { uid, title, description, author, tags, icon, subCategory } = Astro.props;
+const { uid, id, title, description, author, tags, icon, subCategory } = Astro.props;
+
+// 兼容 uid 和 id 字段
+const cardId = uid || id;
 
 // 提示词卡片使用 🖉 emoji，技能卡片使用 ⚙ emoji，其他使用传入的 icon
-const isPrompt = subCategory === 'prompts';
+const isPrompt = subCategory === 'prompts' || !subCategory;
 const isSkill = subCategory === 'tools' || subCategory === 'mcp';
-const displayIcon = isPrompt ? '🖉' : (isSkill ? '⚙' : icon);
+const displayIcon = isPrompt ? '🖉' : (isSkill ? '⚙' : icon || '📄');
 ---
 
 <BaseCard
@@ -25,6 +29,6 @@ const displayIcon = isPrompt ? '🖉' : (isSkill ? '⚙' : icon);
   description={description}
   icon={displayIcon}
   tags={tags}
-  detailUrl={`/skills/${subCategory || 'prompts'}/${uid}`}
+  detailUrl={`/skills/prompts/${cardId}`}
   externalUrl="#"
 />

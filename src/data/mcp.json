@@ -1,0 +1,26 @@
+[
+  {
+    "uid": "m-1",
+    "title": "PostgreSQL MCP Server",
+    "description": "通过 MCP 服务连接 PostgreSQL 数据库",
+    "author": "Database Labs",
+    "tags": ["数据库", "PostgreSQL"],
+    "icon": "🗄️"
+  },
+  {
+    "uid": "m-2",
+    "title": "GitHub MCP Server",
+    "description": "访问 GitHub 仓库、Issues 和 Pull Requests",
+    "author": "GitHub Team",
+    "tags": ["GitHub", "代码托管"],
+    "icon": "🐙"
+  },
+  {
+    "uid": "m-3",
+    "title": "Google Drive MCP",
+    "description": "读写 Google Drive 文件和文件夹",
+    "author": "Google Cloud",
+    "tags": ["云存储", "Google"],
+    "icon": "📁"
+  }
+]

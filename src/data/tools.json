@@ -1,0 +1,18 @@
+[
+  {
+    "uid": "t-1",
+    "title": "Google Search Tool",
+    "description": "让 AI 助手能够实时搜索互联网信息",
+    "author": "Search Labs",
+    "tags": ["搜索", "实时数据"],
+    "icon": "🔍"
+  },
+  {
+    "uid": "t-2",
+    "title": "Notion Connector",
+    "description": "连接 Notion 工作区，读写笔记和数据库",
+    "author": "Notion Dev",
+    "tags": ["Notion", "生产力"],
+    "icon": "📓"
+  }
+]

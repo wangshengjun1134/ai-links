@@ -1,10 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
-import skills from '../../data/skills.json';
+import promptsData from '../../data/prompts.json';
 import { skillsSubNav, sidebarFilters } from '../../data/navigation';
-
-const promptsData = skills.filter((s: any) => s.subCategory === 'prompts' || !s.subCategory);
 const { models, scenes, types } = sidebarFilters.prompts;
 
 const subNav = {

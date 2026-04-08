@@ -40,8 +40,17 @@ const agentsCollection = defineCollection({
   }),
 });
 
+const promptsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    uid: z.string(),
+    introduction: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   products: productsCollection,
   agents: agentsCollection,
+  prompts: promptsCollection,
 };

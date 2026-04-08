@@ -1,10 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
-import skills from '../../data/skills.json';
+import toolsData from '../../data/tools.json';
 import { skillsSubNav, sidebarFilters } from '../../data/navigation';
-
-const toolsData = skills.filter((s: any) => s.subCategory === 'tools');
 const { languages, licenses, functions } = sidebarFilters.tools;
 
 const subNav = {

@@ -1,10 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
-import skills from '../../data/skills.json';
+import mcpData from '../../data/mcp.json';
 import { skillsSubNav, sidebarFilters } from '../../data/navigation';
-
-const mcpData = skills.filter((s: any) => s.subCategory === 'mcp');
 const { serverTypes, authMethods, deployments } = sidebarFilters.mcp;
 
 const subNav = {
