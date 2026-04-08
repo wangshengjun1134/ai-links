@@ -107,7 +107,87 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
       </div>
     </aside>
   </div>
+<!-- 图片预览模态框 -->
+  <div id="image-lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm">
+    <button id="lightbox-close" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors cursor-pointer">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <img id="lightbox-image" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl" src="" alt="">
+  </div>
 </Layout>
+
+<script>
+  // 处理 <md-image-grid> 自定义标签
+  document.addEventListener('DOMContentLoaded', () => {
+    const imageGrids = document.querySelectorAll('md-image-grid');
+
+    imageGrids.forEach((grid) => {
+      const content = grid.textContent?.trim() || '';
+      const lines = content.split('\n').map(line => line.trim()).filter(line => line);
+
+      if (lines.length === 0) return;
+
+      // 创建图片网格容器
+      const wrapper = document.createElement('div');
+      wrapper.className = 'grid grid-cols-2 md:grid-cols-4 gap-3 my-6';
+
+      lines.forEach((src) => {
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'aspect-square overflow-hidden rounded-xl bg-slate-100';
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '示例图片';
+        img.className = 'w-full h-full object-cover cursor-zoom-in hover:scale-105 transition-transform duration-300';
+        img.loading = 'lazy';
+
+        // 点击放大
+        img.addEventListener('click', () => {
+          const lightbox = document.getElementById('image-lightbox');
+          const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+          if (lightbox && lightboxImage) {
+            lightboxImage.src = src;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+
+        imgContainer.appendChild(img);
+        wrapper.appendChild(imgContainer);
+      });
+
+      // 替换原始标签
+      grid.replaceWith(wrapper);
+    });
+
+    // 图片预览关闭功能
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    const closeLightbox = () => {
+      lightbox?.classList.add('hidden');
+      lightbox?.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) {
+        closeLightbox();
+      }
+    });
+  });
+</script>
 
 <style is:global>
   .custom-scrollbar::-webkit-scrollbar {
