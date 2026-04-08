@@ -3,7 +3,7 @@
   "id": "30001000",
   "title": "微距超现实摄影 Prompt",
   "description": "生成电影级微距场景，微缩人物在巨型物体上演绎超现实故事",
-  "websiteUrl": "",
+  "websiteUrl": "https://promptup.net/",
   "category": {
     "scenario": "多模态生成",
     "task": "生成",
@@ -17,19 +17,805 @@
     "电影感"
   ]
 },
- 
+ {
+  "id": "30002000",
+  "title": "AI文章润色与人性化改写 Prompt",
+  "description": "将AI生成文本转化为自然流畅、富有情感的人类写作风格，提升可读性与表达力",
+  "websiteUrl": "https://promptup.net/",
+  "category": {
+    "scenario": "内容创作",
+    "task": "改写",
+    "modality": "text"
+  },
+  "tags": [
+    "文章润色",
+    "人性化表达",
+    "结构化",
+    "写作优化",
+    "中文写作"
+  ]
+},
   {
-    "uid": "30002000",
-    "description": "微缩人物在巨大日常物体上构建繁忙生活场景，呈现超现实细节与电影级质感",
-    "author": "buff",
-    "tags": ["写作", "结构化", "商务"],
-    "icon": "📝"
+    "id": "30003000",
+    "title": "专注于将 AI 生成的文章转化为 地道、流畅、富有吸引力 的人类写作风格的专家。致力于在保留核心信息的同时，消除内容的机械感，注入人情味与阅读的乐趣。",
+    "description": "专注于将 AI 生成文本润色为地道人类风格，消除机械感，注入情感与逻辑，提升可读性。",
+    "websiteUrl": "https://promptup.net/prompt/30003000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "AI 润色",
+      "文本优化",
+      "风格转换",
+      "人类化写作"
+    ]
   },
   {
-    "uid": "30003000",
-    "description": "微缩人物在巨大日常物体上构建繁忙生活场景，呈现超现实细节与电影级质感",
-    "author": "buff",
-    "tags": ["写作", "结构化", "商务"],
-    "icon": "📝"
+    "id": "30004000",
+    "title": "NotebookLM里生成PPT的提示词模板",
+    "description": "NotebookLM 制作 PPT 提示词模板，设定受众风格与视觉，适用于办公汇报与演示场景。",
+    "websiteUrl": "https://promptup.net/prompt/30004000",
+    "category": {
+      "scenario": "办公效率",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "NotebookLM",
+      "PPT",
+      "提示词",
+      "办公",
+      "演示"
+    ]
+  },
+  {
+    "id": "30005000",
+    "title": "小红书封面",
+    "description": "使用 HTML/CSS 代码生成小红书封面，包含排版设计与图片保存功能。",
+    "websiteUrl": "https://promptup.net/prompt/30005000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "小红书",
+      "封面设计",
+      "前端代码",
+      "视觉排版"
+    ]
+  },
+  {
+    "id": "30006000",
+    "title": "手绘风格旅游攻略地图",
+    "description": "搜索验证城市信息，生成准确的手绘旅游攻略地图，含景点美食及路线规划。",
+    "websiteUrl": "https://promptup.net/prompt/30006000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "旅游攻略",
+      "手绘地图",
+      "信息核实",
+      "路线规划",
+      "视觉设计"
+    ]
+  },
+  {
+    "id": "30007000",
+    "title": "文档变成可视化网页-V0",
+    "description": "将文件分析并转化为基于 TailwindCSS 的响应式可视化网页代码，含深色模式与交互效果。",
+    "websiteUrl": "https://promptup.net/prompt/30007000",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "网页生成",
+      "前端代码",
+      "可视化设计",
+      "文档转换",
+      "响应式布局"
+    ]
+  },
+  {
+    "id": "30008000",
+    "title": "网页PPT设计专家",
+    "description": "基于 RevealJS 生成美观的中文 HTML 演示文稿代码，涵盖设计规划与前端技术规范。",
+    "websiteUrl": "https://promptup.net/prompt/30008000",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "RevealJS",
+      "HTML",
+      "前端开发",
+      "演示文稿",
+      "UI 设计"
+    ]
+  },
+  {
+    "id": "30009000",
+    "title": "能随意修改文字的完美 PPT",
+    "description": "生成专业幻灯片大纲与视觉提示词，优化设计美学与叙事结构，适用于即时渲染高质量幻灯片图像。",
+    "websiteUrl": "https://promptup.net/prompt/30009000",
+    "category": {
+      "scenario": "办公效率",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "PPT",
+      "幻灯片大纲",
+      "视觉提示词",
+      "设计美学",
+      "叙事结构"
+    ]
+  },
+  {
+    "id": "30010000",
+    "title": "使用问题之锤, 锤破人类知识边界, 进入未知空间",
+    "description": "通过苏格拉底式追问挖掘问题本质，生成极简风格 SVG 视觉卡片。",
+    "websiteUrl": "https://promptup.net/prompt/30010000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "分析",
+      "modality": "image"
+    },
+    "tags": [
+      "苏格拉底",
+      "深度思考",
+      "SVG",
+      "第一性原理"
+    ]
+  },
+  {
+    "id": "30011000",
+    "title": "阅读理解巩固",
+    "description": "扮演阅读教练，基于文章内容生成概念图谱、核心问题、应用练习及测试题，辅助用户深化理解与记忆。",
+    "websiteUrl": "https://promptup.net/prompt/30011000",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "阅读理解",
+      "概念图谱",
+      "测试题",
+      "元认知",
+      "学习辅助"
+    ]
+  },
+  {
+    "id": "30012000",
+    "title": "涩涩女友",
+    "description": "角色扮演对话请求，设定特定人物身份与互动模式。",
+    "websiteUrl": "https://promptup.net/prompt/30012000",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "角色扮演",
+      "对话交互",
+      "人设设定"
+    ]
+  },
+  {
+    "id": "30013000",
+    "title": "AI输出无AI味儿",
+    "description": "扮演资深博主，将输入文本改写成口语化、去机械化的真人风格，打破 AI 刻板印象，适用于内容创作。",
+    "websiteUrl": "https://promptup.net/prompt/30013000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "风格化",
+      "去 AI 化",
+      "口语表达",
+      "文本润色"
+    ]
+  },
+  {
+    "id": "30014000",
+    "title": "seedance2.0提示词",
+    "description": "Seedance 2.0 视频生成提示词指南，涵盖结构、运镜、画质及风格优化技巧。",
+    "websiteUrl": "https://promptup.net/prompt/30014000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "video"
+    },
+    "tags": [
+      "AI 视频",
+      "提示词工程",
+      "运镜技巧",
+      "画质优化"
+    ]
+  },
+  {
+    "id": "30015000",
+    "title": "小红书风格的系列信息图",
+    "description": "将内容拆解为小红书风格系列信息图，输出每张图的视觉生成提示词。",
+    "websiteUrl": "https://promptup.net/prompt/30015000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "分析",
+      "modality": "image"
+    },
+    "tags": [
+      "小红书",
+      "信息图",
+      "视觉策划",
+      "提示词"
+    ]
+  },
+  {
+    "id": "30016000",
+    "title": "deep research信息优化",
+    "description": "要求英文搜索中文写作，生成面向普通读者的深度研究报告，内容需深入全面并含可视化图表。",
+    "websiteUrl": "https://promptup.net/prompt/30016000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "深度研究",
+      "报告生成",
+      "信息整合",
+      "跨语言"
+    ]
+  },
+  {
+    "id": "30017000",
+    "title": "SVG图形大师",
+    "description": "扮演 SVG 艺术家，解析输入生成优雅精准的 SVG 图形卡片，注重可视化表达与代码结构。",
+    "websiteUrl": "https://promptup.net/prompt/30017000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "SVG",
+      "图形生成",
+      "可视化",
+      "设计"
+    ]
+  },
+  {
+    "id": "30018000",
+    "title": "单词闪卡",
+    "description": "根据主题生成带标注图片及中英闪卡，辅助视觉化英语单词学习。",
+    "websiteUrl": "https://promptup.net/prompt/30018000",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "英语学习",
+      "闪卡",
+      "多模态",
+      "词汇教学"
+    ]
+  },
+  {
+    "id": "30019000",
+    "title": "咪蒙风格标题",
+    "description": "基于咪蒙风格方法论生成爆款标题，分析心理触发点，提升内容点击率与吸引力。",
+    "websiteUrl": "https://promptup.net/prompt/30019000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "咪蒙风格",
+      "标题生成",
+      "文案策划",
+      "心理触发"
+    ]
+  },
+  {
+    "id": "30020000",
+    "title": "苹果风格流卡片网页",
+    "description": "设计苹果风格 Bento Grid 布局网页，含卡片样式与响应式规范。",
+    "websiteUrl": "https://promptup.net/prompt/30020000",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "Bento Grid",
+      "UI 设计",
+      "响应式",
+      "苹果风格",
+      "网页开发"
+    ]
+  },
+  {
+    "id": "30021000",
+    "title": "Seedance 2.0 视频提示词撰写指南",
+    "description": "Seedance 2.0 提示词指南，指导用户结合多模态素材撰写提示词，生成高质量 AI 视频。",
+    "websiteUrl": "https://promptup.net/prompt/30021000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "写作",
+      "modality": "video"
+    },
+    "tags": [
+      "AI 视频",
+      "提示词工程",
+      "多模态",
+      "即梦",
+      "视频生成"
+    ]
+  },
+  {
+    "id": "30022000",
+    "title": "深度天赋挖掘机",
+    "description": "基于心理学理论的多轮对话助手，通过深度提问分析用户天赋，生成万字职业天赋说明书。",
+    "websiteUrl": "https://promptup.net/prompt/30022000",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "生涯咨询",
+      "心理学",
+      "多轮对话",
+      "天赋挖掘",
+      "职业规划"
+    ]
+  },
+  {
+    "id": "30023000",
+    "title": "专注于将 AI 生成的文章转化为 地道、流畅、富有吸引力 的人类写作风格的专家。致力于在保留核心信息的同时，消除内容的机械感，注入人情味与阅读的乐趣。",
+    "description": "AI 文章润色专家，将机器生成文本转化为地道人类风格，消除机械感，注入情感与逻辑优化。",
+    "websiteUrl": "https://promptup.net/prompt/30023000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "AI 润色",
+      "文本优化",
+      "风格转换",
+      "人类化写作"
+    ]
+  },
+  {
+    "id": "30024000",
+    "title": "AI自动排版卡片生成",
+    "description": "基于指定设计风格生成前端代码，创建时尚杂志风格的知识卡片排版。",
+    "websiteUrl": "https://promptup.net/prompt/30024000",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "HTML",
+      "CSS",
+      "UI 设计",
+      "前端开发",
+      "排版"
+    ]
+  },
+  {
+    "id": "30025000",
+    "title": "Youtube 总结",
+    "description": "将 YouTube 视频重写为详细阅读版文章，包含摘要、主题分节及框架模型。",
+    "websiteUrl": "https://promptup.net/prompt/30025000",
+    "category": {
+      "scenario": "办公效率",
+      "task": "总结",
+      "modality": "video"
+    },
+    "tags": [
+      "YouTube",
+      "视频总结",
+      "文章改写",
+      "知识梳理"
+    ]
+  },
+  {
+    "id": "30026000",
+    "title": "作家风格匹配生成",
+    "description": "分析写作需求与受众，匹配作家风格库，提供应用方案或推荐选项，辅助用户进行风格化内容创作。",
+    "websiteUrl": "https://promptup.net/prompt/30026000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "作家风格",
+      "写作助手",
+      "内容创作",
+      "风格匹配"
+    ]
+  },
+  {
+    "id": "30027000",
+    "title": "商业洞察",
+    "description": "将商业原始文本转化为故事化分析文章，强调金句与结构。",
+    "websiteUrl": "https://promptup.net/prompt/30027000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "商业分析",
+      "科技媒体",
+      "故事化写作",
+      "金句提炼"
+    ]
+  },
+  {
+    "id": "30028000",
+    "title": "海报设计专家-v4",
+    "description": "基于极简主义原则，用 SVG 代码生成海报设计，涵盖布局、排版、色彩规范及技术兼容性要求。",
+    "websiteUrl": "https://promptup.net/prompt/30028000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "海报设计",
+      "SVG",
+      "极简主义",
+      "视觉规范",
+      "代码生成"
+    ]
+  },
+  {
+    "id": "30029000",
+    "title": "论文总结",
+    "description": "对外文学术论文进行深度解析和结构化重述，帮助研究者快速掌握核心内容。",
+    "websiteUrl": "https://promptup.net/prompt/30029000",
+    "category": {
+      "scenario": "学习教育",
+      "task": "总结",
+      "modality": "text"
+    },
+    "tags": [
+      "学术论文",
+      "文献总结",
+      "科研辅助",
+      "结构化输出"
+    ]
+  },
+  {
+    "id": "30030000",
+    "title": "言外之意",
+    "description": "基于诠释学分析文本言外之意，运用推理逆思提取命题，生成极简主义 SVG 视觉卡片。",
+    "websiteUrl": "https://promptup.net/prompt/30030000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "分析",
+      "modality": "image"
+    },
+    "tags": [
+      "言外之意",
+      "文本分析",
+      "SVG 卡片",
+      "诠释学",
+      "沟通洞察"
+    ]
+  },
+  {
+    "id": "30031000",
+    "title": "Dan Koe 写作风格提示词",
+    "description": "基于 Dan Koe 风格创作关于 AI 毁灭人类的长篇深度文章，包含结构、语言及修辞要求。",
+    "websiteUrl": "https://promptup.net/prompt/30031000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "Dan Koe",
+      "写作风格",
+      "深度长文",
+      "AI 伦理"
+    ]
+  },
+  {
+    "id": "30032000",
+    "title": "必须实现的3-5个关键能力",
+    "description": "专为 AI 编程助手设计的需求文档生成器，将复杂想法提炼为清晰的技术规范。",
+    "websiteUrl": "https://promptup.net/prompt/30032000",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "需求文档",
+      "AI 编程",
+      "技术架构",
+      "Prompt 工程"
+    ]
+  },
+  {
+    "id": "30033000",
+    "title": "费曼学习法提示词",
+    "description": "基于费曼技巧，通过类比和迭代问答引导用户简化概念，实现深度理解与知识内化。",
+    "websiteUrl": "https://promptup.net/prompt/30033000",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "费曼学习法",
+      "个性化辅导",
+      "概念简化",
+      "迭代学习"
+    ]
+  },
+  {
+    "id": "30034000",
+    "title": "2026工作室海报风格照",
+    "description": "2026 工作室海报图像生成提示词，详述宝宝、卡通角色及 3D 数字场景细节。",
+    "websiteUrl": "https://promptup.net/prompt/30034000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "图像生成",
+      "提示词",
+      "商业摄影",
+      "2026",
+      "汤姆和杰瑞"
+    ]
+  },
+  {
+    "id": "30035000",
+    "title": "个人 IP提示词",
+    "description": "个人 IP 助理，通过提问激发创意，辅助撰写文章脚本，提供情绪价值与内容策略规划。",
+    "websiteUrl": "https://promptup.net/prompt/30035000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "个人 IP",
+      "内容运营",
+      "苏格拉底提问",
+      "脚本写作"
+    ]
+  },
+  {
+    "id": "30036000",
+    "title": "数据视觉化",
+    "description": "分析文章内容，生成 Mermaid 图表及思维导图，实现信息视觉化展示。",
+    "websiteUrl": "https://promptup.net/prompt/30036000",
+    "category": {
+      "scenario": "数据分析",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "数据视觉化",
+      "Mermaid",
+      "思维导图",
+      "信息图"
+    ]
+  },
+  {
+    "id": "30037000",
+    "title": "文章解读Prompt",
+    "description": "多维度深度解读文章，涵盖结构解构、概念提炼、批判思考及实践转化，输出结构化分析结果。",
+    "websiteUrl": "https://promptup.net/prompt/30037000",
+    "category": {
+      "scenario": "学习教育",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "文章分析",
+      "深度阅读",
+      "批判性思维",
+      "知识提取"
+    ]
+  },
+  {
+    "id": "30038000",
+    "title": "通用深度探索",
+    "description": "针对任意主题进行极限深度信息挖掘，生成 5000 字以上中文研究报告，要求内容全面详尽。",
+    "websiteUrl": "https://promptup.net/prompt/30038000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "深度研究",
+      "长文生成",
+      "报告撰写",
+      "信息整合"
+    ]
+  },
+  {
+    "id": "30039000",
+    "title": "Claude Code 10x Workflow Orchestration",
+    "description": "Claude Code 编程工作流优化指南，涵盖规划、子代理策略及自我改进循环。",
+    "websiteUrl": "https://promptup.net/prompt/30039000",
+    "category": {
+      "scenario": "编程开发",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "Claude Code",
+      "工作流",
+      "编程效率",
+      "AI 协作",
+      "最佳实践"
+    ]
+  },
+  {
+    "id": "30040000",
+    "title": "公式原来是这么回事",
+    "description": "旨在通过直觉模型、视觉隐喻和极限测试，深度解码数学物理公式的教育类提示词。",
+    "websiteUrl": "https://promptup.net/prompt/30040000",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "数学教育",
+      "公式解释",
+      "费曼技巧",
+      "直观理解"
+    ]
+  },
+  {
+    "id": "30041000",
+    "title": "NotebookLM生成黏土定格动画风格的PPT",
+    "description": "基于原始资料生成黏土定格动画风格 PPT 大纲，包含内容提炼、演讲备注及视觉配图设计说明。",
+    "websiteUrl": "https://promptup.net/prompt/30041000",
+    "category": {
+      "scenario": "办公效率",
+      "task": "总结",
+      "modality": "image"
+    },
+    "tags": [
+      "PPT",
+      "黏土动画",
+      "NotebookLM",
+      "提示词",
+      "演示文稿"
+    ]
+  },
+  {
+    "id": "30042000",
+    "title": "第一性原理提示词",
+    "description": "扮演商业分析师优化第一性原理文本，结构化重塑内容并生成学习指南。",
+    "websiteUrl": "https://promptup.net/prompt/30042000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "商业战略",
+      "第一性原理",
+      "结构化",
+      "案例分析",
+      "Markdown"
+    ]
+  },
+  {
+    "id": "30043000",
+    "title": "豆包",
+    "description": "分析图像要素并反推 AI 生图提示词，使用设计术语描述风格与布局，生成可复用的中文提示词。",
+    "websiteUrl": "https://promptup.net/prompt/30043000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "分析",
+      "modality": "image"
+    },
+    "tags": [
+      "AI 绘图",
+      "提示词工程",
+      "图像理解",
+      "设计分析"
+    ]
+  },
+  {
+    "id": "30044000",
+    "title": "Document Master",
+    "description": "专为文本改写优化的 AI 助手，自动分析原文结构风格，运用高级技巧彻底改写，保留原意同时提升内容质量。",
+    "websiteUrl": "https://promptup.net/prompt/30044000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "文本改写",
+      "内容优化",
+      "自动分析",
+      "写作技巧",
+      "风格调整"
+    ]
+  },
+  {
+    "id": "30045000",
+    "title": "提示词优化Tips",
+    "description": "分享利用 AI 工具迭代优化提示词的技巧，通过生成、测试、反馈循环提升 prompt 质量。",
+    "websiteUrl": "https://promptup.net/prompt/30045000",
+    "category": {
+      "scenario": "办公效率",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "Prompt 优化",
+      "AI 技巧",
+      "迭代反馈",
+      "工作效率"
+    ]
+  },
+  {
+    "id": "30046000",
+    "title": "终极本质分析",
+    "description": "基于第一性原理思维，对主题逐层递归还原，揭示终极本质，输出结构化深度分析报告。",
+    "websiteUrl": "https://promptup.net/prompt/30046000",
+    "category": {
+      "scenario": "内容创作",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "第一性原理",
+      "深度思考",
+      "逻辑还原",
+      "结构化"
+    ]
+  },
+  {
+    "id": "30047000",
+    "title": "食材百科图",
+    "description": "生成极简艺术风格的食材百科信息卡片，包含营养、烹饪及选购等九大模块，博物馆级设计品质。",
+    "websiteUrl": "https://promptup.net/prompt/30047000",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "食材百科",
+      "信息卡片",
+      "极简设计",
+      "视觉化",
+      "营养分析"
+    ]
   }
+
 ]

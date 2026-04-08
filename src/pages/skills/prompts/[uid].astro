@@ -59,16 +59,29 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
             </div>
           )}
 
-          <!-- Tags 标签 -->
-          {fullPrompt?.tags && fullPrompt.tags.length > 0 && (
-            <div class="flex flex-wrap gap-2 mt-6">
-              {fullPrompt.tags.map((tag: string) => (
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[12px] rounded-full font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          <!-- Tags 标签 + 数据来源 -->
+          <div class="flex flex-wrap items-center gap-2 mt-6">
+            {fullPrompt?.tags && fullPrompt.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {fullPrompt.tags.map((tag: string) => (
+                  <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[12px] rounded-full font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+            {fullPrompt?.websiteUrl && (
+              <a
+                href={fullPrompt.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ml-auto flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-500 text-[12px] rounded-full font-medium hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+              >
+                <span class="text-slate-400">数据来源</span>
+                <span class="underline">{new URL(fullPrompt.websiteUrl).hostname}</span>
+              </a>
+            )}
+          </div>
         </header>
 
         <!-- 详情内容 -->
@@ -107,7 +120,8 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
       </div>
     </aside>
   </div>
-<!-- 图片预览模态框 -->
+
+  <!-- 图片预览模态框 -->
   <div id="image-lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm">
     <button id="lightbox-close" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors cursor-pointer">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,17 +133,37 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
 </Layout>
 
 <script>
-  // 处理 <md-image-grid> 自定义标签
   document.addEventListener('DOMContentLoaded', () => {
-    const imageGrids = document.querySelectorAll('md-image-grid');
+    // 处理 <script class="md-md-raw"> 标签 - 将其转换为格式化的 pre 块
+    const mdBlocks = document.querySelectorAll('script.md-md-raw');
+    mdBlocks.forEach((block) => {
+      const content = block.textContent || '';
+      const wrapper = document.createElement('pre');
+      wrapper.className = 'md-content-block';
+      wrapper.style.whiteSpace = 'pre-wrap';
+      wrapper.style.wordWrap = 'break-word';
+      wrapper.style.backgroundColor = '#f6f8fa';
+      wrapper.style.padding = '16px';
+      wrapper.style.borderRadius = '8px';
+      wrapper.style.border = '1px solid #e1e4e8';
+      wrapper.style.fontFamily = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace';
+      wrapper.style.fontSize = '14px';
+      wrapper.style.lineHeight = '1.6';
+      wrapper.style.color = '#24292f';
+      wrapper.style.overflow = 'auto';
+      wrapper.style.margin = '1.5rem 0';
+      wrapper.textContent = content;
+      block.replaceWith(wrapper);
+    });
 
+    // 处理 <md-image-grid> 自定义标签
+    const imageGrids = document.querySelectorAll('md-image-grid');
     imageGrids.forEach((grid) => {
       const content = grid.textContent?.trim() || '';
       const lines = content.split('\n').map(line => line.trim()).filter(line => line);
 
       if (lines.length === 0) return;
 
-      // 创建图片网格容器
       const wrapper = document.createElement('div');
       wrapper.className = 'grid grid-cols-2 md:grid-cols-4 gap-3 my-6';
 
@@ -143,7 +177,6 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
         img.className = 'w-full h-full object-cover cursor-zoom-in hover:scale-105 transition-transform duration-300';
         img.loading = 'lazy';
 
-        // 点击放大
         img.addEventListener('click', () => {
           const lightbox = document.getElementById('image-lightbox');
           const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
@@ -159,7 +192,6 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
         wrapper.appendChild(imgContainer);
       });
 
-      // 替换原始标签
       grid.replaceWith(wrapper);
     });
 
@@ -174,17 +206,11 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
     };
 
     lightboxClose?.addEventListener('click', closeLightbox);
-
     lightbox?.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
+      if (e.target === lightbox) closeLightbox();
     });
-
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) {
-        closeLightbox();
-      }
+      if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) closeLightbox();
     });
   });
 </script>
@@ -193,16 +219,13 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
-
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
-
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #e2e8f0;
     border-radius: 3px;
   }
-
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #cbd5e1;
   }
@@ -291,5 +314,10 @@ const fullPrompt = promptsData.find(p => (p.id || p.uid) === promptData.uid);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     margin: 1.5rem 0;
     max-width: 100%;
+  }
+
+  /* md-md 内容块样式 */
+  .md-content-block {
+    margin: 1.5rem 0;
   }
 </style>
