@@ -25,6 +25,10 @@ const filterToDataAttr: Record<string, string> = {
   // Agent 相关
   category: 'data-category',
   agentLevel: 'data-agentLevel',
+  // Prompt 相关
+  scenario: 'data-scenario',
+  modality: 'data-modality',
+  tag: 'data-tags',
 };
 
 export function initMultiFilter() {
@@ -71,10 +75,10 @@ export function initMultiFilter() {
 
   // 执行过滤逻辑
   function applyFilters() {
-    // 查找所有产品/Agent 卡片
+    // 查找所有产品/Agent/Prompt 卡片
     const cardsContainer = document.querySelector('main') || document.body;
-    // 同时查找 product-item 和 agent-item
-    const cards = cardsContainer.querySelectorAll('.product-item, .agent-item');
+    // 同时查找 product-item、agent-item 和 prompt-item
+    const cards = cardsContainer.querySelectorAll('.product-item, .agent-item, .prompt-item');
 
     cards.forEach(card => {
       const cardEl = card as HTMLElement;
@@ -130,9 +134,9 @@ export function initMultiFilter() {
       }
 
       // 应用显示/隐藏
-      const itemEl = cardEl.classList.contains('product-item') || cardEl.classList.contains('agent-item')
+      const itemEl = cardEl.classList.contains('product-item') || cardEl.classList.contains('agent-item') || cardEl.classList.contains('prompt-item')
         ? cardEl
-        : cardEl.closest('.product-item, .agent-item');
+        : cardEl.closest('.product-item, .agent-item, .prompt-item');
 
       if (shouldShow) {
         if (itemEl) itemEl.style.display = '';

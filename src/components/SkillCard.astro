@@ -8,19 +8,31 @@ interface Props {
   author?: string;
   tags: string[];
   icon?: string;
+  modality?: string;
 }
 
 import BaseCard from './BaseCard.astro';
 
-const { uid, id, title, description, author, tags, icon, subCategory } = Astro.props;
+const { uid, id, title, description, author, tags, icon, subCategory, modality } = Astro.props;
 
 // 兼容 uid 和 id 字段
 const cardId = uid || id;
 
-// 提示词卡片使用 🖉 emoji，技能卡片使用 ⚙ emoji，其他使用传入的 icon
+// 根据模态选择图标
+const modalityIcons: Record<string, string> = {
+  text: '📝',
+  image: '🖼️',
+  video: '🎬',
+  audio: '🎧',
+  multimodal: '🧩',
+};
+
+// 提示词卡片根据 modality 选择图标，技能卡片使用 ⚙ emoji，其他使用传入的 icon
 const isPrompt = subCategory === 'prompts' || !subCategory;
 const isSkill = subCategory === 'tools' || subCategory === 'mcp';
-const displayIcon = isPrompt ? '🖉' : (isSkill ? '⚙' : icon || '📄');
+const displayIcon = isPrompt
+  ? (modality ? modalityIcons[modality] || '📝' : '📝')
+  : (isSkill ? '⚙' : icon || '📄');
 ---
 
 <BaseCard

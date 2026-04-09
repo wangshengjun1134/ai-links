@@ -816,6 +816,1872 @@
       "视觉化",
       "营养分析"
     ]
+  },
+  {
+    "id": "30048000",
+    "title": "综合仓库分析与缺陷修复框架",
+    "description": "作为专家分析代码仓库，识别修复缺陷漏洞，制定流程并生成文档",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码分析",
+      "缺陷修复",
+      "安全漏洞",
+      "流程规划",
+      "技术文档"
+    ]
+  },
+  {
+    "id": "30049000",
+    "title": "大师级 App Store 本地化与 ASO 提示词 (2025) – 完整元数据生成器",
+    "description": "生成多语言应用商店元数据，优化关键词和本地化，符合苹果指南",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "ASO 优化",
+      "多语言本地化",
+      "元数据生成",
+      "JSON 格式",
+      "SEO 策略"
+    ]
+  },
+  {
+    "id": "30050000",
+    "title": "文章摘要与理解",
+    "description": "代码审查专家，分析代码质量、安全、性能及最佳实践，提供建议",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "安全分析",
+      "性能优化",
+      "最佳实践",
+      "缺陷检测"
+    ]
+  },
+  {
+    "id": "30051000",
+    "title": "浴室闪光灯自拍 (IG-抓拍，非露骨)",
+    "description": "作为文章总结专家，提取关键信息提供简洁总结，保持客观中立",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "总结",
+      "modality": "text"
+    },
+    "tags": [
+      "文章总结",
+      "关键信息",
+      "客观中立",
+      "内容理解"
+    ]
+  },
+  {
+    "id": "30052000",
+    "title": "智能重写与清晰度增强器",
+    "description": "智能重写文本，增强清晰度与表达，优化内容质量及可读性。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "文本重写",
+      "清晰度增强",
+      "内容优化",
+      "结构化",
+      "智能处理"
+    ]
+  },
+  {
+    "id": "30053000",
+    "title": "高级学术顾问",
+    "description": "重写文本使其清晰简洁，保持原意，去除术语，并说明改进。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "文本重写",
+      "清晰简洁",
+      "去除术语",
+      "保持原意",
+      "改进说明"
+    ]
+  },
+  {
+    "id": "30054000",
+    "title": "可定制的企业品牌网页模板",
+    "description": "扮演学术助理协助论文写作，先推理计划后输出，确保专业严谨。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "学术写作",
+      "逐步推理",
+      "论文编辑",
+      "结构化输出"
+    ]
+  },
+  {
+    "id": "30055000",
+    "title": "落地页风格编码",
+    "description": "扮演 Web 开发人员构建可定制前后端模板，适配多公司品牌",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "Web 开发",
+      "代码生成",
+      "模板定制",
+      "前后端结构",
+      "模块化设计"
+    ]
+  },
+  {
+    "id": "30056000",
+    "title": "专业照片修复专家",
+    "description": "作为编码专家设计落地页，融合品牌氛围，保障响应式与交互性。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "落地页设计",
+      "品牌氛围",
+      "响应式",
+      "交互元素",
+      "编码专家"
+    ]
+  },
+  {
+    "id": "30057000",
+    "title": "代码审查代理",
+    "description": "指导 AI 高精度修复老照片并历史上色，追求博物馆级真实效果",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "老照片修复",
+      "历史上色",
+      "高精度",
+      "真实质感",
+      "图像生成"
+    ]
+  },
+  {
+    "id": "30058000",
+    "title": "Ultrathinker",
+    "description": "扮演代码审查专家，评估代码质量与安全，提供优化建议确保规范",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "性能优化",
+      "安全漏洞",
+      "最佳实践"
+    ]
+  },
+  {
+    "id": "30059000",
+    "title": "产品图片高光提取",
+    "description": "软件开发代理指令，强调深度推理、原子化任务规划与代码规范实现",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "软件开发",
+      "深度推理",
+      "任务规划",
+      "代码规范",
+      "工作流程"
+    ]
+  },
+  {
+    "id": "30060000",
+    "title": "GitHub 仓库分析与增强",
+    "description": "定义产品图像分析师角色，提取关键卖点，辅助电商营销业务",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "分析",
+      "modality": "multimodal"
+    },
+    "tags": [
+      "产品图像",
+      "卖点提取",
+      "角色定义",
+      "电商分析",
+      "结构化配置"
+    ]
+  },
+  {
+    "id": "30061000",
+    "title": "终极 TypeScript 代码审查",
+    "description": "担任仓库分析师，审查代码结构质量与文档，提供优化建议。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "GitHub",
+      "最佳实践",
+      "仓库管理",
+      "质量评估"
+    ]
+  },
+  {
+    "id": "30062000",
+    "title": "全面 TypeScript 代码库审查",
+    "description": "TypeScript 代码审查，涵盖安全性能及架构分析指令",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "TypeScript",
+      "代码审查",
+      "安全审计",
+      "性能优化",
+      "质量控制"
+    ]
+  },
+  {
+    "id": "30063000",
+    "title": "Python 代码生成器 — 简洁、优化且生产就绪",
+    "description": "作为创意助手生成项目想法，评估可行性并推荐前三项最佳方案。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "头脑风暴",
+      "创意生成",
+      "可行性评估",
+      "方案推荐",
+      "项目创新"
+    ]
+  },
+  {
+    "id": "30064000",
+    "title": "项目经理",
+    "description": "指导 AI 扮演架构师，按流程生成生产级 Python 代码",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "Python 开发",
+      "代码生成",
+      "结构化流程",
+      "生产级代码",
+      "架构设计"
+    ]
+  },
+  {
+    "id": "30065000",
+    "title": "保姆式助手",
+    "description": "协助起草产品需求文档，提供结构化模板，输入主题后生成。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "PRD",
+      "结构化",
+      "产品管理",
+      "文档起草",
+      "需求分析"
+    ]
+  },
+  {
+    "id": "30066000",
+    "title": "创意想法生成器",
+    "description": "扮演保姆角色，提供儿童看护、作业辅导及晚间活动安排的建议",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "保姆角色扮演",
+      "儿童看护",
+      "作业辅导",
+      "活动规划",
+      "安全教育"
+    ]
+  },
+  {
+    "id": "30067000",
+    "title": "Google Ads 标题文案专家",
+    "description": "专注数字广告创意生成，提供多平台策略、文案构思及执行建议。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "广告创意",
+      "多平台适配",
+      "营销策略",
+      "文案构思",
+      "头脑风暴"
+    ]
+  },
+  {
+    "id": "30068000",
+    "title": "App Store 提交代理",
+    "description": "扮演谷歌广告文案专家，撰写吸引点击的简短标题，确保符合政策。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "谷歌广告",
+      "标题撰写",
+      "文案创作",
+      "政策合规",
+      "营销推广"
+    ]
+  },
+  {
+    "id": "30069000",
+    "title": "创建 STYLE_GUIDE.md",
+    "description": "指导 AI 预验证 iOS 应用构建，确保符合苹果审核规范",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "iOS 合规",
+      "App Store 审核",
+      "代码分析",
+      "隐私检查",
+      "提交验证"
+    ]
+  },
+  {
+    "id": "30070000",
+    "title": "趋势研究员",
+    "description": "生成包含配色、排版等模块的详细设计风格指南",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "风格指南",
+      "设计规范",
+      "品牌一致性",
+      "视觉元素",
+      "结构化输出"
+    ]
+  },
+  {
+    "id": "30071000",
+    "title": "日期 - 事件 - 图像生成",
+    "description": "市场趋势分析代理，识别病毒内容与用户行为，挖掘产品机会。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "市场趋势",
+      "竞品分析",
+      "产品机会",
+      "病毒内容",
+      "代理配置"
+    ]
+  },
+  {
+    "id": "30072000",
+    "title": "Excel 数据转 Figma 演示文稿设计器",
+    "description": "将 Excel 数据转为 Figma 设计，自动化生成演示文稿。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "生成",
+      "modality": "multimodal"
+    },
+    "tags": [
+      "Excel",
+      "Figma",
+      "自动化",
+      "演示文稿",
+      "数据可视化"
+    ]
+  },
+  {
+    "id": "30073000",
+    "title": "股票分析器",
+    "description": "用 Figma 将数据转为演示稿，分析洞察设计美观布局确保专业。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "Figma",
+      "数据可视化",
+      "演示文稿",
+      "设计",
+      "Excel"
+    ]
+  },
+  {
+    "id": "30074000",
+    "title": "阳台咖啡（晨雾，植物氛围）",
+    "description": "扮演资深私募经理，依据清单对股票进行多维度分析与评估评分",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "数据分析",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "股票分析",
+      "金融投资",
+      "角色扮演",
+      "评估评分",
+      "私募经理"
+    ]
+  },
+  {
+    "id": "30075000",
+    "title": "侧边栏仪表盘设计",
+    "description": "定义侧边栏仪表盘配置结构，用于前端开发界面数据规范设计",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "配置结构",
+      "前端开发",
+      "UI 设计",
+      "数据规范",
+      "仪表盘"
+    ]
+  },
+  {
+    "id": "30076000",
+    "title": "投资追踪仪表盘",
+    "description": "扮演前端开发者设计投资追踪仪表盘侧边栏，实现响应式布局交互。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "前端开发",
+      "仪表盘设计",
+      "响应式布局",
+      "用户体验",
+      "代码规范"
+    ]
+  },
+  {
+    "id": "30077000",
+    "title": "LinkedIn 评论",
+    "description": "扮演开发者创建投资追踪仪表盘，包含数据可视化与响应式设计。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "React",
+      "JavaScript",
+      "投资追踪",
+      "数据可视化",
+      "代码生成"
+    ]
+  },
+  {
+    "id": "30078000",
+    "title": "# 地铁站台（街头抓拍，情绪感）",
+    "description": "基于人设撰写领英评论，先提问澄清情境，再提供三种风格选项。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "LinkedIn 评论",
+      "人设风格",
+      "互动策略",
+      "澄清提问",
+      "内容生成"
+    ]
+  },
+  {
+    "id": "30079000",
+    "title": "扮演简历审核员",
+    "description": "扮演简历审核员，基于结构化配置对简历内容实施专业分析与评估",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "简历审核",
+      "结构化提示词",
+      "角色设定",
+      "职场办公",
+      "专业评估"
+    ]
+  },
+  {
+    "id": "30080000",
+    "title": "提示词生成",
+    "description": "作为招聘专家分析简历与职位描述的匹配度，提供评估反馈。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "简历评估",
+      "招聘助手",
+      "职位匹配",
+      "反馈建议"
+    ]
+  },
+  {
+    "id": "30081000",
+    "title": "农贸市场（色彩丰富的农产品，抓拍）",
+    "description": "扮演提示词架构师，优化用户意图并设计模块化提示词模板",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "提示词工程",
+      "意图重构",
+      "模板设计",
+      "交互优化",
+      "模块化"
+    ]
+  },
+  {
+    "id": "30082000",
+    "title": "后端架构师",
+    "description": "定义后端架构的配置文件结构，规范数据字段与身份验证机制",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "后端架构",
+      "配置文件",
+      "数据结构",
+      "身份验证",
+      "JSON"
+    ]
+  },
+  {
+    "id": "30083000",
+    "title": "中文到英文翻译助手",
+    "description": "定义后端架构师智能体，设计接口数据库及可扩展服务器系统方案",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "后端架构",
+      "API 设计",
+      "系统扩展",
+      "智能体配置",
+      "数据库优化"
+    ]
+  },
+  {
+    "id": "30084000",
+    "title": "预测眼动热力图生成器",
+    "description": "指导模型将中文译为英文，注重语境文化差异与语言流畅性。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "翻译",
+      "modality": "text"
+    },
+    "tags": [
+      "中文翻译",
+      "英文输出",
+      "文化语境",
+      "语言专家"
+    ]
+  },
+  {
+    "id": "30085000",
+    "title": "学术项目专用简洁 BibTeX 格式化工具",
+    "description": "基于认知科学分析界面截图，模拟眼动追踪并生成视觉热图。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "multimodal"
+    },
+    "tags": [
+      "UX 研究",
+      "眼动追踪",
+      "热图生成",
+      "认知科学",
+      "界面分析"
+    ]
+  },
+  {
+    "id": "30086000",
+    "title": "前端开发者技能",
+    "description": "将参考文献转为 BibTeX 格式，遵循键名字段与字符规范。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "BibTeX",
+      "参考文献",
+      "格式转换",
+      "学术写作",
+      "标准化"
+    ]
+  },
+  {
+    "id": "30087000",
+    "title": "前端开发者",
+    "description": "定义前端专家角色，规范框架与性能优化，确保界面高质量实现。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "前端开发",
+      "性能优化",
+      "组件架构",
+      "响应式设计",
+      "代码质量"
+    ]
+  },
+  {
+    "id": "30088000",
+    "title": "Markdown 笔记",
+    "description": "扮演资深学术审稿人，评估学术文档，提供分类判断与改进建议。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "学术评估",
+      "论文审稿",
+      "质量分析",
+      "改进建议",
+      "研究伦理"
+    ]
+  },
+  {
+    "id": "30089000",
+    "title": "SaaS 落地页构建器",
+    "description": "开发前端 Markdown 笔记应用，含编辑预览与数据管理。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "前端开发",
+      "Markdown",
+      "笔记应用",
+      "代码生成",
+      "响应式"
+    ]
+  },
+  {
+    "id": "30090000",
+    "title": "扮演产品经理",
+    "description": "为 SaaS 产品创建高转化落地页，含标题、价值主张及行动号召",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "SaaS",
+      "落地页",
+      "营销文案",
+      "转化率",
+      "网页设计"
+    ]
+  },
+  {
+    "id": "30091000",
+    "title": "财务追踪应用开发计划",
+    "description": "扮演产品经理，协助制定产品需求文档，提供市场分析及功能规划。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "产品经理",
+      "需求文档",
+      "产品规划",
+      "市场分析",
+      "路线图"
+    ]
+  },
+  {
+    "id": "30092000",
+    "title": "ChatGpt 知道关于你的哪些信息？",
+    "description": "担任移动架构师，生成隐私优先金融应用的分步代码与方案。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "Flutter",
+      "架构设计",
+      "代码生成",
+      "移动开发",
+      "隐私保护"
+    ]
+  },
+  {
+    "id": "30093000",
+    "title": "等距城市立体模型",
+    "description": "查询会话记忆内容并逐字显示，用于管理或调试智能代理信息。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "提取",
+      "modality": "text"
+    },
+    "tags": [
+      "记忆查询",
+      "状态管理",
+      "逐字显示",
+      "信息提取",
+      "会话调试"
+    ]
+  },
+  {
+    "id": "30094000",
+    "title": "YouTube 频道、数据库和个人资料的详细分析",
+    "description": "生成微型 3D 等距城市立体模型，适应天气环境的结构化提示词。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "3D 城市",
+      "图像生成",
+      "结构化提示",
+      "风格化",
+      "环境适应"
+    ]
+  },
+  {
+    "id": "30095000",
+    "title": "旅行海报",
+    "description": "扮演数据分析专家，分析多源数据，提供结构化洞察报告与建议。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "数据分析",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "数据分析",
+      "洞察报告",
+      "结构化输出",
+      "多渠道",
+      "专家角色"
+    ]
+  },
+  {
+    "id": "30096000",
+    "title": "AI 驱动的数据提取与组织工具",
+    "description": "AI 驱动数据提取工具，将信息组织为结构化 JSON 格式输出。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "数据分析",
+      "task": "提取",
+      "modality": "text"
+    },
+    "tags": [
+      "数据提取",
+      "JSON 格式",
+      "结构化",
+      "信息组织",
+      "自动化工具"
+    ]
+  },
+  {
+    "id": "30097000",
+    "title": "Claude Code Skill (Slash Command): review-and-commit.md",
+    "description": "开发 AI 数据提取组织工具，处理多源数据，提升分析利用效率。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "数据分析",
+      "task": "提取",
+      "modality": "multimodal"
+    },
+    "tags": [
+      "AI 驱动",
+      "数据提取",
+      "多源处理",
+      "信息组织",
+      "高效精度"
+    ]
+  },
+  {
+    "id": "30098000",
+    "title": "幻觉漏洞提示词检查器",
+    "description": "检测 AI 在 Git 操作中是否产生幻觉，限制工具使用确保安全",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "幻觉检测",
+      "工具限制",
+      "Git 操作",
+      "安全性",
+      "验证"
+    ]
+  },
+  {
+    "id": "30099000",
+    "title": "幻觉漏洞提示词检查器",
+    "description": "分析提示词结构漏洞，识别幻觉风险提供缓解方案，提升输出可靠性",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "提示词安全",
+      "幻觉检测",
+      "静态分析",
+      "风险缓解",
+      "结构优化"
+    ]
+  },
+  {
+    "id": "30100000",
+    "title": "广告商",
+    "description": "扮演导演构建视频脚本结构，含钩子节奏视听指令及包装创意。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "视频脚本",
+      "叙事结构",
+      "视听设计",
+      "高留存",
+      "创意策划"
+    ]
+  },
+  {
+    "id": "30101000",
+    "title": "大师级中国网络小说作家",
+    "description": "扮演代码审查专家，分析代码质量、安全与性能，提供优化建议。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "安全分析",
+      "性能优化",
+      "最佳实践",
+      "Bug 检测"
+    ]
+  },
+  {
+    "id": "30102000",
+    "title": "教育内容创作者",
+    "description": "扮演广告商策划广告活动，制定目标受众、口号及媒体渠道方案。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "广告策划",
+      "营销推广",
+      "目标受众",
+      "口号生成",
+      "媒体渠道"
+    ]
+  },
+  {
+    "id": "30103000",
+    "title": "学习任何技术/编码主题",
+    "description": "扮演网络小说作家，创作指定流派原创章节，注重情节与角色深度",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "网络小说",
+      "角色扮演",
+      "情节创作",
+      "角色塑造",
+      "原创故事"
+    ]
+  },
+  {
+    "id": "30104000",
+    "title": "闪卡学习系统",
+    "description": "扮演教育创作者，生成学习材料，制定高中生可再生能源课程计划。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "教育内容",
+      "课程计划",
+      "学习材料",
+      "可再生能源",
+      "高中生"
+    ]
+  },
+  {
+    "id": "30105000",
+    "title": "专家编程导师",
+    "description": "分层讲解编程概念，含类比与误区警示，辅助开发者高效掌握技术。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "编程教学",
+      "分层解释",
+      "概念拆解",
+      "代码示例",
+      "误区警示"
+    ]
+  },
+  {
+    "id": "30106000",
+    "title": "应用的自定义本地化与 AI 集成",
+    "description": "基于前端技术开发抽认卡系统，实现间隔重复算法与多媒体支持。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "前端开发",
+      "抽认卡",
+      "间隔重复",
+      "学习系统",
+      "网页技术"
+    ]
+  },
+  {
+    "id": "30107000",
+    "title": "在 Xcode 中设置新的 iOS 应用",
+    "description": "生成销售视频脚本，融入故事技巧，突出产品特点，符合品牌策略",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "销售脚本",
+      "视频创作",
+      "故事讲述",
+      "营销策略"
+    ]
+  },
+  {
+    "id": "30108000",
+    "title": "AI 视频创作助手",
+    "description": "指导构建独立系统语言的应用本地化架构，支持 AI 集成动态切换",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "SwiftUI",
+      "应用本地化",
+      "架构设计",
+      "AI 集成",
+      "动态切换"
+    ]
+  },
+  {
+    "id": "30109000",
+    "title": "通过节日设计优化电商列表以提高点击率",
+    "description": "指导配置 iOS 应用项目，涵盖部署目标、方向及安全合规。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "iOS 开发",
+      "Xcode 配置",
+      "项目设置",
+      "安全合规",
+      "技术指南"
+    ]
+  },
+  {
+    "id": "30110000",
+    "title": "翻译与文化解释的英语老师",
+    "description": "作为视频创作助手，生成创意脚本并提供视觉指导与制作建议。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "视频脚本",
+      "创意生成",
+      "视觉指导",
+      "制作建议",
+      "内容策划"
+    ]
+  },
+  {
+    "id": "30111000",
+    "title": "战略应用设计与内容工程提示词",
+    "description": "扮演电商优化师，设计主图撰写文案，优化商品列表提升点击率",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "电商优化",
+      "商品列表",
+      "点击率",
+      "视觉设计",
+      "文案撰写"
+    ]
+  },
+  {
+    "id": "30112000",
+    "title": "安全密码生成工具",
+    "description": "根据用户英语水平翻译句子并解释难点词汇及文化背景",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "翻译",
+      "modality": "text"
+    },
+    "tags": [
+      "英语学习",
+      "翻译辅助",
+      "文化解释",
+      "水平适配",
+      "教学工具"
+    ]
+  },
+  {
+    "id": "30113000",
+    "title": "高级颜色选择器工具",
+    "description": "基于心理学原则设计应用架构与转化策略，最大化转化率的专业报告",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "心理学原则",
+      "转化策略",
+      "用户体验",
+      "说服工程",
+      "架构设计"
+    ]
+  },
+  {
+    "id": "30114000",
+    "title": "构建库存管理系统",
+    "description": "基于前端技术开发安全密码生成器，含加密存储与强度评估功能。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "密码生成器",
+      "前端开发",
+      "加密存储",
+      "强度评估",
+      "JavaScript"
+    ]
+  },
+  {
+    "id": "30115000",
+    "title": "完整书籍撰写者",
+    "description": "使用前端构建色彩工具，支持格式转换、调色板生成及代码导出",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "前端开发",
+      "色彩工具",
+      "代码生成",
+      "UI 设计",
+      "无障碍检查"
+    ]
+  },
+  {
+    "id": "30116000",
+    "title": "百科助手",
+    "description": "扮演软件架构师，规划库存管理系统组件、数据库结构及选型。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "软件架构",
+      "库存管理",
+      "系统设计",
+      "数据库结构",
+      "技术选型"
+    ]
+  },
+  {
+    "id": "30117000",
+    "title": "算法快速指南",
+    "description": "扮演图书作家创作故事，塑造角色情节，保持叙事流畅，适配体裁",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "故事创作",
+      "角色塑造",
+      "情节构思",
+      "图书写作",
+      "叙事风格"
+    ]
+  },
+  {
+    "id": "30118000",
+    "title": "精美标题生成器",
+    "description": "百科全书助手，提供主题解释与准确信息，引用来源，保持中立。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "知识查询",
+      "信息解释",
+      "准确验证",
+      "中立语气",
+      "可信来源"
+    ]
+  },
+  {
+    "id": "30119000",
+    "title": "LinkedIn：经历优化提示词",
+    "description": "扮演算法专家，为学习者解释算法概念，分析复杂度并提供示例。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "算法解释",
+      "个性化教学",
+      "复杂度分析",
+      "概念拆解",
+      "教育辅助"
+    ]
+  },
+  {
+    "id": "30120000",
+    "title": "LinkedIn 个人资料增强",
+    "description": "根据关键词生成精美标题，优化领英资料，提升职业形象。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "LinkedIn",
+      "标题生成",
+      "关键词",
+      "职业形象",
+      "文本生成"
+    ]
+  },
+  {
+    "id": "30121000",
+    "title": "LinkedIn：关于/摘要草稿提示词",
+    "description": "优化领英经历，突出职位成就，反映技能经验，提升候选人竞争力",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "LinkedIn",
+      "简历优化",
+      "求职辅助",
+      "职业发展",
+      "个人品牌"
+    ]
+  },
+  {
+    "id": "30122000",
+    "title": "UX/UI 开发工程师",
+    "description": "帮助用户撰写领英头条，吸引招聘人员注意，展示专业资历与技能",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "领英头条",
+      "求职招聘",
+      "个人品牌",
+      "文案撰写"
+    ]
+  },
+  {
+    "id": "30123000",
+    "title": "配方查找器",
+    "description": "协助撰写 LinkedIn 总结，突出独特价值主张吸引雇主。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "LinkedIn",
+      "个人总结",
+      "求职辅助",
+      "价值主张",
+      "文案写作"
+    ]
+  },
+  {
+    "id": "30124000",
+    "title": "职业路径审议助手",
+    "description": "扮演 UX 开发者，提供设计方案改善体验，创建原型并测试反馈",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "UX/UI 设计",
+      "用户体验",
+      "原型设计",
+      "导航系统",
+      "产品优化"
+    ]
+  },
+  {
+    "id": "30125000",
+    "title": "适用于 Rally",
+    "description": "基于前端技术和美食 API 构建具备搜索计划及烹饪功能的食谱应用",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "Web 开发",
+      "食谱应用",
+      "前端技术",
+      "API 集成",
+      "功能设计"
+    ]
+  },
+  {
+    "id": "30126000",
+    "title": "说服性文章或提案写作指南",
+    "description": "扮演职业咨询专家，分析职位与邀约，辅助用户做出明智的职业决策",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "职业咨询",
+      "决策辅助",
+      "邀约分析",
+      "客观分析",
+      "职业规划"
+    ]
+  },
+  {
+    "id": "30127000",
+    "title": "FAQ 生成器",
+    "description": "生成加密货币推文内容，优化参与度与原创性，严格限制字符数",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "加密货币",
+      "社交媒体",
+      "推文生成",
+      "参与度优化",
+      "角色扮演"
+    ]
+  },
+  {
+    "id": "30128000",
+    "title": "超写实卧室自拍描述",
+    "description": "扮演说服性作家，撰写特定主题文章，运用有力论据说服受众行动",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "说服性写作",
+      "文章生成",
+      "角色设定",
+      "结构化输出"
+    ]
+  },
+  {
+    "id": "30129000",
+    "title": "终极 2025-2026 AI 人生战略家与复盘",
+    "description": "为产品或服务生成常见问题解答，涵盖功能优势定价，语言简洁易懂",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "常见问题",
+      "解答生成",
+      "产品说明",
+      "客户服务",
+      "简洁易懂"
+    ]
+  },
+  {
+    "id": "30130000",
+    "title": "数学老师",
+    "description": "该提示词用于生成具有日常业余风格的超写实女性镜前自拍图像。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "超写实",
+      "镜前自拍",
+      "生活化",
+      "人物摄影",
+      "光影细节"
+    ]
+  },
+  {
+    "id": "30131000",
+    "title": "论文降重指南",
+    "description": "分析个人历史交互数据，生成行为模式洞察与年度战略规划报告",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "个人发展",
+      "战略规划",
+      "行为分析",
+      "年度回顾",
+      "SWOT 分析"
+    ]
+  },
+  {
+    "id": "30132000",
+    "title": "UI 设计师角色",
+    "description": "扮演数学老师解释数学概念，提供步骤指导和资源，帮助理解概率。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "学习教育",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "数学老师",
+      "概念解释",
+      "通俗易懂",
+      "步骤指导",
+      "学习资源"
+    ]
+  },
+  {
+    "id": "30133000",
+    "title": "元提示工程师",
+    "description": "扮演论文编辑，分析文本冗余提供简洁方案，保持学术严谨性。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "改写",
+      "modality": "text"
+    },
+    "tags": [
+      "学术写作",
+      "文本精简",
+      "论文编辑",
+      "语言优化"
+    ]
+  },
+  {
+    "id": "30134000",
+    "title": "前端开发者",
+    "description": "扮演 UI 设计师设计数字产品界面，提升用户体验，协作定义需求。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "UI 设计",
+      "用户体验",
+      "数字产品",
+      "原型设计",
+      "协作"
+    ]
+  },
+  {
+    "id": "30135000",
+    "title": "文章摘要器",
+    "description": "作为提示词工程师，复述目标并提问澄清，确认后生成优化提示词。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "提示词工程",
+      "需求澄清",
+      "迭代优化",
+      "角色扮演",
+      "提示生成"
+    ]
+  },
+  {
+    "id": "30136000",
+    "title": "DIY 专家",
+    "description": "```yaml --- name: frontend-dev",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "DIY",
+      "DIY 专家"
+    ]
+  },
+  {
+    "id": "30137000",
+    "title": "Pull Request 审查助手",
+    "description": "作为文章摘要专家，识别观点与细节，生成结构化清晰准确的摘要",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "办公效率",
+      "task": "总结",
+      "modality": "text"
+    },
+    "tags": [
+      "文章摘要",
+      "要点提炼",
+      "结构化输出",
+      "清晰准确"
+    ]
+  },
+  {
+    "id": "30138000",
+    "title": "Quizflix 应用开发",
+    "description": "我希望你扮演一名 DIY 专家。你将掌握完成简单家居改善项目",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "Quizflix",
+      "应用开发",
+      "Quizflix 应"
+    ]
+  },
+  {
+    "id": "30139000",
+    "title": "网站安全漏洞检查器",
+    "description": "担任代码审查助手，分析安全漏洞，提供修复建议确保质量",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "安全漏洞",
+      "Pull Request",
+      "代码质量",
+      "软件开发"
+    ]
+  },
+  {
+    "id": "30140000",
+    "title": "夜班甜品店",
+    "description": "扮演移动开发者规划影视问答应用，含二维码连接、等待室及反馈",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "规划",
+      "modality": "text"
+    },
+    "tags": [
+      "移动应用开发",
+      "问答系统",
+      "二维码连接",
+      "用户体验",
+      "功能规划"
+    ]
+  },
+  {
+    "id": "30141000",
+    "title": "综合学术论文写作指南",
+    "description": "扮演网站安全审计员，评估网站安全状况，识别漏洞并提供建议",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "网络安全",
+      "安全审计",
+      "漏洞识别",
+      "报告生成"
+    ]
+  },
+  {
+    "id": "30142000",
+    "title": "SaaS 支付方案选项",
+    "description": "用于生成土耳其甜品店夜间场景超写实照片的图像生成提示词配置",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "图像生成",
+      "场景描述",
+      "写实风格",
+      "提示词工程",
+      "细节控制"
+    ]
+  },
+  {
+    "id": "30143000",
+    "title": "日常需求全能助手",
+    "description": "担任学术写作专家，指导选题方法及结构，协助完成规范论文写作。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "写作",
+      "modality": "text"
+    },
+    "tags": [
+      "学术写作",
+      "研究指导",
+      "论文结构",
+      "APA 格式",
+      "研究方法"
+    ]
+  },
+  {
+    "id": "30144000",
+    "title": "宁静瑜伽与正念生活方式摄影",
+    "description": "扮演网站设计师，为软件服务首页创建响应式付费方案卡片设计",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "UI 设计",
+      "SaaS",
+      "响应式",
+      "定价卡片",
+      "变量配置"
+    ]
+  },
+  {
+    "id": "30145000",
+    "title": "加密货币合约交易系统",
+    "description": "为加密货币交易提供战略分析与建议的智能助手系统提示词。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "数据分析",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "加密货币",
+      "交易系统",
+      "决策支持",
+      "战略分析",
+      "智能助手"
+    ]
+  },
+  {
+    "id": "30146000",
+    "title": "宁静瑜伽与正念生活方式摄影",
+    "description": "生成宁静瑜伽与正念生活方式摄影图像，指定环境主体及视觉美学",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "多模态生成",
+      "task": "生成",
+      "modality": "image"
+    },
+    "tags": [
+      "瑜伽摄影",
+      "正念生活",
+      "视觉美学",
+      "图像生成",
+      "环境设定"
+    ]
+  },
+  {
+    "id": "30147000",
+    "title": "扮演对话式 AI",
+    "description": "扮演加密货币合约交易员。您是一位顶尖的交易专家，在加密货币市",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "内容创作",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "扮演对话式",
+      "扮演对话式 AI"
+    ]
+  },
+  {
+    "id": "30148000",
+    "title": "面试准备教练",
+    "description": "根据代码变更生成符合规范的标准提交消息，辅助版本控制管理。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "Git",
+      "Commit 规范",
+      "代码管理",
+      "版本控制",
+      "提交消息"
+    ]
+  },
+  {
+    "id": "30149000",
+    "title": "故事生成器",
+    "description": "扮演对话式 AI 助手，根据主题语气与用户友好互动并回答问题。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "AI Agent",
+      "task": "生成",
+      "modality": "text"
+    },
+    "tags": [
+      "对话交互",
+      "角色扮演",
+      "语气调整",
+      "信息准确",
+      "友好亲切"
+    ]
+  },
+  {
+    "id": "30150000",
+    "title": "代码审查助手",
+    "description": "扮演面试准备教练。你是指导候选人通过各种面试流程的专家。你的",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查助手",
+      "代码审查助手"
+    ]
+  },
+  {
+    "id": "30151000",
+    "title": "使用 OR-Tools 优化制造工作流",
+    "description": "扮演专家代码审查员，全面分析代码质量、安全、性能及最佳实践。",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "质量控制",
+      "安全分析",
+      "性能优化",
+      "最佳实践"
+    ]
+  },
+  {
+    "id": "30152000",
+    "title": "英语发音助手",
+    "description": "担任代码审查助手，分析代码质量性能，提供改进建议确保符合标准",
+    "websiteUrl": "https://prompts.chat/",
+    "category": {
+      "scenario": "编程开发",
+      "task": "分析",
+      "modality": "text"
+    },
+    "tags": [
+      "代码审查",
+      "性能优化",
+      "最佳实践",
+      "错误识别"
+    ]
   }
-
 ]
