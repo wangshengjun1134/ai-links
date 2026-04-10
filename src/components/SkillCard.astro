@@ -18,21 +18,24 @@ const { uid, id, title, description, author, tags, icon, subCategory, modality }
 // 兼容 uid 和 id 字段
 const cardId = uid || id;
 
-// 根据模态选择图标
-const modalityIcons: Record<string, string> = {
-  text: '📝',
-  image: '🖼️',
-  video: '🎬',
-  audio: '🎧',
-  multimodal: '🧩',
+// 根据模态选择图标图片路径
+const modalityIconPaths: Record<string, string> = {
+  text: '/prompts/icons/text.png',
+  image: '/prompts/icons/image.png',
+  video: '/prompts/icons/video.png',
+  audio: '/prompts/icons/audio.png',
+  multimodal: '/prompts/icons/multimodal.png',
 };
 
-// 提示词卡片根据 modality 选择图标，技能卡片使用 ⚙ emoji，其他使用传入的 icon
+// 提示词卡片根据 modality 选择图标图片，技能卡片使用 ⚙ emoji，其他使用传入的 icon
 const isPrompt = subCategory === 'prompts' || !subCategory;
 const isSkill = subCategory === 'tools' || subCategory === 'mcp';
-const displayIcon = isPrompt
-  ? (modality ? modalityIcons[modality] || '📝' : '📝')
-  : (isSkill ? '⚙' : icon || '📄');
+
+// 提示词使用图片，其他使用 emoji
+const displayIcon = isPrompt ? undefined : (isSkill ? '⚙' : icon || '📄');
+const displayLogo = isPrompt
+  ? (modality ? modalityIconPaths[modality] || modalityIconPaths.text : modalityIconPaths.text)
+  : undefined;
 ---
 
 <BaseCard
@@ -40,6 +43,7 @@ const displayIcon = isPrompt
   subtitle={author}
   description={description}
   icon={displayIcon}
+  logo={displayLogo}
   tags={tags}
   detailUrl={`/skills/prompts/${cardId}`}
 />
