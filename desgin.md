@@ -534,3 +534,10 @@ AI Agent
   "audio",
   "multimodal"
 
+
+
+
+https://github.com/punkpeye/awesome-mcp-servers?tab=readme-ov-file
+https://www.volcengine.com/ats
+https://github.com/volcengine/mcp-server/tree/main/server/mcp_server_las
+https://www.mcpworld.com/zh/detail/20ef2b339076e8eeb57138fa23d15dcb
