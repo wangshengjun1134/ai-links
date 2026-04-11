@@ -8,11 +8,19 @@ export async function getStaticPaths() {
   // 只生成 products.json 中存在的产品路径
   const productUids = new Set(products.map(p => p.uid));
   return posts
-    .filter(entry => productUids.has(entry.slug))
-    .map(entry => ({
-      params: { slug: entry.slug },
-      props: { entry },
-    }));
+    .filter(entry => {
+      // slug 格式可能是 "10001000/10001000"，需要提取实际的 uid
+      const uid = entry.slug.split('/').pop() || entry.slug;
+      return productUids.has(uid);
+    })
+    .map(entry => {
+      // 使用 uid 作为 URL 参数，而不是完整的 slug
+      const uid = entry.slug.split('/').pop() || entry.slug;
+      return {
+        params: { slug: uid },
+        props: { entry },
+      };
+    });
 }
 
 const { entry } = Astro.props;
@@ -43,7 +51,7 @@ const tags = isProductTypeObject ? productType.tags || [] : [];
           <div class="flex items-start gap-6 mb-8">
             <div class="w-20 h-20 rounded-2xl border border-slate-200 bg-white flex items-center justify-center p-3 shadow-sm">
               <img
-                src={productData.logo}
+                src={`/${productData.logo}`}
                 alt={productData.aiProductName}
                 class="w-full h-full object-contain"
                 loading="lazy"

@@ -18,6 +18,15 @@ const { uid, id, title, description, author, tags, icon, subCategory, modality }
 // 兼容 uid 和 id 字段
 const cardId = uid || id;
 
+// 根据 subCategory 决定跳转路径
+const getDetailUrl = () => {
+  if (subCategory === 'mcp') {
+    return `/skills/mcps/${cardId}`;
+  }
+  const category = subCategory || 'prompts';
+  return `/skills/${category}/${cardId}`;
+};
+
 // 根据模态选择图标图片路径
 const modalityIconPaths: Record<string, string> = {
   text: '/prompts/icons/text.png',
@@ -27,15 +36,30 @@ const modalityIconPaths: Record<string, string> = {
   multimodal: '/prompts/icons/multimodal.png',
 };
 
-// 提示词卡片根据 modality 选择图标图片，技能卡片使用 ⚙ emoji，其他使用传入的 icon
+// 判断卡片类型
 const isPrompt = subCategory === 'prompts' || !subCategory;
-const isSkill = subCategory === 'tools' || subCategory === 'mcp';
+const isMcp = subCategory === 'mcp';
+const isTools = subCategory === 'tools';
 
-// 提示词使用图片，其他使用 emoji
-const displayIcon = isPrompt ? undefined : (isSkill ? '⚙' : icon || '📄');
-const displayLogo = isPrompt
-  ? (modality ? modalityIconPaths[modality] || modalityIconPaths.text : modalityIconPaths.text)
-  : undefined;
+// 提示词：根据 modality 选择图片
+// MCP：使用传入的 icon 图片 URL
+// Tools：使用 ⚙ emoji
+let displayIcon: string | undefined;
+let displayLogo: string | undefined;
+
+if (isPrompt) {
+  // 提示词卡片使用模态图片
+  displayLogo = modality ? modalityIconPaths[modality] || modalityIconPaths.text : modalityIconPaths.text;
+} else if (isMcp) {
+  // MCP 卡片使用传入的 icon 图片 URL，修正路径中的下划线为连字符
+  displayLogo = icon ? `/${icon.replace('mcp_favicons', 'mcp-favicons')}` : undefined;
+} else if (isTools) {
+  // Tools 卡片使用 emoji
+  displayIcon = '⚙';
+} else {
+  // 其他使用传入的 icon 或默认 emoji
+  displayIcon = icon || '📄';
+}
 ---
 
 <BaseCard
@@ -45,5 +69,5 @@ const displayLogo = isPrompt
   icon={displayIcon}
   logo={displayLogo}
   tags={tags}
-  detailUrl={`/skills/prompts/${cardId}`}
+  detailUrl={getDetailUrl()}
 />

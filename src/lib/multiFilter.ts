@@ -29,6 +29,10 @@ const filterToDataAttr: Record<string, string> = {
   scenario: 'data-scenario',
   modality: 'data-modality',
   tag: 'data-tags',
+  // MCP 相关
+  servertype: 'data-servertype',
+  authtype: 'data-authtype',
+  deploy: 'data-deploy',
 };
 
 export function initMultiFilter() {
@@ -75,10 +79,10 @@ export function initMultiFilter() {
 
   // 执行过滤逻辑
   function applyFilters() {
-    // 查找所有产品/Agent/Prompt 卡片
+    // 查找所有产品/Agent/Prompt/MCP 卡片
     const cardsContainer = document.querySelector('main') || document.body;
-    // 同时查找 product-item、agent-item 和 prompt-item
-    const cards = cardsContainer.querySelectorAll('.product-item, .agent-item, .prompt-item');
+    // 同时查找 product-item、agent-item、prompt-item 和 mcp-item
+    const cards = cardsContainer.querySelectorAll('.product-item, .agent-item, .prompt-item, .mcp-item');
 
     cards.forEach(card => {
       const cardEl = card as HTMLElement;
@@ -134,9 +138,9 @@ export function initMultiFilter() {
       }
 
       // 应用显示/隐藏
-      const itemEl = cardEl.classList.contains('product-item') || cardEl.classList.contains('agent-item') || cardEl.classList.contains('prompt-item')
+      const itemEl = cardEl.classList.contains('product-item') || cardEl.classList.contains('agent-item') || cardEl.classList.contains('prompt-item') || cardEl.classList.contains('mcp-item')
         ? cardEl
-        : cardEl.closest('.product-item, .agent-item, .prompt-item');
+        : cardEl.closest('.product-item, .agent-item, .prompt-item, .mcp-item');
 
       if (shouldShow) {
         if (itemEl) itemEl.style.display = '';

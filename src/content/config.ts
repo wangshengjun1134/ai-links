@@ -48,9 +48,18 @@ const promptsCollection = defineCollection({
   }),
 });
 
+const mcpsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    uid: z.string(),
+    introduction: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   products: productsCollection,
   agents: agentsCollection,
   prompts: promptsCollection,
+  mcps: mcpsCollection,
 };

@@ -5,7 +5,7 @@ export const mainNavItems = [
   { name: '技能 Skills', path: '/skills' },
   // { name: '大模型', path: '/llms' }, // 暂时隐藏，后续上线
   { name: 'AI Hub', path: '/aihub' },
-  { name: '科普&教程', path: '/guides' },
+  { name: '文章', path: '/guides' },
   { name: '新闻', path: '/news' },
 ];
 
