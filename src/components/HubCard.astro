@@ -1,0 +1,50 @@
+---
+interface Props {
+  uid: string;
+  slug: string;
+  logo: string;
+  aiProductName: string;
+  introduction: string;
+  websiteUrl: string;
+  productType: string[];
+  tags: string[];
+}
+
+import BaseCard from './BaseCard.astro';
+
+const { slug, logo, aiProductName, introduction, websiteUrl, productType, tags } = Astro.props;
+
+// 从 productType 中提取等级信息
+const getTier = (): string => {
+  if (productType.includes('S-Tier')) return 'S-Tier';
+  if (productType.includes('A-Tier')) return 'A-Tier';
+  if (productType.includes('B-Tier')) return 'B-Tier';
+  return '';
+};
+
+// 从标签中提取公司信息
+const getCompany = (): string => {
+  const companyKeywords = ['字节跳动', 'OpenAI', 'Meta', 'Google', '阿里巴巴', '腾讯', '百度', '智谱 AI', '月之暗面'];
+  for (const tag of tags) {
+    if (companyKeywords.includes(tag)) {
+      return tag;
+    }
+  }
+  return productType[0] || '';
+};
+
+const tier = getTier();
+const company = getCompany();
+---
+
+<BaseCard
+  title={aiProductName}
+  subtitle={company}
+  description={introduction}
+  tier={tier}
+  logo={logo}
+  detailUrl={`/aihub/${slug}`}
+  externalUrl={websiteUrl}
+  data-tags={JSON.stringify(tags)}
+  data-productType={JSON.stringify(productType)}
+/>

@@ -1,0 +1,32 @@
+[
+  {
+    "uid": "80001000",
+    "slug": "volcengine-ats",
+    "logo": "aihub-favicons/80001000.png",
+    "aiProductName": "火山引擎 - 智能体工具商店",
+    "introduction": "工具一键直连，模型无缝衔接。探索与体验大模型丰富生态服务，轻松集成全面且易用的工具，提供企业级稳定、高效、安全的技术支持。",
+    "websiteUrl": "https://www.volcengine.com/ats",
+    "productType": ["MCP", "Skills", "工具商店"],
+    "tags": ["字节跳动", "火山引擎", "中国"]
+  },
+  {
+    "uid": "80002000",
+    "slug": "gpt-4o",
+    "logo": "https://cdn.openai.com/favicon.ico",
+    "aiProductName": "GPT-4o",
+    "introduction": "OpenAI 最新多模态大模型，支持文本、图像、音频输入输出，具备强大的理解和生成能力。",
+    "websiteUrl": "https://openai.com/gpt-4o",
+    "productType": ["多模态", "对话", "S-Tier"],
+    "tags": ["OpenAI", "美国", "闭源"]
+  },
+  {
+    "uid": "80003000",
+    "slug": "llama-3",
+    "logo": "https://ai.meta.com/favicon.ico",
+    "aiProductName": "Llama 3",
+    "introduction": "Meta 开源的最强大语言模型，支持多种语言和商业应用，性能卓越。",
+    "websiteUrl": "https://ai.meta.com/llama",
+    "productType": ["文本", "开源", "A-Tier"],
+    "tags": ["Meta", "美国", "开源"]
+  }
+]

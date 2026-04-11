@@ -3,7 +3,8 @@ export const mainNavItems = [
   { name: 'AI 产品', path: '/products' },
   { name: '智能体 Agent', path: '/agents' },
   { name: '技能 Skills', path: '/skills' },
-  { name: '大模型', path: '/llms' },
+  // { name: '大模型', path: '/llms' }, // 暂时隐藏，后续上线
+  { name: 'AI Hub', path: '/aihub' },
   { name: '科普&教程', path: '/guides' },
   { name: '新闻', path: '/news' },
 ];
@@ -59,6 +60,20 @@ export const sidebarFilters = {
     ],
   },
   llms: {
+    sizes: [
+      { name: '小型 (<10B)', path: '?size=small' },
+      { name: '中型 (10B-100B)', path: '?size=medium' },
+      { name: '大型 (>100B)', path: '?size=large' },
+    ],
+    capabilities: [
+      { name: '文本', path: '?cap=text', icon: '📝' },
+      { name: '代码', path: '?cap=code', icon: '💻' },
+      { name: '数学', path: '?cap=math', icon: '🔢' },
+      { name: '视觉', path: '?cap=vision', icon: '👁️' },
+      { name: '音频', path: '?cap=audio', icon: '🎵' },
+    ],
+  },
+  aihub: {
     sizes: [
       { name: '小型 (<10B)', path: '?size=small' },
       { name: '中型 (10B-100B)', path: '?size=medium' },
