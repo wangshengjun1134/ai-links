@@ -68,7 +68,8 @@ const tierBgColors: Record<string, string> = {
 };
 
 const tierLabel = tier ? tier.split('-')[0] : '';
-const displayLogo = logo || logoImg.src;
+// 确保 logo 路径是绝对路径
+const displayLogo = logo ? (logo.startsWith('/') ? logo : `/${logo}`) : logoImg.src;
 
 // 过滤属性
 const dataAttrs = {
