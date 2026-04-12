@@ -9,6 +9,7 @@ interface Props {
 }
 
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
 const { title = "AI Links", description = "发现最好的 AI 工具、智能体、技能和学习资源", subNav } = Astro.props;
 ---
@@ -22,7 +23,7 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
     <link rel="icon" type="image/png" href="/logo.jpeg" />
     <title>{title}</title>
   </head>
-  <body class="bg-[#F9FAFB]">
+  <body class="bg-[#F9FAFB] flex flex-col min-h-screen">
     <Navbar />
 
     {subNav && (
@@ -46,12 +47,14 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
       </div>
     )}
 
-    <div class="max-w-[1600px] mx-auto flex">
+    <div class="max-w-[1600px] mx-auto flex flex-1 w-full">
       <slot name="sidebar" />
       <div class="flex-1 min-w-0">
         <slot />
       </div>
     </div>
+
+    <Footer />
   </body>
 </html>
 

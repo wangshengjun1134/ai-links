@@ -96,7 +96,26 @@
     "productType": ["MCP"],
     "tags": ["MCP"]
   }
-
+,{
+    "uid": "80011000",
+    "slug": "SkillHub",
+    "logo": "aihub-favicons/80011000.png",
+    "aiProductName": "SkillHub",
+    "introduction": "专为中国用户优化的 AI Skills 社区",
+    "websiteUrl": "https://skillhub.cn/",
+    "productType": ["Skills"],
+    "tags": ["Skills"]
+  }
+  ,{
+    "uid": "80012000",
+    "slug": "ClawHub",
+    "logo": "aihub-favicons/80012000.png",
+    "aiProductName": "ClawHub",
+    "introduction": "Browse, install, and publish skill packs. Versioned like npm, searchable with vectors, no gatekeeping.",
+    "websiteUrl": "https://clawhub.ai/",
+    "productType": ["Skills"],
+    "tags": ["Skills"]
+  }
 
   
 ]

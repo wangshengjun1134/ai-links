@@ -1,0 +1,37 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-white border-t border-[#E5E5E5] mt-auto">
+  <div class="max-w-[1600px] mx-auto px-4 py-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[#525252] text-xs">
+      <!-- 左侧：来源声明、侵权处理 -->
+      <div class="space-y-2">
+        <p>
+          <span class="font-medium text-[#171717]">来源声明：</span>本站内容大部分来源于互联网，使用前请注意识别相关风险，内容版权归原作者所有。
+        </p>
+        <p>
+          <span class="font-medium text-[#171717]">侵权处理：</span>如收录内容涉及版权问题，请发送邮件至
+          <a href="mailto:vic.ya@foxmail.com" class="text-blue-600 hover:text-blue-700 underline">
+            vic.ya@foxmail.com
+          </a>，我们将在收到通知后及时核实并予以下架处理。
+        </p>
+      </div>
+
+      <!-- 右侧：版权信息和备案号 -->
+      <div class="text-right space-y-1 shrink-0">
+        <p>Copyright © {currentYear} ai-links.cn</p>
+        <p>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#525252] hover:text-[#171717]"
+          >
+            京ICP备2026012248号-1
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
