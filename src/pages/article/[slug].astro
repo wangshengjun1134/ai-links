@@ -69,6 +69,24 @@ const articleMeta = articles.find(a => a.uid === uid) || {
               </a>
             )}
           </div>
+
+          <!-- 语言切换按钮 -->
+          <div class="flex items-center gap-2 mt-6" id="lang-switcher">
+            <button
+              type="button"
+              data-lang="en"
+              class="lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-indigo-600 text-white"
+            >
+              English
+            </button>
+            <button
+              type="button"
+              data-lang="zh"
+              class="lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-slate-100 text-slate-500 hover:bg-slate-200"
+            >
+              中文
+            </button>
+          </div>
         </header>
 
         <div id="custom-article-content">
@@ -203,4 +221,49 @@ const articleMeta = articles.find(a => a.uid === uid) || {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     margin: 3rem auto;
   }
+
+  /* 语言块样式 */
+  .lang-block[data-lang="zh"] {
+    display: none;
+  }
 </style>
+
+<script>
+  // 语言切换逻辑
+  document.addEventListener('DOMContentLoaded', () => {
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const langBlocks = document.querySelectorAll('.lang-block');
+
+    // 检查是否存在语言块，如果没有则隐藏切换按钮
+    if (langBlocks.length === 0) {
+      const switcher = document.getElementById('lang-switcher');
+      if (switcher) switcher.style.display = 'none';
+      return;
+    }
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang');
+
+        // 更新按钮样式
+        langBtns.forEach(b => {
+          if (b.getAttribute('data-lang') === lang) {
+            b.className = 'lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-indigo-600 text-white';
+          } else {
+            b.className = 'lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-slate-100 text-slate-500 hover:bg-slate-200';
+          }
+        });
+
+        // 显示/隐藏语言块
+        langBlocks.forEach(block => {
+          const blockLang = block.getAttribute('data-lang');
+          if (blockLang === lang) {
+            block.style.display = 'block';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

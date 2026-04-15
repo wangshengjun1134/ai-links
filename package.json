@@ -15,6 +15,7 @@
     "astro": "^5.17.1",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^7.1.0",
+    "remark-directive": "^4.0.0",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {

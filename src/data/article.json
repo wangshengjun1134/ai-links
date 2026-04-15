@@ -6,7 +6,8 @@
     "author": "OSCanner Team",
     "category": "TechnicalDoc",
     "readTime": "15 分钟",
-    "publishedAt": "2026-03-01"
+    "publishedAt": "2026-03-01",
+    "websiteUrl": "https://x.com/thedankoe/status/2010751592346030461"
   },
   {
     "uid": "10001",
@@ -15,7 +16,8 @@
     "author": "System",
     "category": "Tutorial",
     "readTime": "30 分钟",
-    "publishedAt": "2026-03-01"
+    "publishedAt": "2026-03-01",
+    "websiteUrl": ""
   },
   {
     "uid": "10002",
@@ -24,7 +26,8 @@
     "author": "System",
     "category": "Tutorial",
     "readTime": "30 minutes",
-    "publishedAt": "2026-03-01"
+    "publishedAt": "2026-03-01",
+    "websiteUrl": ""
   },
   {
     "uid": "g-1",
@@ -33,7 +36,8 @@
     "author": "AI Science",
     "category": "SciencePopu",
     "readTime": "8 分钟",
-    "publishedAt": "2026-03-01"
+    "publishedAt": "2026-03-01",
+    "websiteUrl": ""
   },
   {
     "uid": "g-2",
@@ -42,7 +46,8 @@
     "author": "Prompt Master",
     "category": "SciencePopu",
     "readTime": "6 分钟",
-    "publishedAt": "2026-03-05"
+    "publishedAt": "2026-03-05",
+    "websiteUrl": ""
   },
   {
     "uid": "g-3",
@@ -51,7 +56,8 @@
     "author": "Art Tech",
     "category": "Blog",
     "readTime": "10 分钟",
-    "publishedAt": "2026-03-06"
+    "publishedAt": "2026-03-06",
+    "websiteUrl": ""
   },
   {
     "uid": "g-4",
@@ -60,6 +66,7 @@
     "author": "DevOps Pro",
     "category": "Tutorial",
     "readTime": "15 分钟",
-    "publishedAt": "2026-03-07"
+    "publishedAt": "2026-03-07",
+    "websiteUrl": ""
   }
 ]
