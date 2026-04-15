@@ -128,3 +128,5 @@ src/content/agents/xiaoyi-claw.md
 src/content/agents/xinxiang-app.md
 src/content/agents/zhixiaobao.md
 src/content/agents/zulu.md
+dist.zip
+.gitignore

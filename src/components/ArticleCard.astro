@@ -2,6 +2,7 @@
 interface Props {
   uid: string;
   title: string;
+  titleEn?: string;
   description: string;
   author: string;
   category: string;
@@ -9,13 +10,20 @@ interface Props {
   publishedAt: string;
 }
 
-const { uid, title, description, author, category, readTime, publishedAt } = Astro.props;
+const { uid, title, titleEn, description, author, category, readTime, publishedAt } = Astro.props;
 ---
 
 <a href={`/article/${uid}`} class="block bg-white border border-[#F0F0F0] rounded-2xl p-5 hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.1)] hover:border-[#171717]/20 transition-all duration-300 group cursor-pointer">
-  <h3 class="text-lg font-bold text-[#171717] mb-2.5 group-hover:text-[#171717] transition-colors leading-tight">
-    {title}
-  </h3>
+  <div class="mb-2.5">
+    <h3 class="text-lg font-bold text-[#171717] group-hover:text-[#171717] transition-colors leading-tight">
+      {title}
+    </h3>
+    {titleEn && (
+      <p class="text-[14px] font-semibold text-[#525252] mt-1 leading-snug">
+        {titleEn}
+      </p>
+    )}
+  </div>
 
   <p class="text-[13.5px] text-[#525252] mb-4 line-clamp-2 leading-relaxed">
     {description}

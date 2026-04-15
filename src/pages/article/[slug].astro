@@ -74,8 +74,15 @@ const articleMeta = articles.find(a => a.uid === uid) || {
           <div class="flex items-center gap-2 mt-6" id="lang-switcher">
             <button
               type="button"
-              data-lang="en"
+              data-lang="bilingual"
               class="lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-indigo-600 text-white"
+            >
+              双语
+            </button>
+            <button
+              type="button"
+              data-lang="en"
+              class="lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-slate-100 text-slate-500 hover:bg-slate-200"
             >
               English
             </button>
@@ -97,12 +104,20 @@ const articleMeta = articles.find(a => a.uid === uid) || {
 
     <aside class="w-[320px] shrink-0 border-l border-slate-50 hidden xl:block">
       <div class="sticky top-0 h-screen p-10 overflow-y-auto custom-scrollbar">
-        <nav class="space-y-1">
-          {headings.filter(h => h.depth >= 2).map((h) => (
-            <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}>
-              <span class="truncate">{h.text}</span>
-            </a>
-          ))}
+        <nav class="space-y-1" id="toc-nav">
+          {headings.filter(h => h.depth >= 2).map((h) => {
+            // 检测是否为中文标题（包含中文字符）
+            const isZhTitle = /[\u4e00-\u9fa5]/.test(h.text);
+            return (
+              <a
+                href={`#${h.slug}`}
+                data-lang-type={isZhTitle ? 'zh' : 'en'}
+                class={`toc-item group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}
+              >
+                <span class="truncate">{h.text}</span>
+              </a>
+            );
+          })}
         </nav>
       </div>
     </aside>
@@ -222,9 +237,49 @@ const articleMeta = articles.find(a => a.uid === uid) || {
     margin: 3rem auto;
   }
 
-  /* 语言块样式 */
+  /* 语言块样式 - 默认双语模式显示所有 */
+  .lang-block[data-lang="en"],
   .lang-block[data-lang="zh"] {
-    display: none;
+    display: block;
+  }
+
+  /* 双语模式下的分隔样式 */
+  .lang-block[data-lang="zh"] {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #e2e8f0;
+  }
+
+  /* 英文标题样式 */
+  .en-title h2 {
+    font-size: 28px;
+    color: #0f172a;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -0.025em;
+  }
+
+  .en-title h3 {
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  /* 中文标题样式 - 由 JS 控制显示 */
+  .zh-title h2 {
+    font-size: 22px;
+    color: #1e293b;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .zh-title h3 {
+    font-size: 18px;
+    color: #1e293b;
+    font-weight: 700;
+    margin: 0;
   }
 </style>
 
@@ -233,6 +288,11 @@ const articleMeta = articles.find(a => a.uid === uid) || {
   document.addEventListener('DOMContentLoaded', () => {
     const langBtns = document.querySelectorAll('.lang-btn');
     const langBlocks = document.querySelectorAll('.lang-block');
+    const tocItems = document.querySelectorAll('.toc-item');
+
+    // 获取所有标题容器
+    const enTitleContainers = document.querySelectorAll('.en-title');
+    const zhTitleContainers = document.querySelectorAll('.zh-title');
 
     // 检查是否存在语言块，如果没有则隐藏切换按钮
     if (langBlocks.length === 0) {
@@ -241,29 +301,97 @@ const articleMeta = articles.find(a => a.uid === uid) || {
       return;
     }
 
+    // 更新按钮样式
+    function updateButtonStyles(activeLang) {
+      langBtns.forEach(b => {
+        if (b.getAttribute('data-lang') === activeLang) {
+          b.className = 'lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-indigo-600 text-white';
+        } else {
+          b.className = 'lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-slate-100 text-slate-500 hover:bg-slate-200';
+        }
+      });
+    }
+
+    // 更新语言块显示
+    function updateLanguageDisplay(lang) {
+      langBlocks.forEach(block => {
+        const blockLang = block.getAttribute('data-lang');
+        if (lang === 'bilingual') {
+          block.style.display = 'block';
+          block.classList.remove('lang-separator-hidden');
+        } else if (blockLang === lang) {
+          block.style.display = 'block';
+          block.classList.add('lang-separator-hidden');
+        } else {
+          block.style.display = 'none';
+        }
+      });
+
+      // 更新分隔线样式
+      const zhBlocks = document.querySelectorAll('.lang-block[data-lang="zh"]');
+      zhBlocks.forEach(block => {
+        if (lang === 'bilingual') {
+          block.style.borderTop = '1px dashed #e2e8f0';
+          block.style.paddingTop = '1rem';
+          block.style.marginTop = '1rem';
+        } else {
+          block.style.borderTop = 'none';
+          block.style.paddingTop = '0';
+          block.style.marginTop = '0';
+        }
+      });
+
+      // 更新英文标题显示：双语和英文模式显示，中文模式隐藏
+      enTitleContainers.forEach(container => {
+        if (lang === 'bilingual' || lang === 'en') {
+          container.style.display = 'block';
+        } else {
+          container.style.display = 'none';
+        }
+      });
+
+      // 更新中文标题显示：双语和中文模式显示，英文模式隐藏
+      zhTitleContainers.forEach(container => {
+        if (lang === 'bilingual' || lang === 'zh') {
+          container.style.display = 'block';
+          container.style.marginTop = '0.5rem';
+          container.style.marginBottom = '1.5rem';
+        } else {
+          container.style.display = 'none';
+        }
+      });
+
+      // 更新目录显示
+      tocItems.forEach(item => {
+        const langType = item.getAttribute('data-lang-type');
+        if (lang === 'bilingual') {
+          item.style.display = 'flex';
+        } else if (lang === 'zh') {
+          if (langType === 'zh') {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        } else {
+          if (langType === 'en') {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        }
+      });
+    }
+
     langBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
-
-        // 更新按钮样式
-        langBtns.forEach(b => {
-          if (b.getAttribute('data-lang') === lang) {
-            b.className = 'lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-indigo-600 text-white';
-          } else {
-            b.className = 'lang-btn px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all bg-slate-100 text-slate-500 hover:bg-slate-200';
-          }
-        });
-
-        // 显示/隐藏语言块
-        langBlocks.forEach(block => {
-          const blockLang = block.getAttribute('data-lang');
-          if (blockLang === lang) {
-            block.style.display = 'block';
-          } else {
-            block.style.display = 'none';
-          }
-        });
+        updateButtonStyles(lang);
+        updateLanguageDisplay(lang);
       });
     });
+
+    // 默认显示双语模式
+    updateButtonStyles('bilingual');
+    updateLanguageDisplay('bilingual');
   });
 </script>
