@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import articles from '../../data/article.json';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('article');
   // 只生成 article.json 中存在的文章路径
   const articleUids = new Set(articles.map(a => a.uid));
   return posts
