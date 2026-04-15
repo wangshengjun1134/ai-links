@@ -5,7 +5,7 @@
     "titleEn": "How to fix your entire life in 1 day",
     "description": "关于行为改变、心理学和效率的 7 个观点，帮助你实现真正的改变",
     "author": "OSCanner Team",
-    "category": "TechnicalDoc",
+    "category": "博文",
     "readTime": "15 分钟",
     "publishedAt": "2026-03-01",
     "websiteUrl": "https://x.com/thedankoe/status/2010751592346030461"
@@ -15,7 +15,7 @@
     "title": "工程师能力评估系统",
     "description": "基于 GitHub / Gitee 的 commit、diff、仓库结构与协作信号，对工程师贡献者进行多维度能力评估的工具链",
     "author": "System",
-    "category": "Tutorial",
+    "category": "博文",
     "readTime": "30 分钟",
     "publishedAt": "2026-03-01",
     "websiteUrl": ""
@@ -25,7 +25,7 @@
     "title": "Engineer Capability Assessment System (EN)",
     "description": "AI-powered system for evaluating engineering capabilities by analyzing GitHub and Gitee commits, code changes, and collaboration patterns",
     "author": "System",
-    "category": "Tutorial",
+    "category": "博文",
     "readTime": "30 minutes",
     "publishedAt": "2026-03-01",
     "websiteUrl": ""
@@ -35,7 +35,7 @@
     "title": "什么是大语言模型？全面解析 LLM 的工作原理",
     "description": "深入了解大语言模型的基本概念、训练方法和应用场景，适合 AI 初学者阅读",
     "author": "AI Science",
-    "category": "SciencePopu",
+    "category": "教程",
     "readTime": "8 分钟",
     "publishedAt": "2026-03-01",
     "websiteUrl": ""
@@ -45,7 +45,7 @@
     "title": "Prompt Engineering 入门：如何与 AI 高效对话",
     "description": "学习编写高质量提示词的技巧，让你的 AI 助手更好地理解你的需求",
     "author": "Prompt Master",
-    "category": "SciencePopu",
+    "category": "科普",
     "readTime": "6 分钟",
     "publishedAt": "2026-03-05",
     "websiteUrl": ""
@@ -55,7 +55,7 @@
     "title": "AI 绘画工具对比：Midjourney vs Stable Diffusion",
     "description": "详细对比两款主流 AI 绘画工具的优缺点，帮助你选择适合的工具",
     "author": "Art Tech",
-    "category": "Blog",
+    "category": "科普",
     "readTime": "10 分钟",
     "publishedAt": "2026-03-06",
     "websiteUrl": ""
@@ -65,7 +65,7 @@
     "title": "如何本地部署开源大模型？完整教程",
     "description": "从零开始学习如何在本地服务器部署 LLaMA 等开源大模型",
     "author": "DevOps Pro",
-    "category": "Tutorial",
+    "category": "教程",
     "readTime": "15 分钟",
     "publishedAt": "2026-03-07",
     "websiteUrl": ""

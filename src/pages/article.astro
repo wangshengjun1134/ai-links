@@ -21,10 +21,20 @@ const rankData = [
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <h3 class="text-[12.5px] font-bold text-[#A3A3A3] mb-4 uppercase tracking-widest">分类专区</h3>
     <div class="space-y-1.5">
+      <!-- 全部按钮 -->
+      <button
+        data-category="all"
+        class="category-btn group flex items-center gap-3 px-3 py-2.5 text-[13px] text-[#525252] bg-[#171717]/10 rounded-xl transition-all duration-200 cursor-pointer w-full"
+      >
+        <span class="text-lg">📚</span> 全部
+      </button>
       {types.map((item) => (
-        <a href={item.path} class="group flex items-center gap-3 px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer">
+        <button
+          data-category={item.name}
+          class="category-btn group flex items-center gap-3 px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer w-full"
+        >
           <span class="text-lg group-hover:scale-110 transition-transform">{item.icon}</span> {item.name}
-        </a>
+        </button>
       ))}
     </div>
   </aside>
@@ -53,9 +63,12 @@ const rankData = [
     {articles.length > 0 ? (
       <div class="flex gap-8">
         <div class="flex-1">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="articles-grid">
             {articles.map(a => (
-              <div class="group relative p-5 rounded-2xl border border-[#F0F0F0] bg-white hover:border-[#171717]/30 hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+              <div
+                data-category={a.category}
+                class="article-card group relative p-5 rounded-2xl border border-[#F0F0F0] bg-white hover:border-[#171717]/30 hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
                 <a href={`/article/${a.uid}`} target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
 
                 <div class="flex items-start justify-between mb-3">
@@ -118,3 +131,47 @@ const rankData = [
     )}
   </div>
 </Layout>
+
+<script>
+  // 分类过滤逻辑
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const articleCards = document.querySelectorAll('.article-card');
+
+    // 更新按钮样式
+    function updateButtonStyles(activeCategory: string) {
+      categoryBtns.forEach(btn => {
+        const category = btn.getAttribute('data-category');
+        if (category === activeCategory) {
+          btn.className = 'category-btn group flex items-center gap-3 px-3 py-2.5 text-[13px] text-white bg-[#171717] rounded-xl transition-all duration-200 cursor-pointer w-full';
+        } else {
+          btn.className = 'category-btn group flex items-center gap-3 px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer w-full';
+        }
+      });
+    }
+
+    // 过滤文章
+    function filterArticles(category: string) {
+      articleCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 绑定点击事件
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category') || 'all';
+        updateButtonStyles(category);
+        filterArticles(category);
+      });
+    });
+
+    // 默认选中"全部"
+    updateButtonStyles('all');
+  });
+</script>
