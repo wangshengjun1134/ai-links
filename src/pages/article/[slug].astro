@@ -1,14 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import guides from '../../data/guides.json';
+import articles from '../../data/article.json';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  // 只生成 guides.json 中存在的教程路径
-  const guideUids = new Set(guides.map(g => g.uid));
+  // 只生成 article.json 中存在的文章路径
+  const articleUids = new Set(articles.map(a => a.uid));
   return posts
-    .filter(entry => guideUids.has(entry.slug))
+    .filter(entry => articleUids.has(entry.slug))
     .map(entry => ({
       params: { slug: entry.slug },
       props: { entry },
@@ -18,8 +18,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-// 从 guides.json 获取额外元数据
-const guideMeta = guides.find(g => g.uid === entry.slug) || {
+// 从 article.json 获取额外元数据
+const articleMeta = articles.find(a => a.uid === entry.slug) || {
   title: entry.data.title,
   author: entry.data.author || 'Unknown',
   category: entry.data.category || 'Tutorial',
@@ -28,7 +28,7 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
 };
 ---
 
-<Layout title={guideMeta.title}>
+<Layout title={articleMeta.title}>
   <div class="flex min-h-screen bg-white bg-clip-content px-[140px]">
     <article class="flex-1 min-w-0">
       <div class=" mx-auto px-8 md:px-16 py-20">
@@ -36,16 +36,16 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
         <header class="mb-16 pb-12 border-b border-slate-100">
 
           <h1 class="text-[44px] font-black text-slate-900 leading-[1.1] tracking-tight mb-8">
-            {guideMeta.title}
+            {articleMeta.title}
           </h1>
 
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white text-[12px] font-black">
-              {guideMeta.author.charAt(0).toUpperCase()}
+              {articleMeta.author.charAt(0).toUpperCase()}
             </div>
             <div class="flex flex-col text-[13px]">
-              <span class="font-bold text-slate-900">{guideMeta.author}</span>
-              <span class="font-medium text-slate-400 font-mono tracking-tighter">{guideMeta.publishedAt}</span>
+              <span class="font-bold text-slate-900">{articleMeta.author}</span>
+              <span class="font-medium text-slate-400 font-mono tracking-tighter">{articleMeta.publishedAt}</span>
             </div>
           </div>
         </header>
@@ -113,7 +113,7 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
     margin-bottom: 1.5rem;
     letter-spacing: -0.025em;
   }
-  
+
   #custom-article-content h3 {
     font-size: 20px;
     font-weight: 800;
@@ -126,13 +126,13 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
   #custom-article-content p {
     margin-bottom: 1.5rem;
   }
-  
+
   #custom-article-content ul {
     list-style-type: disc;
     margin-bottom: 2rem;
     padding-left: 1.5rem;
   }
-  
+
   #custom-article-content li {
     margin-bottom: 0.5rem;
   }
@@ -152,7 +152,7 @@ const guideMeta = guides.find(g => g.uid === entry.slug) || {
     overflow-x: auto;
     border: 1px solid #1e293b;
   }
-  
+
   #custom-article-content code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.9em;

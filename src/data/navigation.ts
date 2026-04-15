@@ -5,7 +5,7 @@ export const mainNavItems = [
   { name: '技能 Skills', path: '/skills' },
   // { name: '大模型', path: '/llms' }, // 暂时隐藏，后续上线
   { name: 'AI Hub', path: '/aihub' },
-  { name: '文章', path: '/guides' },
+  { name: '文章', path: '/article' },
   { name: '新闻', path: '/news' },
 ];
 
@@ -136,7 +136,7 @@ export const sidebarFilters = {
     ],
     timeRanges: ['24 小时内', '7 天内', '30 天内'],
   },
-  guides: {
+  article: {
     types: [
       { name: '科普', path: '?type=sciencepopu', icon: '🔬' },
       { name: '教程', path: '?type=tutorial', icon: '📖' },
