@@ -1,52 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import Pagination from '../components/Pagination.astro';
 import products from '../data/products.json';
+import { productFilters } from '../data/filters';
 
-// 二级分类 emoji 映射
-const level2Emoji: Record<string, string> = {
-  // 内容创作
-  '写作类': '✍️',
-  '创意类': '💡',
-  '学术类': '🎓',
-  '内容改写': '🔄',
-  // 视频与音频
-  '数字人': '🧑‍💻',
-  '视频类': '🎬',
-  '音频类': '🎙️',
-  // 平台与基础设施
-  'AI 平台': '🧠',
-  'AI 开发平台': '🛠️',
-  '导航站': '🧭',
-  '工具集合': '🧰',
-  '平台类': '🏗️',
-  '开发平台': '💻',
-  '模型平台': '🧬',
-  // 办公与效率
-  '办公类': '💼',
-  '效率工具': '⏱️',
-  // 商业与营销
-  '品牌设计': '🎨',
-  '客服': '🎧',
-  '销售': '💰',
-  '电商类': '🛒',
-  '营销类': '📢',
-  // 数据与分析
-  '数据类': '📊',
-  // 开发与技术
-  'AI 技术': '🤖',
-  '编程类': '👨‍💻',
-  // 图像与设计
-  '人像类': '👤',
-  '图像处理': '🖼️',
-  '图像生成': '✨',
-  '设计类': '✒️',
-  // 学术类
-  '学术研究': '🔬',
-  '论文辅助': '📖',
-};
-
-// 从数据中提取所有 level1 -> level2 的层级结构（去掉三级 tags）
+// 从数据中提取所有 level1 -> level2 的层级结构
 interface ProductTypeHierarchy {
   [level1: string]: Set<string>;
 }
@@ -58,8 +17,6 @@ products.forEach(p => {
   if (pt && typeof pt === 'object' && !Array.isArray(pt)) {
     const level1 = pt.level1;
     const level2 = pt.level2;
-
-    // 只处理有 level1 和 level2 的数据
     if (level1 && level2) {
       if (!typeHierarchy[level1]) {
         typeHierarchy[level1] = new Set<string>();
@@ -69,31 +26,21 @@ products.forEach(p => {
   }
 });
 
-// 转换为数组结构用于渲染
 const hierarchyData = Object.entries(typeHierarchy).map(([level1, level2Set]) => ({
   level1,
   level2s: Array.from(level2Set).sort()
 }));
-
-// 获取 emoji，如果没有则返回空字符串
-const getEmoji = (level2: string): string => {
-  return level2Emoji[level2] || '';
-};
 ---
 
 <Layout title="AI 产品 - AI Links">
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 分类（二级结构显示） -->
     <div class="flex flex-col gap-5 mb-7">
       {hierarchyData.map((group) => (
         <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0] last:border-0">
-          <!-- 一级分类 -->
           <h5 class="text-[13px] font-bold text-[#171717]">{group.level1}</h5>
-
-          <!-- 二级分类（可点击） -->
           <div class="flex flex-wrap gap-1.5" data-filter="task">
             {group.level2s.map((level2) => {
-              const emoji = getEmoji(level2);
+              const emoji = productFilters.level2Emoji[level2] || '';
               return (
                 <button
                   data-task={level2}
@@ -123,14 +70,11 @@ const getEmoji = (level2: string): string => {
       <div class="flex-1"></div>
     </div>
 
-    <!-- 平铺显示所有产品（分页） -->
     <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
       {products.map(p => {
-        // 提取 level2 用于过滤
         const getLevel2 = (): string => {
           const pt = p.metrics.productType;
           if (!pt) return '';
-          // 如果是对象结构，返回 level2
           if (typeof pt === 'object' && !Array.isArray(pt)) {
             return pt.level2 || '';
           }
@@ -152,16 +96,7 @@ const getEmoji = (level2: string): string => {
       })}
     </div>
 
-    <!-- 分页组件 -->
-    <div id="pagination" class="mt-12 flex items-center justify-center gap-4">
-      <button id="prev-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-      </button>
-      <div id="page-info" class="text-[13px] font-medium text-[#525252]"></div>
-      <button id="next-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </button>
-    </div>
+    <Pagination itemTypeLabel="产品" />
   </div>
 </Layout>
 
@@ -174,107 +109,16 @@ const getEmoji = (level2: string): string => {
 <script>
   import { initMultiFilter } from '../lib/multiFilter';
   import { initCardClick } from '../scripts/cardClick';
+  import { initPagination } from '../lib/pagination';
 
   initMultiFilter();
   initCardClick();
-
-  const CONFIG = {
+  initPagination({
+    listId: 'product-list',
+    itemClass: 'product-item',
+    searchId: 'product-search',
     pageSize: 30,
-  };
-
-  let state = {
-    currentPage: 1,
-    allCards: [],
-    filteredCards: [],
-  };
-
-  function init() {
-    // 获取所有卡片
-    state.allCards = Array.from(document.querySelectorAll('#product-list .product-item'));
-    state.filteredCards = [...state.allCards];
-    
-    const searchInput = document.getElementById('product-search');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    // 搜索事件
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const val = e.target.value.toLowerCase().trim();
-        
-        state.filteredCards = state.allCards.filter(card => {
-          const title = card.getAttribute('data-product-name') || '';
-          const company = card.getAttribute('data-company') || '';
-          const introduction = card.getAttribute('data-introduction') || '';
-          return title.includes(val) || company.includes(val) || introduction.includes(val);
-        });
-
-        state.currentPage = 1;
-        render();
-      });
-    }
-
-    // 监听侧边栏过滤事件
-    document.addEventListener('filtersChanged', () => {
-      // 根据当前可见的卡片更新 filteredCards
-      state.filteredCards = state.allCards.filter(card => {
-        return card.style.display !== 'none';
-      });
-      
-      // 重置到第一页
-      state.currentPage = 1;
-      render();
-    });
-
-    // 翻页事件
-    prevBtn.onclick = () => { 
-      if (state.currentPage > 1) { 
-        state.currentPage--; 
-        render(); 
-        window.scrollTo({ top: 0, behavior: 'smooth' }); 
-      } 
-    };
-    
-    nextBtn.onclick = () => { 
-      const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-      if (state.currentPage < totalPages) { 
-        state.currentPage++; 
-        render(); 
-        window.scrollTo({ top: 0, behavior: 'smooth' }); 
-      } 
-    };
-
-    render();
-  }
-
-  function render() {
-    const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-    const start = (state.currentPage - 1) * CONFIG.pageSize;
-    const end = start + CONFIG.pageSize;
-
-    // 1. 处理显隐
-    state.allCards.forEach(card => card.classList.add('v-hidden'));
-    state.filteredCards.slice(start, end).forEach(card => card.classList.remove('v-hidden'));
-
-    // 2. 更新按钮状态
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    prevBtn.disabled = state.currentPage === 1;
-    nextBtn.disabled = state.currentPage === totalPages || totalPages === 0;
-
-    // 3. 更新页码显示
-    const pageInfo = document.getElementById('page-info');
-    if (pageInfo) {
-      pageInfo.textContent = totalPages > 0 
-        ? `第 ${state.currentPage} / ${totalPages} 页（共 ${state.filteredCards.length} 个产品）` 
-        : '无结果';
-    }
-  }
-
-  // 启动
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+    itemTypeLabel: '产品',
+    searchAttrs: ['data-product-name', 'data-company', 'data-introduction'],
+  });
 </script>

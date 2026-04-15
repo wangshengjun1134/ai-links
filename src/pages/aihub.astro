@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HubCard from '../components/HubCard.astro';
+import Pagination from '../components/Pagination.astro';
 import aihub from '../data/aihub.json';
 
 // 从数据中提取唯一的 productType 值
@@ -19,10 +20,9 @@ const productTypes = getProductTypes();
 
 <Layout title="AI Hub - AI Links">
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 产品类型 -->
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">产品类型</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="producttype" id="producttype-filters">
+      <div class="flex flex-wrap gap-1.5" data-filter="producttype">
         {productTypes.map((type) => (
           <button
             data-producttype={type}
@@ -48,11 +48,10 @@ const productTypes = getProductTypes();
       <div class="flex-1"></div>
     </div>
 
-    <!-- 平铺显示所有内容（分页） -->
     <div id="aihub-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
       {aihub.map(a => {
         const productType = a.productType || [];
-        
+
         return (
           <div
             class="aihub-item"
@@ -66,16 +65,7 @@ const productTypes = getProductTypes();
       })}
     </div>
 
-    <!-- 分页组件 -->
-    <div id="pagination" class="mt-12 flex items-center justify-center gap-4">
-      <button id="prev-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-      </button>
-      <div id="page-info" class="text-[13px] font-medium text-[#525252]"></div>
-      <button id="next-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </button>
-    </div>
+    <Pagination itemTypeLabel="项目" />
   </div>
 </Layout>
 
@@ -88,106 +78,16 @@ const productTypes = getProductTypes();
 <script>
   import { initMultiFilter } from '../lib/multiFilter';
   import { initCardClick } from '../scripts/cardClick';
+  import { initPagination } from '../lib/pagination';
 
   initMultiFilter();
   initCardClick();
-
-  const CONFIG = {
+  initPagination({
+    listId: 'aihub-list',
+    itemClass: 'aihub-item',
+    searchId: 'aihub-search',
     pageSize: 30,
-  };
-
-  let state = {
-    currentPage: 1,
-    allCards: [],
-    filteredCards: [],
-  };
-
-  function init() {
-    // 获取所有卡片
-    state.allCards = Array.from(document.querySelectorAll('#aihub-list .aihub-item'));
-    state.filteredCards = [...state.allCards];
-
-    const searchInput = document.getElementById('aihub-search');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    // 搜索事件
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const val = (e.target as HTMLInputElement).value.toLowerCase().trim();
-
-        state.filteredCards = state.allCards.filter(card => {
-          const title = card.getAttribute('data-aihub-name') || '';
-          const introduction = card.getAttribute('data-introduction') || '';
-          return title.includes(val) || introduction.includes(val);
-        });
-
-        state.currentPage = 1;
-        render();
-      });
-    }
-
-    // 监听侧边栏过滤事件
-    document.addEventListener('filtersChanged', () => {
-      // 根据当前可见的卡片更新 filteredCards
-      state.filteredCards = state.allCards.filter(card => {
-        return card.style.display !== 'none';
-      });
-
-      // 重置到第一页
-      state.currentPage = 1;
-      render();
-    });
-
-    // 翻页事件
-    prevBtn.onclick = () => {
-      if (state.currentPage > 1) {
-        state.currentPage--;
-        render();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
-
-    nextBtn.onclick = () => {
-      const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-      if (state.currentPage < totalPages) {
-        state.currentPage++;
-        render();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
-
-    render();
-  }
-
-  function render() {
-    const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-    const start = (state.currentPage - 1) * CONFIG.pageSize;
-    const end = start + CONFIG.pageSize;
-
-    // 1. 处理显隐
-    state.allCards.forEach(card => card.classList.add('v-hidden'));
-    state.filteredCards.slice(start, end).forEach(card => card.classList.remove('v-hidden'));
-
-    // 2. 更新按钮状态
-    const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
-    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
-    prevBtn.disabled = state.currentPage === 1;
-    nextBtn.disabled = state.currentPage === totalPages || totalPages === 0;
-
-    // 3. 更新页码显示
-    const pageInfo = document.getElementById('page-info');
-    if (pageInfo) {
-      pageInfo.textContent = totalPages > 0
-        ? `第 ${state.currentPage} / ${totalPages} 页（共 ${state.filteredCards.length} 个）`
-        : '无结果';
-    }
-  }
-
-  // 启动
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+    itemTypeLabel: '项目',
+    searchAttrs: ['data-aihub-name', 'data-introduction'],
+  });
 </script>

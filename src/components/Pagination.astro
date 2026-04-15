@@ -1,0 +1,25 @@
+---
+/**
+ * 分页组件 - 用于列表页的分页显示
+ */
+interface Props {
+  /** 项目类型标签，如 '产品'、'智能体' */
+  itemTypeLabel?: string;
+}
+
+const { itemTypeLabel = '项目' } = Astro.props;
+---
+
+<div id="pagination" class="mt-12 flex items-center justify-center gap-4">
+  <button id="prev-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+  <div id="page-info" class="text-[13px] font-medium text-[#525252]"></div>
+  <button id="next-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+</div>

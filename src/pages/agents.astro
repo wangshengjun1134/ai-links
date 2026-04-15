@@ -1,108 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AgentCard from '../components/AgentCard.astro';
+import Pagination from '../components/Pagination.astro';
 import agents from '../data/agents.json';
-
-// 分类 emoji 映射
-const categoryEmojis: Record<string, string> = {
-  '通用智能体': '🤖',
-  '任务执行智能体': '⚡',
-  '内容创作智能体': '🎨',
-  '开发类智能体': '💻',
-  '企业/行业智能体': '🏢',
-  '智能体基础设施': '🏗️',
-};
-
-const subCategoryEmojis: Record<string, string> = {
-  '对话型智能体': '💬',
-  '浏览器智能体': '🌐',
-  '桌面智能体': '🖥️',
-  '工作流智能体': '⚙️',
-  '编程智能体': '👨‍💻',
-  '研究型智能体': '🔬',
-  '视频生成': '🎬',
-  '图像生成': '✨',
-  '设计工具': '🎨',
-  '办公智能体': '📝',
-  'CRM 智能体': '📊',
-  '金融智能体': '💰',
-  '医疗智能体': '🏥',
-  '多智能体系统': '👥',
-  '智能体框架': '📦',
-  '智能体平台': '🧩',
-};
-
-const formFactorEmojis: Record<string, string> = {
-  '桌面端': '🖥️',
-  '浏览器': '🌐',
-  '移动端': '📱',
-  '云端': '☁️',
-  '命令行': '💻',
-};
-
-const capabilityEmojis: Record<string, string> = {
-  '任务执行': '✅',
-  '任务规划': '📋',
-  '长期记忆': '🧠',
-  '工具调用': '🔧',
-  '浏览器自动化': '🌐',
-  '文件操作': '📁',
-  '代码生成': '💻',
-  '数据分析': '📊',
-  '检索增强': '🔍',
-  '工作流编排': '⚙️',
-  '多智能体协作': '👥',
-  '多模态': '🎭',
-  '视觉理解': '👁️',
-  '语音交互': '🎙️',
-};
-
-const scenarioEmojis: Record<string, string> = {
-  '个人助手': '👤',
-  '办公效率': '💼',
-  '软件开发': '💻',
-  '市场营销': '📢',
-  '内容创作': '🎨',
-  '研究分析': '🔬',
-  '客户服务': '🎧',
-  '企业管理': '🏢',
-  '教育学习': '📚',
-  '金融投资': '💰',
-  '医疗健康': '🏥',
-};
-
-const techTagEmojis: Record<string, string> = {
-  '大语言模型': '🧠',
-  'RAG': '🔍',
-  'MCP 协议': '🔌',
-  '多智能体': '👥',
-  '知识图谱': '🕸️',
-  'Kubernetes': '☸️',
-  'Python': '🐍',
-  'React': '⚛️',
-  '向量数据库': '📊',
-  '智能体协议': '📡',
-};
-
-const deploymentEmojis: Record<string, string> = {
-  '本地部署': '🖥️',
-  '云端部署': '☁️',
-  '混合部署': '🔄',
-};
-
-const agentLevelEmojis: Record<string, string> = {
-  'L0_对话助手': '💬',
-  'L1_工具调用型': '🔧',
-  'L2_工作流型': '⚙️',
-  'L3_自主执行型': '🤖',
-  'L4_多智能体系统': '👥',
-};
-
-const interactionModeEmojis: Record<string, string> = {
-  '对话式': '💬',
-  '自主执行': '🤖',
-  '触发式': '⚡',
-};
+import { agentFilters } from '../data/filters';
 
 // 从数据中提取唯一的分类值
 const getUniqueValues = (key: string): string[] => {
@@ -119,27 +20,17 @@ const getUniqueValues = (key: string): string[] => {
 };
 
 const categories = getUniqueValues('category');
-const subCategories = getUniqueValues('subCategory');
-const scenarios = getUniqueValues('scenarios');
-const techTags = getUniqueValues('techTags');
-const deployments = getUniqueValues('deployment');
 const agentLevels = getUniqueValues('agentLevel');
-
-// 获取 emoji
-const getEmoji = (value: string, emojiMap: Record<string, string>): string => {
-  return emojiMap[value] || '';
-};
 ---
 
 <Layout title="智能体 Agent - AI Links">
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 智能体分类 -->
     <div class="flex flex-col gap-5 mb-7">
       <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0]">
         <h5 class="text-[13px] font-bold text-[#171717]">📁 智能体分类</h5>
         <div class="flex flex-wrap gap-1.5" data-filter="category">
           {categories.map((category) => {
-            const emoji = getEmoji(category, categoryEmojis);
+            const emoji = agentFilters.categoryEmojis[category] || '';
             return (
               <button
                 data-category={category}
@@ -154,12 +45,11 @@ const getEmoji = (value: string, emojiMap: Record<string, string>): string => {
         </div>
       </div>
 
-      <!-- 智能体等级 -->
       <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0]">
         <h5 class="text-[13px] font-bold text-[#171717]">📊 智能体等级</h5>
         <div class="flex flex-wrap gap-1.5" data-filter="agentLevel">
           {agentLevels.map((level) => {
-            const emoji = getEmoji(level, agentLevelEmojis);
+            const emoji = agentFilters.agentLevelEmojis[level] || '';
             return (
               <button
                 data-agentLevel={level.toLowerCase()}
@@ -188,10 +78,8 @@ const getEmoji = (value: string, emojiMap: Record<string, string>): string => {
       <div class="flex-1"></div>
     </div>
 
-    <!-- 平铺显示所有智能体（分页） -->
     <div id="agent-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
       {agents.map(a => {
-        // 提取所有分类数据用于过滤
         const category = a.metrics.category || '';
         const agentLevel = a.metrics.agentLevel || '';
 
@@ -210,16 +98,7 @@ const getEmoji = (value: string, emojiMap: Record<string, string>): string => {
       })}
     </div>
 
-    <!-- 分页组件 -->
-    <div id="pagination" class="mt-12 flex items-center justify-center gap-4">
-      <button id="prev-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-      </button>
-      <div id="page-info" class="text-[13px] font-medium text-[#525252]"></div>
-      <button id="next-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </button>
-    </div>
+    <Pagination itemTypeLabel="智能体" />
   </div>
 </Layout>
 
@@ -232,107 +111,16 @@ const getEmoji = (value: string, emojiMap: Record<string, string>): string => {
 <script>
   import { initMultiFilter } from '../lib/multiFilter';
   import { initCardClick } from '../scripts/cardClick';
+  import { initPagination } from '../lib/pagination';
 
   initMultiFilter();
   initCardClick();
-
-  const CONFIG = {
+  initPagination({
+    listId: 'agent-list',
+    itemClass: 'agent-item',
+    searchId: 'agent-search',
     pageSize: 30,
-  };
-
-  let state = {
-    currentPage: 1,
-    allCards: [],
-    filteredCards: [],
-  };
-
-  function init() {
-    // 获取所有卡片
-    state.allCards = Array.from(document.querySelectorAll('#agent-list .agent-item'));
-    state.filteredCards = [...state.allCards];
-
-    const searchInput = document.getElementById('agent-search');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    // 搜索事件
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const val = e.target.value.toLowerCase().trim();
-
-        state.filteredCards = state.allCards.filter(card => {
-          const title = card.getAttribute('data-agent-name') || '';
-          const company = card.getAttribute('data-company') || '';
-          const introduction = card.getAttribute('data-introduction') || '';
-          return title.includes(val) || company.includes(val) || introduction.includes(val);
-        });
-
-        state.currentPage = 1;
-        render();
-      });
-    }
-
-    // 监听侧边栏过滤事件
-    document.addEventListener('filtersChanged', () => {
-      // 根据当前可见的卡片更新 filteredCards
-      state.filteredCards = state.allCards.filter(card => {
-        return card.style.display !== 'none';
-      });
-
-      // 重置到第一页
-      state.currentPage = 1;
-      render();
-    });
-
-    // 翻页事件
-    prevBtn.onclick = () => {
-      if (state.currentPage > 1) {
-        state.currentPage--;
-        render();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
-
-    nextBtn.onclick = () => {
-      const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-      if (state.currentPage < totalPages) {
-        state.currentPage++;
-        render();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
-
-    render();
-  }
-
-  function render() {
-    const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-    const start = (state.currentPage - 1) * CONFIG.pageSize;
-    const end = start + CONFIG.pageSize;
-
-    // 1. 处理显隐
-    state.allCards.forEach(card => card.classList.add('v-hidden'));
-    state.filteredCards.slice(start, end).forEach(card => card.classList.remove('v-hidden'));
-
-    // 2. 更新按钮状态
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    prevBtn.disabled = state.currentPage === 1;
-    nextBtn.disabled = state.currentPage === totalPages || totalPages === 0;
-
-    // 3. 更新页码显示
-    const pageInfo = document.getElementById('page-info');
-    if (pageInfo) {
-      pageInfo.textContent = totalPages > 0
-        ? `第 ${state.currentPage} / ${totalPages} 页（共 ${state.filteredCards.length} 个智能体）`
-        : '无结果';
-    }
-  }
-
-  // 启动
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+    itemTypeLabel: '智能体',
+    searchAttrs: ['data-agent-name', 'data-company', 'data-introduction'],
+  });
 </script>

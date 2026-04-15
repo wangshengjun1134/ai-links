@@ -33,7 +33,22 @@ const filterToDataAttr: Record<string, string> = {
   servertype: 'data-servertype',
   authtype: 'data-authtype',
   deploy: 'data-deploy',
+  // AIHub 相关
+  producttype: 'data-producttype',
+  // LLMs 相关
+  size: 'data-size',
+  cap: 'data-cap',
+  opensource: 'data-opensource',
 };
+
+// 所有卡片项的类名列表
+const itemClassNames = [
+  'product-item',
+  'agent-item',
+  'prompt-item',
+  'mcp-item',
+  'aihub-item',
+];
 
 export function initMultiFilter() {
   // 切换筛选状态并执行过滤
@@ -79,10 +94,11 @@ export function initMultiFilter() {
 
   // 执行过滤逻辑
   function applyFilters() {
-    // 查找所有产品/Agent/Prompt/MCP 卡片
+    // 查找所有产品/Agent/Prompt/MCP/AIHub 卡片
     const cardsContainer = document.querySelector('main') || document.body;
-    // 同时查找 product-item、agent-item、prompt-item 和 mcp-item
-    const cards = cardsContainer.querySelectorAll('.product-item, .agent-item, .prompt-item, .mcp-item');
+    
+    // 动态获取所有类型的卡片项
+    const cards = cardsContainer.querySelectorAll(itemClassNames.map(c => `.${c}`).join(', '));
 
     cards.forEach(card => {
       const cardEl = card as HTMLElement;
@@ -96,7 +112,7 @@ export function initMultiFilter() {
 
       // 检查每个维度的筛选条件
       for (const [filterType, selectedValues] of Object.entries(activeFilters)) {
-        if (selectedValues.length === 0) continue; // 该维度没有选中项，跳过
+        if (selectedValues.length === 0) continue;
 
         const dataAttr = filterToDataAttr[filterType];
         if (!dataAttr) continue;
@@ -107,10 +123,7 @@ export function initMultiFilter() {
           break;
         }
 
-        // 解析卡片数据：
-        // - 可能是单个字符串（如 level2）
-        // - 也可能是 JSON 数组格式（如 tags）
-        // - 也可能是空格分隔的字符串（多值数组）
+        // 解析卡片数据
         let cardValues: string[] = [];
         try {
           const parsed = JSON.parse(cardDataStr);
@@ -120,9 +133,10 @@ export function initMultiFilter() {
             cardValues = [String(parsed)];
           }
         } catch {
-          // 不是 JSON，检查是否包含空格（多值空格分隔）
           if (cardDataStr.includes(' ')) {
             cardValues = cardDataStr.split(' ').filter(Boolean);
+          } else if (cardDataStr.includes(',')) {
+            cardValues = cardDataStr.split(',').filter(Boolean);
           } else {
             cardValues = [cardDataStr];
           }
@@ -138,15 +152,7 @@ export function initMultiFilter() {
       }
 
       // 应用显示/隐藏
-      const itemEl = cardEl.classList.contains('product-item') || cardEl.classList.contains('agent-item') || cardEl.classList.contains('prompt-item') || cardEl.classList.contains('mcp-item')
-        ? cardEl
-        : cardEl.closest('.product-item, .agent-item, .prompt-item, .mcp-item');
-
-      if (shouldShow) {
-        if (itemEl) itemEl.style.display = '';
-      } else {
-        if (itemEl) itemEl.style.display = 'none';
-      }
+      cardEl.style.display = shouldShow ? '' : 'none';
     });
 
     // 触发过滤完成事件，通知分页组件更新
@@ -189,7 +195,6 @@ export function initMultiFilter() {
 
   // DOM 加载完成后初始化所有筛选器
   document.addEventListener('DOMContentLoaded', () => {
-    // 自动查找所有带 data-filter 属性的容器
     const containers = document.querySelectorAll('[data-filter]');
     containers.forEach(container => {
       const paramName = container.getAttribute('data-filter');

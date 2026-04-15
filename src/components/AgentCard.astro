@@ -23,12 +23,18 @@ interface Props {
     isInternal: boolean;
     websiteReachable: boolean;
     rawProductType: string[];
+    category?: string;
+    agentLevel?: string;
   };
 }
 
 import BaseCard from './BaseCard.astro';
 
-const { slug, logo, aiProductName, introduction, websiteUrl, metrics } = Astro.props;
+const { uid, slug, logo, aiProductName, introduction, websiteUrl, metrics } = Astro.props;
+
+// 提取分类数据用于过滤
+const category = metrics.category || '';
+const agentLevel = metrics.agentLevel || '';
 ---
 
 <BaseCard
@@ -41,4 +47,6 @@ const { slug, logo, aiProductName, introduction, websiteUrl, metrics } = Astro.p
   logo={logo}
   detailUrl={`/agent/${slug}`}
   externalUrl={websiteUrl}
+  data-category={category.toLowerCase()}
+  data-agentLevel={agentLevel.toLowerCase()}
 />

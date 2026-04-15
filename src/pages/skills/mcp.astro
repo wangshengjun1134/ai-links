@@ -1,67 +1,66 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
+import Pagination from '../../components/Pagination.astro';
 import mcpData from '../../data/mcp.json';
-import { skillsSubNav, sidebarFilters } from '../../data/navigation';
-const { serverTypes, authMethods, deployments } = sidebarFilters.mcp;
+import { skillsSubNav } from '../../data/navigation';
+import { mcpFilters } from '../../data/filters';
 
 const subNav = {
   activeTab: 'mcp',
   tabs: skillsSubNav,
 };
+
+const { serverTypes, authTypes, deployments } = mcpFilters;
 ---
 
 <Layout title="MCP 服务 - AI Links" subNav={subNav}>
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-with-subnav))] sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 服务器类型 -->
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">服务器类型</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="servertype" id="servertype-filters">
+      <div class="flex flex-wrap gap-1.5" data-filter="servertype">
         {serverTypes.map((type) => (
           <button
-            data-servertype={type}
+            data-servertype={type.value}
             class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
           >
-            <span>{type}</span>
+            {type.icon && <span class="mr-0.5">{type.icon}</span>}
+            <span>{type.name}</span>
             <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
           </button>
         ))}
       </div>
     </div>
 
-    <!-- 认证方式 -->
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">认证方式</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="authtype" id="authtype-filters">
-        {authMethods.map((method) => (
+      <div class="flex flex-wrap gap-1.5" data-filter="authtype">
+        {authTypes.map((method) => (
           <button
-            data-authtype={method}
+            data-authtype={method.value}
             class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
           >
-            <span>{method}</span>
+            {method.icon && <span class="mr-0.5">{method.icon}</span>}
+            <span>{method.name}</span>
             <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
           </button>
         ))}
       </div>
     </div>
 
-    <!-- 部署方式 -->
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">部署方式</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="deploy" id="deploy-filters">
-        {deployments.map((item) => {
-          const deploy = item.path.replace('?deploy=', '');
-          return (
-            <button
-              data-deploy={deploy}
-              class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-            >
-              {item.icon && <span class="mr-0.5">{item.icon}</span>}
-              <span>{item.name}</span>
-              <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-            </button>
-          );
-        })}
+      <div class="flex flex-wrap gap-1.5" data-filter="deploy">
+        {deployments.map((item) => (
+          <button
+            data-deploy={item.value}
+            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+          >
+            {item.icon && <span class="mr-0.5">{item.icon}</span>}
+            <span>{item.name}</span>
+            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
+          </button>
+        ))}
       </div>
     </div>
   </aside>
@@ -101,16 +100,7 @@ const subNav = {
           })}
         </div>
 
-        <!-- 分页组件 -->
-        <div id="pagination" class="mt-12 flex items-center justify-center gap-4">
-          <button id="prev-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <div id="page-info" class="text-[13px] font-medium text-[#525252]"></div>
-          <button id="next-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </button>
-        </div>
+        <Pagination itemTypeLabel="MCP 服务" />
       </>
     ) : (
       <div class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5]">
@@ -131,111 +121,16 @@ const subNav = {
 <script>
   import { initMultiFilter } from '../../lib/multiFilter';
   import { initCardClick } from '../../scripts/cardClick';
+  import { initPagination } from '../../lib/pagination';
 
   initMultiFilter();
   initCardClick();
-
-  const CONFIG = {
+  initPagination({
+    listId: 'mcp-list',
+    itemClass: 'mcp-item',
+    searchId: 'mcp-search',
     pageSize: 30,
-  };
-
-  let state = {
-    currentPage: 1,
-    allCards: [] as HTMLElement[],
-    filteredCards: [] as HTMLElement[],
-  };
-
-  function init() {
-    // 获取所有卡片
-    state.allCards = Array.from(document.querySelectorAll('#mcp-list .mcp-item')) as HTMLElement[];
-    state.filteredCards = [...state.allCards];
-
-    const searchInput = document.getElementById('mcp-search');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    // 搜索事件
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const val = (e.target as HTMLInputElement).value.toLowerCase().trim();
-
-        state.filteredCards = state.allCards.filter(card => {
-          const name = card.getAttribute('data-mcp-name') || '';
-          const description = card.getAttribute('data-description') || '';
-          const tags = card.getAttribute('data-tags') || '';
-          return name.includes(val) || description.includes(val) || tags.includes(val);
-        });
-
-        state.currentPage = 1;
-        render();
-      });
-    }
-
-    // 监听侧边栏过滤事件
-    document.addEventListener('filtersChanged', () => {
-      // 根据当前可见的卡片更新 filteredCards
-      state.filteredCards = state.allCards.filter(card => {
-        return card.style.display !== 'none';
-      });
-
-      // 重置到第一页
-      state.currentPage = 1;
-      render();
-    });
-
-    // 翻页事件
-    if (prevBtn) {
-      prevBtn.onclick = () => {
-        if (state.currentPage > 1) {
-          state.currentPage--;
-          render();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      };
-    }
-
-    if (nextBtn) {
-      nextBtn.onclick = () => {
-        const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-        if (state.currentPage < totalPages) {
-          state.currentPage++;
-          render();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      };
-    }
-
-    render();
-  }
-
-  function render() {
-    const totalPages = Math.ceil(state.filteredCards.length / CONFIG.pageSize);
-    const start = (state.currentPage - 1) * CONFIG.pageSize;
-    const end = start + CONFIG.pageSize;
-
-    // 1. 处理显隐
-    state.allCards.forEach(card => card.classList.add('v-hidden'));
-    state.filteredCards.slice(start, end).forEach(card => card.classList.remove('v-hidden'));
-
-    // 2. 更新按钮状态
-    const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
-    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
-    if (prevBtn) prevBtn.disabled = state.currentPage === 1;
-    if (nextBtn) nextBtn.disabled = state.currentPage === totalPages || totalPages === 0;
-
-    // 3. 更新页码显示
-    const pageInfo = document.getElementById('page-info');
-    if (pageInfo) {
-      pageInfo.textContent = totalPages > 0
-        ? `第 ${state.currentPage} / ${totalPages} 页（共 ${state.filteredCards.length} 个 MCP 服务）`
-        : '无结果';
-    }
-  }
-
-  // 启动
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+    itemTypeLabel: 'MCP 服务',
+    searchAttrs: ['data-mcp-name', 'data-description', 'data-tags'],
+  });
 </script>
