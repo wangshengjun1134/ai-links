@@ -140,7 +140,7 @@ export const sidebarFilters = {
     types: [
       { name: '科普', path: '?type=sciencepopu', icon: '🔬' },
       { name: '教程', path: '?type=tutorial', icon: '📖' },
-      { name: '龙虾专区', path: '?type=clawsection', icon: '🦞' },
+      { name: '博文', path: '?type=blog', icon: '📝' },
     ],
   },
 };
