@@ -10,7 +10,8 @@
       "HTML转换"
     ],
     "icon": "mcp_favicons/80001000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+    "slug": "modelcontextprotocol-servers-fetch"
   },
   {
     "uid": "80002000",
@@ -23,20 +24,8 @@
       "网页交互"
     ],
     "icon": "mcp_favicons/80002000.png",
-    "github_url": "https://github.com/microsoft/playwright-mcp"
-  },
-  {
-    "uid": "80003000",
-    "title": "百度AI搜索",
-    "description": "百度AI搜索基于百度搜索与AI技术，可提供强大的百度搜索和智能搜索生成能力。 百度搜满足多样的常规搜索需求，用户可获取所需的多模态高质量内容。 智能搜索生成在此基础上提供大模型内容总结，免于纷繁的信息筛选提炼。",
-    "author": "",
-    "tags": [
-      "云端部署",
-      "AI搜索",
-      "大语言模型"
-    ],
-    "icon": "mcp_favicons/80003000.png",
-    "github_url": ""
+    "github_url": "https://github.com/microsoft/playwright-mcp",
+    "slug": "microsoft-playwright-mcp"
   },
   {
     "uid": "80004000",
@@ -49,7 +38,8 @@
       "记忆服务"
     ],
     "icon": "mcp_favicons/80004000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+    "slug": "modelcontextprotocol-servers-memory"
   },
   {
     "uid": "80005000",
@@ -62,7 +52,8 @@
       "地图服务"
     ],
     "icon": "mcp_favicons/80005000.png",
-    "github_url": "https://github.com/baidu-maps/mcp"
+    "github_url": "https://github.com/baidu-maps/mcp",
+    "slug": "baidu-maps-mcp"
   },
   {
     "uid": "80006000",
@@ -75,7 +66,8 @@
       "动态调整"
     ],
     "icon": "mcp_favicons/80006000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+    "slug": "modelcontextprotocol-servers-sequentialthinking"
   },
   {
     "uid": "80007000",
@@ -88,7 +80,8 @@
       "AI编码辅助"
     ],
     "icon": "mcp_favicons/80007000.png",
-    "github_url": "https://github.com/glips/figma-context-mcp"
+    "github_url": "https://github.com/glips/figma-context-mcp",
+    "slug": "glips-figma-context-mcp"
   },
   {
     "uid": "80008000",
@@ -101,7 +94,8 @@
       "数据访问"
     ],
     "icon": "mcp_favicons/80008000.png",
-    "github_url": "https://github.com/xpzouying/xiaohongshu-mcp"
+    "github_url": "https://github.com/xpzouying/xiaohongshu-mcp",
+    "slug": "xpzouying-xiaohongshu-mcp"
   },
   {
     "uid": "80009000",
@@ -114,7 +108,8 @@
       "数字博物馆"
     ],
     "icon": "mcp_favicons/80009000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80009000"
   },
   {
     "uid": "80010000",
@@ -127,7 +122,8 @@
       "网络研究"
     ],
     "icon": "mcp_favicons/80010000.png",
-    "github_url": "https://github.com/ppl-ai/modelcontextprotocol"
+    "github_url": "https://github.com/ppl-ai/modelcontextprotocol",
+    "slug": "ppl-ai-modelcontextprotocol"
   },
   {
     "uid": "80011000",
@@ -140,7 +136,8 @@
       "代码管理"
     ],
     "icon": "mcp_favicons/80011000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github"
+    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github",
+    "slug": "servers-archived-github"
   },
   {
     "uid": "80012000",
@@ -153,7 +150,8 @@
       "实时更新"
     ],
     "icon": "mcp_favicons/80012000.png",
-    "github_url": "https://github.com/upstash/context7"
+    "github_url": "https://github.com/upstash/context7",
+    "slug": "upstash-context7"
   },
   {
     "uid": "80013000",
@@ -166,7 +164,8 @@
       "LLM工具"
     ],
     "icon": "mcp_favicons/80013000.png",
-    "github_url": "https://github.com/bytedance/UI-TARS-desktop/tree/main/packages/agent-infra/mcp-servers/browser"
+    "github_url": "https://github.com/bytedance/UI-TARS-desktop/tree/main/packages/agent-infra/mcp-servers/browser",
+    "slug": "bytedance-ui-tars-desktop-packages-agent-infra-mcp-servers-browser"
   },
   {
     "uid": "80014000",
@@ -179,7 +178,8 @@
       "内容访问"
     ],
     "icon": "mcp_favicons/80014000.png",
-    "github_url": "https://github.com/iFurySt/RedNote-MCP"
+    "github_url": "https://github.com/iFurySt/RedNote-MCP",
+    "slug": "ifuryst-rednote-mcp"
   },
   {
     "uid": "80015000",
@@ -192,7 +192,8 @@
       "轻量级服务"
     ],
     "icon": "mcp_favicons/80015000.png",
-    "github_url": "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp"
+    "github_url": "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp",
+    "slug": "microsoft-markitdown-packages-markitdown-mcp"
   },
   {
     "uid": "80016000",
@@ -205,7 +206,8 @@
       "数据可视化"
     ],
     "icon": "mcp_favicons/80016000.png",
-    "github_url": "https://github.com/antvis/mcp-server-chart"
+    "github_url": "https://github.com/antvis/mcp-server-chart",
+    "slug": "antvis-mcp-server-chart"
   },
   {
     "uid": "80017000",
@@ -218,7 +220,8 @@
       "票务查询"
     ],
     "icon": "mcp_favicons/80017000.png",
-    "github_url": "https://github.com/joooook/12306-mcp"
+    "github_url": "https://github.com/joooook/12306-mcp",
+    "slug": "joooook-12306-mcp"
   },
   {
     "uid": "80018000",
@@ -231,7 +234,8 @@
       "金融分析"
     ],
     "icon": "mcp_favicons/80018000.png",
-    "github_url": "https://github.com/zwldarren/akshare-one-mcp"
+    "github_url": "https://github.com/zwldarren/akshare-one-mcp",
+    "slug": "zwldarren-akshare-one-mcp"
   },
   {
     "uid": "80019000",
@@ -244,7 +248,8 @@
       "个性化推荐"
     ],
     "icon": "mcp_favicons/80019000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80019000"
   },
   {
     "uid": "80020000",
@@ -257,7 +262,8 @@
       "语音克隆"
     ],
     "icon": "mcp_favicons/80020000.png",
-    "github_url": "https://github.com/minimax-ai/minimax-mcp"
+    "github_url": "https://github.com/minimax-ai/minimax-mcp",
+    "slug": "minimax-ai-minimax-mcp"
   },
   {
     "uid": "80021000",
@@ -270,7 +276,8 @@
       "移动自动化"
     ],
     "icon": "mcp_favicons/80021000.png",
-    "github_url": "https://github.com/mobile-next/mobile-mcp"
+    "github_url": "https://github.com/mobile-next/mobile-mcp",
+    "slug": "mobile-next-mobile-mcp"
   },
   {
     "uid": "80022000",
@@ -283,7 +290,8 @@
       "办公自动化"
     ],
     "icon": "mcp_favicons/80022000.png",
-    "github_url": "https://github.com/GongRzhe/Office-PowerPoint-MCP-Server"
+    "github_url": "https://github.com/GongRzhe/Office-PowerPoint-MCP-Server",
+    "slug": "gongrzhe-office-powerpoint-mcp-server"
   },
   {
     "uid": "80023000",
@@ -296,7 +304,8 @@
       "SSH隧道"
     ],
     "icon": "mcp_favicons/80023000.png",
-    "github_url": "https://github.com/benborla/mcp-server-mysql"
+    "github_url": "https://github.com/benborla/mcp-server-mysql",
+    "slug": "benborla-mcp-server-mysql"
   },
   {
     "uid": "80024000",
@@ -309,7 +318,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80024000.png",
-    "github_url": "https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp"
+    "github_url": "https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp",
+    "slug": "sonnylazuardi-cursor-talk-to-figma-mcp"
   },
   {
     "uid": "80025000",
@@ -322,7 +332,8 @@
       "浏览器自动化"
     ],
     "icon": "mcp_favicons/80025000.png",
-    "github_url": "https://github.com/executeautomation/mcp-playwright"
+    "github_url": "https://github.com/executeautomation/mcp-playwright",
+    "slug": "executeautomation-mcp-playwright"
   },
   {
     "uid": "80026000",
@@ -335,7 +346,8 @@
       "内容提取"
     ],
     "icon": "mcp_favicons/80026000.png",
-    "github_url": "https://github.com/cawstudios/mcp-server-firecrawl"
+    "github_url": "https://github.com/cawstudios/mcp-server-firecrawl",
+    "slug": "cawstudios-mcp-server-firecrawl"
   },
   {
     "uid": "80027000",
@@ -348,7 +360,8 @@
       "智能工具开发"
     ],
     "icon": "mcp_favicons/80027000.png",
-    "github_url": "https://github.com/Deepractice/PromptX"
+    "github_url": "https://github.com/Deepractice/PromptX",
+    "slug": "deepractice-promptx"
   },
   {
     "uid": "80028000",
@@ -361,7 +374,8 @@
       "无头浏览器"
     ],
     "icon": "mcp_favicons/80028000.png",
-    "github_url": "https://github.com/jae-jae/fetcher-mcp"
+    "github_url": "https://github.com/jae-jae/fetcher-mcp",
+    "slug": "jae-jae-fetcher-mcp"
   },
   {
     "uid": "80029000",
@@ -374,7 +388,8 @@
       "本地优先"
     ],
     "icon": "mcp_favicons/80029000.png",
-    "github_url": "https://github.com/basicmachines-co/basic-memory"
+    "github_url": "https://github.com/basicmachines-co/basic-memory",
+    "slug": "basicmachines-co-basic-memory"
   },
   {
     "uid": "80030000",
@@ -387,7 +402,8 @@
       "终端命令管理"
     ],
     "icon": "mcp_favicons/80030000.png",
-    "github_url": "https://github.com/wonderwhy-er/DesktopCommanderMCP"
+    "github_url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+    "slug": "wonderwhy-er-desktopcommandermcp"
   },
   {
     "uid": "80031000",
@@ -400,7 +416,8 @@
       "iOS开发"
     ],
     "icon": "mcp_favicons/80031000.png",
-    "github_url": "https://github.com/cameroncooke/XcodeBuildMCP"
+    "github_url": "https://github.com/cameroncooke/XcodeBuildMCP",
+    "slug": "cameroncooke-xcodebuildmcp"
   },
   {
     "uid": "80032000",
@@ -413,7 +430,8 @@
       "代码文档"
     ],
     "icon": "mcp_favicons/80032000.png",
-    "github_url": "https://github.com/upstash/context7-mcp"
+    "github_url": "https://github.com/upstash/context7-mcp",
+    "slug": "upstash-context7-mcp"
   },
   {
     "uid": "80033000",
@@ -426,7 +444,8 @@
       "学术研究"
     ],
     "icon": "mcp_favicons/80033000.png",
-    "github_url": "https://github.com/blazickjp/arxiv-mcp-server"
+    "github_url": "https://github.com/blazickjp/arxiv-mcp-server",
+    "slug": "blazickjp-arxiv-mcp-server"
   },
   {
     "uid": "80034000",
@@ -439,7 +458,8 @@
       "数据库优化"
     ],
     "icon": "mcp_favicons/80034000.png",
-    "github_url": "https://github.com/crystaldba/postgres-mcp"
+    "github_url": "https://github.com/crystaldba/postgres-mcp",
+    "slug": "crystaldba-postgres-mcp"
   },
   {
     "uid": "80035000",
@@ -452,7 +472,8 @@
       "版本控制"
     ],
     "icon": "mcp_favicons/80035000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git"
+    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+    "slug": "modelcontextprotocol-servers-git"
   },
   {
     "uid": "80036000",
@@ -465,7 +486,8 @@
       "论文下载"
     ],
     "icon": "mcp_favicons/80036000.png",
-    "github_url": "https://github.com/openags/paper-search-mcp"
+    "github_url": "https://github.com/openags/paper-search-mcp",
+    "slug": "openags-paper-search-mcp"
   },
   {
     "uid": "80037000",
@@ -478,7 +500,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80037000.png",
-    "github_url": "https://github.com/lgazo/drawio-mcp-server"
+    "github_url": "https://github.com/lgazo/drawio-mcp-server",
+    "slug": "lgazo-drawio-mcp-server"
   },
   {
     "uid": "80038000",
@@ -491,7 +514,8 @@
       "内容提取"
     ],
     "icon": "mcp_favicons/80038000.png",
-    "github_url": "https://github.com/vrknetha/mcp-server-firecrawl"
+    "github_url": "https://github.com/vrknetha/mcp-server-firecrawl",
+    "slug": "vrknetha-mcp-server-firecrawl"
   },
   {
     "uid": "80039000",
@@ -504,7 +528,8 @@
       "协议测试"
     ],
     "icon": "mcp_favicons/80039000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything"
+    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
+    "slug": "modelcontextprotocol-servers-everything"
   },
   {
     "uid": "80040000",
@@ -517,7 +542,8 @@
       "双界面支持"
     ],
     "icon": "mcp_favicons/80040000.png",
-    "github_url": "https://github.com/Minidoracat/mcp-feedback-enhanced"
+    "github_url": "https://github.com/Minidoracat/mcp-feedback-enhanced",
+    "slug": "minidoracat-mcp-feedback-enhanced"
   },
   {
     "uid": "80041000",
@@ -530,7 +556,8 @@
       "集群操作"
     ],
     "icon": "mcp_favicons/80041000.png",
-    "github_url": "https://github.com/Flux159/mcp-server-kubernetes"
+    "github_url": "https://github.com/Flux159/mcp-server-kubernetes",
+    "slug": "flux159-mcp-server-kubernetes"
   },
   {
     "uid": "80042000",
@@ -543,7 +570,8 @@
       "多数据库管理"
     ],
     "icon": "mcp_favicons/80042000.png",
-    "github_url": "https://github.com/bytebase/dbhub"
+    "github_url": "https://github.com/bytebase/dbhub",
+    "slug": "bytebase-dbhub"
   },
   {
     "uid": "80043000",
@@ -556,7 +584,8 @@
       "苹果应用集成"
     ],
     "icon": "mcp_favicons/80043000.png",
-    "github_url": "https://github.com/supermemoryai/apple-mcp"
+    "github_url": "https://github.com/supermemoryai/apple-mcp",
+    "slug": "supermemoryai-apple-mcp"
   },
   {
     "uid": "80044000",
@@ -569,7 +598,8 @@
       "语义代码检索"
     ],
     "icon": "mcp_favicons/80044000.png",
-    "github_url": "https://github.com/oraios/serena"
+    "github_url": "https://github.com/oraios/serena",
+    "slug": "oraios-serena"
   },
   {
     "uid": "80045000",
@@ -582,7 +612,8 @@
       "Markdown生成"
     ],
     "icon": "mcp_favicons/80045000.png",
-    "github_url": "https://github.com/zcaceres/markdownify-mcp"
+    "github_url": "https://github.com/zcaceres/markdownify-mcp",
+    "slug": "zcaceres-markdownify-mcp"
   },
   {
     "uid": "80046000",
@@ -595,7 +626,8 @@
       "TypeScript"
     ],
     "icon": "mcp_favicons/80046000.png",
-    "github_url": "https://github.com/mastra-ai/mastra"
+    "github_url": "https://github.com/mastra-ai/mastra",
+    "slug": "mastra-ai-mastra"
   },
   {
     "uid": "80047000",
@@ -608,7 +640,8 @@
       "任务管理"
     ],
     "icon": "mcp_favicons/80047000.png",
-    "github_url": "https://github.com/eyaltoledano/claude-task-master"
+    "github_url": "https://github.com/eyaltoledano/claude-task-master",
+    "slug": "eyaltoledano-claude-task-master"
   },
   {
     "uid": "80048000",
@@ -621,7 +654,8 @@
       "无头浏览器"
     ],
     "icon": "mcp_favicons/80048000.png",
-    "github_url": "https://github.com/jae-jae/fetch-mcp"
+    "github_url": "https://github.com/jae-jae/fetch-mcp",
+    "slug": "jae-jae-fetch-mcp"
   },
   {
     "uid": "80049000",
@@ -634,7 +668,8 @@
       "CLI代理集成"
     ],
     "icon": "mcp_favicons/80049000.png",
-    "github_url": "https://github.com/PleasePrompto/notebooklm-mcp"
+    "github_url": "https://github.com/PleasePrompto/notebooklm-mcp",
+    "slug": "pleaseprompto-notebooklm-mcp"
   },
   {
     "uid": "80050000",
@@ -647,7 +682,8 @@
       "权限绕过"
     ],
     "icon": "mcp_favicons/80050000.png",
-    "github_url": "https://github.com/steipete/claude-code-mcp"
+    "github_url": "https://github.com/steipete/claude-code-mcp",
+    "slug": "steipete-claude-code-mcp"
   },
   {
     "uid": "80051000",
@@ -660,7 +696,8 @@
       "AI工具集成"
     ],
     "icon": "mcp_favicons/80051000.png",
-    "github_url": "https://github.com/agentdeskai/browser-tools-mcp"
+    "github_url": "https://github.com/agentdeskai/browser-tools-mcp",
+    "slug": "agentdeskai-browser-tools-mcp"
   },
   {
     "uid": "80052000",
@@ -673,7 +710,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80052000.png",
-    "github_url": "https://github.com/ahujasid/blender-mcp"
+    "github_url": "https://github.com/ahujasid/blender-mcp",
+    "slug": "ahujasid-blender-mcp"
   },
   {
     "uid": "80053000",
@@ -686,7 +724,8 @@
       "AI交互"
     ],
     "icon": "mcp_favicons/80053000.png",
-    "github_url": "https://github.com/54yyyu/zotero-mcp"
+    "github_url": "https://github.com/54yyyu/zotero-mcp",
+    "slug": "54yyyu-zotero-mcp"
   },
   {
     "uid": "80054000",
@@ -699,7 +738,8 @@
       "多代理系统"
     ],
     "icon": "mcp_favicons/80054000.png",
-    "github_url": "https://github.com/ruvnet/claude-flow"
+    "github_url": "https://github.com/ruvnet/claude-flow",
+    "slug": "ruvnet-claude-flow"
   },
   {
     "uid": "80055000",
@@ -712,7 +752,8 @@
       "基础设施即代码"
     ],
     "icon": "mcp_favicons/80055000.png",
-    "github_url": "https://github.com/awslabs/mcp/tree/main/src/cdk-mcp-server"
+    "github_url": "https://github.com/awslabs/mcp/tree/main/src/cdk-mcp-server",
+    "slug": "awslabs-mcp-cdk-mcp-server"
   },
   {
     "uid": "80056000",
@@ -725,7 +766,8 @@
       "移动开发"
     ],
     "icon": "mcp_favicons/80056000.png",
-    "github_url": "https://github.com/joshuayoes/ios-simulator-mcp"
+    "github_url": "https://github.com/joshuayoes/ios-simulator-mcp",
+    "slug": "joshuayoes-ios-simulator-mcp"
   },
   {
     "uid": "80057000",
@@ -738,7 +780,8 @@
       "可视化工作流"
     ],
     "icon": "mcp_favicons/80057000.png",
-    "github_url": "https://github.com/nrwl/nx-console/blob/master/apps/nx-mcp"
+    "github_url": "https://github.com/nrwl/nx-console/blob/master/apps/nx-mcp",
+    "slug": "nrwl-nx-console"
   },
   {
     "uid": "80058000",
@@ -751,7 +794,8 @@
       "角色配置"
     ],
     "icon": "mcp_favicons/80058000.png",
-    "github_url": "https://github.com/awslabs/mcp/tree/main/src/core-mcp-server"
+    "github_url": "https://github.com/awslabs/mcp/tree/main/src/core-mcp-server",
+    "slug": "awslabs-mcp-core-mcp-server"
   },
   {
     "uid": "80059000",
@@ -764,7 +808,8 @@
       "文档搜索"
     ],
     "icon": "mcp_favicons/80059000.png",
-    "github_url": "https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server"
+    "github_url": "https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server",
+    "slug": "awslabs-mcp-aws-documentation-mcp-server"
   },
   {
     "uid": "80060000",
@@ -777,7 +822,8 @@
       "大型文件分析"
     ],
     "icon": "mcp_favicons/80060000.png",
-    "github_url": "https://github.com/jamubc/gemini-mcp-tool"
+    "github_url": "https://github.com/jamubc/gemini-mcp-tool",
+    "slug": "jamubc-gemini-mcp-tool"
   },
   {
     "uid": "80061000",
@@ -790,7 +836,8 @@
       "苹果应用"
     ],
     "icon": "mcp_favicons/80061000.png",
-    "github_url": "https://github.com/Dhravya/apple-mcp"
+    "github_url": "https://github.com/Dhravya/apple-mcp",
+    "slug": "dhravya-apple-mcp"
   },
   {
     "uid": "80062000",
@@ -803,7 +850,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80062000.png",
-    "github_url": "https://github.com/bitbonsai/mcp-obsidian"
+    "github_url": "https://github.com/bitbonsai/mcp-obsidian",
+    "slug": "bitbonsai-mcp-obsidian"
   },
   {
     "uid": "80063000",
@@ -816,7 +864,8 @@
       "语义记忆"
     ],
     "icon": "mcp_favicons/80063000.png",
-    "github_url": "https://github.com/qdrant/mcp-server-qdrant"
+    "github_url": "https://github.com/qdrant/mcp-server-qdrant",
+    "slug": "qdrant-mcp-server-qdrant"
   },
   {
     "uid": "80064000",
@@ -829,7 +878,8 @@
       "自动化工具"
     ],
     "icon": "mcp_favicons/80064000.png",
-    "github_url": "https://github.com/hashicorp/terraform-mcp-server"
+    "github_url": "https://github.com/hashicorp/terraform-mcp-server",
+    "slug": "hashicorp-terraform-mcp-server"
   },
   {
     "uid": "80065000",
@@ -842,7 +892,8 @@
       "API集成"
     ],
     "icon": "mcp_favicons/80065000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80065000"
   },
   {
     "uid": "80066000",
@@ -853,7 +904,8 @@
       "混合部署"
     ],
     "icon": "mcp_favicons/80066000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80066000"
   },
   {
     "uid": "80067000",
@@ -864,7 +916,8 @@
       "云端部署"
     ],
     "icon": "mcp_favicons/80067000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80067000"
   },
   {
     "uid": "80068000",
@@ -877,7 +930,8 @@
       "LBS"
     ],
     "icon": "mcp_favicons/80068000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80068000"
   },
   {
     "uid": "80069000",
@@ -890,7 +944,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80069000.png",
-    "github_url": "https://github.com/xianminx/mcp-server-flomo"
+    "github_url": "https://github.com/xianminx/mcp-server-flomo",
+    "slug": "xianminx-mcp-server-flomo"
   },
   {
     "uid": "80070000",
@@ -903,7 +958,8 @@
       "项目管理"
     ],
     "icon": "mcp_favicons/80070000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gitlab"
+    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gitlab",
+    "slug": "servers-archived-gitlab"
   },
   {
     "uid": "80071000",
@@ -916,7 +972,8 @@
       "软件开发"
     ],
     "icon": "mcp_favicons/80071000.png",
-    "github_url": "https://github.com/cline/cline"
+    "github_url": "https://github.com/cline/cline",
+    "slug": "cline-cline"
   },
   {
     "uid": "80072000",
@@ -929,7 +986,8 @@
       "API集成"
     ],
     "icon": "mcp_favicons/80072000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/everart"
+    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/everart",
+    "slug": "servers-archived-everart"
   },
   {
     "uid": "80073000",
@@ -942,7 +1000,8 @@
       "数据管理"
     ],
     "icon": "mcp_favicons/80073000.png",
-    "github_url": "https://github.com/haris-musa/excel-mcp-server"
+    "github_url": "https://github.com/haris-musa/excel-mcp-server",
+    "slug": "haris-musa-excel-mcp-server"
   },
   {
     "uid": "80074000",
@@ -955,7 +1014,8 @@
       "视频合成"
     ],
     "icon": "mcp_favicons/80074000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80074000"
   },
   {
     "uid": "80075000",
@@ -968,7 +1028,8 @@
       "数据库操作"
     ],
     "icon": "mcp_favicons/80075000.png",
-    "github_url": "https://github.com/f4ww4z/mcp-mysql-server"
+    "github_url": "https://github.com/f4ww4z/mcp-mysql-server",
+    "slug": "f4ww4z-mcp-mysql-server"
   },
   {
     "uid": "80076000",
@@ -981,7 +1042,8 @@
       "静态分析"
     ],
     "icon": "mcp_favicons/80076000.png",
-    "github_url": "https://github.com/semgrep/mcp"
+    "github_url": "https://github.com/semgrep/mcp",
+    "slug": "semgrep-mcp"
   },
   {
     "uid": "80077000",
@@ -994,7 +1056,8 @@
       "文本提取"
     ],
     "icon": "mcp_favicons/80077000.png",
-    "github_url": "https://github.com/sylphxltd/pdf-reader-mcp"
+    "github_url": "https://github.com/sylphxltd/pdf-reader-mcp",
+    "slug": "sylphxltd-pdf-reader-mcp"
   },
   {
     "uid": "80078000",
@@ -1007,7 +1070,8 @@
       "逆地理编码"
     ],
     "icon": "mcp_favicons/80078000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/google-maps"
+    "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/google-maps",
+    "slug": "servers-archived-google-maps"
   },
   {
     "uid": "80079000",
@@ -1020,7 +1084,8 @@
       "多引擎搜索"
     ],
     "icon": "mcp_favicons/80079000.png",
-    "github_url": "https://github.com/Aas-ee/open-webSearch"
+    "github_url": "https://github.com/Aas-ee/open-webSearch",
+    "slug": "aas-ee-open-websearch"
   },
   {
     "uid": "80080000",
@@ -1033,7 +1098,8 @@
       "语音识别"
     ],
     "icon": "mcp_favicons/80080000.png",
-    "github_url": "https://github.com/yzfly/douyin-mcp-server"
+    "github_url": "https://github.com/yzfly/douyin-mcp-server",
+    "slug": "yzfly-douyin-mcp-server"
   },
   {
     "uid": "80081000",
@@ -1046,7 +1112,8 @@
       "AI辅助开发"
     ],
     "icon": "mcp_favicons/80081000.png",
-    "github_url": "https://github.com/cjo4m06/mcp-shrimp-task-manager"
+    "github_url": "https://github.com/cjo4m06/mcp-shrimp-task-manager",
+    "slug": "cjo4m06-mcp-shrimp-task-manager"
   },
   {
     "uid": "80082000",
@@ -1059,7 +1126,8 @@
       "Shell集成"
     ],
     "icon": "mcp_favicons/80082000.png",
-    "github_url": "https://github.com/rusiaaman/wcgw"
+    "github_url": "https://github.com/rusiaaman/wcgw",
+    "slug": "rusiaaman-wcgw"
   },
   {
     "uid": "80083000",
@@ -1072,7 +1140,8 @@
       "代码分析"
     ],
     "icon": "mcp_favicons/80083000.png",
-    "github_url": "https://github.com/johnhuang316/code-index-mcp"
+    "github_url": "https://github.com/johnhuang316/code-index-mcp",
+    "slug": "johnhuang316-code-index-mcp"
   },
   {
     "uid": "80084000",
@@ -1085,7 +1154,8 @@
       "大型语言模型"
     ],
     "icon": "mcp_favicons/80084000.png",
-    "github_url": "https://github.com/yuniko-software/minecraft-mcp-server"
+    "github_url": "https://github.com/yuniko-software/minecraft-mcp-server",
+    "slug": "yuniko-software-minecraft-mcp-server"
   },
   {
     "uid": "80085000",
@@ -1098,7 +1168,8 @@
       "图表生成"
     ],
     "icon": "mcp_favicons/80085000.png",
-    "github_url": "https://github.com/hustcc/mcp-mermaid"
+    "github_url": "https://github.com/hustcc/mcp-mermaid",
+    "slug": "hustcc-mcp-mermaid"
   },
   {
     "uid": "80086000",
@@ -1111,7 +1182,8 @@
       "文本提取"
     ],
     "icon": "mcp_favicons/80086000.png",
-    "github_url": "https://github.com/shtse8/pdf-reader-mcp"
+    "github_url": "https://github.com/shtse8/pdf-reader-mcp",
+    "slug": "shtse8-pdf-reader-mcp"
   },
   {
     "uid": "80087000",
@@ -1124,7 +1196,8 @@
       "YouTube工具"
     ],
     "icon": "mcp_favicons/80087000.png",
-    "github_url": "https://github.com/kimtaeyoon83/mcp-server-youtube-transcript"
+    "github_url": "https://github.com/kimtaeyoon83/mcp-server-youtube-transcript",
+    "slug": "kimtaeyoon83-mcp-server-youtube-transcript"
   },
   {
     "uid": "80088000",
@@ -1137,7 +1210,8 @@
       "格式转换"
     ],
     "icon": "mcp_favicons/80088000.png",
-    "github_url": "https://github.com/vivekVells/mcp-pandoc"
+    "github_url": "https://github.com/vivekVells/mcp-pandoc",
+    "slug": "vivekvells-mcp-pandoc"
   },
   {
     "uid": "80089000",
@@ -1150,7 +1224,8 @@
       "顺序思考"
     ],
     "icon": "mcp_favicons/80089000.png",
-    "github_url": "https://github.com/spences10/mcp-sequentialthinking-tools"
+    "github_url": "https://github.com/spences10/mcp-sequentialthinking-tools",
+    "slug": "spences10-mcp-sequentialthinking-tools"
   },
   {
     "uid": "80090000",
@@ -1163,7 +1238,8 @@
       "技术指标分析"
     ],
     "icon": "mcp_favicons/80090000.png",
-    "github_url": "https://github.com/guangxiangdebizi/FinanceMCP"
+    "github_url": "https://github.com/guangxiangdebizi/FinanceMCP",
+    "slug": "guangxiangdebizi-financemcp"
   },
   {
     "uid": "80091000",
@@ -1176,7 +1252,8 @@
       "内容提取"
     ],
     "icon": "mcp_favicons/80091000.png",
-    "github_url": "https://github.com/zcaceres/fetch-mcp"
+    "github_url": "https://github.com/zcaceres/fetch-mcp",
+    "slug": "zcaceres-fetch-mcp"
   },
   {
     "uid": "80092000",
@@ -1189,7 +1266,8 @@
       "远程控制"
     ],
     "icon": "mcp_favicons/80092000.png",
-    "github_url": "https://github.com/neka-nat/freecad-mcp"
+    "github_url": "https://github.com/neka-nat/freecad-mcp",
+    "slug": "neka-nat-freecad-mcp"
   },
   {
     "uid": "80093000",
@@ -1202,7 +1280,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80093000.png",
-    "github_url": "https://github.com/Arodoid/UnityMCP"
+    "github_url": "https://github.com/Arodoid/UnityMCP",
+    "slug": "arodoid-unitymcp"
   },
   {
     "uid": "80094000",
@@ -1215,7 +1294,8 @@
       "AI开发工具"
     ],
     "icon": "mcp_favicons/80094000.png",
-    "github_url": "https://github.com/utensils/mcp-nixos"
+    "github_url": "https://github.com/utensils/mcp-nixos",
+    "slug": "utensils-mcp-nixos"
   },
   {
     "uid": "80095000",
@@ -1228,7 +1308,8 @@
       "网页抓取"
     ],
     "icon": "mcp_favicons/80095000.png",
-    "github_url": "https://github.com/regenrek/deepwiki-mcp"
+    "github_url": "https://github.com/regenrek/deepwiki-mcp",
+    "slug": "regenrek-deepwiki-mcp"
   },
   {
     "uid": "80096000",
@@ -1241,7 +1322,8 @@
       "文档查询"
     ],
     "icon": "mcp_favicons/80096000.png",
-    "github_url": "https://github.com/mastra-ai/mastra/tree/main/packages/mcp-docs-server"
+    "github_url": "https://github.com/mastra-ai/mastra/tree/main/packages/mcp-docs-server",
+    "slug": "mastra-ai-mastra-mcp-docs-server"
   },
   {
     "uid": "80097000",
@@ -1254,7 +1336,8 @@
       "内容抓取"
     ],
     "icon": "mcp_favicons/80097000.png",
-    "github_url": "https://github.com/nickclyde/duckduckgo-mcp-server"
+    "github_url": "https://github.com/nickclyde/duckduckgo-mcp-server",
+    "slug": "nickclyde-duckduckgo-mcp-server"
   },
   {
     "uid": "80098000",
@@ -1267,7 +1350,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80098000.png",
-    "github_url": "https://github.com/ahujasid/ableton-mcp"
+    "github_url": "https://github.com/ahujasid/ableton-mcp",
+    "slug": "ahujasid-ableton-mcp"
   },
   {
     "uid": "80099000",
@@ -1280,7 +1364,8 @@
       "AI辅助开发"
     ],
     "icon": "mcp_favicons/80099000.png",
-    "github_url": "https://github.com/Joseph19820124/first_sse"
+    "github_url": "https://github.com/Joseph19820124/first_sse",
+    "slug": "joseph19820124-first_sse"
   },
   {
     "uid": "80100000",
@@ -1293,7 +1378,8 @@
       "macOS应用"
     ],
     "icon": "mcp_favicons/80100000.png",
-    "github_url": "https://github.com/syedazharmbnr1/claude-chatgpt-mcp"
+    "github_url": "https://github.com/syedazharmbnr1/claude-chatgpt-mcp",
+    "slug": "syedazharmbnr1-claude-chatgpt-mcp"
   },
   {
     "uid": "80101000",
@@ -1306,7 +1392,8 @@
       "嵌入数据库"
     ],
     "icon": "mcp_favicons/80101000.png",
-    "github_url": "https://github.com/chroma-core/chroma-mcp"
+    "github_url": "https://github.com/chroma-core/chroma-mcp",
+    "slug": "chroma-core-chroma-mcp"
   },
   {
     "uid": "80102000",
@@ -1319,7 +1406,8 @@
       "ML模型"
     ],
     "icon": "mcp_favicons/80102000.png",
-    "github_url": "https://github.com/modelcontextprotocol/swift-sdk"
+    "github_url": "https://github.com/modelcontextprotocol/swift-sdk",
+    "slug": "modelcontextprotocol-swift-sdk"
   },
   {
     "uid": "80103000",
@@ -1332,7 +1420,8 @@
       "文本提取"
     ],
     "icon": "mcp_favicons/80103000.png",
-    "github_url": "https://github.com/sylphlab/pdf-reader-mcp"
+    "github_url": "https://github.com/sylphlab/pdf-reader-mcp",
+    "slug": "sylphlab-pdf-reader-mcp"
   },
   {
     "uid": "80104000",
@@ -1345,7 +1434,8 @@
       "知识图谱"
     ],
     "icon": "mcp_favicons/80104000.png",
-    "github_url": "https://github.com/shaneholloman/mcp-knowledge-graph"
+    "github_url": "https://github.com/shaneholloman/mcp-knowledge-graph",
+    "slug": "shaneholloman-mcp-knowledge-graph"
   },
   {
     "uid": "80105000",
@@ -1358,7 +1448,8 @@
       "结构化思维"
     ],
     "icon": "mcp_favicons/80105000.png",
-    "github_url": "https://github.com/arben-adm/mcp-sequential-thinking"
+    "github_url": "https://github.com/arben-adm/mcp-sequential-thinking",
+    "slug": "arben-adm-mcp-sequential-thinking"
   },
   {
     "uid": "80106000",
@@ -1371,7 +1462,8 @@
       "AI自动化"
     ],
     "icon": "mcp_favicons/80106000.png",
-    "github_url": "https://github.com/CoderGamester/mcp-unity"
+    "github_url": "https://github.com/CoderGamester/mcp-unity",
+    "slug": "codergamester-mcp-unity"
   },
   {
     "uid": "80107000",
@@ -1384,7 +1476,8 @@
       "自动化安装"
     ],
     "icon": "mcp_favicons/80107000.png",
-    "github_url": "https://github.com/anaisbetts/mcp-installer"
+    "github_url": "https://github.com/anaisbetts/mcp-installer",
+    "slug": "anaisbetts-mcp-installer"
   },
   {
     "uid": "80108000",
@@ -1397,7 +1490,8 @@
       "代理服务器"
     ],
     "icon": "mcp_favicons/80108000.png",
-    "github_url": "https://github.com/JetBrains/mcp-jetbrains"
+    "github_url": "https://github.com/JetBrains/mcp-jetbrains",
+    "slug": "jetbrains-mcp-jetbrains"
   },
   {
     "uid": "80109000",
@@ -1410,7 +1504,8 @@
       "内容理解"
     ],
     "icon": "mcp_favicons/80109000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80109000"
   },
   {
     "uid": "80110000",
@@ -1423,7 +1518,8 @@
       "智能工具"
     ],
     "icon": "mcp_favicons/80110000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80110000"
   },
   {
     "uid": "80111000",
@@ -1436,7 +1532,8 @@
       "网页抓取"
     ],
     "icon": "mcp_favicons/80111000.png",
-    "github_url": "https://github.com/yan5236/bing-cn-mcp-server"
+    "github_url": "https://github.com/yan5236/bing-cn-mcp-server",
+    "slug": "yan5236-bing-cn-mcp-server"
   },
   {
     "uid": "80112000",
@@ -1449,7 +1546,8 @@
       "Rust开发"
     ],
     "icon": "mcp_favicons/80112000.png",
-    "github_url": "https://github.com/RightNow-AI/openfang"
+    "github_url": "https://github.com/RightNow-AI/openfang",
+    "slug": "rightnow-ai-openfang"
   },
   {
     "uid": "80113000",
@@ -1462,7 +1560,8 @@
       "热点聚合"
     ],
     "icon": "mcp_favicons/80113000.png",
-    "github_url": "https://github.com/baranwang/mcp-trends-hub"
+    "github_url": "https://github.com/baranwang/mcp-trends-hub",
+    "slug": "baranwang-mcp-trends-hub"
   },
   {
     "uid": "80114000",
@@ -1475,7 +1574,8 @@
       "Redis管理"
     ],
     "icon": "mcp_favicons/80114000.png",
-    "github_url": "https://github.com/redis/mcp-redis"
+    "github_url": "https://github.com/redis/mcp-redis",
+    "slug": "redis-mcp-redis"
   },
   {
     "uid": "80115000",
@@ -1488,7 +1588,8 @@
       "实时热点"
     ],
     "icon": "mcp_favicons/80115000.png",
-    "github_url": "https://github.com/wopal-cn/mcp-hotnews-server"
+    "github_url": "https://github.com/wopal-cn/mcp-hotnews-server",
+    "slug": "wopal-cn-mcp-hotnews-server"
   },
   {
     "uid": "80116000",
@@ -1501,7 +1602,8 @@
       "远程MCP"
     ],
     "icon": "mcp_favicons/80116000.png",
-    "github_url": "https://github.com/cloudflare/mcp-server-cloudflare/tree/HEAD/apps/sandbox-container"
+    "github_url": "https://github.com/cloudflare/mcp-server-cloudflare/tree/HEAD/apps/sandbox-container",
+    "slug": "cloudflare-mcp-server-cloudflare-sandbox-container"
   },
   {
     "uid": "80117000",
@@ -1514,7 +1616,8 @@
       "八字计算"
     ],
     "icon": "mcp_favicons/80117000.png",
-    "github_url": "https://github.com/cantian-ai/bazi-mcp"
+    "github_url": "https://github.com/cantian-ai/bazi-mcp",
+    "slug": "cantian-ai-bazi-mcp"
   },
   {
     "uid": "80118000",
@@ -1527,7 +1630,8 @@
       "静态分析"
     ],
     "icon": "mcp_favicons/80118000.png",
-    "github_url": "https://github.com/zinja-coder/jadx-ai-mcp"
+    "github_url": "https://github.com/zinja-coder/jadx-ai-mcp",
+    "slug": "zinja-coder-jadx-ai-mcp"
   },
   {
     "uid": "80119000",
@@ -1540,7 +1644,8 @@
       "Swagger"
     ],
     "icon": "mcp_favicons/80119000.png",
-    "github_url": "https://github.com/kadykov/mcp-openapi-schema-explorer"
+    "github_url": "https://github.com/kadykov/mcp-openapi-schema-explorer",
+    "slug": "kadykov-mcp-openapi-schema-explorer"
   },
   {
     "uid": "80120000",
@@ -1553,7 +1658,8 @@
       "数据分析"
     ],
     "icon": "mcp_favicons/80120000.png",
-    "github_url": "https://github.com/hustcc/mcp-echarts"
+    "github_url": "https://github.com/hustcc/mcp-echarts",
+    "slug": "hustcc-mcp-echarts"
   },
   {
     "uid": "80121000",
@@ -1566,7 +1672,8 @@
       "AI辅助开发"
     ],
     "icon": "mcp_favicons/80121000.png",
-    "github_url": "https://github.com/kingkongshot/specs-workflow-mcp"
+    "github_url": "https://github.com/kingkongshot/specs-workflow-mcp",
+    "slug": "kingkongshot-specs-workflow-mcp"
   },
   {
     "uid": "80122000",
@@ -1579,7 +1686,8 @@
       "设计转代码"
     ],
     "icon": "mcp_favicons/80122000.png",
-    "github_url": "https://github.com/f2c-ai/f2c-mcp"
+    "github_url": "https://github.com/f2c-ai/f2c-mcp",
+    "slug": "f2c-ai-f2c-mcp"
   },
   {
     "uid": "80123000",
@@ -1592,7 +1700,8 @@
       "多语言支持"
     ],
     "icon": "mcp_favicons/80123000.png",
-    "github_url": "https://github.com/formulahendry/mcp-server-code-runner"
+    "github_url": "https://github.com/formulahendry/mcp-server-code-runner",
+    "slug": "formulahendry-mcp-server-code-runner"
   },
   {
     "uid": "80124000",
@@ -1605,7 +1714,8 @@
       "模型上下文协议"
     ],
     "icon": "mcp_favicons/80124000.png",
-    "github_url": "https://github.com/magicuidesign/mcp"
+    "github_url": "https://github.com/magicuidesign/mcp",
+    "slug": "magicuidesign-mcp"
   },
   {
     "uid": "80125000",
@@ -1618,7 +1728,8 @@
       "房源搜索"
     ],
     "icon": "mcp_favicons/80125000.png",
-    "github_url": "https://github.com/openbnb-org/mcp-server-airbnb"
+    "github_url": "https://github.com/openbnb-org/mcp-server-airbnb",
+    "slug": "openbnb-org-mcp-server-airbnb"
   },
   {
     "uid": "80126000",
@@ -1631,7 +1742,8 @@
       "二进制分析"
     ],
     "icon": "mcp_favicons/80126000.png",
-    "github_url": "https://github.com/mrexodia/ida-pro-mcp"
+    "github_url": "https://github.com/mrexodia/ida-pro-mcp",
+    "slug": "mrexodia-ida-pro-mcp"
   },
   {
     "uid": "80127000",
@@ -1644,7 +1756,8 @@
       "上下文管理"
     ],
     "icon": "mcp_favicons/80127000.png",
-    "github_url": "https://github.com/cyberchitta/llm-context.py"
+    "github_url": "https://github.com/cyberchitta/llm-context.py",
+    "slug": "cyberchitta-llm-context.py"
   },
   {
     "uid": "80128000",
@@ -1657,7 +1770,8 @@
       "AST解析"
     ],
     "icon": "mcp_favicons/80128000.png",
-    "github_url": "https://github.com/wrale/mcp-server-tree-sitter"
+    "github_url": "https://github.com/wrale/mcp-server-tree-sitter",
+    "slug": "wrale-mcp-server-tree-sitter"
   },
   {
     "uid": "80129000",
@@ -1670,7 +1784,8 @@
       "终端操作"
     ],
     "icon": "mcp_favicons/80129000.png",
-    "github_url": "https://github.com/acomagu/vscode-as-mcp-server"
+    "github_url": "https://github.com/acomagu/vscode-as-mcp-server",
+    "slug": "acomagu-vscode-as-mcp-server"
   },
   {
     "uid": "80130000",
@@ -1683,7 +1798,8 @@
       "TouchDesigner"
     ],
     "icon": "mcp_favicons/80130000.png",
-    "github_url": "https://github.com/8beeeaaat/touchdesigner-mcp"
+    "github_url": "https://github.com/8beeeaaat/touchdesigner-mcp",
+    "slug": "8beeeaaat-touchdesigner-mcp"
   },
   {
     "uid": "80131000",
@@ -1696,7 +1812,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80131000.png",
-    "github_url": "https://github.com/boshyxd/robloxstudio-mcp"
+    "github_url": "https://github.com/boshyxd/robloxstudio-mcp",
+    "slug": "boshyxd-robloxstudio-mcp"
   },
   {
     "uid": "80132000",
@@ -1709,7 +1826,8 @@
       "图像生成"
     ],
     "icon": "mcp_favicons/80132000.png",
-    "github_url": "https://github.com/evalstate/mcp-hfspace"
+    "github_url": "https://github.com/evalstate/mcp-hfspace",
+    "slug": "evalstate-mcp-hfspace"
   },
   {
     "uid": "80133000",
@@ -1722,7 +1840,8 @@
       "浏览器自动化"
     ],
     "icon": "mcp_favicons/80133000.png",
-    "github_url": "https://github.com/angiejones/mcp-selenium"
+    "github_url": "https://github.com/angiejones/mcp-selenium",
+    "slug": "angiejones-mcp-selenium"
   },
   {
     "uid": "80134000",
@@ -1735,7 +1854,8 @@
       "视频搜索"
     ],
     "icon": "mcp_favicons/80134000.png",
-    "github_url": "https://github.com/34892002/bilibili-mcp-js"
+    "github_url": "https://github.com/34892002/bilibili-mcp-js",
+    "slug": "34892002-bilibili-mcp-js"
   },
   {
     "uid": "80135000",
@@ -1748,7 +1868,8 @@
       "内容生成"
     ],
     "icon": "mcp_favicons/80135000.png",
-    "github_url": "https://github.com/open-strategy-partners/osp_marketing_tools"
+    "github_url": "https://github.com/open-strategy-partners/osp_marketing_tools",
+    "slug": "open-strategy-partners-osp_marketing_tools"
   },
   {
     "uid": "80136000",
@@ -1761,7 +1882,8 @@
       "SQL优化"
     ],
     "icon": "mcp_favicons/80136000.png",
-    "github_url": "https://github.com/wenb1n-dev/mysql_mcp_server_pro"
+    "github_url": "https://github.com/wenb1n-dev/mysql_mcp_server_pro",
+    "slug": "wenb1n-dev-mysql_mcp_server_pro"
   },
   {
     "uid": "80137000",
@@ -1774,7 +1896,8 @@
       "Node.js调试"
     ],
     "icon": "mcp_favicons/80137000.png",
-    "github_url": "https://github.com/workbackai/mcp-nodejs-debugger"
+    "github_url": "https://github.com/workbackai/mcp-nodejs-debugger",
+    "slug": "workbackai-mcp-nodejs-debugger"
   },
   {
     "uid": "80138000",
@@ -1787,7 +1910,8 @@
       "API自动化"
     ],
     "icon": "mcp_favicons/80138000.png",
-    "github_url": "https://github.com/panzer-jack/feuse-mcp"
+    "github_url": "https://github.com/panzer-jack/feuse-mcp",
+    "slug": "panzer-jack-feuse-mcp"
   },
   {
     "uid": "80139000",
@@ -1800,7 +1924,8 @@
       "指标查询"
     ],
     "icon": "mcp_favicons/80139000.png",
-    "github_url": "https://github.com/pab1it0/prometheus-mcp-server"
+    "github_url": "https://github.com/pab1it0/prometheus-mcp-server",
+    "slug": "pab1it0-prometheus-mcp-server"
   },
   {
     "uid": "80140000",
@@ -1813,7 +1938,8 @@
       "远程执行"
     ],
     "icon": "mcp_favicons/80140000.png",
-    "github_url": "https://github.com/classfang/ssh-mcp-server"
+    "github_url": "https://github.com/classfang/ssh-mcp-server",
+    "slug": "classfang-ssh-mcp-server"
   },
   {
     "uid": "80141000",
@@ -1826,7 +1952,8 @@
       "时区转换"
     ],
     "icon": "mcp_favicons/80141000.png",
-    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/time"
+    "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+    "slug": "modelcontextprotocol-servers-time"
   },
   {
     "uid": "80142000",
@@ -1839,7 +1966,8 @@
       "代码推理"
     ],
     "icon": "mcp_favicons/80142000.png",
-    "github_url": "https://github.com/mettamatt/code-reasoning"
+    "github_url": "https://github.com/mettamatt/code-reasoning",
+    "slug": "mettamatt-code-reasoning"
   },
   {
     "uid": "80143000",
@@ -1852,7 +1980,8 @@
       "远程命令执行"
     ],
     "icon": "mcp_favicons/80143000.png",
-    "github_url": "https://github.com/tufantunc/ssh-mcp"
+    "github_url": "https://github.com/tufantunc/ssh-mcp",
+    "slug": "tufantunc-ssh-mcp"
   },
   {
     "uid": "80144000",
@@ -1865,7 +1994,8 @@
       "AI助手集成"
     ],
     "icon": "mcp_favicons/80144000.png",
-    "github_url": "https://github.com/aliyun/alibabacloud-core-mcp-server"
+    "github_url": "https://github.com/aliyun/alibabacloud-core-mcp-server",
+    "slug": "aliyun-alibabacloud-core-mcp-server"
   },
   {
     "uid": "80145000",
@@ -1878,7 +2008,8 @@
       "图表生成"
     ],
     "icon": "mcp_favicons/80145000.svg",
-    "github_url": "https://github.com/GongRzhe/Quickchart-MCP-Server"
+    "github_url": "https://github.com/GongRzhe/Quickchart-MCP-Server",
+    "slug": "gongrzhe-quickchart-mcp-server"
   },
   {
     "uid": "80146000",
@@ -1891,7 +2022,8 @@
       "聊天机器人"
     ],
     "icon": "mcp_favicons/80146000.png",
-    "github_url": "https://github.com/cgoinglove/mcp-client-chatbot"
+    "github_url": "https://github.com/cgoinglove/mcp-client-chatbot",
+    "slug": "cgoinglove-mcp-client-chatbot"
   },
   {
     "uid": "80147000",
@@ -1904,7 +2036,8 @@
       "生物医学数据"
     ],
     "icon": "mcp_favicons/80147000.png",
-    "github_url": "https://github.com/genomoncology/biomcp"
+    "github_url": "https://github.com/genomoncology/biomcp",
+    "slug": "genomoncology-biomcp"
   },
   {
     "uid": "80148000",
@@ -1917,7 +2050,8 @@
       "AI助手集成"
     ],
     "icon": "mcp_favicons/80148000.png",
-    "github_url": "https://github.com/aliyun/alibaba-cloud-ops-mcp-server"
+    "github_url": "https://github.com/aliyun/alibaba-cloud-ops-mcp-server",
+    "slug": "aliyun-alibaba-cloud-ops-mcp-server"
   },
   {
     "uid": "80149000",
@@ -1930,7 +2064,8 @@
       "截图工具"
     ],
     "icon": "mcp_favicons/80149000.png",
-    "github_url": "https://github.com/evalstate/mcp-webcam"
+    "github_url": "https://github.com/evalstate/mcp-webcam",
+    "slug": "evalstate-mcp-webcam"
   },
   {
     "uid": "80150000",
@@ -1943,7 +2078,8 @@
       "低代码平台"
     ],
     "icon": "mcp_favicons/80150000.png",
-    "github_url": "https://github.com/ying-dao/yingdao_mcp_server"
+    "github_url": "https://github.com/ying-dao/yingdao_mcp_server",
+    "slug": "ying-dao-yingdao_mcp_server"
   },
   {
     "uid": "80151000",
@@ -1956,7 +2092,8 @@
       "AST匹配"
     ],
     "icon": "mcp_favicons/80151000.png",
-    "github_url": "https://github.com/ast-grep/ast-grep-mcp"
+    "github_url": "https://github.com/ast-grep/ast-grep-mcp",
+    "slug": "ast-grep-ast-grep-mcp"
   },
   {
     "uid": "80152000",
@@ -1969,7 +2106,8 @@
       "股票分析"
     ],
     "icon": "mcp_favicons/80152000.png",
-    "github_url": "https://github.com/Alex2Yang97/yahoo-finance-mcp"
+    "github_url": "https://github.com/Alex2Yang97/yahoo-finance-mcp",
+    "slug": "alex2yang97-yahoo-finance-mcp"
   },
   {
     "uid": "80153000",
@@ -1982,7 +2120,8 @@
       "设备控制"
     ],
     "icon": "mcp_favicons/80153000.png",
-    "github_url": ""
+    "github_url": "",
+    "slug": "80153000"
   },
   {
     "uid": "80154000",
@@ -1995,7 +2134,8 @@
       "股票分析"
     ],
     "icon": "mcp_favicons/80154000.png",
-    "github_url": "https://github.com/ferdousbhai/investor-agent"
+    "github_url": "https://github.com/ferdousbhai/investor-agent",
+    "slug": "ferdousbhai-investor-agent"
   },
   {
     "uid": "80155000",
@@ -2008,7 +2148,8 @@
       "远程命令"
     ],
     "icon": "mcp_favicons/80155000.png",
-    "github_url": "https://github.com/tumf/mcp-shell-server"
+    "github_url": "https://github.com/tumf/mcp-shell-server",
+    "slug": "tumf-mcp-shell-server"
   },
   {
     "uid": "80156000",
@@ -2021,7 +2162,8 @@
       "SQL查询"
     ],
     "icon": "mcp_favicons/80156000.png",
-    "github_url": "https://github.com/ktanaka101/mcp-server-duckdb"
+    "github_url": "https://github.com/ktanaka101/mcp-server-duckdb",
+    "slug": "ktanaka101-mcp-server-duckdb"
   },
   {
     "uid": "80157000",
@@ -2034,7 +2176,8 @@
       "Markdown转换"
     ],
     "icon": "mcp_favicons/80157000.png",
-    "github_url": "https://github.com/just-every/mcp-read-website-fast"
+    "github_url": "https://github.com/just-every/mcp-read-website-fast",
+    "slug": "just-every-mcp-read-website-fast"
   },
   {
     "uid": "80158000",
@@ -2047,7 +2190,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80158000.png",
-    "github_url": "https://github.com/kujenga/zotero-mcp"
+    "github_url": "https://github.com/kujenga/zotero-mcp",
+    "slug": "kujenga-zotero-mcp"
   },
   {
     "uid": "80159000",
@@ -2060,7 +2204,8 @@
       "位置服务"
     ],
     "icon": "mcp_favicons/80159000.png",
-    "github_url": "https://github.com/jagan-shanmugam/open-streetmap-mcp"
+    "github_url": "https://github.com/jagan-shanmugam/open-streetmap-mcp",
+    "slug": "jagan-shanmugam-open-streetmap-mcp"
   },
   {
     "uid": "80160000",
@@ -2073,7 +2218,8 @@
       "Terraform"
     ],
     "icon": "mcp_favicons/80160000.png",
-    "github_url": "https://github.com/thrashr888/terraform-mcp-server"
+    "github_url": "https://github.com/thrashr888/terraform-mcp-server",
+    "slug": "thrashr888-terraform-mcp-server"
   },
   {
     "uid": "80161000",
@@ -2086,7 +2232,8 @@
       "开源工具"
     ],
     "icon": "mcp_favicons/80161000.png",
-    "github_url": "https://github.com/pathintegral-institute/mcp.science"
+    "github_url": "https://github.com/pathintegral-institute/mcp.science",
+    "slug": "pathintegral-institute-mcp.science"
   },
   {
     "uid": "80162000",
@@ -2099,7 +2246,8 @@
       "自动化测试"
     ],
     "icon": "mcp_favicons/80162000.png",
-    "github_url": "https://github.com/cloudflare/playwright-mcp"
+    "github_url": "https://github.com/cloudflare/playwright-mcp",
+    "slug": "cloudflare-playwright-mcp"
   },
   {
     "uid": "80163000",
@@ -2112,7 +2260,8 @@
       "Markdown转换"
     ],
     "icon": "mcp_favicons/80163000.png",
-    "github_url": "https://github.com/jinzcdev/markmap-mcp-server"
+    "github_url": "https://github.com/jinzcdev/markmap-mcp-server",
+    "slug": "jinzcdev-markmap-mcp-server"
   },
   {
     "uid": "80164000",
@@ -2125,7 +2274,8 @@
       "加密货币"
     ],
     "icon": "mcp_favicons/80164000.png",
-    "github_url": "https://github.com/aaronjmars/web3-research-mcp"
+    "github_url": "https://github.com/aaronjmars/web3-research-mcp",
+    "slug": "aaronjmars-web3-research-mcp"
   },
   {
     "uid": "80165000",
@@ -2138,7 +2288,8 @@
       "语义检索"
     ],
     "icon": "mcp_favicons/80165000.png",
-    "github_url": "https://github.com/gannonh/memento-mcp"
+    "github_url": "https://github.com/gannonh/memento-mcp",
+    "slug": "gannonh-memento-mcp"
   },
   {
     "uid": "80166000",
@@ -2151,7 +2302,8 @@
       "AntDesign"
     ],
     "icon": "mcp_favicons/80166000.png",
-    "github_url": "https://github.com/zhixiaoqiang/antd-components-mcp"
+    "github_url": "https://github.com/zhixiaoqiang/antd-components-mcp",
+    "slug": "zhixiaoqiang-antd-components-mcp"
   },
   {
     "uid": "80167000",
@@ -2164,7 +2316,8 @@
       "搜索引擎"
     ],
     "icon": "mcp_favicons/80167000.png",
-    "github_url": "https://github.com/meilisearch/meilisearch-mcp"
+    "github_url": "https://github.com/meilisearch/meilisearch-mcp",
+    "slug": "meilisearch-meilisearch-mcp"
   },
   {
     "uid": "80168000",
@@ -2177,7 +2330,8 @@
       "法律信息"
     ],
     "icon": "mcp_favicons/80168000.png",
-    "github_url": "https://github.com/saidsurucu/mevzuat-mcp"
+    "github_url": "https://github.com/saidsurucu/mevzuat-mcp",
+    "slug": "saidsurucu-mevzuat-mcp"
   },
   {
     "uid": "80169000",
@@ -2190,7 +2344,8 @@
       "服务发现"
     ],
     "icon": "mcp_favicons/80169000.png",
-    "github_url": "https://github.com/liuyoshio/mcp-compass"
+    "github_url": "https://github.com/liuyoshio/mcp-compass",
+    "slug": "liuyoshio-mcp-compass"
   },
   {
     "uid": "80170000",
@@ -2203,7 +2358,8 @@
       "数据库优化"
     ],
     "icon": "mcp_favicons/80170000.png",
-    "github_url": "https://github.com/xwb602625136/mysql_mcp_server_pro"
+    "github_url": "https://github.com/xwb602625136/mysql_mcp_server_pro",
+    "slug": "xwb602625136-mysql_mcp_server_pro"
   },
   {
     "uid": "80171000",
@@ -2216,7 +2372,8 @@
       "性能审计"
     ],
     "icon": "mcp_favicons/80171000.png",
-    "github_url": "https://github.com/priyankark/lighthouse-mcp"
+    "github_url": "https://github.com/priyankark/lighthouse-mcp",
+    "slug": "priyankark-lighthouse-mcp"
   },
   {
     "uid": "80172000",
@@ -2229,7 +2386,8 @@
       "金融新闻"
     ],
     "icon": "mcp_favicons/80172000.png",
-    "github_url": "https://github.com/narumiruna/yfinance-mcp"
+    "github_url": "https://github.com/narumiruna/yfinance-mcp",
+    "slug": "narumiruna-yfinance-mcp"
   },
   {
     "uid": "80173000",
@@ -2242,7 +2400,8 @@
       "实时协作"
     ],
     "icon": "mcp_favicons/80173000.png",
-    "github_url": "https://github.com/datalayer/jupyter-mcp-server"
+    "github_url": "https://github.com/datalayer/jupyter-mcp-server",
+    "slug": "datalayer-jupyter-mcp-server"
   },
   {
     "uid": "80174000",
@@ -2255,7 +2414,8 @@
       "多平台发布"
     ],
     "icon": "mcp_favicons/80174000.png",
-    "github_url": "https://github.com/caol64/wenyan-mcp"
+    "github_url": "https://github.com/caol64/wenyan-mcp",
+    "slug": "caol64-wenyan-mcp"
   },
   {
     "uid": "80175000",
@@ -2268,7 +2428,8 @@
       "远程命令执行"
     ],
     "icon": "mcp_favicons/80175000.png",
-    "github_url": "https://github.com/aiondadotcom/mcp-ssh"
+    "github_url": "https://github.com/aiondadotcom/mcp-ssh",
+    "slug": "aiondadotcom-mcp-ssh"
   },
   {
     "uid": "80176000",
@@ -2281,7 +2442,8 @@
       "日志分析"
     ],
     "icon": "mcp_favicons/80176000.png",
-    "github_url": "https://github.com/cloudflare/mcp-server-cloudflare/tree/HEAD/apps/workers-observability"
+    "github_url": "https://github.com/cloudflare/mcp-server-cloudflare/tree/HEAD/apps/workers-observability",
+    "slug": "cloudflare-mcp-server-cloudflare-workers-observability"
   },
   {
     "uid": "80177000",
@@ -2294,7 +2456,8 @@
       "OpenSearch"
     ],
     "icon": "mcp_favicons/80177000.png",
-    "github_url": "https://github.com/cr7258/elasticsearch-mcp-server"
+    "github_url": "https://github.com/cr7258/elasticsearch-mcp-server",
+    "slug": "cr7258-elasticsearch-mcp-server"
   },
   {
     "uid": "80178000",
@@ -2307,7 +2470,8 @@
       "容器化服务"
     ],
     "icon": "mcp_favicons/80178000.png",
-    "github_url": "https://github.com/alexei-led/k8s-mcp-server"
+    "github_url": "https://github.com/alexei-led/k8s-mcp-server",
+    "slug": "alexei-led-k8s-mcp-server"
   },
   {
     "uid": "80179000",
@@ -2320,7 +2484,8 @@
       "Mermaid转换"
     ],
     "icon": "mcp_favicons/80179000.png",
-    "github_url": "https://github.com/peng-shawn/mermaid-mcp-server"
+    "github_url": "https://github.com/peng-shawn/mermaid-mcp-server",
+    "slug": "peng-shawn-mermaid-mcp-server"
   },
   {
     "uid": "80180000",
@@ -2333,7 +2498,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80180000.png",
-    "github_url": "https://github.com/HenkDz/postgresql-mcp-server"
+    "github_url": "https://github.com/HenkDz/postgresql-mcp-server",
+    "slug": "henkdz-postgresql-mcp-server"
   },
   {
     "uid": "80181000",
@@ -2346,7 +2512,8 @@
       "自动化工具"
     ],
     "icon": "mcp_favicons/80181000.png",
-    "github_url": "https://github.com/apify/apify-mcp-server"
+    "github_url": "https://github.com/apify/apify-mcp-server",
+    "slug": "apify-apify-mcp-server"
   },
   {
     "uid": "80182000",
@@ -2359,7 +2526,8 @@
       "网页抓取"
     ],
     "icon": "mcp_favicons/80182000.png",
-    "github_url": "https://github.com/cloudflare/mcp-server-cloudflare/tree/HEAD/apps/browser-rendering"
+    "github_url": "https://github.com/cloudflare/mcp-server-cloudflare/tree/HEAD/apps/browser-rendering",
+    "slug": "cloudflare-mcp-server-cloudflare-browser-rendering"
   },
   {
     "uid": "80183000",
@@ -2372,7 +2540,8 @@
       "内容抓取"
     ],
     "icon": "mcp_favicons/80183000.png",
-    "github_url": "https://github.com/adhikasp/mcp-reddit"
+    "github_url": "https://github.com/adhikasp/mcp-reddit",
+    "slug": "adhikasp-mcp-reddit"
   },
   {
     "uid": "80184000",
@@ -2385,7 +2554,8 @@
       "贡献管理"
     ],
     "icon": "mcp_favicons/80184000.png",
-    "github_url": "https://github.com/ErickWendel/erickwendel-contributions-mcp"
+    "github_url": "https://github.com/ErickWendel/erickwendel-contributions-mcp",
+    "slug": "erickwendel-erickwendel-contributions-mcp"
   },
   {
     "uid": "80185000",
@@ -2398,7 +2568,8 @@
       "工作区管理"
     ],
     "icon": "mcp_favicons/80185000.png",
-    "github_url": "https://github.com/comet-ml/opik-mcp"
+    "github_url": "https://github.com/comet-ml/opik-mcp",
+    "slug": "comet-ml-opik-mcp"
   },
   {
     "uid": "80186000",
@@ -2411,7 +2582,8 @@
       "仓库解析"
     ],
     "icon": "mcp_favicons/80186000.png",
-    "github_url": "https://github.com/adhikasp/mcp-git-ingest"
+    "github_url": "https://github.com/adhikasp/mcp-git-ingest",
+    "slug": "adhikasp-mcp-git-ingest"
   },
   {
     "uid": "80187000",
@@ -2424,7 +2596,8 @@
       "文档搜索"
     ],
     "icon": "mcp_favicons/80187000.png",
-    "github_url": "https://github.com/strands-agents/mcp-server"
+    "github_url": "https://github.com/strands-agents/mcp-server",
+    "slug": "strands-agents-mcp-server"
   },
   {
     "uid": "80188000",
@@ -2437,7 +2610,8 @@
       "AI文档访问"
     ],
     "icon": "mcp_favicons/80188000.png",
-    "github_url": "https://github.com/madarco/ragrabbit/tree/main/packages/mcp-server"
+    "github_url": "https://github.com/madarco/ragrabbit/tree/main/packages/mcp-server",
+    "slug": "madarco-ragrabbit-packages-mcp-server"
   },
   {
     "uid": "80189000",
@@ -2450,7 +2624,8 @@
       "MCP协议"
     ],
     "icon": "mcp_favicons/80189000.png",
-    "github_url": "https://github.com/tjhop/prometheus-mcp-server"
+    "github_url": "https://github.com/tjhop/prometheus-mcp-server",
+    "slug": "tjhop-prometheus-mcp-server"
   },
   {
     "uid": "80190000",
@@ -2463,7 +2638,8 @@
       "Windows开发"
     ],
     "icon": "mcp_favicons/80190000.png",
-    "github_url": "https://github.com/SimonB97/win-cli-mcp-server"
+    "github_url": "https://github.com/SimonB97/win-cli-mcp-server",
+    "slug": "simonb97-win-cli-mcp-server"
   },
   {
     "uid": "80191000",
@@ -2476,7 +2652,8 @@
       "数据抓取"
     ],
     "icon": "mcp_favicons/80191000.png",
-    "github_url": "https://github.com/blackwhite084/playwright-plus-python-mcp"
+    "github_url": "https://github.com/blackwhite084/playwright-plus-python-mcp",
+    "slug": "blackwhite084-playwright-plus-python-mcp"
   },
   {
     "uid": "80192000",
@@ -2489,7 +2666,8 @@
       "自动化工具"
     ],
     "icon": "mcp_favicons/80192000.png",
-    "github_url": "https://github.com/dvcrn/mcp-server-siri-shortcuts"
+    "github_url": "https://github.com/dvcrn/mcp-server-siri-shortcuts",
+    "slug": "dvcrn-mcp-server-siri-shortcuts"
   },
   {
     "uid": "80193000",
@@ -2502,7 +2680,8 @@
       "MCP服务器"
     ],
     "icon": "mcp_favicons/80193000.png",
-    "github_url": "https://github.com/railwayapp/railway-mcp-server"
+    "github_url": "https://github.com/railwayapp/railway-mcp-server",
+    "slug": "railwayapp-railway-mcp-server"
   },
   {
     "uid": "80194000",
@@ -2515,7 +2694,8 @@
       "SQL执行"
     ],
     "icon": "mcp_favicons/80194000.png",
-    "github_url": "https://github.com/StarRocks/mcp-server-starrocks"
+    "github_url": "https://github.com/StarRocks/mcp-server-starrocks",
+    "slug": "starrocks-mcp-server-starrocks"
   },
   {
     "uid": "80195000",
@@ -2528,7 +2708,8 @@
       "MCP协议"
     ],
     "icon": "mcp_favicons/80195000.png",
-    "github_url": "https://github.com/mrwyndham/pocketbase-mcp"
+    "github_url": "https://github.com/mrwyndham/pocketbase-mcp",
+    "slug": "mrwyndham-pocketbase-mcp"
   },
   {
     "uid": "80196000",
@@ -2541,7 +2722,8 @@
       "工具链调用"
     ],
     "icon": "mcp_favicons/80196000.png",
-    "github_url": "https://github.com/shadowcz007/mcp_server_exe"
+    "github_url": "https://github.com/shadowcz007/mcp_server_exe",
+    "slug": "shadowcz007-mcp_server_exe"
   },
   {
     "uid": "80197000",
@@ -2554,7 +2736,8 @@
       "容器编排"
     ],
     "icon": "mcp_favicons/80197000.png",
-    "github_url": "https://github.com/containers/kubernetes-mcp-server"
+    "github_url": "https://github.com/containers/kubernetes-mcp-server",
+    "slug": "containers-kubernetes-mcp-server"
   },
   {
     "uid": "80198000",
@@ -2567,7 +2750,8 @@
       "LLM交互"
     ],
     "icon": "mcp_favicons/80198000.png",
-    "github_url": "https://github.com/blurrah/mcp-graphql"
+    "github_url": "https://github.com/blurrah/mcp-graphql",
+    "slug": "blurrah-mcp-graphql"
   },
   {
     "uid": "80199000",
@@ -2580,7 +2764,8 @@
       "MCP应用"
     ],
     "icon": "mcp_favicons/80199000.png",
-    "github_url": "https://github.com/antonpk1/excalidraw-mcp-app"
+    "github_url": "https://github.com/antonpk1/excalidraw-mcp-app",
+    "slug": "antonpk1-excalidraw-mcp-app"
   },
   {
     "uid": "80200000",
@@ -2593,7 +2778,8 @@
       "开发工具"
     ],
     "icon": "mcp_favicons/80200000.png",
-    "github_url": "https://github.com/e2b-dev/mcp-server"
+    "github_url": "https://github.com/e2b-dev/mcp-server",
+    "slug": "e2b-dev-mcp-server"
   },
   {
     "uid": "80201000",
@@ -2606,7 +2792,8 @@
       "Markdown转换"
     ],
     "icon": "mcp_favicons/80201000.png",
-    "github_url": "https://github.com/YuChenSSR/mindmap-mcp-server"
+    "github_url": "https://github.com/YuChenSSR/mindmap-mcp-server",
+    "slug": "yuchenssr-mindmap-mcp-server"
   },
   {
     "uid": "80202000",
@@ -2619,7 +2806,8 @@
       "多语言支持"
     ],
     "icon": "mcp_favicons/80202000.png",
-    "github_url": "https://github.com/mizchi/typescript-mcp"
+    "github_url": "https://github.com/mizchi/typescript-mcp",
+    "slug": "mizchi-typescript-mcp"
   },
   {
     "uid": "80203000",
@@ -2632,7 +2820,8 @@
       "结构化思维"
     ],
     "icon": "mcp_favicons/80203000.png",
-    "github_url": "https://github.com/DannyMac180/mcp-think-tool"
+    "github_url": "https://github.com/DannyMac180/mcp-think-tool",
+    "slug": "dannymac180-mcp-think-tool"
   },
   {
     "uid": "80204000",
@@ -2645,7 +2834,8 @@
       "AFFiNE集成"
     ],
     "icon": "mcp_favicons/80204000.png",
-    "github_url": "https://github.com/DAWNCR0W/affine-mcp-server"
+    "github_url": "https://github.com/DAWNCR0W/affine-mcp-server",
+    "slug": "dawncr0w-affine-mcp-server"
   },
   {
     "uid": "80205000",
@@ -2658,7 +2848,8 @@
       "语义搜索"
     ],
     "icon": "mcp_favicons/80205000.png",
-    "github_url": "https://github.com/obra/private-journal-mcp"
+    "github_url": "https://github.com/obra/private-journal-mcp",
+    "slug": "obra-private-journal-mcp"
   },
   {
     "uid": "80206000",
@@ -2671,7 +2862,8 @@
       "视频转录"
     ],
     "icon": "mcp_favicons/80206000.png",
-    "github_url": "https://github.com/jkawamoto/mcp-youtube-transcript"
+    "github_url": "https://github.com/jkawamoto/mcp-youtube-transcript",
+    "slug": "jkawamoto-mcp-youtube-transcript"
   },
   {
     "uid": "80207000",
@@ -2684,7 +2876,8 @@
       "LLM工具集成"
     ],
     "icon": "mcp_favicons/80207000.png",
-    "github_url": "https://github.com/tumf/mcp-text-editor"
+    "github_url": "https://github.com/tumf/mcp-text-editor",
+    "slug": "tumf-mcp-text-editor"
   },
   {
     "uid": "80208000",
@@ -2697,7 +2890,8 @@
       "服务器管理"
     ],
     "icon": "mcp_favicons/80208000.png",
-    "github_url": "https://github.com/MCP-Club/mcpm"
+    "github_url": "https://github.com/MCP-Club/mcpm",
+    "slug": "mcp-club-mcpm"
   },
   {
     "uid": "80209000",
@@ -2710,7 +2904,8 @@
       "协议桥接"
     ],
     "icon": "mcp_favicons/80209000.png",
-    "github_url": "https://github.com/GongRzhe/A2A-MCP-Server"
+    "github_url": "https://github.com/GongRzhe/A2A-MCP-Server",
+    "slug": "gongrzhe-a2a-mcp-server"
   },
   {
     "uid": "80210000",
@@ -2723,7 +2918,8 @@
       "内容提取"
     ],
     "icon": "mcp_favicons/80210000.png",
-    "github_url": "https://github.com/mendableai/firecrawl-mcp-server"
+    "github_url": "https://github.com/mendableai/firecrawl-mcp-server",
+    "slug": "mendableai-firecrawl-mcp-server"
   },
   {
     "uid": "80211000",
@@ -2736,7 +2932,8 @@
       "人机交互"
     ],
     "icon": "mcp_favicons/80211000.png",
-    "github_url": "https://github.com/noopstudios/interactive-feedback-mcp"
+    "github_url": "https://github.com/noopstudios/interactive-feedback-mcp",
+    "slug": "noopstudios-interactive-feedback-mcp"
   },
   {
     "uid": "80212000",
@@ -2749,7 +2946,8 @@
       "自动化工具"
     ],
     "icon": "mcp_favicons/80212000.png",
-    "github_url": "https://github.com/apify/actors-mcp-server"
+    "github_url": "https://github.com/apify/actors-mcp-server",
+    "slug": "apify-actors-mcp-server"
   },
   {
     "uid": "80213000",
@@ -2762,7 +2960,8 @@
       "上下文管理"
     ],
     "icon": "mcp_favicons/80213000.png",
-    "github_url": "https://github.com/mkreyman/mcp-memory-keeper"
+    "github_url": "https://github.com/mkreyman/mcp-memory-keeper",
+    "slug": "mkreyman-mcp-memory-keeper"
   },
   {
     "uid": "80214000",
@@ -2775,7 +2974,8 @@
       "文件管理"
     ],
     "icon": "mcp_favicons/80214000.png",
-    "github_url": "https://github.com/Wayazi/mcp_file_system"
+    "github_url": "https://github.com/Wayazi/mcp_file_system",
+    "slug": "wayazi-mcp_file_system"
   },
   {
     "uid": "80215000",
@@ -2788,7 +2988,8 @@
       "AI图形生成"
     ],
     "icon": "mcp_favicons/80215000.png",
-    "github_url": "https://github.com/quarkiverse/quarkus-mcp-servers/tree/main/jfx"
+    "github_url": "https://github.com/quarkiverse/quarkus-mcp-servers/tree/main/jfx",
+    "slug": "quarkiverse-quarkus-mcp-servers-jfx"
   },
   {
     "uid": "80216000",
@@ -2801,7 +3002,8 @@
       "MCP服务器"
     ],
     "icon": "mcp_favicons/80216000.png",
-    "github_url": "https://github.com/0xDAEF0F/job-searchoor"
+    "github_url": "https://github.com/0xDAEF0F/job-searchoor",
+    "slug": "0xdaef0f-job-searchoor"
   },
   {
     "uid": "80217000",
@@ -2814,7 +3016,8 @@
       "组件通信"
     ],
     "icon": "mcp_favicons/80217000.png",
-    "github_url": "https://github.com/jamesmontemagno/MonkeyMCP"
+    "github_url": "https://github.com/jamesmontemagno/MonkeyMCP",
+    "slug": "jamesmontemagno-monkeymcp"
   },
   {
     "uid": "80218000",
@@ -2827,7 +3030,8 @@
       "自动化工具"
     ],
     "icon": "mcp_favicons/80218000.png",
-    "github_url": "https://github.com/cexll/codex-mcp-server"
+    "github_url": "https://github.com/cexll/codex-mcp-server",
+    "slug": "cexll-codex-mcp-server"
   },
   {
     "uid": "80219000",
@@ -2840,7 +3044,8 @@
       "队列系统"
     ],
     "icon": "mcp_favicons/80219000.png",
-    "github_url": "https://github.com/kazuph/mcp-taskmanager"
+    "github_url": "https://github.com/kazuph/mcp-taskmanager",
+    "slug": "kazuph-mcp-taskmanager"
   },
   {
     "uid": "80220000",
@@ -2853,7 +3058,8 @@
       "本地服务器"
     ],
     "icon": "mcp_favicons/80220000.png",
-    "github_url": "https://github.com/ttommyth/interactive-mcp"
+    "github_url": "https://github.com/ttommyth/interactive-mcp",
+    "slug": "ttommyth-interactive-mcp"
   },
   {
     "uid": "80221000",
@@ -2866,7 +3072,8 @@
       "多账户管理"
     ],
     "icon": "mcp_favicons/80221000.png",
-    "github_url": "https://github.com/nspady/google-calendar-mcp"
+    "github_url": "https://github.com/nspady/google-calendar-mcp",
+    "slug": "nspady-google-calendar-mcp"
   },
   {
     "uid": "80222000",
@@ -2879,7 +3086,8 @@
       "Youtube字幕"
     ],
     "icon": "mcp_favicons/80222000.png",
-    "github_url": "https://github.com/egoist/fetch-mcp"
+    "github_url": "https://github.com/egoist/fetch-mcp",
+    "slug": "egoist-fetch-mcp"
   },
   {
     "uid": "80223000",
@@ -2892,7 +3100,8 @@
       "AI技能管理"
     ],
     "icon": "mcp_favicons/80223000.png",
-    "github_url": "https://github.com/K-Dense-AI/claude-skills-mcp"
+    "github_url": "https://github.com/K-Dense-AI/claude-skills-mcp",
+    "slug": "k-dense-ai-claude-skills-mcp"
   },
   {
     "uid": "80224000",
@@ -2905,7 +3114,8 @@
       "文献搜索"
     ],
     "icon": "mcp_favicons/80224000.png",
-    "github_url": "https://github.com/JackKuo666/PubMed-MCP-Server"
+    "github_url": "https://github.com/JackKuo666/PubMed-MCP-Server",
+    "slug": "jackkuo666-pubmed-mcp-server"
   },
   {
     "uid": "80225000",
@@ -2918,7 +3128,8 @@
       "内容提取"
     ],
     "icon": "mcp_favicons/80225000.png",
-    "github_url": "https://github.com/pinkpixel-dev/web-scout-mcp"
+    "github_url": "https://github.com/pinkpixel-dev/web-scout-mcp",
+    "slug": "pinkpixel-dev-web-scout-mcp"
   },
   {
     "uid": "80226000",
@@ -2931,7 +3142,8 @@
       "内容抓取"
     ],
     "icon": "mcp_favicons/80226000.png",
-    "github_url": "https://github.com/yokingma/one-search-mcp"
+    "github_url": "https://github.com/yokingma/one-search-mcp",
+    "slug": "yokingma-one-search-mcp"
   },
   {
     "uid": "80227000",
@@ -2944,7 +3156,8 @@
       "AI辅助设计"
     ],
     "icon": "mcp_favicons/80227000.png",
-    "github_url": "https://github.com/VAST-AI-Research/tripo-mcp"
+    "github_url": "https://github.com/VAST-AI-Research/tripo-mcp",
+    "slug": "vast-ai-research-tripo-mcp"
   },
   {
     "uid": "80228000",
@@ -2957,7 +3170,8 @@
       "税务信息检索"
     ],
     "icon": "mcp_favicons/80228000.png",
-    "github_url": "https://github.com/guigui42/mcp-vosdroits"
+    "github_url": "https://github.com/guigui42/mcp-vosdroits",
+    "slug": "guigui42-mcp-vosdroits"
   },
   {
     "uid": "80229000",
@@ -2970,7 +3184,8 @@
       "AI视觉"
     ],
     "icon": "mcp_favicons/80229000.png",
-    "github_url": "https://github.com/just-every/mcp-screenshot-website-fast"
+    "github_url": "https://github.com/just-every/mcp-screenshot-website-fast",
+    "slug": "just-every-mcp-screenshot-website-fast"
   },
   {
     "uid": "80230000",
@@ -2983,7 +3198,8 @@
       "Notion集成"
     ],
     "icon": "mcp_favicons/80230000.png",
-    "github_url": "https://github.com/makenotion/notion-mcp-server"
+    "github_url": "https://github.com/makenotion/notion-mcp-server",
+    "slug": "makenotion-notion-mcp-server"
   },
   {
     "uid": "80231000",
@@ -2996,7 +3212,8 @@
       "智能合约"
     ],
     "icon": "mcp_favicons/80231000.png",
-    "github_url": "https://github.com/mcpdotdirect/evm-mcp-server"
+    "github_url": "https://github.com/mcpdotdirect/evm-mcp-server",
+    "slug": "mcpdotdirect-evm-mcp-server"
   },
   {
     "uid": "80232000",
@@ -3009,7 +3226,8 @@
       "工具链"
     ],
     "icon": "mcp_favicons/80232000.png",
-    "github_url": "https://github.com/shadowcz007/mcp_server.exe"
+    "github_url": "https://github.com/shadowcz007/mcp_server.exe",
+    "slug": "shadowcz007-mcp_server.exe"
   },
   {
     "uid": "80233000",
@@ -3022,7 +3240,8 @@
       "可观察性工具"
     ],
     "icon": "mcp_favicons/80233000.png",
-    "github_url": "https://github.com/VictoriaMetrics-Community/mcp-victoriametrics"
+    "github_url": "https://github.com/VictoriaMetrics-Community/mcp-victoriametrics",
+    "slug": "victoriametrics-community-mcp-victoriametrics"
   },
   {
     "uid": "80234000",
@@ -3035,7 +3254,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80234000.png",
-    "github_url": "https://github.com/Tiberriver256/azure-devops-mcp"
+    "github_url": "https://github.com/Tiberriver256/azure-devops-mcp",
+    "slug": "tiberriver256-azure-devops-mcp"
   },
   {
     "uid": "80235000",
@@ -3048,7 +3268,8 @@
       "系统诊断"
     ],
     "icon": "mcp_favicons/80235000.png",
-    "github_url": "https://github.com/rhel-lightspeed/linux-mcp-server"
+    "github_url": "https://github.com/rhel-lightspeed/linux-mcp-server",
+    "slug": "rhel-lightspeed-linux-mcp-server"
   },
   {
     "uid": "80236000",
@@ -3061,7 +3282,8 @@
       "运行时调试"
     ],
     "icon": "mcp_favicons/80236000.png",
-    "github_url": "https://github.com/hyperdrive-eng/mcp-nodejs-debugger"
+    "github_url": "https://github.com/hyperdrive-eng/mcp-nodejs-debugger",
+    "slug": "hyperdrive-eng-mcp-nodejs-debugger"
   },
   {
     "uid": "80237000",
@@ -3074,7 +3296,8 @@
       "命令行工具"
     ],
     "icon": "mcp_favicons/80237000.png",
-    "github_url": "https://github.com/g0t4/mcp-server-commands"
+    "github_url": "https://github.com/g0t4/mcp-server-commands",
+    "slug": "g0t4-mcp-server-commands"
   },
   {
     "uid": "80238000",
@@ -3087,7 +3310,8 @@
       "AI辅助"
     ],
     "icon": "mcp_favicons/80238000.png",
-    "github_url": "https://github.com/mahdin75/gis-mcp"
+    "github_url": "https://github.com/mahdin75/gis-mcp",
+    "slug": "mahdin75-gis-mcp"
   },
   {
     "uid": "80239000",
@@ -3100,7 +3324,8 @@
       "RESTAPI"
     ],
     "icon": "mcp_favicons/80239000.png",
-    "github_url": "https://github.com/matthewhand/mcp-openapi-proxy"
+    "github_url": "https://github.com/matthewhand/mcp-openapi-proxy",
+    "slug": "matthewhand-mcp-openapi-proxy"
   },
   {
     "uid": "80240000",
@@ -3113,7 +3338,8 @@
       "OAuth认证"
     ],
     "icon": "mcp_favicons/80240000.png",
-    "github_url": "https://github.com/automattic/mcp-wordpress-remote"
+    "github_url": "https://github.com/automattic/mcp-wordpress-remote",
+    "slug": "automattic-mcp-wordpress-remote"
   },
   {
     "uid": "80241000",
@@ -3126,7 +3352,8 @@
       "自动化"
     ],
     "icon": "mcp_favicons/80241000.png",
-    "github_url": "https://github.com/peakmojo/applescript-mcp"
+    "github_url": "https://github.com/peakmojo/applescript-mcp",
+    "slug": "peakmojo-applescript-mcp"
   },
   {
     "uid": "80242000",
@@ -3139,7 +3366,8 @@
       "AI工具集成"
     ],
     "icon": "mcp_favicons/80242000.png",
-    "github_url": "https://github.com/yamadashy/repomix"
+    "github_url": "https://github.com/yamadashy/repomix",
+    "slug": "yamadashy-repomix"
   },
   {
     "uid": "80243000",
@@ -3152,7 +3380,8 @@
       "编程练习"
     ],
     "icon": "mcp_favicons/80243000.png",
-    "github_url": "https://github.com/jinzcdev/leetcode-mcp-server"
+    "github_url": "https://github.com/jinzcdev/leetcode-mcp-server",
+    "slug": "jinzcdev-leetcode-mcp-server"
   },
   {
     "uid": "80244000",
@@ -3165,7 +3394,8 @@
       "交易所集成"
     ],
     "icon": "mcp_favicons/80244000.png",
-    "github_url": "https://github.com/shuhaozhang95/mcp-server-ccxt"
+    "github_url": "https://github.com/shuhaozhang95/mcp-server-ccxt",
+    "slug": "shuhaozhang95-mcp-server-ccxt"
   },
   {
     "uid": "80245000",
@@ -3178,7 +3408,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80245000.png",
-    "github_url": "https://github.com/jingcheng-chen/rhinomcp"
+    "github_url": "https://github.com/jingcheng-chen/rhinomcp",
+    "slug": "jingcheng-chen-rhinomcp"
   },
   {
     "uid": "80246000",
@@ -3191,7 +3422,8 @@
       "实时信息"
     ],
     "icon": "mcp_favicons/80246000.png",
-    "github_url": "https://github.com/mzxrai/mcp-webresearch"
+    "github_url": "https://github.com/mzxrai/mcp-webresearch",
+    "slug": "mzxrai-mcp-webresearch"
   },
   {
     "uid": "80247000",
@@ -3204,7 +3436,8 @@
       "RedditAPI"
     ],
     "icon": "mcp_favicons/80247000.png",
-    "github_url": "https://github.com/Hawstein/mcp-server-reddit"
+    "github_url": "https://github.com/Hawstein/mcp-server-reddit",
+    "slug": "hawstein-mcp-server-reddit"
   },
   {
     "uid": "80248000",
@@ -3217,7 +3450,8 @@
       "打印机管理"
     ],
     "icon": "mcp_favicons/80248000.png",
-    "github_url": "https://github.com/DMontgomery40/mcp-3D-printer-server"
+    "github_url": "https://github.com/DMontgomery40/mcp-3D-printer-server",
+    "slug": "dmontgomery40-mcp-3d-printer-server"
   },
   {
     "uid": "80249000",
@@ -3230,7 +3464,8 @@
       "TypeScript"
     ],
     "icon": "mcp_favicons/80249000.png",
-    "github_url": "https://github.com/spences10/mcp-svelte-docs"
+    "github_url": "https://github.com/spences10/mcp-svelte-docs",
+    "slug": "spences10-mcp-svelte-docs"
   },
   {
     "uid": "80250000",
@@ -3243,7 +3478,8 @@
       "AI集成"
     ],
     "icon": "mcp_favicons/80250000.png",
-    "github_url": "https://github.com/themotionmachine/OmniFocus-MCP"
+    "github_url": "https://github.com/themotionmachine/OmniFocus-MCP",
+    "slug": "themotionmachine-omnifocus-mcp"
   },
   {
     "uid": "80251000",
@@ -3256,7 +3492,8 @@
       "文档服务"
     ],
     "icon": "mcp_favicons/80251000.png",
-    "github_url": "https://github.com/Nihilantropy/godot-mcp-docs"
+    "github_url": "https://github.com/Nihilantropy/godot-mcp-docs",
+    "slug": "nihilantropy-godot-mcp-docs"
   },
   {
     "uid": "80252000",
@@ -3269,7 +3506,8 @@
       "LLM工具"
     ],
     "icon": "mcp_favicons/80252000.png",
-    "github_url": "https://github.com/bazinga012/mcp_code_executor"
+    "github_url": "https://github.com/bazinga012/mcp_code_executor",
+    "slug": "bazinga012-mcp_code_executor"
   },
   {
     "uid": "80253000",
@@ -3282,7 +3520,8 @@
       "AI辅助测试"
     ],
     "icon": "mcp_favicons/80253000.png",
-    "github_url": "https://github.com/Ashish-Bansal/playwright-mcp"
+    "github_url": "https://github.com/Ashish-Bansal/playwright-mcp",
+    "slug": "ashish-bansal-playwright-mcp"
   },
   {
     "uid": "80254000",
@@ -3295,7 +3534,8 @@
       "股票市场"
     ],
     "icon": "mcp_favicons/80254000.png",
-    "github_url": "https://github.com/saidsurucu/borsa-mcp"
+    "github_url": "https://github.com/saidsurucu/borsa-mcp",
+    "slug": "saidsurucu-borsa-mcp"
   },
   {
     "uid": "80255000",
@@ -3308,7 +3548,8 @@
       "性能监控"
     ],
     "icon": "mcp_favicons/80255000.png",
-    "github_url": "https://github.com/call518/MCP-PostgreSQL-Ops"
+    "github_url": "https://github.com/call518/MCP-PostgreSQL-Ops",
+    "slug": "call518-mcp-postgresql-ops"
   },
   {
     "uid": "80256000",
@@ -3321,7 +3562,8 @@
       "MCP服务器"
     ],
     "icon": "mcp_favicons/80256000.png",
-    "github_url": "https://github.com/egoist/ffmpeg-mcp"
+    "github_url": "https://github.com/egoist/ffmpeg-mcp",
+    "slug": "egoist-ffmpeg-mcp"
   },
   {
     "uid": "80257000",
@@ -3334,7 +3576,8 @@
       "开发自动化"
     ],
     "icon": "mcp_favicons/80257000.png",
-    "github_url": "https://github.com/giginet/xcodeproj-mcp-server"
+    "github_url": "https://github.com/giginet/xcodeproj-mcp-server",
+    "slug": "giginet-xcodeproj-mcp-server"
   },
   {
     "uid": "80258000",
@@ -3347,7 +3590,8 @@
       "Confluence支持"
     ],
     "icon": "mcp_favicons/80258000.png",
-    "github_url": "https://github.com/sooperset/mcp-atlassian"
+    "github_url": "https://github.com/sooperset/mcp-atlassian",
+    "slug": "sooperset-mcp-atlassian"
   },
   {
     "uid": "80259000",
@@ -3360,7 +3604,8 @@
       "系统集成"
     ],
     "icon": "mcp_favicons/80259000.png",
-    "github_url": "https://github.com/SecretiveShell/MCP-searxng"
+    "github_url": "https://github.com/SecretiveShell/MCP-searxng",
+    "slug": "secretiveshell-mcp-searxng"
   },
   {
     "uid": "80260000",
@@ -3373,7 +3618,8 @@
       "代码记忆"
     ],
     "icon": "mcp_favicons/80260000.png",
-    "github_url": "https://github.com/ceorkm/kratos-mcp"
+    "github_url": "https://github.com/ceorkm/kratos-mcp",
+    "slug": "ceorkm-kratos-mcp"
   },
   {
     "uid": "80261000",
@@ -3386,7 +3632,8 @@
       "代码辅助"
     ],
     "icon": "mcp_favicons/80261000.png",
-    "github_url": "https://github.com/bigcodegen/mcp-neovim-server"
+    "github_url": "https://github.com/bigcodegen/mcp-neovim-server",
+    "slug": "bigcodegen-mcp-neovim-server"
   },
   {
     "uid": "80262000",
@@ -3399,7 +3646,8 @@
       "LLM集成"
     ],
     "icon": "mcp_favicons/80262000.png",
-    "github_url": "https://github.com/nailuoGG/anki-mcp-server"
+    "github_url": "https://github.com/nailuoGG/anki-mcp-server",
+    "slug": "nailuogg-anki-mcp-server"
   },
   {
     "uid": "80263000",
@@ -3412,7 +3660,8 @@
       "AI代理"
     ],
     "icon": "mcp_favicons/80263000.png",
-    "github_url": "https://github.com/cyanheads/git-mcp-server"
+    "github_url": "https://github.com/cyanheads/git-mcp-server",
+    "slug": "cyanheads-git-mcp-server"
   },
   {
     "uid": "80264000",
@@ -3425,7 +3674,8 @@
       "多引擎搜索"
     ],
     "icon": "mcp_favicons/80264000.png",
-    "github_url": "https://github.com/nkapila6/mcp-local-rag"
+    "github_url": "https://github.com/nkapila6/mcp-local-rag",
+    "slug": "nkapila6-mcp-local-rag"
   },
   {
     "uid": "80265000",
@@ -3438,7 +3688,8 @@
       "AI代理"
     ],
     "icon": "mcp_favicons/80265000.png",
-    "github_url": "https://github.com/jonrad/lsp-mcp"
+    "github_url": "https://github.com/jonrad/lsp-mcp",
+    "slug": "jonrad-lsp-mcp"
   },
   {
     "uid": "80266000",
@@ -3451,6 +3702,7 @@
       "LinkedIn集成"
     ],
     "icon": "mcp_favicons/80266000.png",
-    "github_url": "https://github.com/stickerdaniel/linkedin-mcp-server"
+    "github_url": "https://github.com/stickerdaniel/linkedin-mcp-server",
+    "slug": "stickerdaniel-linkedin-mcp-server"
   }
 ]
