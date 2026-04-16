@@ -5,13 +5,16 @@ import mcpData from '../../../data/mcp.json';
 
 export async function getStaticPaths() {
   const posts = await getCollection('mcps');
-  const mcpUids = new Set(mcpData.map(m => m.id || m.uid));
-  return posts
-    .filter(entry => mcpUids.has(entry.data.uid))
-    .map(entry => ({
-      params: { uid: entry.data.uid },
+  return posts.map(entry => {
+    // 从 JSON 数据中找到对应的 MCP
+    const mcp = mcpData.find(m => m.id === entry.data.uid || m.uid === entry.data.uid);
+    // 优先使用 slug，如果没有则使用 uid
+    const slug = mcp?.slug && mcp.slug.trim() !== '' ? mcp.slug : entry.data.uid;
+    return {
+      params: { slug },
       props: { entry },
-    }));
+    };
+  });
 }
 
 const { entry } = Astro.props;

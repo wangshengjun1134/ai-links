@@ -5,13 +5,16 @@ import promptsData from '../../../data/prompts.json';
 
 export async function getStaticPaths() {
   const posts = await getCollection('prompts');
-  const promptUids = new Set(promptsData.map(p => p.id || p.uid));
-  return posts
-    .filter(entry => promptUids.has(entry.data.uid))
-    .map(entry => ({
-      params: { uid: entry.data.uid },
+  return posts.map(entry => {
+    // 从 JSON 数据中找到对应的 prompt
+    const prompt = promptsData.find(p => p.id === entry.data.uid || p.uid === entry.data.uid);
+    // 优先使用 slug，如果没有则使用 uid
+    const slug = prompt?.slug && prompt.slug.trim() !== '' ? prompt.slug : entry.data.uid;
+    return {
+      params: { slug },
       props: { entry },
-    }));
+    };
+  });
 }
 
 const { entry } = Astro.props;

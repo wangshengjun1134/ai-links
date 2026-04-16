@@ -2,6 +2,7 @@
 interface Props {
   uid?: string;
   id?: string;
+  slug?: string;
   subCategory?: string;
   title: string;
   description: string;
@@ -13,18 +14,21 @@ interface Props {
 
 import BaseCard from './BaseCard.astro';
 
-const { uid, id, title, description, author, tags, icon, subCategory, modality } = Astro.props;
+const { uid, id, slug, title, description, author, tags, icon, subCategory, modality } = Astro.props;
 
 // 兼容 uid 和 id 字段
 const cardId = uid || id;
 
+// 优先使用 slug，如果没有则使用 cardId (uid/id)
+const detailSlug = slug && slug.trim() !== '' ? slug : cardId;
+
 // 根据 subCategory 决定跳转路径
 const getDetailUrl = () => {
   if (subCategory === 'mcp') {
-    return `/skills/mcps/${cardId}`;
+    return `/skills/mcps/${detailSlug}`;
   }
   const category = subCategory || 'prompts';
-  return `/skills/${category}/${cardId}`;
+  return `/skills/${category}/${detailSlug}`;
 };
 
 // 根据模态选择图标图片路径
