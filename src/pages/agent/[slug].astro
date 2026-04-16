@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   const posts = await getCollection('agents');
   const agentUids = new Set(agents.map(a => a.uid));
   return posts
-    .filter(entry => agentUids.has(entry.data.uid))
+    .filter(entry => agentUids.has(entry.slug))
     .map(entry => ({
       params: { slug: entry.slug },
       props: { entry },
@@ -17,14 +17,16 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-const agentData = entry.data;
+// 文件名即为 uid，所有数据从 agents.json 获取
+const uid = entry.slug;
+const agent = agents.find(a => a.uid === uid);
 
-// 从 agents.json 中获取完整的 metrics 数据
-const fullAgent = agents.find(a => a.uid === agentData.uid);
-const metrics = fullAgent?.metrics;
+if (!agent) {
+  return Astro.redirect('/404');
+}
 
 // 提取 productType 信息
-const productType = metrics?.productType;
+const productType = agent.metrics?.productType;
 const isProductTypeObject = productType && typeof productType === 'object' && !Array.isArray(productType);
 const level1 = isProductTypeObject ? productType.level1 : null;
 const level2 = isProductTypeObject ? productType.level2 : null;
@@ -32,15 +34,15 @@ const tags = isProductTypeObject ? productType.tags || [] : [];
 ---
 
 <DetailPageLayout
-  title={agentData.aiProductName}
-  logo={agentData.logo}
-  productName={agentData.aiProductName}
-  introduction={agentData.introduction}
-  company={agentData.company}
-  country={agentData.country}
-  modelLevel={agentData.modelLevel}
-  websiteUrl={agentData.websiteUrl}
-  uid={agentData.uid}
+  title={agent.aiProductName}
+  logo={agent.logo}
+  productName={agent.aiProductName}
+  introduction={agent.introduction}
+  company={agent.metrics?.company || '未知'}
+  country={agent.metrics?.country || 'N/A'}
+  modelLevel={agent.metrics?.modelLevel}
+  websiteUrl={agent.websiteUrl}
+  uid={agent.uid}
   uidLabel="Agent UID"
   level1={level1}
   level2={level2}

@@ -3,36 +3,30 @@ import { getCollection } from 'astro:content';
 import DetailPageLayout from '../../layouts/DetailPageLayout.astro';
 import products from '../../data/products.json';
 
-const siteUrl = "https://ai-links.cn";
-
 export async function getStaticPaths() {
   const posts = await getCollection('products');
   const productUids = new Set(products.map(p => p.uid));
   return posts
-    .filter(entry => {
-      const uid = entry.slug.split('/').pop() || entry.slug;
-      return productUids.has(uid);
-    })
-    .map(entry => {
-      const uid = entry.slug.split('/').pop() || entry.slug;
-      return {
-        params: { slug: uid },
-        props: { entry },
-      };
-    });
+    .filter(entry => productUids.has(entry.slug))
+    .map(entry => ({
+      params: { slug: entry.slug },
+      props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-const productData = entry.data;
+// 文件名即为 uid，所有数据从 products.json 获取
+const uid = entry.slug;
+const product = products.find(p => p.uid === uid);
 
-// 从 products.json 中获取完整的 metrics 数据
-const fullProduct = products.find(p => p.uid === productData.uid);
-const metrics = fullProduct?.metrics;
+if (!product) {
+  return Astro.redirect('/404');
+}
 
 // 提取 productType 信息
-const productType = metrics?.productType;
+const productType = product.metrics?.productType;
 const isProductTypeObject = productType && typeof productType === 'object' && !Array.isArray(productType);
 const level1 = isProductTypeObject ? productType.level1 : null;
 const level2 = isProductTypeObject ? productType.level2 : null;
@@ -40,15 +34,15 @@ const tags = isProductTypeObject ? productType.tags || [] : [];
 ---
 
 <DetailPageLayout
-  title={productData.aiProductName}
-  logo={productData.logo}
-  productName={productData.aiProductName}
-  introduction={productData.introduction}
-  company={productData.company}
-  country={productData.country}
-  modelLevel={productData.modelLevel}
-  websiteUrl={productData.websiteUrl}
-  uid={productData.uid}
+  title={product.aiProductName}
+  logo={product.logo}
+  productName={product.aiProductName}
+  introduction={product.introduction}
+  company={product.metrics?.company || '未知'}
+  country={product.metrics?.country || 'N/A'}
+  modelLevel={product.metrics?.modelLevel}
+  websiteUrl={product.websiteUrl}
+  uid={product.uid}
   uidLabel="产品 UID"
   level1={level1}
   level2={level2}
