@@ -4,8 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "generate": "node scripts/generate-product-md.js && node scripts/generate-agent-md.js",
-    "dev": "npm run generate && astro dev",
-    "build": "npm run generate && astro build",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "dev": "npm run generate && npm run sitemap && astro dev",
+    "build": "npm run generate && npm run sitemap && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

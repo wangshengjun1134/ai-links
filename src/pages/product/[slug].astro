@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import DetailPageLayout from '../../layouts/DetailPageLayout.astro';
 import products from '../../data/products.json';
 
+const siteUrl = "https://ai-links.cn";
+
 export async function getStaticPaths() {
   const posts = await getCollection('products');
   const productUids = new Set(products.map(p => p.uid));

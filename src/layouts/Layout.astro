@@ -2,6 +2,13 @@
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
+  keywords?: string[];
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  articleSection?: string;
   subNav?: {
     activeTab: string;
     tabs: Array<{ name: string; href: string; id: string }>;
@@ -11,7 +18,22 @@ interface Props {
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-const { title = "AI Links", description = "发现最好的 AI 工具、智能体、技能和学习资源", subNav } = Astro.props;
+const { 
+  title = "AI Links - 发现最好的 AI 工具、智能体和技能", 
+  description = "AI Links 收录超过 1000+ AI 产品、智能体 Agent、提示词模板、MCP 服务和插件工具，提供 AI 科普教程和行业资讯，助你快速入门 AI 世界",
+  image = "/logo.jpeg",
+  canonicalURL = Astro.url?.href,
+  keywords = ["AI 工具", "人工智能", "智能体", "Agent", "提示词", "Prompt", "MCP", "大模型", "AI 导航"],
+  author = "AI Links",
+  publishedTime,
+  modifiedTime,
+  articleSection,
+  subNav 
+} = Astro.props;
+
+const siteUrl = "https://ai-links.cn";
+const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const currentKeywords = keywords.join(', ');
 ---
 
 <!doctype html>
@@ -20,8 +42,80 @@ const { title = "AI Links", description = "发现最好的 AI 工具、智能体
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/logo.jpeg" />
+    <meta name="keywords" content={currentKeywords} />
+    <meta name="author" content={author} />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="baiduspider" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
+    <link rel="apple-touch-icon" href="/logo.jpeg" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={publishedTime ? "article" : "website"} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="AI Links" />
+    <meta property="og:locale" content="zh_CN" />
+    
+    <!-- Article specific OG tags -->
+    {publishedTime && (
+      <>
+        <meta property="article:published_time" content={publishedTime} />
+        {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+        {articleSection && <meta property="article:section" content={articleSection} />}
+      </>
+    )}
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImage} />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Title -->
     <title>{title}</title>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": publishedTime ? "Article" : "WebSite",
+      "name": title,
+      "description": description,
+      "url": canonicalURL,
+      "image": fullImage,
+      "author": {
+        "@type": "Organization",
+        "name": "AI Links"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AI Links",
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/logo.jpeg`
+        }
+      },
+      "datePublished": publishedTime,
+      "dateModified": modifiedTime,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalURL
+      }
+    })} />
   </head>
   <body class="bg-[#F9FAFB] flex flex-col min-h-screen">
     <Navbar />

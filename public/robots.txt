@@ -1,0 +1,25 @@
+# AI Links Robots.txt
+# 允许所有主流搜索引擎抓取
+
+User-agent: *
+Allow: /
+
+# Sitemap 位置
+Sitemap: https://ai-links.cn/sitemap.xml
+
+# 爬取延迟（可选，避免服务器过载）
+Crawl-delay: 1
+
+# 允许抓取所有资源
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.svg
+
+# 不允许抓取的目录（如果有）
+# Disallow: /admin/
+# Disallow: /api/
+# Disallow: /private/

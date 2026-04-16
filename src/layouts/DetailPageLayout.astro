@@ -19,6 +19,11 @@ interface Props {
   tags?: string[];
   content: any; // Astro Content
   headings: any[]; // Markdown 标题列表
+  // SEO 相关
+  description?: string;
+  image?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 import Layout from './Layout.astro';
@@ -39,13 +44,28 @@ const {
   tags = [],
   content: Content,
   headings,
+  description = introduction,
+  image = logo.startsWith('/') ? logo : `/${logo}`,
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 // 确保 logo 路径正确
 const logoSrc = logo.startsWith('/') ? logo : `/${logo}`;
+
+// 生成 SEO keywords
+const seoKeywords = [productName, company, introduction?.substring(0, 50), 'AI 工具', '人工智能'].filter(Boolean);
 ---
 
-<Layout title={title}>
+<Layout 
+  title={`${title} - AI Links`}
+  description={description}
+  image={image}
+  keywords={seoKeywords}
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  articleSection="AI 产品"
+>
   <div class="flex min-h-screen bg-white bg-clip-content px-[140px]">
     <article class="flex-1 min-w-0">
       <div class="mx-auto px-8 md:px-16 py-20">
