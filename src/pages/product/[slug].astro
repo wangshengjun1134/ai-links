@@ -6,19 +6,27 @@ import products from '../../data/products.json';
 export async function getStaticPaths() {
   const posts = await getCollection('products');
   const productUids = new Set(products.map(p => p.uid));
+  
   return posts
-    .filter(entry => productUids.has(entry.slug))
-    .map(entry => ({
-      params: { slug: entry.slug },
-      props: { entry },
-    }));
+    .filter(entry => {
+      // 嵌套路径：entry.slug 为 "10001000/10001000"，取第一部分作为 uid
+      const uid = entry.slug.split('/')[0];
+      return productUids.has(uid);
+    })
+    .map(entry => {
+      const uid = entry.slug.split('/')[0];
+      return {
+        params: { slug: uid },
+        props: { entry },
+      };
+    });
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-// 文件名即为 uid，所有数据从 products.json 获取
-const uid = entry.slug;
+// 从嵌套路径提取 uid：如 "10001000/10001000" → "10001000"
+const uid = entry.slug.split('/')[0];
 const product = products.find(p => p.uid === uid);
 
 if (!product) {

@@ -6,19 +6,27 @@ import agents from '../../data/agents.json';
 export async function getStaticPaths() {
   const posts = await getCollection('agents');
   const agentUids = new Set(agents.map(a => a.uid));
+  
   return posts
-    .filter(entry => agentUids.has(entry.slug))
-    .map(entry => ({
-      params: { slug: entry.slug },
-      props: { entry },
-    }));
+    .filter(entry => {
+      // 嵌套路径：entry.slug 为 "20001000/20001000"，取第一部分作为 uid
+      const uid = entry.slug.split('/')[0];
+      return agentUids.has(uid);
+    })
+    .map(entry => {
+      const uid = entry.slug.split('/')[0];
+      return {
+        params: { slug: uid },
+        props: { entry },
+      };
+    });
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-// 文件名即为 uid，所有数据从 agents.json 获取
-const uid = entry.slug;
+// 从嵌套路径提取 uid：如 "20001000/20001000" → "20001000"
+const uid = entry.slug.split('/')[0];
 const agent = agents.find(a => a.uid === uid);
 
 if (!agent) {

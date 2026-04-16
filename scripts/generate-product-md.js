@@ -1,6 +1,7 @@
 /**
  * 从 products.json 生成产品详情 Markdown 文件
- * 文件名使用 uid，不存储冗余 frontmatter 数据
+ * 文件结构：嵌套目录 {uid}/{uid}.md
+ * 内容：仅正文，无 frontmatter（数据全部从 JSON 获取）
  * 运行：node scripts/generate-product-md.js
  */
 
@@ -30,23 +31,32 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// 先清空目录
-const existingFiles = fs.readdirSync(outputDir);
-existingFiles.forEach(file => {
-  if (file.endsWith('.md')) {
-    fs.unlinkSync(path.join(outputDir, file));
+// 先清空目录（删除所有子目录和文件）
+const existingItems = fs.readdirSync(outputDir);
+existingItems.forEach(item => {
+  const itemPath = path.join(outputDir, item);
+  const stat = fs.statSync(itemPath);
+  if (stat.isDirectory()) {
+    fs.rmSync(itemPath, { recursive: true, force: true });
+  } else if (item.endsWith('.md')) {
+    fs.unlinkSync(itemPath);
   }
 });
 
-// 为每个产品生成 Markdown 文件
+// 为每个产品生成 Markdown 文件（嵌套目录结构）
 let generated = 0;
 let skipped = 0;
 
 products.forEach((product) => {
   try {
-    // 文件名强制使用 uid
+    // 嵌套目录结构：products/{uid}/{uid}.md
+    const uidDir = path.join(outputDir, product.uid);
+    if (!fs.existsSync(uidDir)) {
+      fs.mkdirSync(uidDir, { recursive: true });
+    }
+    
     const filename = `${product.uid}.md`;
-    const outputPath = path.join(outputDir, filename);
+    const outputPath = path.join(uidDir, filename);
 
     // 只写入正文内容，不写 frontmatter
     let markdownContent = product.detail || '';
