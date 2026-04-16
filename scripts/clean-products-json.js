@@ -24,7 +24,7 @@ const cleanedProducts = products.map(product => {
     aiProductName: product.aiProductName,
     introduction: product.introduction,
     websiteUrl: product.websiteUrl,
-    detail: product.detail,
+    // detail 字段已删除：Markdown 文件已生成，不再需要数据源
     metrics: {
       productType: product.metrics?.productType || {},
       country: product.metrics?.country || '',

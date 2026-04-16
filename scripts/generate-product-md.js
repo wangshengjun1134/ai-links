@@ -31,21 +31,14 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// 先清空目录（删除所有子目录和文件）
-const existingItems = fs.readdirSync(outputDir);
-existingItems.forEach(item => {
-  const itemPath = path.join(outputDir, item);
-  const stat = fs.statSync(itemPath);
-  if (stat.isDirectory()) {
-    fs.rmSync(itemPath, { recursive: true, force: true });
-  } else if (item.endsWith('.md')) {
-    fs.unlinkSync(itemPath);
-  }
-});
+// 注意：不再清空目录，保留已有内容的 Markdown 文件
+// 只有当 JSON 中有新的 detail 数据时才会重新生成
 
 // 为每个产品生成 Markdown 文件（嵌套目录结构）
+// 注意：如果 detail 字段不存在且文件已存在，则跳过生成（保留已有内容）
 let generated = 0;
 let skipped = 0;
+let preserved = 0;
 
 products.forEach((product) => {
   try {
@@ -54,14 +47,23 @@ products.forEach((product) => {
     if (!fs.existsSync(uidDir)) {
       fs.mkdirSync(uidDir, { recursive: true });
     }
-    
+
     const filename = `${product.uid}.md`;
     const outputPath = path.join(uidDir, filename);
 
-    // 只写入正文内容，不写 frontmatter
-    let markdownContent = product.detail || '';
-    markdownContent = cleanText(markdownContent);
+    // 检查是否已有内容
+    const hasExistingContent = fs.existsSync(outputPath) && fs.statSync(outputPath).size > 100;
+    const hasDetail = product.detail && product.detail.trim() !== '';
 
+    // 如果文件已存在且有实质内容，且没有新的 detail 数据，则保留原文件
+    if (hasExistingContent && !hasDetail) {
+      preserved++;
+      return;
+    }
+
+    // 只写入正文内容，不写 frontmatter
+    let markdownContent = hasDetail ? cleanText(product.detail) : '';
+    
     // 如果没有详情内容，写入一个占位提示
     if (!markdownContent || markdownContent.trim() === '') {
       markdownContent = `## 【产品概述】\n\n${product.introduction || '暂无详情内容'}`;
@@ -76,6 +78,9 @@ products.forEach((product) => {
 });
 
 console.log(`✓ 生成了 ${generated} 个产品 Markdown 文件到 ${outputDir}`);
+if (preserved > 0) {
+  console.log(`✓ 保留了 ${preserved} 个已有内容的文件（无 detail 数据源）`);
+}
 if (skipped > 0) {
   console.log(`⚠ 跳过了 ${skipped} 个文件`);
 }
