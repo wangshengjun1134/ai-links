@@ -29,7 +29,6 @@ const cleanedProducts = products.map(product => {
       productType: product.metrics?.productType || {},
       country: product.metrics?.country || '',
       company: product.metrics?.company || '',
-      modelLevel: product.metrics?.modelLevel || 'B-Tier',
       hasApi: product.metrics?.hasApi || false,
       needVpn: product.metrics?.needVpn || false,
       // 保留用于筛选但暂无 UI 的字段（后续可能添加筛选）

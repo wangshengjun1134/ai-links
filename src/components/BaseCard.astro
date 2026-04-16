@@ -14,7 +14,6 @@ interface Props {
   logoAlt?: string;
 
   // 元数据
-  tier?: string;
   author?: string;
   tags?: string[];
 
@@ -46,7 +45,6 @@ const {
   icon,
   logo,
   logoAlt = '',
-  tier,
   author,
   tags = [],
   needVpn,
@@ -54,20 +52,6 @@ const {
   detailUrl,
   externalUrl
 } = Astro.props;
-
-const tierColors: Record<string, string> = {
-  "S-Tier": "text-[#D4AF37]",
-  "A-Tier": "text-[#9333EA]",
-  "B-Tier": "text-[#2563EB]",
-};
-
-const tierBgColors: Record<string, string> = {
-  "S-Tier": "bg-[#D4AF37]/10",
-  "A-Tier": "bg-[#9333EA]/10",
-  "B-Tier": "bg-[#2563EB]/10",
-};
-
-const tierLabel = tier ? tier.split('-')[0] : '';
 // 确保 logo 路径是绝对路径
 const displayLogo = logo ? (logo.startsWith('/') ? logo : `/${logo}`) : logoImg.src;
 
@@ -101,14 +85,7 @@ const dataAttrs = {
 
     <div class="flex-1 min-w-0">
       <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2 min-w-0">
-          <h3 class="font-bold text-[#171717] text-[14.5px] truncate leading-tight">{title}</h3>
-          {tier && (
-            <span class={`text-[9px] font-black px-1.5 py-0.5 rounded shrink-0 ${tierBgColors[tier] || 'bg-gray-100'} ${tierColors[tier] || 'text-gray-400'}`}>
-              {tierLabel}
-            </span>
-          )}
-        </div>
+        <h3 class="font-bold text-[#171717] text-[14.5px] truncate leading-tight">{title}</h3>
         {subtitle && (
           <span class="text-[11px] text-[#A3A3A3] truncate text-right shrink-0 font-medium">
             {subtitle}
@@ -154,11 +131,6 @@ const dataAttrs = {
           )}
         </div>
       </div>
-      {tier && (
-        <span class={`text-[10px] font-black px-2 py-1 rounded-lg ${tierBgColors[tier] || 'bg-gray-100'} ${tierColors[tier] || 'text-gray-400'}`}>
-          {tier}
-        </span>
-      )}
     </div>
 
     {description && (

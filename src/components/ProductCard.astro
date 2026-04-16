@@ -13,10 +13,8 @@ interface Props {
     pricingModel: string[];
     useType: string[];
     languages: string[];
-    modelLevel: string;
     hasApi: boolean;
     needVpn: boolean;
-    isInternal: boolean;
     rawProductType?: string[];
   };
 }
@@ -52,7 +50,6 @@ const detailUrl = `/product/${detailSlug}`;
   title={aiProductName}
   subtitle={metrics.company}
   description={introduction}
-  tier={metrics.modelLevel}
   needVpn={metrics.needVpn}
   hasApi={metrics.hasApi}
   logo={logo}

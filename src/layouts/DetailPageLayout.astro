@@ -10,7 +10,6 @@ interface Props {
   introduction: string;
   company: string;
   country: string;
-  modelLevel?: string;
   websiteUrl?: string;
   uid: string;
   uidLabel?: string; // 显示的 UID 标签，如 '产品 UID' 或 'Agent UID'
@@ -35,7 +34,6 @@ const {
   introduction,
   company,
   country,
-  modelLevel,
   websiteUrl,
   uid,
   uidLabel = 'UID',
@@ -103,20 +101,6 @@ const seoKeywords = [productName, company, introduction?.substring(0, 50), 'AI �
                 <span class="font-medium text-slate-400 font-mono tracking-tighter">{country}</span>
               </div>
             </div>
-
-            <!-- 模型等级 -->
-            {modelLevel && (
-              <div class="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full border border-slate-200">
-                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">模型等级</span>
-                <span class={`text-[13px] font-black ${
-                  modelLevel === 'S-Tier' ? 'text-amber-600' :
-                  modelLevel === 'A-Tier' ? 'text-purple-600' :
-                  'text-blue-600'
-                }`}>
-                  {modelLevel}
-                </span>
-              </div>
-            )}
 
             <!-- 产品分类 -->
             {(level1 || level2) && (
