@@ -41,9 +41,8 @@ const getProductTypes = (): string[] => {
 
 const productTypes = getProductTypes();
 
-// 生成详情页 URL：优先使用 slug，如果没有则使用 uid
-const detailSlug = slug && slug.trim() !== '' ? slug : uid;
-const detailUrl = `/product/${detailSlug}`;
+// 生成详情页 URL：统一使用 uid（路由基于 uid 生成）
+const detailUrl = `/product/${uid}`;
 ---
 
 <BaseCard
