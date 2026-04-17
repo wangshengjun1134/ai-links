@@ -31,7 +31,7 @@
     "websiteUrl": ""
   },
   {
-    "uid": "g-1",
+    "uid": "10006",
     "title": "什么是大语言模型？全面解析 LLM 的工作原理",
     "description": "深入了解大语言模型的基本概念、训练方法和应用场景，适合 AI 初学者阅读",
     "author": "AI Science",
@@ -41,33 +41,24 @@
     "websiteUrl": ""
   },
   {
-    "uid": "g-2",
-    "title": "Prompt Engineering 入门：如何与 AI 高效对话",
-    "description": "学习编写高质量提示词的技巧，让你的 AI 助手更好地理解你的需求",
-    "author": "Prompt Master",
-    "category": "科普",
-    "readTime": "6 分钟",
-    "publishedAt": "2026-03-05",
-    "websiteUrl": ""
+    "uid": "10004",
+    "title": "LLM Wiki：用大语言模型构建个人知识库",
+    "titleEn": "LLM Wiki: Building Personal Knowledge Bases with LLMs",
+    "description": "Andrej Karpathy 提出的一种知识管理新模式：让 LLM 持续维护和构建结构化的 Wiki，实现知识的累积与复利",
+    "author": "Andrej Karpathy",
+    "category": "博文",
+    "readTime": "20 分钟",
+    "publishedAt": "2026-04-17",
+    "websiteUrl": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
   },
   {
-    "uid": "g-3",
-    "title": "AI 绘画工具对比：Midjourney vs Stable Diffusion",
-    "description": "详细对比两款主流 AI 绘画工具的优缺点，帮助你选择适合的工具",
-    "author": "Art Tech",
-    "category": "科普",
-    "readTime": "10 分钟",
-    "publishedAt": "2026-03-06",
-    "websiteUrl": ""
-  },
-  {
-    "uid": "g-4",
-    "title": "如何本地部署开源大模型？完整教程",
-    "description": "从零开始学习如何在本地服务器部署 LLaMA 等开源大模型",
-    "author": "DevOps Pro",
-    "category": "教程",
-    "readTime": "15 分钟",
-    "publishedAt": "2026-03-07",
-    "websiteUrl": ""
+    "uid": "10005",
+    "title": "这大概是我读过关于AI大模型最全面、好读又易懂的文章了",
+    "description": "从神经网络基石到大语言模型原理，深入讲解大模型的推理、训练、GPU算力基础设施与Agent应用，共65张配图详解",
+    "author": "白玉光",
+    "category": "博文",
+    "readTime": "60 分钟",
+    "publishedAt": "2026-04-18",
+    "websiteUrl": "https://zhuanlan.zhihu.com/p/2000571234996479582"
   }
 ]
