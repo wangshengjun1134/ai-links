@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "generate": "node scripts/generate-product-md.js && node scripts/generate-agent-md.js",
+    "generate": "node scripts/generate-product-md.js",
     "sitemap": "node scripts/generate-sitemap.js",
     "dev": "npm run generate && npm run sitemap && astro dev",
     "build": "npm run generate && npm run sitemap && astro build",
