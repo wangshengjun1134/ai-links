@@ -18,8 +18,11 @@ const timeRangesWithValue = timeRanges.map((range) => ({
   value: range
 }));
 
-// 排行榜数据：从新闻数据中取前5条
-const rankData = news.slice(0, 5).map((n, index) => ({
+// 按发布日期倒序排列（最新的在前）
+const newsReversed = [...news].reverse();
+
+// 排行榜数据：从最新新闻中取前5条
+const rankData = newsReversed.slice(0, 5).map((n, index) => ({
   rank: index + 1,
   title: n.title,
   source: n.category,
@@ -61,7 +64,7 @@ const rankData = news.slice(0, 5).map((n, index) => ({
       <div class="flex-1">
         <div id="news-list" class="bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden">
           <div class="divide-y divide-[#F0F0F0]">
-            {news.map(n => <NewsCard {...n} />)}
+            {newsReversed.map(n => <NewsCard {...n} />)}
           </div>
         </div>
 
