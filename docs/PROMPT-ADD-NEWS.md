@@ -1,3 +1,11 @@
+---
+新闻源：
+https://news.aibase.com/zh/daily
+https://news.aibase.com/zh/news
+https://www.xingzuoyun.cc/news/xiangmu/
+---
+
+
 # 提示词：为 AI Links 项目添加新闻
 
 将此提示词发送给 LLM，并提供新闻信息，LLM 将自动生成符合项目规范的数据。
