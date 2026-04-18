@@ -33,5 +33,17 @@
     "readTime": "60 分钟",
     "publishedAt": "2026-04-18",
     "websiteUrl": "https://zhuanlan.zhihu.com/p/2000571234996479582"
+  },
+  {
+    "uid": "10006",
+    "slug": "something-big-is-happening",
+    "title": "大事正在发生：AI 如何重塑我们的工作与未来",
+    "titleEn": "Something Big Is Happening",
+    "description": "Matt Shumer 深度分析 AI 发展速度、智能爆炸趋势，以及对白领工作的颠覆性影响，提供应对 AI 时代的具体行动建议",
+    "author": "Matt Shumer",
+    "category": "博文",
+    "readTime": "30 分钟",
+    "publishedAt": "2026-04-18",
+    "websiteUrl": "https://shumer.dev/something-big-is-happening"
   }
 ]
