@@ -1,6 +1,7 @@
 [
   {
     "uid": "10003",
+    "slug": "how-to-fix-your-entire-life-in-1-day",
     "title": "如何在一天内彻底改变你的人生",
     "titleEn": "How to fix your entire life in 1 day",
     "description": "关于行为改变、心理学和效率的 7 个观点，帮助你实现真正的改变",
@@ -12,6 +13,7 @@
   },
   {
     "uid": "10004",
+    "slug": "llm-wiki-building-personal-knowledge-bases",
     "title": "LLM Wiki：用大语言模型构建个人知识库",
     "titleEn": "LLM Wiki: Building Personal Knowledge Bases with LLMs",
     "description": "Andrej Karpathy 提出的一种知识管理新模式：让 LLM 持续维护和构建结构化的 Wiki，实现知识的累积与复利",
@@ -23,6 +25,7 @@
   },
   {
     "uid": "10005",
+    "slug": "most-complete-ai-llm-guide",
     "title": "这大概是我读过关于AI大模型最全面、好读又易懂的文章了",
     "description": "从神经网络基石到大语言模型原理，深入讲解大模型的推理、训练、GPU算力基础设施与Agent应用，共65张配图详解",
     "author": "白玉光",

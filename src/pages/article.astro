@@ -73,7 +73,7 @@ const rankData = [
                 data-category={a.category}
                 class="article-card group relative p-5 rounded-2xl border border-[#F0F0F0] bg-white hover:border-[#171717]/30 hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
               >
-                <a href={`/article/${a.uid}`} target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
+                <a href={`/article/${a.slug || a.uid}`} target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
 
                 <div class="flex items-start justify-between mb-3">
                   <div class="flex items-center gap-2">
