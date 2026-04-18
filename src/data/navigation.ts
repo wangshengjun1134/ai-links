@@ -134,7 +134,7 @@ export const sidebarFilters = {
       { name: '研究论文', path: '?cat=research', icon: '🔬' },
       { name: '政策法规', path: '?cat=policy', icon: '📜' },
     ],
-    timeRanges: ['24 小时内', '7 天内', '30 天内'],
+    timeRanges: ['不限', '24 小时内', '7 天内', '30 天内'],
   },
   article: {
     types: [

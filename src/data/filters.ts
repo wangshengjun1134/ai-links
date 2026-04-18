@@ -175,7 +175,7 @@ export const newsFilters = {
     { name: '研究论文', value: 'research', icon: '🔬' },
     { name: '政策法规', value: 'policy', icon: '📜' },
   ],
-  timeRanges: ['24 小时内', '7 天内', '30 天内'],
+  timeRanges: ['不限', '24 小时内', '7 天内', '30 天内'],
 };
 
 // 文章页面筛选配置

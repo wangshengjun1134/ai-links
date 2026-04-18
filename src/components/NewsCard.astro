@@ -19,10 +19,9 @@ interface Props {
 }
 
 const { uid, title, category, readTime, publishedAt, context, refUrl = [] } = Astro.props;
-const cardId = `news-card-${uid}`;
 ---
 
-<div id={cardId} class="news-card flex gap-6 p-5 border-b border-[#F0F0F0] last:border-b-0" data-expanded="false" data-category={category} data-published-at={publishedAt}>
+<div class="news-card flex gap-6 p-5 border-b border-[#F0F0F0] last:border-b-0" data-expanded="false" data-category={category} data-published-at={publishedAt}>
   <!-- 左侧：内容区域 -->
   <div class="flex-1 min-w-0">
     <div class="flex items-center gap-3 mb-2">
@@ -56,7 +55,7 @@ const cardId = `news-card-${uid}`;
 
   <!-- 右侧：相关链接 -->
   {refUrl.length > 0 && (
-    <div class="shrink-0 w-48 pl-4 border-l border-[#E5E5E5]">
+    <div class="shrink-0 w-36 pl-3 border-l border-[#E5E5E5]">
       <h4 class="text-[11.5px] font-bold text-[#A3A3A3] uppercase tracking-wider mb-3">相关链接</h4>
       <ul class="space-y-2">
         {refUrl.map((link) => (
@@ -80,30 +79,31 @@ const cardId = `news-card-${uid}`;
   )}
 </div>
 
-<script define:vars={{ cardId }}>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
-    const card = document.getElementById(cardId);
-    if (!card) return;
+    const cards = document.querySelectorAll('.news-card');
 
-    const expandBtn = card.querySelector('.expand-btn');
-    const textContent = card.querySelector('.text-content');
-    const expandText = card.querySelector('.expand-text');
-    const expandIcon = card.querySelector('.expand-icon');
+    cards.forEach(card => {
+      const expandBtn = card.querySelector('.expand-btn');
+      const textContent = card.querySelector('.text-content');
+      const expandText = card.querySelector('.expand-text');
+      const expandIcon = card.querySelector('.expand-icon');
 
-    // 检测内容是否被截断
-    if (expandBtn && textContent) {
+      if (!expandBtn || !textContent) return;
+
       // 检查内容是否真的被截断（line-clamp生效）
       const lineHeight = parseFloat(getComputedStyle(textContent).lineHeight) || 21;
       const maxHeight = lineHeight * 3;
       const actualHeight = textContent.scrollHeight;
-      
+
       if (actualHeight <= maxHeight) {
         // 内容没有被截断，隐藏按钮
         expandBtn.style.display = 'none';
         return;
       }
 
-      expandBtn.addEventListener('click', () => {
+      expandBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const isExpanded = card.dataset.expanded === 'true';
 
         if (isExpanded) {
@@ -118,6 +118,6 @@ const cardId = `news-card-${uid}`;
           card.dataset.expanded = 'true';
         }
       });
-    }
+    });
   });
 </script>
