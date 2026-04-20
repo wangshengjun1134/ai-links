@@ -2,38 +2,102 @@
 import Layout from '../layouts/Layout.astro';
 import HubCard from '../components/HubCard.astro';
 import Pagination from '../components/Pagination.astro';
-import aihub from '../data/aihub.json';
+import { getAihubPaginated, getAihubCount, getAihubProductTypes } from '../lib/db';
 
-// 从数据中提取唯一的 productType 值
-const getProductTypes = (): string[] => {
-  const values = new Set<string>();
-  aihub.forEach(a => {
-    if (Array.isArray(a.productType)) {
-      a.productType.forEach(t => values.add(t));
-    }
-  });
-  return Array.from(values).filter(t => !t.includes('Tier')).sort();
+// 解析 URL 参数 - 支持多选
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const pageSize = 20;
+const productTypeArray = Astro.url.searchParams.getAll('productType').filter(Boolean);
+const search = Astro.url.searchParams.get('search') || '';
+
+// 数据库查询
+const result = await getAihubPaginated({
+  page,
+  pageSize,
+  productType: productTypeArray.length > 0 ? productTypeArray : undefined,
+  search: search || undefined,
+});
+
+const aihubs = result.items;
+const total = result.total;
+const totalPages = result.totalPages;
+
+// 获取筛选列表和总数
+const productTypes = await getAihubProductTypes();
+const totalCount = await getAihubCount();
+
+// 动态 SEO 标题
+let pageTitle = 'AI Hub - AI Links';
+let pageDescription = `探索 ${totalCount}+ AI 相关资源和平台`;
+
+if (search) {
+  pageTitle = `搜索"${search}"的AI Hub项目 - AI Links`;
+} else if (productTypeArray.length > 0) {
+  const filtersText = productTypeArray.join('、');
+  pageTitle = `${filtersText}类AI Hub资源 - ${total}款精选 - AI Links`;
+}
+
+if (page > 1) {
+  pageTitle += ` - 第${page}页`;
+}
+
+// 构建筛选 URL（支持多选切换）
+const buildFilterUrl = (clickedType: string) => {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+
+  const isSelected = productTypeArray.includes(clickedType);
+  let newArray: string[];
+  if (isSelected) {
+    newArray = productTypeArray.filter(t => t !== clickedType);
+  } else {
+    newArray = [...productTypeArray, clickedType];
+  }
+  newArray.forEach(t => params.append('productType', t));
+
+  const queryString = params.toString();
+  return queryString ? `/aihub?${queryString}` : '/aihub';
 };
 
-const productTypes = getProductTypes();
+// 查询参数
+const queryParams: Record<string, string | string[]> = {};
+if (productTypeArray.length > 0) queryParams.productType = productTypeArray;
+if (search) queryParams.search = search;
 ---
 
-<Layout title="AI Hub - AI Links">
+<Layout title={pageTitle} description={pageDescription}>
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">产品类型</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="producttype">
-        {productTypes.map((type) => (
-          <button
-            data-producttype={type}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{type}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
+      <div class="flex flex-wrap gap-1.5">
+        {productTypes.map((type) => {
+          const isActive = productTypeArray.includes(type);
+          return (
+            <a
+              href={buildFilterUrl(type)}
+              class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 ${
+                isActive
+                  ? 'bg-[#171717] text-white border-[#171717]'
+                  : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+              }`}
+            >
+              <span>{type}</span>
+              {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+            </a>
+          );
+        })}
       </div>
     </div>
+
+    {(productTypeArray.length > 0 || search) && (
+      <a href="/aihub" class="text-[13px] text-[#A3A3A3] hover:text-[#171717] flex items-center gap-1">
+        <span>✕</span>
+        <span>清除所有筛选</span>
+        {productTypeArray.length > 0 && (
+          <span class="text-[11px] bg-[#E5E5E5] px-1.5 py-0.5 rounded">{productTypeArray.length} 项</span>
+        )}
+      </a>
+    )}
   </aside>
 
   <div class="p-6">
@@ -42,52 +106,76 @@ const productTypes = getProductTypes();
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
-        <input type="text" id="aihub-search" placeholder="按名称过滤..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
+        <form action="/aihub" method="get">
+          {productTypeArray.map(t => <input type="hidden" name="productType" value={t} />)}
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="按名称过滤..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+          />
+        </form>
       </div>
 
       <div class="flex-1"></div>
+
+      {(productTypeArray.length > 0 || search) && (
+        <div class="flex items-center gap-2 text-[13px] text-[#525252]">
+          <span>筛选:</span>
+          {productTypeArray.map(t => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{t}</span>
+          ))}
+          {search && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">搜索: {search}</span>}
+        </div>
+      )}
     </div>
 
-    <div id="aihub-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
-      {aihub.map(a => {
-        const productType = a.productType || [];
+    {aihubs.length > 0 ? (
+      <>
+        <div id="aihub-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
+          {aihubs.map(a => (
+            <div
+              class="aihub-item"
+              data-aihub-name={a.aiProductName.toLowerCase()}
+              data-producttype={JSON.stringify(a.metrics.productType).toLowerCase()}
+              data-introduction={a.introduction.toLowerCase()}
+            >
+              <HubCard
+                uid={a.uid}
+                slug={a.slug}
+                logo={a.logo}
+                aiProductName={a.aiProductName}
+                introduction={a.introduction}
+                websiteUrl={a.websiteUrl}
+                productType={a.metrics.productType}
+                tags={a.metrics.tags}
+              />
+            </div>
+          ))}
+        </div>
 
-        return (
-          <div
-            class="aihub-item"
-            data-aihub-name={a.aiProductName.toLowerCase()}
-            data-producttype={JSON.stringify(productType).toLowerCase()}
-            data-introduction={a.introduction.toLowerCase()}
-          >
-            <HubCard {...a} />
-          </div>
-        );
-      })}
-    </div>
-
-    <Pagination itemTypeLabel="项目" />
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          totalItems={total}
+          pageSize={pageSize}
+          itemTypeLabel="项目"
+          baseUrl="/aihub"
+          queryParams={queryParams}
+        />
+      </>
+    ) : (
+      <div class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5]">
+        <div class="text-6xl mb-4">🌐</div>
+        <h3 class="text-xl font-bold text-[#171717] mb-2">暂无资源</h3>
+        <p class="text-[#525252]">当前筛选条件下暂无资源</p>
+      </div>
+    )}
   </div>
 </Layout>
 
-<style>
-  .aihub-item.v-hidden {
-    display: none !important;
-  }
-</style>
-
 <script>
-  import { initMultiFilter } from '../lib/multiFilter';
   import { initCardClick } from '../scripts/cardClick';
-  import { initPagination } from '../lib/pagination';
-
-  initMultiFilter();
   initCardClick();
-  initPagination({
-    listId: 'aihub-list',
-    itemClass: 'aihub-item',
-    searchId: 'aihub-search',
-    pageSize: 30,
-    itemTypeLabel: '项目',
-    searchAttrs: ['data-aihub-name', 'data-introduction'],
-  });
 </script>

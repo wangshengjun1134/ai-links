@@ -2,201 +2,249 @@
 import Layout from '../layouts/Layout.astro';
 import NewsCard from '../components/NewsCard.astro';
 import NewsRankCard from '../components/NewsRankCard.astro';
-import news from '../data/news.json';
-import { sidebarFilters } from '../data/navigation';
+import Pagination from '../components/Pagination.astro';
+import { getNewsPaginated, getNewsCount, getNewsCategories } from '../lib/db';
 
-const { categories, timeRanges } = sidebarFilters.news;
+// 时间范围选项
+const timeRangeOptions = [
+  { value: '', label: '不限', icon: '📅' },
+  { value: '24h', label: '24小时内', icon: '🕐' },
+  { value: '7d', label: '7天内', icon: '📆' },
+  { value: '30d', label: '30天内', icon: '🗓️' },
+];
 
-// 为每个分类项添加 data-value
-const categoriesWithValue = categories.map((item, index) => ({
-  ...item,
-  value: index === 0 ? 'all' : item.name
-}));
+// 解析 URL 参数
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const pageSize = 20;
+const category = Astro.url.searchParams.get('category') || '';
+const timeRange = Astro.url.searchParams.get('timeRange') || '';
+const search = Astro.url.searchParams.get('search') || '';
 
-const timeRangesWithValue = timeRanges.map((range) => ({
-  name: range,
-  value: range
-}));
+// 数据库查询
+const result = await getNewsPaginated({
+  page,
+  pageSize,
+  category: category || undefined,
+  timeRange: timeRange || undefined,
+  search: search || undefined,
+});
 
-// 按发布日期倒序排列（最新的在前）
-const newsReversed = [...news].reverse();
+const news = result.items;
+const total = result.total;
+const totalPages = result.totalPages;
 
-// 排行榜数据：从最新新闻中取前5条
-const rankData = newsReversed.slice(0, 5).map((n, index) => ({
+// 获取筛选列表和总数
+const categories = await getNewsCategories();
+const totalCount = await getNewsCount();
+
+// 排行榜数据（取前5条）
+const rankData = news.slice(0, 5).map((n, index) => ({
   rank: index + 1,
   title: n.title,
   source: n.category,
   views: `${(Math.floor(Math.random() * 20) + 5)}.${Math.floor(Math.random() * 9)}k`,
 }));
+
+// 动态 SEO 标题
+let pageTitle = 'AI 新闻 - AI Links';
+let pageDescription = `探索最新 AI 行业新闻、产品发布、融资动态`;
+
+if (search) {
+  pageTitle = `搜索"${search}"的新闻 - AI Links`;
+} else if (category) {
+  pageTitle = `${category}类AI新闻 - AI Links`;
+}
+
+if (page > 1) {
+  pageTitle += ` - 第${page}页`;
+}
+
+// 构建分类筛选 URL
+const buildCategoryUrl = (cat: string) => {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+  if (timeRange) params.set('timeRange', timeRange);
+
+  if (category === cat) {
+    // 取消选中
+  } else {
+    params.set('category', cat);
+  }
+
+  const queryString = params.toString();
+  return queryString ? `/news?${queryString}` : '/news';
+};
+
+// 构建时间范围筛选 URL
+const buildTimeRangeUrl = (range: string) => {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+  if (category) params.set('category', category);
+
+  if (timeRange === range) {
+    // 取消选中
+  } else if (range) {
+    params.set('timeRange', range);
+  }
+
+  const queryString = params.toString();
+  return queryString ? `/news?${queryString}` : '/news';
+};
+
+// 查询参数
+const queryParams: Record<string, string | string[]> = {};
+if (category) queryParams.category = category;
+if (timeRange) queryParams.timeRange = timeRange;
+if (search) queryParams.search = search;
 ---
 
-<Layout title="AI 新闻 - AI Links">
+<Layout title={pageTitle} description={pageDescription}>
   <aside slot="sidebar" class="w-64 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <h3 class="text-[11.5px] font-bold text-[#A3A3A3] mb-4 uppercase tracking-wider">新闻分类</h3>
-    <div class="space-y-1.5 mb-6" id="category-filter">
-      {categoriesWithValue.map((item) => (
-        <button
-          data-value={item.value}
-          class="filter-btn category-btn block w-full px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer text-left"
-        >
-          {item.icon} {item.name}
-        </button>
-      ))}
+    <div class="space-y-1.5 mb-6">
+      <a
+        href={buildCategoryUrl('')}
+        class={`filter-btn category-btn block w-full px-3 py-2.5 text-[13px] rounded-xl transition-all duration-200 ${
+          !category
+            ? 'bg-[#171717] text-white'
+            : 'text-[#525252] hover:bg-[#171717] hover:text-white'
+        }`}
+      >
+        📰 全部新闻
+      </a>
+      {categories.map((cat) => {
+        const isActive = category === cat;
+        return (
+          <a
+            href={buildCategoryUrl(cat)}
+            class={`filter-btn category-btn block w-full px-3 py-2.5 text-[13px] rounded-xl transition-all duration-200 ${
+              isActive
+                ? 'bg-[#171717] text-white'
+                : 'text-[#525252] hover:bg-[#171717] hover:text-white'
+            }`}
+          >
+            {cat === '产品发布' && '🚀'} {cat === '融资动态' && '💰'} {cat === '研究论文' && '🔬'} {cat === '政策法规' && '📜'} {cat}
+          </a>
+        );
+      })}
     </div>
 
     <h3 class="text-[11.5px] font-bold text-[#A3A3A3] mb-4 uppercase tracking-wider">时间范围</h3>
-    <div class="space-y-1.5" id="time-filter">
-      {timeRangesWithValue.map((item) => (
-        <button
-          data-value={item.value}
-          class="filter-btn time-btn block w-full px-3 py-2.5 text-[13px] text-[#525252] hover:bg-[#171717] hover:text-white rounded-xl transition-all duration-200 cursor-pointer text-left"
-        >
-          {item.name}
-        </button>
-      ))}
+    <div class="space-y-1.5 mb-6">
+      {timeRangeOptions.map((opt) => {
+        const isActive = timeRange === opt.value;
+        return (
+          <a
+            href={buildTimeRangeUrl(opt.value)}
+            class={`filter-btn block w-full px-3 py-2.5 text-[13px] rounded-xl transition-all duration-200 ${
+              isActive
+                ? 'bg-[#171717] text-white'
+                : 'text-[#525252] hover:bg-[#171717] hover:text-white'
+            }`}
+          >
+            {opt.icon} {opt.label}
+          </a>
+        );
+      })}
     </div>
+
+    {(category || timeRange || search) && (
+      <a href="/news" class="text-[13px] text-[#A3A3A3] hover:text-[#171717] flex items-center gap-1">
+        <span>✕</span>
+        <span>清除筛选</span>
+      </a>
+    )}
   </aside>
 
   <div class="p-6">
-    <h2 class="text-2xl font-bold text-[#171717] mb-6">AI 新闻</h2>
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="text-2xl font-bold text-[#171717]">AI 新闻</h2>
 
-    <div class="flex gap-8">
-      <div class="flex-1">
-        <div id="news-list" class="bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden">
-          <div class="divide-y divide-[#F0F0F0]">
-            {newsReversed.map(n => <NewsCard {...n} />)}
-          </div>
-        </div>
-
-        <div id="empty-state" class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5] hidden">
-          <div class="text-6xl mb-4">📰</div>
-          <h3 class="text-xl font-bold text-[#171717] mb-2">暂无新闻</h3>
-          <p class="text-[#525252]">当前筛选条件下暂无新闻</p>
-        </div>
+      <div class="relative w-full max-w-md">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
+        <form action="/news" method="get">
+          {category && <input type="hidden" name="category" value={category} />}
+          {timeRange && <input type="hidden" name="timeRange" value={timeRange} />}
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="搜索新闻..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+          />
+        </form>
       </div>
 
-      <div class="w-80 shrink-0">
-        <div class="sticky top-20 space-y-6">
-          <div class="bg-white border border-[#E5E5E5] rounded-2xl p-5 shadow-sm">
-            <h3 class="text-[13px] font-bold text-[#171717] mb-4 flex items-center gap-2">
-              <span class="text-lg">🔥</span> 阅读排行榜
-            </h3>
-            <div class="flex flex-col gap-2">
-              {rankData.map(r => <NewsRankCard {...r} />)}
+      <div class="flex-1"></div>
+
+      {(category || timeRange || search) && (
+        <div class="flex items-center gap-2 text-[13px] text-[#525252]">
+          <span>筛选:</span>
+          {category && <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{category}</span>}
+          {timeRange && (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">
+              {timeRangeOptions.find(o => o.value === timeRange)?.label}
+            </span>
+          )}
+          {search && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">搜索: {search}</span>}
+        </div>
+      )}
+    </div>
+
+    {news.length > 0 ? (
+      <div class="flex gap-8">
+        <div class="flex-1">
+          <div id="news-list" class="bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden">
+            <div class="divide-y divide-[#F0F0F0]">
+              {news.map(n => (
+                <div
+                  data-category={n.category}
+                  data-publishedAt={n.publishedAt}
+                >
+                  <NewsCard
+                    uid={n.uid}
+                    slug={n.slug}
+                    title={n.title}
+                    category={n.category}
+                    publishedAt={n.publishedAt}
+                    context={n.context}
+                    refUrl={n.metrics.refUrl}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            totalItems={total}
+            pageSize={pageSize}
+            itemTypeLabel="新闻"
+            baseUrl="/news"
+            queryParams={queryParams}
+          />
+        </div>
+
+        <div class="w-80 shrink-0">
+          <div class="sticky top-20 space-y-6">
+            <div class="bg-white border border-[#E5E5E5] rounded-2xl p-5 shadow-sm">
+              <h3 class="text-[13px] font-bold text-[#171717] mb-4 flex items-center gap-2">
+                <span class="text-lg">🔥</span> 阅读排行榜
+              </h3>
+              <div class="flex flex-col gap-2">
+                {rankData.map(r => <NewsRankCard {...r} />)}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    ) : (
+      <div id="empty-state" class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5]">
+        <div class="text-6xl mb-4">📰</div>
+        <h3 class="text-xl font-bold text-[#171717] mb-2">暂无新闻</h3>
+        <p class="text-[#525252]">当前筛选条件下暂无新闻</p>
+      </div>
+    )}
   </div>
 </Layout>
-
-<script>
-  // 过滤状态
-  let currentCategory = 'all';
-  let currentTimeRange = '';
-
-  // 初始化：设置第一个分类按钮为选中状态
-  function initFilters() {
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const timeBtns = document.querySelectorAll('.time-btn');
-
-    // 默认选中"全部新闻"
-    if (categoryBtns[0]) {
-      categoryBtns[0].classList.add('bg-[#171717]', 'text-white');
-    }
-
-    // 默认选中"不限"
-    if (timeBtns[0]) {
-      timeBtns[0].classList.add('bg-[#171717]', 'text-white');
-    }
-
-    // 分类按钮点击事件
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // 移除其他按钮的选中状态
-        categoryBtns.forEach(b => b.classList.remove('bg-[#171717]', 'text-white'));
-        // 添加当前按钮的选中状态
-        btn.classList.add('bg-[#171717]', 'text-white');
-        // 更新当前分类
-        currentCategory = btn.dataset.value || 'all';
-        applyFilters();
-      });
-    });
-
-    // 时间按钮点击事件
-    timeBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // 移除其他按钮的选中状态
-        timeBtns.forEach(b => b.classList.remove('bg-[#171717]', 'text-white'));
-        // 添加当前按钮的选中状态
-        btn.classList.add('bg-[#171717]', 'text-white');
-        // 更新当前时间范围
-        currentTimeRange = btn.dataset.value || '';
-        applyFilters();
-      });
-    });
-  }
-
-  // 检查时间范围
-  function isWithinTimeRange(publishedAt: string | null, timeRange: string): boolean {
-    if (!timeRange || timeRange === '不限' || !publishedAt) return true;
-
-    const publishDate = new Date(publishedAt);
-    const now = new Date();
-    const diffMs = now.getTime() - publishDate.getTime();
-    const diffDays = diffMs / (1000 * 60 * 60 * 24);
-
-    switch (timeRange) {
-      case '24 小时内':
-        return diffDays <= 1;
-      case '7 天内':
-        return diffDays <= 7;
-      case '30 天内':
-        return diffDays <= 30;
-      default:
-        return true;
-    }
-  }
-
-  // 应用过滤
-  function applyFilters() {
-    const newsList = document.getElementById('news-list');
-    const emptyState = document.getElementById('empty-state');
-    const cards = newsList?.querySelector('.divide-y')?.children || [];
-
-    let visibleCount = 0;
-
-    Array.from(cards).forEach((card) => {
-      // 直接从 DOM 元素读取分类和时间
-      const cardCategory = card.dataset.category || '';
-      const cardPublishedAt = card.dataset.publishedAt || '';
-
-      // 分类过滤
-      const categoryMatch = currentCategory === 'all' || cardCategory === currentCategory;
-
-      // 时间过滤
-      const timeMatch = isWithinTimeRange(cardPublishedAt, currentTimeRange);
-
-      if (categoryMatch && timeMatch) {
-        card.style.display = '';
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    // 显示/隐藏空状态
-    if (visibleCount === 0) {
-      newsList?.classList.add('hidden');
-      emptyState?.classList.remove('hidden');
-    } else {
-      newsList?.classList.remove('hidden');
-      emptyState?.classList.add('hidden');
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    initFilters();
-  });
-</script>

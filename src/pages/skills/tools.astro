@@ -1,69 +1,189 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
-import toolsData from '../../data/tools.json';
-import { skillsSubNav, sidebarFilters } from '../../data/navigation';
-const { languages, licenses, functions } = sidebarFilters.tools;
+import Pagination from '../../components/Pagination.astro';
+import { getToolsPaginated, getToolsCount, getToolLanguages, getToolLicenses, getToolFunctions } from '../../lib/db';
+import { skillsSubNav } from '../../data/navigation';
 
 const subNav = {
   activeTab: 'tools',
   tabs: skillsSubNav,
 };
+
+// 解析 URL 参数 - 支持多选
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const pageSize = 20;
+const languageArray = Astro.url.searchParams.getAll('language').filter(Boolean);
+const licenseArray = Astro.url.searchParams.getAll('license').filter(Boolean);
+const funcArray = Astro.url.searchParams.getAll('func').filter(Boolean);
+const search = Astro.url.searchParams.get('search') || '';
+
+// 数据库查询
+const result = await getToolsPaginated({
+  page,
+  pageSize,
+  language: languageArray.length > 0 ? languageArray : undefined,
+  license: licenseArray.length > 0 ? licenseArray : undefined,
+  func: funcArray.length > 0 ? funcArray : undefined,
+  search: search || undefined,
+});
+
+const tools = result.items;
+const total = result.total;
+const totalPages = result.totalPages;
+
+// 获取筛选列表和总数
+const languages = await getToolLanguages();
+const licenses = await getToolLicenses();
+const functions = await getToolFunctions();
+const totalCount = await getToolsCount();
+
+// 动态 SEO 标题
+let pageTitle = '插件 Skill - AI Links';
+let pageDescription = `探索 ${totalCount}+ AI 插件和技能扩展`;
+
+if (search) {
+  pageTitle = `搜索"${search}"的插件 - AI Links`;
+} else if (languageArray.length > 0 || licenseArray.length > 0 || funcArray.length > 0) {
+  const filtersText = [...languageArray, ...licenseArray, ...funcArray].join('、');
+  pageTitle = `${filtersText}类插件 - ${total}款精选 - AI Links`;
+}
+
+if (page > 1) {
+  pageTitle += ` - 第${page}页`;
+}
+
+// 构建筛选 URL（支持多选切换）
+const buildFilterUrl = (filterType: string, clickedValue: string) => {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+
+  if (filterType === 'language') {
+    const isSelected = languageArray.includes(clickedValue);
+    let newArray: string[];
+    if (isSelected) {
+      newArray = languageArray.filter(l => l !== clickedValue);
+    } else {
+      newArray = [...languageArray, clickedValue];
+    }
+    newArray.forEach(l => params.append('language', l));
+    licenseArray.forEach(l => params.append('license', l));
+    funcArray.forEach(f => params.append('func', f));
+  } else if (filterType === 'license') {
+    const isSelected = licenseArray.includes(clickedValue);
+    let newArray: string[];
+    if (isSelected) {
+      newArray = licenseArray.filter(l => l !== clickedValue);
+    } else {
+      newArray = [...licenseArray, clickedValue];
+    }
+    languageArray.forEach(l => params.append('language', l));
+    newArray.forEach(l => params.append('license', l));
+    funcArray.forEach(f => params.append('func', f));
+  } else if (filterType === 'func') {
+    const isSelected = funcArray.includes(clickedValue);
+    let newArray: string[];
+    if (isSelected) {
+      newArray = funcArray.filter(f => f !== clickedValue);
+    } else {
+      newArray = [...funcArray, clickedValue];
+    }
+    languageArray.forEach(l => params.append('language', l));
+    licenseArray.forEach(l => params.append('license', l));
+    newArray.forEach(f => params.append('func', f));
+  }
+
+  const queryString = params.toString();
+  return queryString ? `/skills/tools?${queryString}` : '/skills/tools';
+};
+
+// 查询参数
+const queryParams: Record<string, string | string[]> = {};
+if (languageArray.length > 0) queryParams.language = languageArray;
+if (licenseArray.length > 0) queryParams.license = licenseArray;
+if (funcArray.length > 0) queryParams.func = funcArray;
+if (search) queryParams.search = search;
 ---
 
-<Layout title="插件 Skill - AI Links" subNav={subNav}>
+<Layout title={pageTitle} description={pageDescription} subNav={subNav}>
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-with-subnav))] sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
-    <!-- 开发语言 -->
     <div class="flex flex-col gap-2.5 mb-7">
       <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">开发语言</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="language" id="language-filters">
-        {languages.map((lang) => (
-          <button
-            data-language={lang}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{lang}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <!-- 授权方式 -->
-    <div class="flex flex-col gap-2.5 mb-7">
-      <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">授权方式</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="license" id="license-filters">
-        {licenses.map((license) => (
-          <button
-            data-license={license}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{license}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <!-- 功能分类 -->
-    <div class="flex flex-col gap-2.5 mb-7">
-      <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">功能分类</h4>
-      <div class="flex flex-wrap gap-1.5" data-filter="func" id="func-filters">
-        {functions.map((item) => {
-          const func = item.path.replace('?func=', '');
+      <div class="flex flex-wrap gap-1.5">
+        {languages.map((lang) => {
+          const isActive = languageArray.includes(lang);
           return (
-            <button
-              data-func={func}
-              class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+            <a
+              href={buildFilterUrl('language', lang)}
+              class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 ${
+                isActive
+                  ? 'bg-[#171717] text-white border-[#171717]'
+                  : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+              }`}
             >
-              {item.icon && <span class="mr-0.5">{item.icon}</span>}
-              <span>{item.name}</span>
-              <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-            </button>
+              <span>{lang}</span>
+              {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+            </a>
           );
         })}
       </div>
     </div>
+
+    <div class="flex flex-col gap-2.5 mb-7">
+      <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">授权方式</h4>
+      <div class="flex flex-wrap gap-1.5">
+        {licenses.map((lic) => {
+          const isActive = licenseArray.includes(lic);
+          return (
+            <a
+              href={buildFilterUrl('license', lic)}
+              class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 ${
+                isActive
+                  ? 'bg-[#171717] text-white border-[#171717]'
+                  : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+              }`}
+            >
+              <span>{lic}</span>
+              {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    {functions && functions.length > 0 && (
+      <div class="flex flex-col gap-2.5 mb-7">
+        <h4 class="text-[13px] font-bold text-[#A3A3A3] uppercase tracking-widest">功能类型</h4>
+        <div class="flex flex-wrap gap-1.5">
+          {functions.map((fn) => {
+            const isActive = funcArray.includes(fn);
+            return (
+              <a
+                href={buildFilterUrl('func', fn)}
+                class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 ${
+                  isActive
+                    ? 'bg-[#171717] text-white border-[#171717]'
+                    : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+                }`}
+              >
+                <span>{fn}</span>
+                {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    )}
+
+    {(languageArray.length > 0 || licenseArray.length > 0 || funcArray.length > 0 || search) && (
+      <a href="/skills/tools" class="text-[13px] text-[#A3A3A3] hover:text-[#171717] flex items-center gap-1">
+        <span>✕</span>
+        <span>清除所有筛选</span>
+        {(languageArray.length + licenseArray.length + funcArray.length) > 0 && (
+          <span class="text-[11px] bg-[#E5E5E5] px-1.5 py-0.5 rounded">{languageArray.length + licenseArray.length + funcArray.length} 项</span>
+        )}
+      </a>
+    )}
   </aside>
 
   <div class="p-6">
@@ -72,33 +192,76 @@ const subNav = {
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
-        <input
-          type="text"
-          placeholder="搜索插件..."
-          class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200"
-        />
+        <form action="/skills/tools" method="get">
+          {languageArray.map(l => <input type="hidden" name="language" value={l} />)}
+          {licenseArray.map(l => <input type="hidden" name="license" value={l} />)}
+          {funcArray.map(f => <input type="hidden" name="func" value={f} />)}
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="搜索插件..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+          />
+        </form>
       </div>
 
       <div class="flex-1"></div>
+
+      {(languageArray.length > 0 || licenseArray.length > 0 || funcArray.length > 0 || search) && (
+        <div class="flex items-center gap-2 text-[13px] text-[#525252]">
+          <span>筛选:</span>
+          {languageArray.map(l => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{l}</span>
+          ))}
+          {licenseArray.map(l => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{l}</span>
+          ))}
+          {funcArray.map(f => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{f}</span>
+          ))}
+          {search && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">搜索: {search}</span>}
+        </div>
+      )}
     </div>
 
-    {toolsData.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3">
-        {toolsData.map(s => <SkillCard {...s} subCategory="tools" />)}
-      </div>
+    {tools.length > 0 ? (
+      <>
+        <div id="tool-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3">
+          {tools.map(t => (
+            <SkillCard
+              uid={t.uid}
+              title={t.title}
+              description={t.description}
+              author={t.author}
+              tags={t.metrics.tags}
+              icon={t.icon}
+              subCategory="tools"
+            />
+          ))}
+        </div>
+
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          totalItems={total}
+          pageSize={pageSize}
+          itemTypeLabel="插件"
+          baseUrl="/skills/tools"
+          queryParams={queryParams}
+        />
+      </>
     ) : (
       <div class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5]">
         <div class="text-6xl mb-4">🔌</div>
         <h3 class="text-xl font-bold text-[#171717] mb-2">暂无插件</h3>
-        <p class="text-[#525252]">提交你的第一个 Skill 插件！</p>
+        <p class="text-[#525252]">当前筛选条件下暂无插件</p>
       </div>
     )}
   </div>
 </Layout>
 
 <script>
-  import { initMultiFilter } from '../../lib/multiFilter';
   import { initCardClick } from '../../scripts/cardClick';
-  initMultiFilter();
   initCardClick();
 </script>

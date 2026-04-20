@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import Pagination from '../../components/Pagination.astro';
-import promptsData from '../../data/prompts.json';
+import { getPromptsPaginated, getPromptsCount } from '../../lib/db';
 import { skillsSubNav } from '../../data/navigation';
 import { promptFilters } from '../../data/filters';
 
@@ -12,57 +12,181 @@ const subNav = {
 };
 
 const { scenarios, tasks, modalities } = promptFilters;
+
+// 解析 URL 参数 - 支持多选
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const pageSize = 20;
+const scenarioArray = Astro.url.searchParams.getAll('scenario').filter(Boolean);
+const taskArray = Astro.url.searchParams.getAll('task').filter(Boolean);
+const modalityArray = Astro.url.searchParams.getAll('modality').filter(Boolean);
+const search = Astro.url.searchParams.get('search') || '';
+
+// 数据库查询
+const result = await getPromptsPaginated({
+  page,
+  pageSize,
+  scenario: scenarioArray.length > 0 ? scenarioArray : undefined,
+  task: taskArray.length > 0 ? taskArray : undefined,
+  modality: modalityArray.length > 0 ? modalityArray : undefined,
+  search: search || undefined,
+});
+
+const prompts = result.items;
+const total = result.total;
+const totalPages = result.totalPages;
+
+// 获取总数
+const totalCount = await getPromptsCount();
+
+// 动态 SEO 标题
+let pageTitle = '提示词 Prompts - AI Links';
+let pageDescription = `探索 ${totalCount}+ AI 提示词模板，按场景和任务分类，帮助你高效使用 AI`;
+
+if (search) {
+  pageTitle = `搜索"${search}"的提示词 - AI Links`;
+  pageDescription = `找到 ${total} 个与"${search}"相关的提示词`;
+} else if (scenarioArray.length > 0 || taskArray.length > 0 || modalityArray.length > 0) {
+  const filtersText = [...scenarioArray, ...taskArray, ...modalityArray].join('、');
+  pageTitle = `${filtersText}类提示词 - ${total}款精选 - AI Links`;
+  pageDescription = `精选 ${total} 款${filtersText}类AI提示词`;
+}
+
+if (page > 1) {
+  pageTitle += ` - 第${page}页`;
+}
+
+// 构建筛选 URL（支持多选切换）
+const buildFilterUrl = (filterType: string, clickedValue: string) => {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+
+  if (filterType === 'scenario') {
+    const isSelected = scenarioArray.includes(clickedValue);
+    let newArray: string[];
+    if (isSelected) {
+      newArray = scenarioArray.filter(s => s !== clickedValue);
+    } else {
+      newArray = [...scenarioArray, clickedValue];
+    }
+    newArray.forEach(s => params.append('scenario', s));
+    taskArray.forEach(t => params.append('task', t));
+    modalityArray.forEach(m => params.append('modality', m));
+  } else if (filterType === 'task') {
+    const isSelected = taskArray.includes(clickedValue);
+    let newArray: string[];
+    if (isSelected) {
+      newArray = taskArray.filter(t => t !== clickedValue);
+    } else {
+      newArray = [...taskArray, clickedValue];
+    }
+    scenarioArray.forEach(s => params.append('scenario', s));
+    newArray.forEach(t => params.append('task', t));
+    modalityArray.forEach(m => params.append('modality', m));
+  } else if (filterType === 'modality') {
+    const isSelected = modalityArray.includes(clickedValue);
+    let newArray: string[];
+    if (isSelected) {
+      newArray = modalityArray.filter(m => m !== clickedValue);
+    } else {
+      newArray = [...modalityArray, clickedValue];
+    }
+    scenarioArray.forEach(s => params.append('scenario', s));
+    taskArray.forEach(t => params.append('task', t));
+    newArray.forEach(m => params.append('modality', m));
+  }
+
+  const queryString = params.toString();
+  return queryString ? `/skills/prompts?${queryString}` : '/skills/prompts';
+};
+
+// 查询参数
+const queryParams: Record<string, string | string[]> = {};
+if (scenarioArray.length > 0) queryParams.scenario = scenarioArray;
+if (taskArray.length > 0) queryParams.task = taskArray;
+if (modalityArray.length > 0) queryParams.modality = modalityArray;
+if (search) queryParams.search = search;
 ---
 
-<Layout title="提示词 - AI Links" subNav={subNav}>
+<Layout title={pageTitle} description={pageDescription} subNav={subNav}>
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-with-subnav))] sticky top-[var(--sidebar-top-with-subnav)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <div class="flex flex-col gap-3 pb-5 mb-5 border-b border-[#F0F0F0]">
       <h5 class="text-[13px] font-bold text-[#171717]">📁 场景</h5>
-      <div class="flex flex-wrap gap-1.5" data-filter="scenario">
-        {scenarios.map((item) => (
-          <button
-            data-scenario={item.name}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{item.icon}</span>
-            <span>{item.name}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
+      <div class="flex flex-wrap gap-1.5">
+        {scenarios.map((item) => {
+          const isActive = scenarioArray.includes(item.name);
+          return (
+            <a
+              href={buildFilterUrl('scenario', item.name)}
+              class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 flex items-center gap-1 ${
+                isActive
+                  ? 'bg-[#171717] text-white border-[#171717]'
+                  : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+              }`}
+            >
+              <span>{item.icon}</span>
+              <span>{item.name}</span>
+              {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+            </a>
+          );
+        })}
       </div>
     </div>
 
     <div class="flex flex-col gap-3 pb-5 mb-5 border-b border-[#F0F0F0]">
       <h5 class="text-[13px] font-bold text-[#171717]">🎯 任务</h5>
-      <div class="flex flex-wrap gap-1.5" data-filter="task">
-        {tasks.map((item) => (
-          <button
-            data-task={item.name}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{item.icon}</span>
-            <span>{item.name}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
+      <div class="flex flex-wrap gap-1.5">
+        {tasks.map((item) => {
+          const isActive = taskArray.includes(item.name);
+          return (
+            <a
+              href={buildFilterUrl('task', item.name)}
+              class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 flex items-center gap-1 ${
+                isActive
+                  ? 'bg-[#171717] text-white border-[#171717]'
+                  : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+              }`}
+            >
+              <span>{item.icon}</span>
+              <span>{item.name}</span>
+              {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+            </a>
+          );
+        })}
       </div>
     </div>
 
     <div class="flex flex-col gap-3">
       <h5 class="text-[13px] font-bold text-[#171717]">🎭 模态</h5>
-      <div class="flex flex-wrap gap-1.5" data-filter="modality">
-        {modalities.map((item) => (
-          <button
-            data-modality={item.name}
-            class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
-          >
-            <span>{item.icon}</span>
-            <span>{item.label}</span>
-            <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-          </button>
-        ))}
+      <div class="flex flex-wrap gap-1.5">
+        {modalities.map((item) => {
+          const isActive = modalityArray.includes(item.name);
+          return (
+            <a
+              href={buildFilterUrl('modality', item.name)}
+              class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 flex items-center gap-1 ${
+                isActive
+                  ? 'bg-[#171717] text-white border-[#171717]'
+                  : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+              }`}
+            >
+              <span>{item.icon}</span>
+              <span>{item.label}</span>
+              {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+            </a>
+          );
+        })}
       </div>
     </div>
+
+    {(scenarioArray.length > 0 || taskArray.length > 0 || modalityArray.length > 0 || search) && (
+      <a href="/skills/prompts" class="text-[13px] text-[#A3A3A3] hover:text-[#171717] flex items-center gap-1 mt-5">
+        <span>✕</span>
+        <span>清除所有筛选</span>
+        {(scenarioArray.length + taskArray.length + modalityArray.length) > 0 && (
+          <span class="text-[11px] bg-[#E5E5E5] px-1.5 py-0.5 rounded">{scenarioArray.length + taskArray.length + modalityArray.length} 项</span>
+        )}
+      </a>
+    )}
   </aside>
 
   <div class="p-6">
@@ -71,72 +195,86 @@ const { scenarios, tasks, modalities } = promptFilters;
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
-        <input
-          type="text"
-          id="prompt-search"
-          placeholder="搜索提示词..."
-          class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200"
-        />
+        <form action="/skills/prompts" method="get">
+          {scenarioArray.map(s => <input type="hidden" name="scenario" value={s} />)}
+          {taskArray.map(t => <input type="hidden" name="task" value={t} />)}
+          {modalityArray.map(m => <input type="hidden" name="modality" value={m} />)}
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="搜索提示词..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+          />
+        </form>
       </div>
 
       <div class="flex-1"></div>
+
+      {(scenarioArray.length > 0 || taskArray.length > 0 || modalityArray.length > 0 || search) && (
+        <div class="flex items-center gap-2 text-[13px] text-[#525252]">
+          <span>筛选:</span>
+          {scenarioArray.map(s => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{s}</span>
+          ))}
+          {taskArray.map(t => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{t}</span>
+          ))}
+          {modalityArray.map(m => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{m}</span>
+          ))}
+          {search && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">搜索: {search}</span>}
+        </div>
+      )}
     </div>
 
-    {promptsData.length > 0 ? (
+    {prompts.length > 0 ? (
       <>
         <div id="prompt-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3">
-          {promptsData.map(s => {
-            const scenario = s.category?.scenario || '';
-            const task = s.category?.task || '';
-            const modality = s.category?.modality || '';
-            const tags = s.tags || [];
-            return (
-              <div
-                class="prompt-item"
-                data-prompt-name={s.title.toLowerCase()}
-                data-scenario={scenario.toLowerCase()}
-                data-task={task.toLowerCase()}
-                data-modality={modality.toLowerCase()}
-                data-tags={tags.join(',').toLowerCase()}
-                data-description={s.description.toLowerCase()}
-              >
-                <SkillCard {...s} modality={modality} />
-              </div>
-            );
-          })}
+          {prompts.map(p => (
+            <div
+              class="prompt-item"
+              data-prompt-name={p.title.toLowerCase()}
+              data-scenario={p.metrics.scenario.toLowerCase()}
+              data-task={p.metrics.task.toLowerCase()}
+              data-modality={p.metrics.modality.toLowerCase()}
+              data-tags={p.metrics.tags.join(',').toLowerCase()}
+              data-description={p.description.toLowerCase()}
+            >
+              <SkillCard
+                uid={p.uid}
+                title={p.title}
+                description={p.description}
+                websiteUrl={p.websiteUrl}
+                tags={p.metrics.tags}
+                icon={p.icon}
+                modality={p.metrics.modality}
+              />
+            </div>
+          ))}
         </div>
 
-        <Pagination itemTypeLabel="提示词" />
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          totalItems={total}
+          pageSize={pageSize}
+          itemTypeLabel="提示词"
+          baseUrl="/skills/prompts"
+          queryParams={queryParams}
+        />
       </>
     ) : (
       <div class="text-center py-20 bg-white rounded-2xl border border-[#E5E5E5]">
         <div class="text-6xl mb-4">📝</div>
         <h3 class="text-xl font-bold text-[#171717] mb-2">暂无提示词</h3>
-        <p class="text-[#525252]">分享你的第一个 Prompt！</p>
+        <p class="text-[#525252]">当前筛选条件下暂无提示词</p>
       </div>
     )}
   </div>
 </Layout>
 
-<style>
-  .prompt-item.v-hidden {
-    display: none !important;
-  }
-</style>
-
 <script>
-  import { initMultiFilter } from '../../lib/multiFilter';
   import { initCardClick } from '../../scripts/cardClick';
-  import { initPagination } from '../../lib/pagination';
-
-  initMultiFilter();
   initCardClick();
-  initPagination({
-    listId: 'prompt-list',
-    itemClass: 'prompt-item',
-    searchId: 'prompt-search',
-    pageSize: 30,
-    itemTypeLabel: '提示词',
-    searchAttrs: ['data-prompt-name', 'data-description', 'data-tags'],
-  });
 </script>

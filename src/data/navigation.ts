@@ -16,7 +16,7 @@ export const skillsSubNav = [
   { name: 'MCP 服务', href: '/skills/mcp', id: 'mcp' },
 ];
 
-// 侧边栏筛选数据
+// 侧边栏筛选数据（静态配置，动态数据从数据库获取）
 export const sidebarFilters = {
   products: {
     categories: [
@@ -45,20 +45,6 @@ export const sidebarFilters = {
       { name: '开源商用', path: '?pricing=opensource', icon: '🔓' },
     ],
   },
-  agents: {
-    types: [
-      { name: '编程助手', path: '?type=code', icon: '💻' },
-      { name: '设计创作', path: '?type=design', icon: '🎨' },
-      { name: '数据分析', path: '?type=data', icon: '📊' },
-      { name: '办公效率', path: '?type=office', icon: '📝' },
-    ],
-    creators: [
-      { name: 'OpenAI', path: '?creator=openai' },
-      { name: 'Anthropic', path: '?creator=anthropic' },
-      { name: 'Google', path: '?creator=google' },
-      { name: '社区', path: '?creator=community' },
-    ],
-  },
   llms: {
     sizes: [
       { name: '小型 (<10B)', path: '?size=small' },
@@ -71,76 +57,6 @@ export const sidebarFilters = {
       { name: '数学', path: '?cap=math', icon: '🔢' },
       { name: '视觉', path: '?cap=vision', icon: '👁️' },
       { name: '音频', path: '?cap=audio', icon: '🎵' },
-    ],
-  },
-  aihub: {
-    sizes: [
-      { name: '小型 (<10B)', path: '?size=small' },
-      { name: '中型 (10B-100B)', path: '?size=medium' },
-      { name: '大型 (>100B)', path: '?size=large' },
-    ],
-    capabilities: [
-      { name: '文本', path: '?cap=text', icon: '📝' },
-      { name: '代码', path: '?cap=code', icon: '💻' },
-      { name: '数学', path: '?cap=math', icon: '🔢' },
-      { name: '视觉', path: '?cap=vision', icon: '👁️' },
-      { name: '音频', path: '?cap=audio', icon: '🎵' },
-    ],
-  },
-  prompts: {
-    models: ['GPT-4 / ChatGPT', 'Claude', 'Gemini', '文心一言', '通义千问'],
-    scenes: [
-      { name: '写作', path: '?scene=writing', icon: '✍️' },
-      { name: '编程', path: '?scene=code', icon: '💻' },
-      { name: '翻译', path: '?scene=translate', icon: '🌐' },
-      { name: '设计', path: '?scene=design', icon: '🎨' },
-      { name: '营销', path: '?scene=marketing', icon: '📢' },
-      { name: '分析', path: '?scene=analysis', icon: '📊' },
-    ],
-    types: ['结构化模板', '角色设定', '工作流'],
-  },
-  tools: {
-    languages: ['Python', 'JavaScript / TypeScript', 'Java', 'Go'],
-    licenses: ['开源 (MIT/Apache)', '商业许可', '免费使用'],
-    functions: [
-      { name: '搜索', path: '?func=search', icon: '🔍' },
-      { name: '自动化', path: '?func=automation', icon: '⚡' },
-      { name: '数据', path: '?func=data', icon: '📊' },
-      { name: 'API', path: '?func=api', icon: '🔌' },
-      { name: 'UI', path: '?func=ui', icon: '🎨' },
-    ],
-  },
-  mcp: {
-    serverTypes: [
-      '数据库 (SQLite/PostgreSQL)',
-      '文件存储 (GitHub/Drive)',
-      '搜索引擎 (Google/Bing)',
-      '社交媒体 (Twitter/Slack)',
-      '云服务 (AWS/Azure)',
-    ],
-    authMethods: ['API Key', 'OAuth 2.0', '无需认证'],
-    deployments: [
-      { name: '本地', path: '?deploy=local', icon: '🖥️' },
-      { name: 'Docker', path: '?deploy=docker', icon: '🐳' },
-      { name: '云端', path: '?deploy=cloud', icon: '☁️' },
-      { name: 'NPX', path: '?deploy=npx', icon: '⚡' },
-    ],
-  },
-  news: {
-    categories: [
-      { name: '全部新闻', path: '?cat=all', icon: '📰' },
-      { name: '产品发布', path: '?cat=product', icon: '🚀' },
-      { name: '融资动态', path: '?cat=funding', icon: '💰' },
-      { name: '研究论文', path: '?cat=research', icon: '🔬' },
-      { name: '政策法规', path: '?cat=policy', icon: '📜' },
-    ],
-    timeRanges: ['不限', '24 小时内', '7 天内', '30 天内'],
-  },
-  article: {
-    types: [
-      { name: '科普', path: '?type=sciencepopu', icon: '🔬' },
-      { name: '教程', path: '?type=tutorial', icon: '📖' },
-      { name: '博文', path: '?type=blog', icon: '📝' },
     ],
   },
 };
