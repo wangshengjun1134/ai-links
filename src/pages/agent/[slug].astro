@@ -1,45 +1,52 @@
 ---
-import { getCollection } from 'astro:content';
+// 详情页使用预渲染（SSG）
+export const prerender = true;
+
 import DetailPageLayout from '../../layouts/DetailPageLayout.astro';
-import agents from '../../data/agents.json';
+import { marked } from 'marked';
+import { getAgentBySlug, getAllAgentSlugs } from '../../lib/db';
+import fs from 'fs';
+import path from 'path';
 
+// 构建时从数据库获取 slug 列表
 export async function getStaticPaths() {
-  const posts = await getCollection('agents');
-  const agentUids = new Set(agents.map(a => a.uid));
-
-  return posts
-    .filter(entry => {
-      // 嵌套路径：entry.slug 为 "20001000/20001000"，取第一部分作为 uid
-      const uid = entry.slug.split('/')[0];
-      return agentUids.has(uid);
-    })
-    .map(entry => {
-      const uid = entry.slug.split('/')[0];
-      const agent = agents.find(a => a.uid === uid);
-      // 优先使用 slug，如果没有则使用 uid
-      const urlSlug = agent?.slug && agent.slug.trim() !== '' ? agent.slug : uid;
-      return {
-        params: { slug: urlSlug },
-        props: { entry, uid },
-      };
-    });
+  const slugs = await getAllAgentSlugs();
+  return slugs.map((slug) => ({
+    params: { slug },
+  }));
 }
 
-const { entry, uid } = Astro.props;
-const { Content, headings } = await entry.render();
+const { slug } = Astro.params;
 
-const agent = agents.find(a => a.uid === uid);
+// 从数据库获取智能体信息
+const a = await getAgentBySlug(slug);
 
-if (!agent) {
+if (!a) {
   return Astro.redirect('/404');
 }
 
-// 提取 productType 信息
-const productType = agent.metrics?.productType;
-const isProductTypeObject = productType && typeof productType === 'object' && !Array.isArray(productType);
-const level1 = isProductTypeObject ? productType.level1 : null;
-const level2 = isProductTypeObject ? productType.level2 : null;
-const tags = isProductTypeObject ? productType.tags || [] : [];
+// 尝试读取 Markdown 正文内容
+let detailContent = '';
+const mdPath = path.join(process.cwd(), 'src', 'content', 'agents', a.uid, `${a.uid}.md`);
+if (fs.existsSync(mdPath)) {
+  detailContent = fs.readFileSync(mdPath, 'utf-8');
+}
+
+const agent = {
+  uid: a.uid,
+  slug: a.slug,
+  logo: a.logo,
+  aiProductName: a.aiProductName,
+  introduction: a.introduction,
+  websiteUrl: a.websiteUrl,
+  detail: detailContent || a.introduction,
+  metrics: a.metrics,
+};
+
+// 渲染 Markdown 正文为 HTML
+const contentHtml = agent.detail
+  ? await marked.parse(agent.detail)
+  : `<p>${agent.introduction}</p>`;
 ---
 
 <DetailPageLayout
@@ -52,9 +59,8 @@ const tags = isProductTypeObject ? productType.tags || [] : [];
   websiteUrl={agent.websiteUrl}
   uid={agent.uid}
   uidLabel="Agent UID"
-  level1={level1}
-  level2={level2}
-  tags={tags}
-  content={Content}
-  headings={headings}
+  level1={null}
+  level2={null}
+  tags={[]}
+  contentHtml={contentHtml}
 />

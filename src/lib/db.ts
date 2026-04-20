@@ -360,3 +360,281 @@ export function closeDb(): void {
     initPromise = null;
   }
 }
+
+// ============================================
+// Agent 智能体相关查询
+// ============================================
+
+export interface Agent {
+  uid: string;
+  slug: string;
+  logo: string;
+  aiProductName: string;
+  introduction: string;
+  websiteUrl: string;
+}
+
+export interface AgentWithMetrics extends Agent {
+  metrics: {
+    country: string;
+    company: string;
+    useType: string[];
+    modelLevel: string;
+    hasApi: boolean;
+    pricingModel: string[];
+    needVpn: boolean;
+    languages: string[];
+    isInternal: boolean;
+    category: string;
+    subCategory: string;
+    form_factor: string[];
+    capabilities: string[];
+    scenarios: string[];
+    techTags: string[];
+    deployment: string;
+    agentLevel: string;
+    interactionMode: string;
+  };
+}
+
+/**
+ * 分页查询智能体列表
+ */
+export async function getAgentsPaginated(options: {
+  page: number;
+  pageSize: number;
+  category?: string;
+  agentLevel?: string;
+  search?: string;
+}): Promise<PaginatedResult<AgentWithMetrics>> {
+  const { page, pageSize, category, agentLevel, search } = options;
+  const offset = (page - 1) * pageSize;
+
+  // 构建 WHERE 条件
+  const conditions: string[] = [];
+  const params: (string | number)[] = [];
+
+  if (category) {
+    conditions.push('m.category = ?');
+    params.push(category);
+  }
+
+  if (agentLevel) {
+    conditions.push('m.agentLevel = ?');
+    params.push(agentLevel);
+  }
+
+  if (search && search.trim()) {
+    const searchTerm = `%${search.trim()}%`;
+    conditions.push('(a.aiProductName LIKE ? OR m.company LIKE ? OR a.introduction LIKE ?)');
+    params.push(searchTerm, searchTerm, searchTerm);
+  }
+
+  const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+
+  // 查询总数
+  const countSql = `
+    SELECT COUNT(*) as total
+    FROM agents a
+    JOIN agent_metrics m ON a.uid = m.agent_uid
+    ${whereClause}
+  `;
+  const countResult = await queryOne<{ total: number }>(countSql, params);
+  const total = countResult?.total || 0;
+  const totalPages = Math.ceil(total / pageSize);
+
+  // 查询数据
+  const dataSql = `
+    SELECT
+      a.uid, a.slug, a.logo, a.aiProductName, a.introduction, a.websiteUrl,
+      m.country, m.company, m.useType, m.modelLevel, m.hasApi, m.needVpn,
+      m.pricingModel, m.languages, m.isInternal, m.category, m.subCategory,
+      m.form_factor, m.capabilities, m.scenarios, m.techTags, m.deployment,
+      m.agentLevel, m.interactionMode
+    FROM agents a
+    JOIN agent_metrics m ON a.uid = m.agent_uid
+    ${whereClause}
+    ORDER BY a.sort, a.uid
+    LIMIT ? OFFSET ?
+  `;
+  const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
+
+  // 转换数据格式
+  const items = rows.map(row => ({
+    uid: row.uid,
+    slug: row.slug,
+    logo: row.logo,
+    aiProductName: row.aiProductName,
+    introduction: row.introduction,
+    websiteUrl: row.websiteUrl,
+    metrics: {
+      country: row.country || '',
+      company: row.company || '',
+      useType: JSON.parse(row.useType || '[]'),
+      modelLevel: row.modelLevel || '',
+      hasApi: Boolean(row.hasApi),
+      pricingModel: JSON.parse(row.pricingModel || '[]'),
+      needVpn: Boolean(row.needVpn),
+      languages: JSON.parse(row.languages || '[]'),
+      isInternal: Boolean(row.isInternal),
+      category: row.category || '',
+      subCategory: row.subCategory || '',
+      form_factor: JSON.parse(row.form_factor || '[]'),
+      capabilities: JSON.parse(row.capabilities || '[]'),
+      scenarios: JSON.parse(row.scenarios || '[]'),
+      techTags: JSON.parse(row.techTags || '[]'),
+      deployment: row.deployment || '',
+      agentLevel: row.agentLevel || '',
+      interactionMode: row.interactionMode || '',
+    },
+  }));
+
+  return {
+    items,
+    total,
+    totalPages,
+    currentPage: page,
+  };
+}
+
+/**
+ * 根据 slug 获取单个智能体
+ */
+export async function getAgentBySlug(slug: string): Promise<AgentWithMetrics | null> {
+  const sql = `
+    SELECT
+      a.uid, a.slug, a.logo, a.aiProductName, a.introduction, a.websiteUrl,
+      m.country, m.company, m.useType, m.modelLevel, m.hasApi, m.needVpn,
+      m.pricingModel, m.languages, m.isInternal, m.category, m.subCategory,
+      m.form_factor, m.capabilities, m.scenarios, m.techTags, m.deployment,
+      m.agentLevel, m.interactionMode
+    FROM agents a
+    JOIN agent_metrics m ON a.uid = m.agent_uid
+    WHERE a.slug = ?
+  `;
+  const row = await queryOne<any>(sql, [slug]);
+
+  if (!row) return null;
+
+  return {
+    uid: row.uid,
+    slug: row.slug,
+    logo: row.logo,
+    aiProductName: row.aiProductName,
+    introduction: row.introduction,
+    websiteUrl: row.websiteUrl,
+    metrics: {
+      country: row.country || '',
+      company: row.company || '',
+      useType: JSON.parse(row.useType || '[]'),
+      modelLevel: row.modelLevel || '',
+      hasApi: Boolean(row.hasApi),
+      pricingModel: JSON.parse(row.pricingModel || '[]'),
+      needVpn: Boolean(row.needVpn),
+      languages: JSON.parse(row.languages || '[]'),
+      isInternal: Boolean(row.isInternal),
+      category: row.category || '',
+      subCategory: row.subCategory || '',
+      form_factor: JSON.parse(row.form_factor || '[]'),
+      capabilities: JSON.parse(row.capabilities || '[]'),
+      scenarios: JSON.parse(row.scenarios || '[]'),
+      techTags: JSON.parse(row.techTags || '[]'),
+      deployment: row.deployment || '',
+      agentLevel: row.agentLevel || '',
+      interactionMode: row.interactionMode || '',
+    },
+  };
+}
+
+/**
+ * 根据 uid 获取单个智能体
+ */
+export async function getAgentByUid(uid: string): Promise<AgentWithMetrics | null> {
+  const sql = `
+    SELECT
+      a.uid, a.slug, a.logo, a.aiProductName, a.introduction, a.websiteUrl,
+      m.country, m.company, m.useType, m.modelLevel, m.hasApi, m.needVpn,
+      m.pricingModel, m.languages, m.isInternal, m.category, m.subCategory,
+      m.form_factor, m.capabilities, m.scenarios, m.techTags, m.deployment,
+      m.agentLevel, m.interactionMode
+    FROM agents a
+    JOIN agent_metrics m ON a.uid = m.agent_uid
+    WHERE a.uid = ?
+  `;
+  const row = await queryOne<any>(sql, [uid]);
+
+  if (!row) return null;
+
+  return {
+    uid: row.uid,
+    slug: row.slug,
+    logo: row.logo,
+    aiProductName: row.aiProductName,
+    introduction: row.introduction,
+    websiteUrl: row.websiteUrl,
+    metrics: {
+      country: row.country || '',
+      company: row.company || '',
+      useType: JSON.parse(row.useType || '[]'),
+      modelLevel: row.modelLevel || '',
+      hasApi: Boolean(row.hasApi),
+      pricingModel: JSON.parse(row.pricingModel || '[]'),
+      needVpn: Boolean(row.needVpn),
+      languages: JSON.parse(row.languages || '[]'),
+      isInternal: Boolean(row.isInternal),
+      category: row.category || '',
+      subCategory: row.subCategory || '',
+      form_factor: JSON.parse(row.form_factor || '[]'),
+      capabilities: JSON.parse(row.capabilities || '[]'),
+      scenarios: JSON.parse(row.scenarios || '[]'),
+      techTags: JSON.parse(row.techTags || '[]'),
+      deployment: row.deployment || '',
+      agentLevel: row.agentLevel || '',
+      interactionMode: row.interactionMode || '',
+    },
+  };
+}
+
+/**
+ * 获取所有智能体 slug（用于 SSG 预渲染）
+ */
+export async function getAllAgentSlugs(): Promise<string[]> {
+  const rows = await queryAll<{ slug: string }>('SELECT slug FROM agents');
+  return rows.map(r => r.slug);
+}
+
+/**
+ * 获取智能体分类列表
+ */
+export async function getAgentCategories(): Promise<string[]> {
+  const sql = `
+    SELECT DISTINCT category
+    FROM agent_metrics
+    WHERE category IS NOT NULL AND category != ''
+    ORDER BY category
+  `;
+  const rows = await queryAll<{ category: string }>(sql);
+  return rows.map(r => r.category);
+}
+
+/**
+ * 获取智能体等级列表
+ */
+export async function getAgentLevels(): Promise<string[]> {
+  const sql = `
+    SELECT DISTINCT agentLevel
+    FROM agent_metrics
+    WHERE agentLevel IS NOT NULL AND agentLevel != ''
+    ORDER BY agentLevel
+  `;
+  const rows = await queryAll<{ agentLevel: string }>(sql);
+  return rows.map(r => r.agentLevel);
+}
+
+/**
+ * 获取智能体总数
+ */
+export async function getAgentsCount(): Promise<number> {
+  const result = await queryOne<{ count: number }>('SELECT COUNT(*) as count FROM agents');
+  return result?.count || 0;
+}

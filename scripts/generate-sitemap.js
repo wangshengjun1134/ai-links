@@ -43,9 +43,18 @@ function generateProductPages() {
   return rows.map(r => ({ path: `/product/${r.slug}`, priority: 0.7, changefreq: 'weekly' }));
 }
 
+// 从数据库生成智能体详情页
 function generateAgentPages() {
-  const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/agents.json'), 'utf-8'));
-  return data.map(a => ({ path: `/agent/${a.slug}`, priority: 0.7, changefreq: 'weekly' }));
+  const dbPath = path.join(rootDir, 'data', 'app.db');
+  if (!fs.existsSync(dbPath)) {
+    console.error('数据库不存在:', dbPath);
+    return [];
+  }
+
+  const db = new Database(dbPath);
+  const rows = db.prepare('SELECT slug FROM agents').all();
+  db.close();
+  return rows.map(r => ({ path: `/agent/${r.slug}`, priority: 0.7, changefreq: 'weekly' }));
 }
 
 function generatePromptPages() {

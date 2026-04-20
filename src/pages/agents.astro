@@ -1,49 +1,153 @@
 ---
+// 列表页使用 SSR（server 模式下默认行为）
 import Layout from '../layouts/Layout.astro';
 import AgentCard from '../components/AgentCard.astro';
 import Pagination from '../components/Pagination.astro';
-import agents from '../data/agents.json';
+import { getAgentsPaginated, getAgentCategories, getAgentLevels, getAgentsCount } from '../lib/db';
 import { agentFilters } from '../data/filters';
 
-// 从数据中提取唯一的分类值
-const getUniqueValues = (key: string): string[] => {
-  const values = new Set<string>();
-  agents.forEach(a => {
-    const value = a.metrics?.[key];
-    if (Array.isArray(value)) {
-      value.forEach(v => values.add(v));
-    } else if (value) {
-      values.add(String(value));
+// 解析 URL 参数
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const pageSize = 20;
+const category = Astro.url.searchParams.get('category') || '';
+const agentLevel = Astro.url.searchParams.get('agentLevel') || '';
+const search = Astro.url.searchParams.get('search') || '';
+
+// 数据库查询
+const result = await getAgentsPaginated({
+  page,
+  pageSize,
+  category: category || undefined,
+  agentLevel: agentLevel || undefined,
+  search: search || undefined,
+});
+
+const agents = result.items;
+const total = result.total;
+const totalPages = result.totalPages;
+
+// 获取分类列表
+const categories = await getAgentCategories();
+const agentLevels = await getAgentLevels();
+
+// 计算总数
+const totalCount = await getAgentsCount();
+
+// 动态 SEO 标题和描述
+let pageTitle = 'AI 智能体 Agent 大全 - AI Links';
+let pageDescription = `探索 ${totalCount}+ AI 智能体和自动化助手，按分类和等级筛选，包含详细配置教程和使用指南`;
+
+if (search) {
+  pageTitle = `搜索"${search}"的AI智能体 - AI Links`;
+  pageDescription = `找到 ${total} 个与"${search}"相关的AI智能体，包含详细介绍和使用指南`;
+} else if (category) {
+  pageTitle = `${category}类AI智能体 - AI Links`;
+  pageDescription = `探索${category}分类下的AI智能体，包含详细介绍和使用指南`;
+} else if (agentLevel) {
+  pageTitle = `${agentLevel.replace('_', '·')}级AI智能体 - AI Links`;
+  pageDescription = `探索${agentLevel.replace('_', '·')}等级的AI智能体，包含详细介绍和使用指南`;
+}
+
+if (page > 1) {
+  pageTitle += ` - 第${page}页`;
+}
+
+// 构建筛选 URL
+const buildFilterUrl = (filterType: string, value: string) => {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+
+  // 根据 filterType 设置对应参数
+  if (filterType === 'category') {
+    if (category === value) {
+      // 取消选中
+      if (agentLevel) params.set('agentLevel', agentLevel);
+    } else {
+      // 新增选中
+      params.set('category', value);
+      if (agentLevel) params.set('agentLevel', agentLevel);
     }
-  });
-  return Array.from(values).sort();
+  } else if (filterType === 'agentLevel') {
+    if (agentLevel === value) {
+      // 取消选中
+      if (category) params.set('category', category);
+    } else {
+      // 新增选中
+      params.set('agentLevel', value);
+      if (category) params.set('category', category);
+    }
+  }
+
+  const queryString = params.toString();
+  return queryString ? `/agents?${queryString}` : '/agents';
 };
 
-const categories = getUniqueValues('category');
-const agentLevels = getUniqueValues('agentLevel');
+// 构建分页 URL
+const buildPageUrl = (targetPage: number) => {
+  const params = new URLSearchParams();
+  if (category) params.set('category', category);
+  if (agentLevel) params.set('agentLevel', agentLevel);
+  if (search) params.set('search', search);
+  if (targetPage > 1) {
+    params.set('page', targetPage.toString());
+  }
+  const queryString = params.toString();
+  return queryString ? `/agents?${queryString}` : '/agents';
+};
+
+// 构建规范化 URL
+const buildCanonicalUrl = () => {
+  const params = new URLSearchParams();
+  if (category) params.set('category', category);
+  if (agentLevel) params.set('agentLevel', agentLevel);
+  if (search) params.set('search', search);
+  if (page > 1) {
+    params.set('page', page.toString());
+  }
+  const queryString = params.toString();
+  return queryString ? `/agents?${queryString}` : '/agents';
+};
+
+// 查询参数
+const queryParams: Record<string, string | string[]> = {};
+if (category) queryParams.category = category;
+if (agentLevel) queryParams.agentLevel = agentLevel;
+if (search) queryParams.search = search;
 ---
 
-<Layout 
-  title="AI 智能体 Agent 大全 - AI Links"
-  description="发现自动化 AI 智能体，支持任务执行、工作流自动化，包含详细配置教程和使用指南"
-  keywords={["AI 智能体", "Agent", "自动化", "AI 助手", "工作流自动化", "AI 任务执行"]}
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={["AI 智能体", "Agent", "自动化", "AI 助手", "工作流自动化", category, agentLevel?.replace('_', '·')].filter(Boolean) as string[]}
 >
+  <!-- SEO 链接标记 -->
+  <slot slot="head">
+    {page > 1 && <link rel="prev" href={buildPageUrl(page - 1)} />}
+    {page < totalPages && <link rel="next" href={buildPageUrl(page + 1)} />}
+    <link rel="canonical" href={buildCanonicalUrl()} />
+  </slot>
+
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <div class="flex flex-col gap-5 mb-7">
       <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0]">
         <h5 class="text-[13px] font-bold text-[#171717]">📁 智能体分类</h5>
-        <div class="flex flex-wrap gap-1.5" data-filter="category">
-          {categories.map((category) => {
-            const emoji = agentFilters.categoryEmojis[category] || '';
+        <div class="flex flex-wrap gap-1.5">
+          {categories.map((cat) => {
+            const emoji = agentFilters.categoryEmojis[cat] || '';
+            const isActive = category === cat;
             return (
-              <button
-                data-category={category}
-                class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+              <a
+                href={buildFilterUrl('category', cat)}
+                class={`border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 flex items-center gap-1 ${
+                  isActive
+                    ? 'bg-[#171717] text-white border-[#171717]'
+                    : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+                }`}
               >
-                {emoji && <span class="mr-0.5">{emoji}</span>}
-                <span>{category}</span>
-                <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-              </button>
+                {emoji && <span>{emoji}</span>}
+                <span>{cat}</span>
+                {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+              </a>
             );
           })}
         </div>
@@ -51,23 +155,35 @@ const agentLevels = getUniqueValues('agentLevel');
 
       <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0]">
         <h5 class="text-[13px] font-bold text-[#171717]">📊 智能体等级</h5>
-        <div class="flex flex-wrap gap-1.5" data-filter="agentLevel">
+        <div class="flex flex-wrap gap-1.5">
           {agentLevels.map((level) => {
             const emoji = agentFilters.agentLevelEmojis[level] || '';
+            const isActive = agentLevel === level;
             return (
-              <button
-                data-agentLevel={level.toLowerCase()}
-                class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+              <a
+                href={buildFilterUrl('agentLevel', level)}
+                class={`border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 flex items-center gap-1 ${
+                  isActive
+                    ? 'bg-[#171717] text-white border-[#171717]'
+                    : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+                }`}
               >
-                {emoji && <span class="mr-0.5">{emoji}</span>}
+                {emoji && <span>{emoji}</span>}
                 <span>{level.replace('_', '·')}</span>
-                <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-              </button>
+                {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+              </a>
             );
           })}
         </div>
       </div>
     </div>
+
+    {(category || agentLevel || search) && (
+      <a href="/agents" class="text-[13px] text-[#A3A3A3] hover:text-[#171717] flex items-center gap-1">
+        <span>✕</span>
+        <span>清除所有筛选</span>
+      </a>
+    )}
   </aside>
 
   <div class="p-6">
@@ -75,56 +191,84 @@ const agentLevels = getUniqueValues('agentLevel');
       <h2 class="text-2xl font-bold text-[#171717]">智能体 Agent</h2>
 
       <div class="relative w-full max-w-md">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
-        <input type="text" id="agent-search" placeholder="按名称过滤智能体..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#A3A3A3]">🔍</span>
+        <form action="/agents" method="get">
+          {category && <input type="hidden" name="category" value={category} />}
+          {agentLevel && <input type="hidden" name="agentLevel" value={agentLevel} />}
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="按名称过滤智能体..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+          />
+        </form>
       </div>
 
       <div class="flex-1"></div>
+
+      {(category || agentLevel || search) && (
+        <div class="flex items-center gap-2 text-[13px] text-[#525252]">
+          <span>筛选:</span>
+          {category && <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{category}</span>}
+          {agentLevel && <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{agentLevel.replace('_', '·')}</span>}
+          {search && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">搜索: {search}</span>}
+        </div>
+      )}
     </div>
 
-    <div id="agent-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
-      {agents.map(a => {
-        const category = a.metrics.category || '';
-        const agentLevel = a.metrics.agentLevel || '';
-
-        return (
-          <div
-            class="agent-item"
-            data-agent-name={a.aiProductName.toLowerCase()}
-            data-company={a.metrics.company?.toLowerCase() || ''}
-            data-category={category.toLowerCase()}
-            data-agentLevel={agentLevel.toLowerCase()}
-            data-introduction={a.introduction.toLowerCase()}
-          >
-            <AgentCard {...a} />
-          </div>
-        );
-      })}
+    <div id="agent-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-3">
+      {agents.map((a) => (
+        <div
+          class="agent-item"
+          data-agent-name={a.aiProductName.toLowerCase()}
+          data-company={a.metrics.company?.toLowerCase() || ''}
+          data-category={a.metrics.category.toLowerCase()}
+          data-agentLevel={a.metrics.agentLevel.toLowerCase()}
+          data-introduction={a.introduction.toLowerCase()}
+        >
+          <AgentCard
+            uid={a.uid}
+            slug={a.slug}
+            logo={a.logo}
+            aiProductName={a.aiProductName}
+            introduction={a.introduction}
+            websiteUrl={a.websiteUrl}
+            metrics={a.metrics}
+          />
+        </div>
+      ))}
     </div>
 
-    <Pagination itemTypeLabel="智能体" />
+    {agents.length === 0 && (
+      <div class="text-center py-12 text-[#525252]">
+        <p class="text-lg">未找到匹配的智能体</p>
+        <p class="text-[13px] mt-2">
+          <a href="/agents" class="text-[#171717] hover:underline">查看全部智能体</a>
+        </p>
+      </div>
+    )}
+
+    <Pagination
+      currentPage={page}
+      totalPages={totalPages}
+      totalItems={total}
+      pageSize={pageSize}
+      itemTypeLabel="智能体"
+      baseUrl="/agents"
+      queryParams={queryParams}
+    />
   </div>
 </Layout>
 
-<style>
-  .agent-item.v-hidden {
-    display: none !important;
-  }
-</style>
-
 <script>
-  import { initMultiFilter } from '../lib/multiFilter';
   import { initCardClick } from '../scripts/cardClick';
-  import { initPagination } from '../lib/pagination';
+  import { initPartialRefresh } from '../lib/partialRefresh';
 
-  initMultiFilter();
   initCardClick();
-  initPagination({
+  initPartialRefresh({
     listId: 'agent-list',
-    itemClass: 'agent-item',
-    searchId: 'agent-search',
-    pageSize: 30,
-    itemTypeLabel: '智能体',
-    searchAttrs: ['data-agent-name', 'data-company', 'data-introduction'],
+    paginationId: 'pagination',
+    transitionDuration: 200
   });
 </script>
