@@ -4,8 +4,6 @@ dist/
 # generated types
 .astro/
 
-# generated content
-src/content/products/*.md
 
 # dependencies
 node_modules/
