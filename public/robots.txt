@@ -1,25 +1,44 @@
-# AI Links Robots.txt
-# 允许所有主流搜索引擎抓取
+# robots.txt for AI Links
+# https://ai-links.cn
 
 User-agent: *
-Allow: /
 
-# Sitemap 位置
+# 允许列表页首页和分页
+Allow: /products
+Allow: /products?page=
+
+# 允许所有详情页
+Allow: /product/
+
+# 允许其他版块
+Allow: /agents
+Allow: /agent/
+Allow: /skills/
+Allow: /aihub
+Allow: /article
+Allow: /article/
+Allow: /news
+
+# 允许筛选参数（但限制深度）
+Allow: /products?level1=
+Allow: /products?level2=
+
+# 禁止搜索结果页（避免低质量索引）
+Disallow: /products?search=
+
+# 禁止私有目录
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
 Sitemap: https://ai-links.cn/sitemap.xml
 
-# 爬取延迟（可选，避免服务器过载）
+# 百度爬虫特殊配置
+User-agent: baiduspider
+Allow: /
 Crawl-delay: 1
 
-# 允许抓取所有资源
-Allow: /*.js
-Allow: /*.css
-Allow: /*.png
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.webp
-Allow: /*.svg
-
-# 不允许抓取的目录（如果有）
-# Disallow: /admin/
-# Disallow: /api/
-# Disallow: /private/
+# Google 爬虫特殊配置
+User-agent: googlebot
+Allow: /
+Crawl-delay: 0

@@ -1,11 +1,13 @@
 /**
  * 生成 sitemap.xml
  * 自动扫描所有页面并生成搜索引擎友好的站点地图
+ * 支持：静态页面 + 动态详情页（从数据库获取）
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Database from 'better-sqlite3';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,44 +15,53 @@ const rootDir = path.resolve(__dirname, '..');
 
 const siteUrl = 'https://ai-links.cn';
 
-// 静态页面路由
+// 静态页面路由（列表页首页）
 const staticPages = [
-  '',
-  '/products',
-  '/agents',
-  '/skills/prompts',
-  '/skills/mcp',
-  '/skills/tools',
-  '/aihub',
-  '/article',
-  '/news',
+  { path: '', priority: 1.0, changefreq: 'daily' },
+  { path: '/products', priority: 0.9, changefreq: 'daily' },
+  { path: '/agents', priority: 0.9, changefreq: 'daily' },
+  { path: '/skills', priority: 0.8, changefreq: 'weekly' },
+  { path: '/skills/prompts', priority: 0.8, changefreq: 'weekly' },
+  { path: '/skills/mcp', priority: 0.8, changefreq: 'weekly' },
+  { path: '/skills/tools', priority: 0.8, changefreq: 'weekly' },
+  { path: '/aihub', priority: 0.7, changefreq: 'weekly' },
+  { path: '/article', priority: 0.7, changefreq: 'weekly' },
+  { path: '/news', priority: 0.8, changefreq: 'daily' },
 ];
 
-// 从 JSON 数据文件生成动态页面
+// 从数据库生成产品详情页
 function generateProductPages() {
-  const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/products.json'), 'utf-8'));
-  return data.map(p => `/product/${p.uid}`);
+  const dbPath = path.join(rootDir, 'data', 'app.db');
+  if (!fs.existsSync(dbPath)) {
+    console.error('数据库不存在:', dbPath);
+    return [];
+  }
+
+  const db = new Database(dbPath);
+  const rows = db.prepare('SELECT slug FROM products').all();
+  db.close();
+  return rows.map(r => ({ path: `/product/${r.slug}`, priority: 0.7, changefreq: 'weekly' }));
 }
 
 function generateAgentPages() {
   const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/agents.json'), 'utf-8'));
-  return data.map(a => `/agent/${a.uid}`);
+  return data.map(a => ({ path: `/agent/${a.slug}`, priority: 0.7, changefreq: 'weekly' }));
 }
 
 function generatePromptPages() {
   const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/prompts.json'), 'utf-8'));
-  return data.map(p => `/skills/prompts/${p.uid}`);
+  return data.map(p => ({ path: `/skills/prompts/${p.slug}`, priority: 0.6, changefreq: 'weekly' }));
 }
 
 function generateMcpPages() {
   const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/mcp.json'), 'utf-8'));
-  return data.map(m => `/skills/mcps/${m.uid}`);
+  return data.map(m => ({ path: `/skills/mcps/${m.slug}`, priority: 0.6, changefreq: 'weekly' }));
 }
 
 function generateArticlePages() {
   const articles = [];
   const contentDir = path.join(rootDir, 'src/content/article');
-  
+
   if (fs.existsSync(contentDir)) {
     const categories = fs.readdirSync(contentDir);
     categories.forEach(cat => {
@@ -59,19 +70,19 @@ function generateArticlePages() {
         const files = fs.readdirSync(catPath);
         files.forEach(file => {
           if (file.endsWith('.md')) {
-            articles.push(`/article/${cat}/${file.replace('.md', '')}`);
+            articles.push({ path: `/article/${cat}/${file.replace('.md', '')}`, priority: 0.6, changefreq: 'monthly' });
           }
         });
       }
     });
   }
-  
+
   return articles;
 }
 
 function generateNewsPages() {
   const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/news.json'), 'utf-8'));
-  return data.map(n => `/news/${n.id}`);
+  return data.map(n => ({ path: `/news/${n.id || n.uid}`, priority: 0.5, changefreq: 'daily' }));
 }
 
 // 生成 sitemap
@@ -96,15 +107,12 @@ function generateSitemap() {
 `;
 
   allPages.forEach(page => {
-    const url = `${siteUrl}${page}`;
-    const priority = page === '' ? 1.0 : page.startsWith('/product') || page.startsWith('/agent') ? 0.8 : 0.7;
-    const changefreq = page === '' ? 'daily' : page.startsWith('/news') ? 'daily' : 'weekly';
-    
+    const url = `${siteUrl}${page.path}`;
     xml += `  <url>
     <loc>${url}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority.toFixed(1)}</priority>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority.toFixed(1)}</priority>
   </url>
 `;
   });
@@ -114,7 +122,7 @@ function generateSitemap() {
 
   const outputPath = path.join(rootDir, 'public', 'sitemap.xml');
   fs.writeFileSync(outputPath, xml, 'utf-8');
-  
+
   console.log(`✅ Sitemap generated: ${allPages.length} pages`);
   console.log(`📍 Output: ${outputPath}`);
 }

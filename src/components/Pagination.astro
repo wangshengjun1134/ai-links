@@ -1,25 +1,182 @@
 ---
 /**
- * 分页组件 - 用于列表页的分页显示
+ * 服务端分页组件 - SEO友好的分页链接
+ * 支持：上一页/下一页、页码范围、首页/末页跳转
  */
 interface Props {
-  /** 项目类型标签，如 '产品'、'智能体' */
-  itemTypeLabel?: string;
+  /** 当前页码 */
+  currentPage: number;
+  /** 总页数 */
+  totalPages: number;
+  /** 总项目数 */
+  totalItems: number;
+  /** 每页数量 */
+  pageSize: number;
+  /** 项目类型标签（如 '产品'、'智能体'） */
+  itemTypeLabel: string;
+  /** 基础 URL（如 '/products'） */
+  baseUrl: string;
+  /** 查询参数（保留筛选条件，支持数组参数） */
+  queryParams?: Record<string, string | string[]>;
 }
 
-const { itemTypeLabel = '项目' } = Astro.props;
+const {
+  currentPage,
+  totalPages,
+  totalItems,
+  pageSize,
+  itemTypeLabel,
+  baseUrl,
+  queryParams = {},
+} = Astro.props;
+
+// 构建分页 URL（支持数组参数）
+const buildPageUrl = (targetPage: number) => {
+  const params = new URLSearchParams();
+  // 遍历查询参数，支持字符串和数组
+  Object.entries(queryParams).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      value.forEach(v => params.append(key, v));
+    } else {
+      params.set(key, value);
+    }
+  });
+  // 只有非首页才添加 page 参数
+  if (targetPage > 1) {
+    params.set('page', targetPage.toString());
+  }
+  const queryString = params.toString();
+  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+};
+
+// 是否显示分页
+const showPagination = totalPages > 1;
+
+// 计算显示的页码范围
+const getPageRange = () => {
+  const rangeSize = 5; // 显示5个页码
+  const halfRange = Math.floor(rangeSize / 2);
+  
+  let start = currentPage - halfRange;
+  let end = currentPage + halfRange;
+  
+  // 边界调整
+  if (start < 1) {
+    start = 1;
+    end = Math.min(rangeSize, totalPages);
+  }
+  if (end > totalPages) {
+    end = totalPages;
+    start = Math.max(1, totalPages - rangeSize + 1);
+  }
+  
+  return { start, end };
+};
+
+const pageRange = getPageRange();
 ---
 
-<div id="pagination" class="mt-12 flex items-center justify-center gap-4">
-  <button id="prev-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-    </svg>
-  </button>
-  <div id="page-info" class="text-[13px] font-medium text-[#525252]"></div>
-  <button id="next-btn" class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-    </svg>
-  </button>
-</div>
+{showPagination && (
+  <nav id="pagination" class="mt-12 flex flex-col items-center gap-4" aria-label="分页导航">
+    <!-- 页码信息 -->
+    <div class="text-[13px] text-[#525252]">
+      第 {currentPage} / {totalPages} 页 · 共 {totalItems} 个{itemTypeLabel}
+    </div>
+    
+    <!-- 分页控制 -->
+    <div class="flex items-center gap-2">
+      <!-- 首页 -->
+      {currentPage > 2 && (
+        <a
+          href={buildPageUrl(1)}
+          class="px-3 py-2 rounded-lg border border-[#E5E5E5] bg-white text-[12px] text-[#525252] hover:border-[#171717] hover:text-[#171717] transition-all"
+          aria-label="首页"
+        >
+          首页
+        </a>
+      )}
+      
+      <!-- 上一页 -->
+      {currentPage > 1 ? (
+        <a
+          href={buildPageUrl(currentPage - 1)}
+          class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm transition-all"
+          aria-label="上一页"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </a>
+      ) : (
+        <span class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white opacity-30 cursor-not-allowed">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </span>
+      )}
+      
+      <!-- 页码范围 -->
+      <div class="flex items-center gap-1">
+        {pageRange.start > 1 && (
+          <span class="px-2 text-[#A3A3A3]">...</span>
+        )}
+        
+        {Array.from({ length: pageRange.end - pageRange.start + 1 }, (_, i) => pageRange.start + i).map((pageNum) => (
+          <a
+            href={buildPageUrl(pageNum)}
+            class={`px-3.5 py-2 rounded-lg text-[13px] font-medium transition-all ${
+              pageNum === currentPage
+                ? 'bg-[#171717] text-white'
+                : 'border border-[#E5E5E5] bg-white text-[#525252] hover:border-[#171717] hover:text-[#171717]'
+            }`}
+            aria-label={`第${pageNum}页`}
+            aria-current={pageNum === currentPage ? 'page' : undefined}
+          >
+            {pageNum}
+          </a>
+        ))}
+        
+        {pageRange.end < totalPages && (
+          <span class="px-2 text-[#A3A3A3]">...</span>
+        )}
+      </div>
+      
+      <!-- 下一页 -->
+      {currentPage < totalPages ? (
+        <a
+          href={buildPageUrl(currentPage + 1)}
+          class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white hover:border-[#171717] hover:text-[#171717] hover:shadow-sm transition-all"
+          aria-label="下一页"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      ) : (
+        <span class="p-2.5 rounded-xl border border-[#E5E5E5] bg-white opacity-30 cursor-not-allowed">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </span>
+      )}
+      
+      <!-- 末页 -->
+      {currentPage < totalPages - 1 && (
+        <a
+          href={buildPageUrl(totalPages)}
+          class="px-3 py-2 rounded-lg border border-[#E5E5E5] bg-white text-[12px] text-[#525252] hover:border-[#171717] hover:text-[#171717] transition-all"
+          aria-label="末页"
+        >
+          末页
+        </a>
+      )}
+    </div>
+  </nav>
+)}
+
+<!-- 只有一页时显示统计信息 -->
+{!showPagination && totalItems > 0 && (
+  <div class="mt-12 text-center text-[13px] text-[#525252]">
+    共 {totalItems} 个{itemTypeLabel}
+  </div>
+)}

@@ -2,6 +2,9 @@
 /**
  * 详情页通用布局组件
  * 用于产品详情页和智能体详情页，避免重复代码
+ * 支持两种内容输入方式：
+ * 1. Astro Content 组件（用于 Content Collections）
+ * 2. contentHtml 字符串（用于数据库内容）
  */
 interface Props {
   title: string;
@@ -16,8 +19,10 @@ interface Props {
   level1?: string | null;
   level2?: string | null;
   tags?: string[];
-  content: any; // Astro Content
-  headings: any[]; // Markdown 标题列表
+  // 内容：支持两种方式
+  content?: any; // Astro Content 组件（可选）
+  contentHtml?: string; // HTML 字符串（可选）
+  headings?: any[]; // Markdown 标题列表（可选）
   // SEO 相关
   description?: string;
   image?: string;
@@ -41,7 +46,8 @@ const {
   level2,
   tags = [],
   content: Content,
-  headings,
+  contentHtml,
+  headings = [],
   description = introduction,
   image = logo.startsWith('/') ? logo : `/${logo}`,
   publishedTime,
@@ -144,8 +150,8 @@ const seoKeywords = [productName, company, introduction?.substring(0, 50), 'AI �
         </header>
 
         <!-- 详情内容 -->
-        <div id="custom-article-content">
-          <Content />
+        <div id="custom-article-content" set:html={contentHtml || ''}>
+          {Content && <Content />}
         </div>
 
         <!-- 底部信息 -->
@@ -170,18 +176,20 @@ const seoKeywords = [productName, company, introduction?.substring(0, 50), 'AI �
       </div>
     </article>
 
-    <!-- 右侧导航 -->
-    <aside class="w-[320px] shrink-0 border-l border-slate-50 hidden xl:block">
-      <div class="sticky top-0 h-screen p-10 overflow-y-auto custom-scrollbar">
-        <nav class="space-y-1">
-          {headings.filter(h => h.depth >= 2).map((h) => (
-            <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}>
-              <span class="truncate">{h.text}</span>
-            </a>
-          ))}
-        </nav>
-      </div>
-    </aside>
+    <!-- 右侧导航（仅当有 headings 时显示） -->
+    {headings.length > 0 && (
+      <aside class="w-[320px] shrink-0 border-l border-slate-50 hidden xl:block">
+        <div class="sticky top-0 h-screen p-10 overflow-y-auto custom-scrollbar">
+          <nav class="space-y-1">
+            {headings.filter(h => h.depth >= 2).map((h) => (
+              <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}>
+                <span class="truncate">{h.text}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </aside>
+    )}
   </div>
 </Layout>
 

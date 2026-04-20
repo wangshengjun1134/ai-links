@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import products from '../data/products.json';
+import { getProductsCount } from '../lib/db';
 import agents from '../data/agents.json';
 import prompts from '../data/prompts.json';
 import mcp from '../data/mcp.json';
 import tools from '../data/tools.json';
 
-// 统计数量
-const productCount = products.length;
+// 统计数量（产品从数据库获取，其他从 JSON）
+const productCount = await getProductsCount();
 const agentCount = agents.length;
 const promptCount = prompts.length;
 const mcpCount = mcp.length;

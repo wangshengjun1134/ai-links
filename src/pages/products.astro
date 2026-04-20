@@ -1,65 +1,167 @@
 ---
+// 列表页使用 SSR（server 模式下默认行为）
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Pagination from '../components/Pagination.astro';
-import products from '../data/products.json';
+import { getProductsPaginated, getProductFilters, getProductsCount } from '../lib/db';
 import { productFilters } from '../data/filters';
 
-// 从数据中提取所有 level1 -> level2 的层级结构
-interface ProductTypeHierarchy {
-  [level1: string]: Set<string>;
-}
+// 解析 URL 参数
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const pageSize = 20;  // 每页 20 条，符合建议
+const level1 = Astro.url.searchParams.get('level1') || '';
+// 支持多选 level2（数组参数，如 level2=写作类&level2=视频类）
+const level2Array = Astro.url.searchParams.getAll('level2').filter(Boolean);
+const search = Astro.url.searchParams.get('search') || '';
 
-const typeHierarchy: ProductTypeHierarchy = {};
-
-products.forEach(p => {
-  const pt = p.metrics?.productType;
-  if (pt && typeof pt === 'object' && !Array.isArray(pt)) {
-    const level1 = pt.level1;
-    const level2 = pt.level2;
-    if (level1 && level2) {
-      if (!typeHierarchy[level1]) {
-        typeHierarchy[level1] = new Set<string>();
-      }
-      typeHierarchy[level1].add(level2);
-    }
-  }
+// 数据库查询 - 分页获取产品 (异步)
+const result = await getProductsPaginated({
+  page,
+  pageSize,
+  level1: level1 || undefined,
+  level2: level2Array.length > 0 ? level2Array : undefined,
+  search: search || undefined,
 });
 
-const hierarchyData = Object.entries(typeHierarchy).map(([level1, level2Set]) => ({
-  level1,
-  level2s: Array.from(level2Set).sort()
-}));
+const products = result.items;
+const total = result.total;
+const totalPages = result.totalPages;
+
+// 获取筛选层级结构 (异步)
+const hierarchyData = await getProductFilters();
+
+// 计算总数 (异步)
+const totalCount = await getProductsCount();
+
+// 动态 SEO 标题和描述
+let pageTitle = 'AI 产品大全 - AI Links';
+let pageDescription = `探索 ${totalCount}+ AI 产品和工具，按功能分类，包含产品详情、评分和用户评价，帮你找到最适合的 AI 工具`;
+
+if (search) {
+  pageTitle = `搜索"${search}"的AI产品 - AI Links`;
+  pageDescription = `找到 ${total} 个与"${search}"相关的AI产品，包含详细介绍和使用指南`;
+} else if (level2Array.length > 0) {
+  const level2Text = level2Array.join('、');
+  pageTitle = `${level2Text}类AI产品 - ${total}款精选 - AI Links`;
+  pageDescription = `精选 ${total} 款${level2Text}类AI产品，包含详细介绍、功能对比和使用指南，帮你快速找到合适的工具`;
+} else if (level1) {
+  pageTitle = `${level1}类AI产品大全 - AI Links`;
+  pageDescription = `探索${level1}分类下的AI产品和工具，按子类别细分，帮你找到最适合的解决方案`;
+}
+
+if (page > 1) {
+  pageTitle += ` - 第${page}页`;
+}
+
+// 构建筛选 URL（支持多选切换，使用数组参数格式）
+const buildFilterUrl = (clickedLevel2: string) => {
+  const params = new URLSearchParams();
+  if (level1) params.set('level1', level1);
+  if (search) params.set('search', search);
+
+  // 判断是选中还是取消
+  const isSelected = level2Array.includes(clickedLevel2);
+  let newLevel2Array: string[];
+
+  if (isSelected) {
+    // 取消选中：移除该项
+    newLevel2Array = level2Array.filter(l2 => l2 !== clickedLevel2);
+  } else {
+    // 新增选中：添加该项
+    newLevel2Array = [...level2Array, clickedLevel2];
+  }
+
+  // 设置新的 level2 参数（数组参数格式：level2=写作类&level2=视频类）
+  newLevel2Array.forEach(l2 => params.append('level2', l2));
+
+  const queryString = params.toString();
+  return queryString ? `/products?${queryString}` : '/products';
+};
+
+// 构建分页 URL（用于 prev/next 链接，保持数组参数格式）
+const buildPageUrl = (targetPage: number) => {
+  const params = new URLSearchParams();
+  if (level1) params.set('level1', level1);
+  level2Array.forEach(l2 => params.append('level2', l2));
+  if (search) params.set('search', search);
+  // 只有非首页才添加 page 参数
+  if (targetPage > 1) {
+    params.set('page', targetPage.toString());
+  }
+  const queryString = params.toString();
+  return queryString ? `/products?${queryString}` : '/products';
+};
+
+// 构建规范化的 canonical URL（SEO 重要，保持数组参数格式）
+const buildCanonicalUrl = () => {
+  const params = new URLSearchParams();
+  if (level1) params.set('level1', level1);
+  level2Array.forEach(l2 => params.append('level2', l2));
+  if (search) params.set('search', search);
+  if (page > 1) {
+    params.set('page', page.toString());
+  }
+  const queryString = params.toString();
+  return queryString ? `/products?${queryString}` : '/products';
+};
+
+// 用于 Pagination 组件的查询参数
+const queryParams: Record<string, string | string[]> = {};
+if (level1) queryParams.level1 = level1;
+if (level2Array.length > 0) queryParams.level2 = level2Array;
+if (search) queryParams.search = search;
 ---
 
-<Layout 
-  title="AI 产品大全 - AI Links"
-  description="探索 1000+ AI 产品和工具，按功能分类，包含产品详情、评分和用户评价，帮你找到最适合的 AI 工具"
-  keywords={["AI 产品", "AI 工具", "人工智能工具", "AI 应用", "SaaS", "AI 软件", "大模型应用"]}
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={["AI 产品", "AI 工具", "人工智能工具", "AI 应用", "SaaS", "AI 软件", level1, ...level2Array].filter(Boolean) as string[]}
 >
+  <!-- SEO 链接标记（重要：帮助搜索引擎理解分页结构） -->
+  <slot slot="head">
+    {page > 1 && <link rel="prev" href={buildPageUrl(page - 1)} />}
+    {page < totalPages && <link rel="next" href={buildPageUrl(page + 1)} />}
+    <link rel="canonical" href={buildCanonicalUrl()} />
+  </slot>
+
   <aside slot="sidebar" class="w-80 shrink-0 border-r border-[#E5E5E5] h-[calc(100vh-var(--sidebar-top-single))] sticky top-[var(--sidebar-top-single)] p-6 transition-all duration-200 bg-white/50 backdrop-blur-sm rounded-2xl overflow-y-auto">
     <div class="flex flex-col gap-5 mb-7">
       {hierarchyData.map((group) => (
         <div class="flex flex-col gap-3 pb-4 border-b border-[#F0F0F0] last:border-0">
           <h5 class="text-[13px] font-bold text-[#171717]">{group.level1}</h5>
-          <div class="flex flex-wrap gap-1.5" data-filter="task">
-            {group.level2s.map((level2) => {
-              const emoji = productFilters.level2Emoji[level2] || '';
+          <div class="flex flex-wrap gap-1.5">
+            {group.level2s.map((l2) => {
+              const emoji = productFilters.level2Emoji[l2] || '';
+              const isActive = level2Array.includes(l2);  // 多选判断
               return (
-                <button
-                  data-task={level2}
-                  class="filter-btn bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg text-[12.5px] text-[#525252] font-medium transition-all duration-200 cursor-pointer flex items-center gap-1 hover:border-[#171717] hover:text-[#171717] hover:shadow-sm active:scale-95"
+                <a
+                  href={buildFilterUrl(l2)}  // 使用新的筛选 URL 函数
+                  class={`filter-btn border px-2.5 py-1.5 rounded-lg text-[12.5px] font-medium transition-all duration-200 flex items-center gap-1 ${
+                    isActive
+                      ? 'bg-[#171717] text-white border-[#171717]'
+                      : 'bg-white border-[#E5E5E5] text-[#525252] hover:border-[#171717] hover:text-[#171717] hover:shadow-sm'
+                  }`}
                 >
-                  {emoji && <span class="mr-0.5">{emoji}</span>}
-                  <span>{level2}</span>
-                  <span class="close-icon hidden ml-1 text-[#A3A3A3] hover:text-[#171717]">×</span>
-                </button>
+                  {emoji && <span>{emoji}</span>}
+                  <span>{l2}</span>
+                  {isActive && <span class="ml-0.5 text-[10px]">✓</span>}
+                </a>
               );
             })}
           </div>
         </div>
       ))}
     </div>
+
+    {(level1 || level2Array.length > 0 || search) && (
+      <a href="/products" class="text-[13px] text-[#A3A3A3] hover:text-[#171717] flex items-center gap-1">
+        <span>✕</span>
+        <span>清除所有筛选</span>
+        {level2Array.length > 0 && (
+          <span class="text-[11px] bg-[#E5E5E5] px-1.5 py-0.5 rounded">{level2Array.length} 项</span>
+        )}
+      </a>
+    )}
   </aside>
 
   <div class="p-6">
@@ -67,62 +169,99 @@ const hierarchyData = Object.entries(typeHierarchy).map(([level1, level2Set]) =>
       <h2 class="text-2xl font-bold text-[#171717]">AI 产品</h2>
 
       <div class="relative w-full max-w-md">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3]">🔍</span>
-        <input type="text" id="product-search" placeholder="按名称过滤产品..." class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-5 focus:ring-[#171717]/8 outline-none transition-all duration-200" />
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#A3A3A3]">🔍</span>
+        <form action="/products" method="get">
+          {level1 && <input type="hidden" name="level1" value={level1} />}
+          {level2Array.map(l2 => <input type="hidden" name="level2" value={l2} />)}
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="按名称过滤产品..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+          />
+        </form>
       </div>
 
       <div class="flex-1"></div>
+
+      {(level1 || level2Array.length > 0 || search) && (
+        <div class="flex items-center gap-2 text-[13px] text-[#525252]">
+          <span>筛选:</span>
+          {level1 && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">{level1}</span>}
+          {level2Array.map(l2 => (
+            <span class="bg-[#171717] text-white px-2 py-0.5 rounded text-[12px]">{l2}</span>
+          ))}
+          {search && <span class="bg-[#F5F5F5] px-2 py-0.5 rounded">搜索: {search}</span>}
+        </div>
+      )}
     </div>
 
-    <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-3">
-      {products.map(p => {
-        const getLevel2 = (): string => {
-          const pt = p.metrics.productType;
-          if (!pt) return '';
-          if (typeof pt === 'object' && !Array.isArray(pt)) {
-            return pt.level2 || '';
-          }
-          return '';
-        };
-        const level2 = getLevel2();
-
-        return (
-          <div
-            class="product-item"
-            data-product-name={p.aiProductName.toLowerCase()}
-            data-company={p.metrics.company?.toLowerCase() || ''}
-            data-task={level2}
-            data-introduction={p.introduction.toLowerCase()}
-          >
-            <ProductCard {...p} />
-          </div>
-        );
-      })}
+    <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-3">
+      {products.map((p) => (
+        <div
+          class="product-item"
+          data-product-name={p.aiProductName.toLowerCase()}
+          data-company={p.metrics.company?.toLowerCase() || ''}
+          data-task={p.metrics.level2}
+        >
+          <ProductCard
+            uid={p.uid}
+            logo={p.logo}
+            aiProductName={p.aiProductName}
+            introduction={p.introduction}
+            websiteUrl={p.websiteUrl}
+            metrics={{
+              productType: {
+                level1: p.metrics.level1,
+                level2: p.metrics.level2,
+                tags: p.metrics.tags,
+              },
+              country: p.metrics.country,
+              company: p.metrics.company,
+              hasApi: p.metrics.hasApi,
+              needVpn: p.metrics.needVpn,
+              pricingModel: p.metrics.pricingModel,
+              useType: p.metrics.useType,
+              languages: p.metrics.languages,
+              rawProductType: p.metrics.rawProductType,
+            }}
+            slug={p.slug}
+          />
+        </div>
+      ))}
     </div>
 
-    <Pagination itemTypeLabel="产品" />
+    {products.length === 0 && (
+      <div class="text-center py-12 text-[#525252]">
+        <p class="text-lg">未找到匹配的产品</p>
+        <p class="text-[13px] mt-2">
+          <a href="/products" class="text-[#171717] hover:underline">查看全部产品</a>
+        </p>
+      </div>
+    )}
+
+    <Pagination
+      currentPage={page}
+      totalPages={totalPages}
+      totalItems={total}
+      pageSize={pageSize}
+      itemTypeLabel="产品"
+      baseUrl="/products"
+      queryParams={queryParams}
+    />
   </div>
 </Layout>
 
-<style>
-  .product-item.v-hidden {
-    display: none !important;
-  }
-</style>
-
 <script>
-  import { initMultiFilter } from '../lib/multiFilter';
   import { initCardClick } from '../scripts/cardClick';
-  import { initPagination } from '../lib/pagination';
-
-  initMultiFilter();
+  import { initPartialRefresh } from '../lib/partialRefresh';
+  
   initCardClick();
-  initPagination({
+  // 启用局部刷新（只拦截分页链接，筛选链接正常跳转）
+  initPartialRefresh({
     listId: 'product-list',
-    itemClass: 'product-item',
-    searchId: 'product-search',
-    pageSize: 30,
-    itemTypeLabel: '产品',
-    searchAttrs: ['data-product-name', 'data-company', 'data-introduction'],
+    paginationId: 'pagination',
+    transitionDuration: 200
   });
 </script>

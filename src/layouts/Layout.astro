@@ -18,8 +18,8 @@ interface Props {
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-const { 
-  title = "AI Links - 发现最好的 AI 工具、智能体和技能", 
+const {
+  title = "AI Links - 发现最好的 AI 工具、智能体和技能",
   description = "AI Links 收录超过 1000+ AI 产品、智能体 Agent、提示词模板、MCP 服务和插件工具，提供 AI 科普教程和行业资讯，助你快速入门 AI 世界",
   image = "/logo.jpeg",
   canonicalURL = Astro.url?.href,
@@ -28,7 +28,7 @@ const {
   publishedTime,
   modifiedTime,
   articleSection,
-  subNav 
+  subNav
 } = Astro.props;
 
 const siteUrl = "https://ai-links.cn";
@@ -47,14 +47,17 @@ const currentKeywords = keywords.join(', ');
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="baiduspider" content="index, follow" />
-    
+
     <!-- Canonical URL -->
     {canonicalURL && <link rel="canonical" href={canonicalURL} />}
-    
+
+    <!-- Additional head elements from pages (prev/next links, etc.) -->
+    <slot name="head" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
     <link rel="apple-touch-icon" href="/logo.jpeg" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={publishedTime ? "article" : "website"} />
     <meta property="og:url" content={canonicalURL} />
@@ -65,7 +68,7 @@ const currentKeywords = keywords.join(', ');
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="AI Links" />
     <meta property="og:locale" content="zh_CN" />
-    
+
     <!-- Article specific OG tags -->
     {publishedTime && (
       <>
@@ -74,24 +77,24 @@ const currentKeywords = keywords.join(', ');
         {articleSection && <meta property="article:section" content={articleSection} />}
       </>
     )}
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullImage} />
-    
+
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Baidu Site Verification -->
     <meta name="baidu-site-verification" content="codeva-jdnM998WXW" />
-    
+
     <!-- Title -->
     <title>{title}</title>
-    
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -168,7 +171,7 @@ const currentKeywords = keywords.join(', ');
   html {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smipping: grayscale;
   }
 
   body {
