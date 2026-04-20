@@ -15,7 +15,7 @@ const timeRangeOptions = [
 
 // 解析 URL 参数
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
-const pageSize = 20;
+const pageSize = 60;
 const category = Astro.url.searchParams.get('category') || '';
 const timeRange = Astro.url.searchParams.get('timeRange') || '';
 const search = Astro.url.searchParams.get('search') || '';
