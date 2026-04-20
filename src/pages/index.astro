@@ -1,16 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getProductsCount, getAgentsCount } from '../lib/db';
-import prompts from '../data/prompts.json';
-import mcp from '../data/mcp.json';
-import tools from '../data/tools.json';
+import {
+  getProductsCount,
+  getAgentsCount,
+  getPromptsCount,
+  getMcpsCount,
+  getToolsCount,
+  getAihubCount,
+  getArticlesCount,
+  getNewsCount
+} from '../lib/db';
 
-// 统计数量（产品和智能体从数据库获取，其他从 JSON）
+// 统计数量（全部从数据库获取）
 const productCount = await getProductsCount();
 const agentCount = await getAgentsCount();
-const promptCount = prompts.length;
-const mcpCount = mcp.length;
-const toolCount = tools.length;
+const promptCount = await getPromptsCount();
+const mcpCount = await getMcpsCount();
+const toolCount = await getToolsCount();
+const aihubCount = await getAihubCount();
+const articleCount = await getArticlesCount();
+const newsCount = await getNewsCount();
 
 // 分类卡片配置
 const categories = [
@@ -64,7 +73,7 @@ const categories = [
     icon: '🧠',
     description: '大模型索引与技术资源',
     href: '/aihub',
-    count: null,
+    count: aihubCount,
     color: 'from-amber-500 to-yellow-600',
     bgColor: 'bg-amber-50',
   },
@@ -73,7 +82,7 @@ const categories = [
     icon: '📚',
     description: 'AI 科普教程与技术文章',
     href: '/article',
-    count: null,
+    count: articleCount,
     color: 'from-rose-500 to-pink-600',
     bgColor: 'bg-rose-50',
   },
@@ -82,7 +91,7 @@ const categories = [
     icon: '📰',
     description: 'AI 行业动态与最新资讯',
     href: '/news',
-    count: null,
+    count: newsCount,
     color: 'from-slate-500 to-gray-600',
     bgColor: 'bg-slate-50',
   },

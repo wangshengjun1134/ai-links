@@ -1,30 +1,36 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
-import mcpData from '../../../data/mcp.json';
+import { getMcpBySlug, getAllMcpSlugs } from '../../../lib/db';
+
+// 从数据库获取所有 MCP slug
+const allSlugs = await getAllMcpSlugs();
+const posts = await getCollection('mcps');
 
 export async function getStaticPaths() {
-  const posts = await getCollection('mcps');
-  return posts.map(entry => {
-    // 从 JSON 数据中找到对应的 MCP
-    const mcp = mcpData.find(m => m.id === entry.data.uid || m.uid === entry.data.uid);
-    // 优先使用 slug，如果没有则使用 uid
-    const slug = mcp?.slug && mcp.slug.trim() !== '' ? mcp.slug : entry.data.uid;
+  // 生成所有数据库中存在的 MCP 路径
+  return allSlugs.map(slug => {
     return {
       params: { slug },
-      props: { entry },
     };
   });
 }
 
-const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+// SSR 模式下，从 URL 参数获取 slug
+const urlSlug = Astro.params.slug;
+const mcpMeta = await getMcpBySlug(urlSlug);
 
-const mcpInfo = entry.data;
-const fullMcp = mcpData.find(m => (m.id || m.uid) === mcpInfo.uid);
+if (!mcpMeta) {
+  return Astro.redirect('/skills/mcp');
+}
+
+// 通过 uid 找到对应的 Markdown 文件
+const uid = mcpMeta.uid;
+const entry = posts.find(p => p.slug === `${uid}/${uid}` || p.slug.split('/').pop() === uid);
+const { Content, headings } = entry ? await entry.render() : { Content: null, headings: [] };
 ---
 
-<Layout title={fullMcp?.title || 'MCP 服务详情'}>
+<Layout title={mcpMeta.title || 'MCP 服务详情'}>
   <div class="flex min-h-screen bg-white bg-clip-content px-[140px]">
     <article class="flex-1 min-w-0">
       <div class="mx-auto px-8 md:px-16 py-20">
@@ -36,36 +42,36 @@ const fullMcp = mcpData.find(m => (m.id || m.uid) === mcpInfo.uid);
             </div>
             <div class="flex-1">
               <h1 class="text-[44px] font-black text-slate-900 leading-[1.1] tracking-tight mb-3">
-                {fullMcp?.title || 'MCP 服务详情'}
+                {mcpMeta.title || 'MCP 服务详情'}
               </h1>
               <p class="text-[16px] text-slate-500 leading-relaxed">
-                {mcpInfo.introduction || fullMcp?.description}
+                {entry?.data?.introduction || mcpMeta.description}
               </p>
             </div>
           </div>
 
           <!-- 作者信息 -->
-          {fullMcp?.author && (
+          {mcpMeta.author && (
             <div class="flex items-center gap-2 mb-6">
               <span class="text-[12px] text-slate-400 uppercase tracking-wider font-bold">作者</span>
-              <span class="text-[14px] text-slate-700 font-semibold">{fullMcp.author}</span>
+              <span class="text-[14px] text-slate-700 font-semibold">{mcpMeta.author}</span>
             </div>
           )}
 
           <!-- Tags 标签 + GitHub 链接 -->
           <div class="flex flex-wrap items-center gap-2">
-            {fullMcp?.tags && fullMcp.tags.length > 0 && (
+            {mcpMeta.metrics?.tags && mcpMeta.metrics.tags.length > 0 && (
               <div class="flex flex-wrap gap-2">
-                {fullMcp.tags.map((tag: string) => (
+                {mcpMeta.metrics.tags.map((tag: string) => (
                   <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[12px] rounded-full font-medium">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
-            {fullMcp?.github_url && (
+            {mcpMeta.githubUrl && (
               <a
-                href={fullMcp.github_url}
+                href={mcpMeta.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="ml-auto flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-500 text-[12px] rounded-full font-medium hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
@@ -87,7 +93,7 @@ const fullMcp = mcpData.find(m => (m.id || m.uid) === mcpInfo.uid);
         <!-- 底部信息 -->
         <footer class="mt-20 pt-8 border-t border-slate-200">
           <div class="flex items-center justify-between">
-            <span class="text-[12px] text-slate-400">MCP UID: {mcpInfo.uid}</span>
+            <span class="text-[12px] text-slate-400">MCP UID: {mcpMeta.uid}</span>
             <a
               href="/skills/mcp"
               class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[13px] font-bold rounded-full transition-all duration-200"

@@ -57,41 +57,60 @@ function generateAgentPages() {
   return rows.map(r => ({ path: `/agent/${r.slug}`, priority: 0.7, changefreq: 'weekly' }));
 }
 
+// 从数据库生成提示词详情页
 function generatePromptPages() {
-  const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/prompts.json'), 'utf-8'));
-  return data.map(p => ({ path: `/skills/prompts/${p.slug}`, priority: 0.6, changefreq: 'weekly' }));
-}
-
-function generateMcpPages() {
-  const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/mcp.json'), 'utf-8'));
-  return data.map(m => ({ path: `/skills/mcps/${m.slug}`, priority: 0.6, changefreq: 'weekly' }));
-}
-
-function generateArticlePages() {
-  const articles = [];
-  const contentDir = path.join(rootDir, 'src/content/article');
-
-  if (fs.existsSync(contentDir)) {
-    const categories = fs.readdirSync(contentDir);
-    categories.forEach(cat => {
-      const catPath = path.join(contentDir, cat);
-      if (fs.statSync(catPath).isDirectory()) {
-        const files = fs.readdirSync(catPath);
-        files.forEach(file => {
-          if (file.endsWith('.md')) {
-            articles.push({ path: `/article/${cat}/${file.replace('.md', '')}`, priority: 0.6, changefreq: 'monthly' });
-          }
-        });
-      }
-    });
+  const dbPath = path.join(rootDir, 'data', 'app.db');
+  if (!fs.existsSync(dbPath)) {
+    console.error('数据库不存在:', dbPath);
+    return [];
   }
 
-  return articles;
+  const db = new Database(dbPath);
+  const rows = db.prepare('SELECT slug FROM prompts').all();
+  db.close();
+  return rows.map(r => ({ path: `/skills/prompts/${r.slug}`, priority: 0.6, changefreq: 'weekly' }));
 }
 
+// 从数据库生成 MCP 详情页
+function generateMcpPages() {
+  const dbPath = path.join(rootDir, 'data', 'app.db');
+  if (!fs.existsSync(dbPath)) {
+    console.error('数据库不存在:', dbPath);
+    return [];
+  }
+
+  const db = new Database(dbPath);
+  const rows = db.prepare('SELECT slug FROM mcps').all();
+  db.close();
+  return rows.map(r => ({ path: `/skills/mcp/${r.slug}`, priority: 0.6, changefreq: 'weekly' }));
+}
+
+// 从数据库生成文章详情页
+function generateArticlePages() {
+  const dbPath = path.join(rootDir, 'data', 'app.db');
+  if (!fs.existsSync(dbPath)) {
+    console.error('数据库不存在:', dbPath);
+    return [];
+  }
+
+  const db = new Database(dbPath);
+  const rows = db.prepare('SELECT slug FROM articles').all();
+  db.close();
+  return rows.map(r => ({ path: `/article/${r.slug}`, priority: 0.6, changefreq: 'monthly' }));
+}
+
+// 从数据库生成新闻详情页
 function generateNewsPages() {
-  const data = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/data/news.json'), 'utf-8'));
-  return data.map(n => ({ path: `/news/${n.id || n.uid}`, priority: 0.5, changefreq: 'daily' }));
+  const dbPath = path.join(rootDir, 'data', 'app.db');
+  if (!fs.existsSync(dbPath)) {
+    console.error('数据库不存在:', dbPath);
+    return [];
+  }
+
+  const db = new Database(dbPath);
+  const rows = db.prepare('SELECT slug FROM news').all();
+  db.close();
+  return rows.map(r => ({ path: `/news/${r.slug}`, priority: 0.5, changefreq: 'daily' }));
 }
 
 // 生成 sitemap
