@@ -2,7 +2,7 @@ import initSqlJs from 'sql.js';
 import fs from 'fs';
 import path from 'path';
 
-const dbPath = path.resolve(process.cwd(), 'data', 'app.db');
+const dbPath = path.resolve(process.cwd(), 'sqlite_db', 'app.db');
 const wasmPath = path.join(process.cwd(), 'node_modules', 'sql.js', 'dist', 'sql-wasm.wasm');
 
 console.log('dbPath:', dbPath);

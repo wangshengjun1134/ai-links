@@ -28,9 +28,8 @@ pnpm-debug.log*
 .idea/
 
 # database files
-sqlite_db/
-data/app.db-wal
-data/app.db-shm
+sqlite_db/app.db-wal
+sqlite_db/app.db-shm
 
 # temp files
 temp_*.html

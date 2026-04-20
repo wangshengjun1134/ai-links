@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 
 // 数据库路径
-const dbPath = path.resolve(process.cwd(), 'data', 'app.db');
+const dbPath = path.resolve(process.cwd(), 'sqlite_db', 'app.db');
 
 // wasm 文件路径
 const wasmPath = path.join(process.cwd(), 'node_modules', 'sql.js', 'dist', 'sql-wasm.wasm');

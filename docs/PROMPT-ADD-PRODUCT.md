@@ -12,7 +12,7 @@
 
 # 项目背景
 AI Links 是一个 AI 资源导航网站，产品数据存储在 SQLite 数据库中：
-- `data/app.db`：SQLite 数据库文件
+- `sqlite_db/app.db`：SQLite 数据库文件
 - 包含 `products` 表和 `product_metrics` 表
 - 详情页内容存储在 Markdown 文件：`src/content/products/{uid}/{uid}.md`
 - Logo 图标存储在：`public/product-favicons/{uid}.png` 或 `.ico`
@@ -163,7 +163,7 @@ INSERT INTO product_metrics (product_uid, level1, level2, tags, country, company
 VALUES ('10587000', '开发与技术', '编程类', '["AI编辑器","代码生成"]', '美国', 'Cursor Inc.', 0, 0, '["免费","订阅"]', '["native"]', '["英文"]');
 ```
 
-说明：在数据库 `data/app.db` 中执行以上 SQL 语句。
+说明：在数据库 `sqlite_db/app.db` 中执行以上 SQL 语句。
 
 ### Markdown 内容
 
@@ -218,7 +218,7 @@ Cursor 是一款 AI 驱动的代码编辑器，基于 VS Code 构建，帮助开
 
 ```javascript
 import Database from 'better-sqlite3';
-const db = new Database('data/app.db');
+const db = new Database('sqlite_db/app.db');
 
 // 插入数据
 db.exec(`
@@ -235,7 +235,7 @@ db.close();
 ### 方法二：使用 SQLite 命令行
 
 ```bash
-sqlite3 data/app.db
+sqlite3 sqlite_db/app.db
 # 然后粘贴 SQL 语句执行
 ```
 
