@@ -1,42 +1,36 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import articles from '../../data/article.json';
+import { getArticleBySlug, getAllArticleSlugs, getArticleByUid } from '../../lib/db';
+
+// 从数据库获取所有文章 slug，生成路径
+const allSlugs = await getAllArticleSlugs();
+const posts = await getCollection('article');
 
 export async function getStaticPaths() {
-  const posts = await getCollection('article');
-  // 只生成 article.json 中存在的文章路径
-  const articleUids = new Set(articles.map(a => a.uid));
-  return posts
-    .filter(entry => {
-      // 支持子目录结构，取 slug 的最后部分匹配 uid
-      const uid = entry.slug.split('/').pop();
-      return articleUids.has(uid);
-    })
-    .map(entry => {
-      const uid = entry.slug.split('/').pop();
-      const article = articles.find(a => a.uid === uid);
-      // 优先使用 slug，如果没有则使用 uid
-      const urlSlug = article?.slug && article.slug.trim() !== '' ? article.slug : uid;
-      return {
-        params: { slug: urlSlug },
-        props: { entry, uid },
-      };
-    });
+  // 生成所有数据库中存在的文章路径
+  return allSlugs.map(slug => {
+    // 从数据库获取文章信息，拿到 uid
+    // 注意：getStaticPaths 在 SSR 模式下被忽略，这个页面是动态 SSR
+    return {
+      params: { slug },
+    };
+  });
 }
 
-const { entry, uid } = Astro.props;
-const { Content, headings } = await entry.render();
+// SSR 模式下，从 URL 参数获取 slug
+const urlSlug = Astro.params.slug;
+const articleMeta = await getArticleBySlug(urlSlug);
 
-// 从 article.json 获取额外元数据
-const articleMeta = articles.find(a => a.uid === uid) || {
-  title: entry.data.title,
-  author: entry.data.author || 'Unknown',
-  category: entry.data.category || 'Tutorial',
-  readTime: entry.data.readTime || '5 min',
-  publishedAt: entry.data.publishedAt || '2026-03-01',
-  websiteUrl: '',
-};
+if (!articleMeta) {
+  return Astro.redirect('/article');
+}
+
+// 通过 uid 找到对应的 Markdown 文件
+// content collection 的 slug 格式是 "uid/uid"，如 "10007/10007"
+const uid = articleMeta.uid;
+const entry = posts.find(p => p.slug === `${uid}/${uid}` || p.slug.split('/').pop() === uid);
+const { Content, headings } = entry ? await entry.render() : { Content: null, headings: [] };
 ---
 
 <Layout title={articleMeta.title}>
