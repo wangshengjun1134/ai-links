@@ -8,7 +8,7 @@ import { productFilters } from '../data/filters';
 
 // 解析 URL 参数
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
-const pageSize = 60;
+const pageSize = 30;
 const level1 = Astro.url.searchParams.get('level1') || '';
 // 支持多选 level2（数组参数，如 level2=写作类&level2=视频类）
 const level2Array = Astro.url.searchParams.getAll('level2').filter(Boolean);

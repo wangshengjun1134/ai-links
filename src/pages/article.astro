@@ -7,7 +7,7 @@ import { getArticlesPaginated, getArticlesCount, getArticleCategories } from '..
 
 // 解析 URL 参数
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
-const pageSize = 60;
+const pageSize = 30;
 const category = Astro.url.searchParams.get('category') || '';
 const search = Astro.url.searchParams.get('search') || '';
 

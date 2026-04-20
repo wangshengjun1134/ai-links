@@ -6,7 +6,7 @@ import { getAihubPaginated, getAihubCount, getAihubProductTypes } from '../lib/d
 
 // 解析 URL 参数 - 支持多选
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
-const pageSize = 60;
+const pageSize = 30;
 const productTypeArray = Astro.url.searchParams.getAll('productType').filter(Boolean);
 const search = Astro.url.searchParams.get('search') || '';
 

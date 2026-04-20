@@ -12,7 +12,7 @@ const subNav = {
 
 // 解析 URL 参数 - 支持多选
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
-const pageSize = 60;
+const pageSize = 30;
 const languageArray = Astro.url.searchParams.getAll('language').filter(Boolean);
 const licenseArray = Astro.url.searchParams.getAll('license').filter(Boolean);
 const funcArray = Astro.url.searchParams.getAll('func').filter(Boolean);

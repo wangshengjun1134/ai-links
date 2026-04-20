@@ -15,7 +15,7 @@ const { scenarios, tasks, modalities } = promptFilters;
 
 // 解析 URL 参数 - 支持多选
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
-const pageSize = 60;
+const pageSize = 30;
 const scenarioArray = Astro.url.searchParams.getAll('scenario').filter(Boolean);
 const taskArray = Astro.url.searchParams.getAll('task').filter(Boolean);
 const modalityArray = Astro.url.searchParams.getAll('modality').filter(Boolean);
