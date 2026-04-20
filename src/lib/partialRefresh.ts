@@ -5,6 +5,8 @@
  * 注意：筛选链接不拦截，需要整页刷新来更新侧边栏状态
  */
 
+import { initCardClick } from '../scripts/cardClick';
+
 export function initPartialRefresh(config: {
   /** 产品列表容器 ID */
   listId: string;
@@ -82,6 +84,9 @@ export function initPartialRefresh(config: {
       if (newListEl) {
         listEl.innerHTML = newListEl.innerHTML;
       }
+
+      // 重新初始化卡片点击事件（新加载的卡片没有绑定事件）
+      initCardClick();
 
       // 更新分页
       if (newPaginationEl) {
