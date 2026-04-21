@@ -149,9 +149,9 @@ draft: false
 ## 输出要求
 
 1. **分配 UID**：
-   - 科普/教程类：`g-{数字}`（如 g-1, g-10）
-   - 博文类：5 位数字（如 10001, 10020）
-   - 确保不与已有 UID 冲突（假设用户已确认）
+   - 统一使用 5 位数字格式（如 10001, 10002, 10003...）
+   - 确保不与已有 UID 冲突（查询数据库确认下一个可用 UID）
+   - 当前已有 UID：10003-10007，建议从 10008 开始
 
 2. **生成 SQL 插入语句**：输出完整的 SQL INSERT 语句
 
@@ -210,39 +210,44 @@ db.exec(`INSERT INTO article ...`);
 
 ### SQL
 ```sql
--- 添加到 SQLite 数据库 article 表
-INSERT INTO article (uid, title, title_en, description, author, category, read_time, published_at, website_url)
+-- 添加到 SQLite 数据库 articles 表
+INSERT OR REPLACE INTO articles (uid, slug, title, titleEn, description, author, category, readTime, publishedAt, websiteUrl)
 VALUES (
-  'g-10',
+  '10008',
+  'mcp-protocol-guide',
   'MCP 协议入门：让 AI 连接一切',
   NULL,
   '深入了解 MCP 协议的基本概念、架构设计和实际应用场景',
   'AI Links Team',
   '教程',
   '12 分钟',
-  '2026-04-17',
+  '2026-04-21',
   ''
 );
+
+-- 同时添加到 article_metrics 表
+INSERT OR REPLACE INTO article_metrics (article_uid, tags)
+VALUES ('10008', '["MCP","协议","AI 工具"]');
 ```
 
 执行方式：
 ```bash
 # 方式 1: 使用 SQLite 命令行
-sqlite3 sqlite_db/ai-links.db < insert_article.sql
+sqlite3 sqlite_db/app.db < insert_article.sql
 
 # 方式 2: 使用 Node.js 脚本
-node -e "const db = require('better-sqlite3')('sqlite_db/ai-links.db'); db.exec(\`INSERT INTO article...\`);"
+node -e "const db = require('better-sqlite3')('sqlite_db/app.db'); db.exec(\`INSERT OR REPLACE INTO articles...\`);"
 ```
 
 ### Markdown
 ```markdown
 ---
-uid: "g-10"
+uid: "10008"
 title: "MCP 协议入门：让 AI 连接一切"
 author: "AI Links Team"
 category: "教程"
 readTime: "12 分钟"
-publishedAt: "2026-04-17"
+publishedAt: "2026-04-21"
 draft: false
 ---
 
@@ -267,10 +272,10 @@ MCP 协议为 AI 应用提供了标准化的扩展能力...
 操作说明：
 ```bash
 # 创建目录
-mkdir -p src/content/article/g-10
+mkdir -p src/content/article/10008
 
 # 创建 Markdown 文件
-cat > src/content/article/g-10/g-10.md << 'EOF'
+cat > src/content/article/10008/10008.md << 'EOF'
 [上述 Markdown 内容]
 EOF
 
@@ -354,7 +359,7 @@ echo "✅ 文章添加完成！"
 使用方法：
 ```bash
 chmod +x scripts/add-article.sh
-./scripts/add-article.sh g-10 article.md "INSERT INTO article ..."
+./scripts/add-article.sh 10008 article.md "INSERT OR REPLACE INTO articles ..."
 ```
 
 ---
@@ -363,6 +368,8 @@ chmod +x scripts/add-article.sh
 
 - ⚠️ **SSR 架构变更**：文章元数据现在存储在 SQLite 数据库中，不再是 JSON 文件
 - ⚠️ 添加文章后**必须重新构建并重启服务**才能生效
+- ⚠️ **UID 格式**：统一使用 5 位数字（10001, 10002, 10003...），不再使用 g-{数字} 格式
+- 💡 **查询下一个 UID**：`sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM articles;"`
 - 如果是英文文章，LLM 会自动生成双语对照格式
 - 提供完整的正文内容，LLM 才能正确格式化
 - UID 需要手动确认不与现有文章重复
@@ -382,16 +389,24 @@ sqlite3 sqlite_db/ai-links.db "SELECT uid, title, category, published_at FROM ar
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/ai-links.db "SELECT COUNT(*) FROM article WHERE uid = 'g-10';"
+sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM articles WHERE uid = '10008';"
+```
+
+### 查看下一个可用 UID
+```bash
+# 查看最大 UID
+sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM articles;"
+# 输出：10007，则下一个使用 10008
 ```
 
 ### 删除文章
 ```bash
 # 从数据库删除
-sqlite3 sqlite_db/ai-links.db "DELETE FROM article WHERE uid = 'g-10';"
+sqlite3 sqlite_db/app.db "DELETE FROM articles WHERE uid = '10008';"
+sqlite3 sqlite_db/app.db "DELETE FROM article_metrics WHERE article_uid = '10008';"
 
 # 删除 Markdown 文件
-rm -rf src/content/article/g-10/
+rm -rf src/content/article/10008/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links
