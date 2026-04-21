@@ -6238,6 +6238,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ai-links.cn/agent/hermes-agent</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ai-links.cn/agent/iflow-cli</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
