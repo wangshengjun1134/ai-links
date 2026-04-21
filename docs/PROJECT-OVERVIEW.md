@@ -17,11 +17,14 @@
 
 ### 1.2 技术特点
 
-- **静态站点**：使用 Astro 构建，生成静态 HTML，部署简单
+- **SSR 动态渲染**：使用 Astro SSR 模式 + Node.js 适配器，实时渲染页面
+- **数据库驱动**：使用 SQLite 存储数据，支持动态查询和实时统计
 - **响应式设计**：适配桌面端和移动端
 - **实时筛选**：客户端实现多维度筛选和搜索
 - **分页功能**：大数据量下的分页显示
 - **详情页**：每个产品/智能体都有独立的详情页
+- **SEO 优化**：完整的 Open Graph、Twitter Card、结构化数据支持
+- **百度收录**：包含百度站长验证和 sitemap 自动生成
 
 ---
 
@@ -31,17 +34,38 @@
 
 | 技术 | 版本 | 用途 |
 |-----|------|-----|
-| Astro | 5.x | 静态站点生成框架 |
+| Astro | 5.x | SSR 站点框架 |
+| Node.js | 22.x | 服务器运行时 |
+| SQLite | 3.x | 轻量级数据库 |
+| better-sqlite3 | - | Node.js SQLite 驱动 |
 | Tailwind CSS | 4.x | CSS 框架 |
 | TypeScript | - | 类型支持 |
-| Node.js | - | 数据生成脚本运行环境 |
 | Sharp | - | 图片处理 |
+| Nginx | 1.24.x | 反向代理服务器 |
 
-### 2.2 项目结构
+### 2.2 架构图
 
 ```
-huggingface-replica/
-├── astro.config.mjs      # Astro 配置
+用户访问
+    ↓
+https://ai-links.cn
+    ↓
+Nginx (反向代理)
+    ↓
+Node.js:4321 (Astro SSR Server)
+    ↓
+SQLite 数据库查询
+    ↓
+实时渲染 HTML
+    ↓
+返回给用户
+```
+
+### 2.3 项目结构
+
+```
+ai-links/
+├── astro.config.mjs      # Astro 配置（SSR 模式）
 ├── package.json          # 依赖管理
 ├── tsconfig.json         # TypeScript 配置
 ├── public/               # 静态资源
@@ -52,9 +76,12 @@ huggingface-replica/
 │   ├── prompts/          # 提示词资源
 │   ├── logo.jpeg         # 网站图标
 │   └── favicon.ico/svg   # favicon
-├── scripts/              # 数据生成脚本
-│   ├── generate-product-md.js
-│   └── generate-agent-md.js
+├── scripts/              # 数据生成和管理脚本
+│   ├── generate-sitemap.js    # sitemap 生成
+│   ├── generate-product-md.js # 产品 Markdown 生成
+│   └── generate-agent-md.js   # 智能体 Markdown 生成
+├── sqlite_db/            # SQLite 数据库文件
+│   └── ai-links.db       # 主数据库
 ├── src/
 │   ├── assets/           # 需构建处理的资源
 │   ├── components/       # 组件目录
@@ -65,21 +92,14 @@ huggingface-replica/
 │   │   ├── mcps/         # MCP 详情
 │   │   ├── article/      # 文章内容
 │   │   └── config.ts     # Content Collections 配置
-│   ├── data/             # JSON 数据文件
-│   │   ├── products.json
-│   │   ├── agents.json
-│   │   ├── prompts.json
-│   │   ├── mcp.json
-│   │   ├── tools.json
-│   │   ├── aihub.json
-│   │   ├── llms.json
-│   │   ├── article.json
-│   │   ├── news.json
-│   │   └── filters.ts    # 筛选配置
+│   ├── data/             # JSON 数据文件和配置
+│   │   ├── filters.ts    # 筛选配置
+│   │   └── ...           # 其他静态数据
 │   ├── layouts/          # 布局组件
-│   │   ├── Layout.astro         # 主布局
+│   │   ├── Layout.astro         # 主布局（含 SEO meta）
 │   │   └── DetailPageLayout.astro # 详情页布局
 │   ├── lib/              # 工具函数库
+│   │   ├── db.ts                # 数据库操作封装
 │   │   ├── multiFilter.ts       # 多选筛选
 │   │   └── pagination.ts        # 分页工具
 │   ├── pages/            # 页面文件
@@ -99,7 +119,13 @@ huggingface-replica/
 │   ├── scripts/          # 客户端脚本
 │   │   └── cardClick.ts  # 卡片点击交互
 │   └── styles/           # 全局样式
-└── dist/                 # 构建输出
+├── dist/                 # 构建输出（SSR 服务器）
+│   ├── client/           # 静态资源
+│   └── server/           # Node.js 服务器入口
+└── docs/                 # 项目文档
+    ├── PROJECT-OVERVIEW.md
+    ├── DEPLOYMENT.md
+    └── ...
 ```
 
 ---
@@ -118,7 +144,7 @@ Layout（布局）
 │   │   └── BaseCard（基础卡片）
 │   │       ├── ProductCard（产品卡片适配器）
 │   │       ├── AgentCard（智能体卡片适配器）
-│   │       ├── HubCard（Hub卡片适配器）
+│   │       ├── HubCard（Hub 卡片适配器）
 │   │       └── SkillCard（技能卡片）
 │   └── Pagination（分页）
 └── Footer（页脚）
@@ -128,44 +154,67 @@ Layout（布局）
 
 | 组件 | 位置 | 职责 |
 |-----|------|-----|
-| `Layout.astro` | layouts/ | 主布局，包含 Navbar、Footer、Sidebar slot |
-| `DetailPageLayout.astro` | layouts/ | 详情页通用布局，减少重复代码 |
-| `BaseCard.astro` | components/ | 通用卡片组件，支持紧凑/展开两种模式 |
-| `ProductCard.astro` | components/ | 产品卡片，适配 BaseCard |
-| `AgentCard.astro` | components/ | 智能体卡片，适配 BaseCard |
-| `HubCard.astro` | components/ | AI Hub 卡片，适配 BaseCard |
-| `SkillCard.astro` | components/ | 技能卡片（提示词/MCP/工具） |
-| `Pagination.astro` | components/ | 分页组件 |
-| `FilterButton.astro` | components/ | 筛选按钮组件 |
-| `Navbar.astro` | components/ | 顶部导航栏 |
-| `Footer.astro` | components/ | 底部页脚 |
+| `Layout.astro` | src/layouts/ | 主布局，包含 SEO meta、Navbar、Footer、Sidebar slot |
+| `DetailPageLayout.astro` | src/layouts/ | 详情页通用布局，减少重复代码 |
+| `BaseCard.astro` | src/components/ | 通用卡片组件，支持紧凑/展开两种模式 |
+| `ProductCard.astro` | src/components/ | 产品卡片，适配 BaseCard |
+| `AgentCard.astro` | src/components/ | 智能体卡片，适配 BaseCard |
+| `HubCard.astro` | src/components/ | AI Hub 卡片，适配 BaseCard |
+| `SkillCard.astro` | src/components/ | 技能卡片（提示词/MCP/工具） |
+| `Pagination.astro` | src/components/ | 分页组件 |
+| `FilterButton.astro` | src/components/ | 筛选按钮组件 |
+| `Navbar.astro` | src/components/ | 顶部导航栏 |
+| `Footer.astro` | src/components/ | 底部页脚 |
 
-### 3.3 客户端脚本
+### 3.3 数据库层
+
+| 模块 | 位置 | 职责 |
+|-----|------|-----|
+| `db.ts` | src/lib/ | 数据库连接和查询封装 |
+| `sqlite_db/ai-links.db` | 根目录 | SQLite 数据库文件 |
+| 数据表 | - | products, agents, prompts, mcps, tools, aihub, llms, article, news |
+
+**数据库操作示例**：
+```typescript
+import { getProducts, getProductsCount } from '../lib/db';
+
+// 获取产品列表（支持分页和筛选）
+const products = await getProducts(page, limit, filters);
+
+// 获取产品总数
+const count = await getProductsCount();
+```
+
+### 3.4 客户端脚本
 
 | 脚本 | 位置 | 职责 |
 |-----|------|-----|
-| `multiFilter.ts` | lib/ | 多维度筛选，支持同一维度 OR、不同维度 AND |
-| `pagination.ts` | lib/ | 分页和搜索逻辑，统一处理 |
-| `cardClick.ts` | scripts/ | 卡片点击展开/关闭交互 |
+| `multiFilter.ts` | src/lib/ | 多维度筛选，支持同一维度 OR、不同维度 AND |
+| `pagination.ts` | src/lib/ | 分页和搜索逻辑，统一处理 |
+| `cardClick.ts` | src/scripts/ | 卡片点击展开/关闭交互 |
 
-### 3.4 数据流
+### 3.5 数据流
 
 ```
-JSON 数据文件 (src/data/*.json)
+SQLite 数据库 (sqlite_db/ai-links.db)
     ↓
-列表页读取渲染卡片
+src/lib/db.ts 封装查询
+    ↓
+列表页/详情页实时查询
+    ↓
+SSR 渲染 HTML
     ↓
 用户筛选/搜索
     ↓
 客户端脚本处理 (multiFilter + pagination)
     ↓
-显示结果
+DOM 更新显示结果
 
 Markdown 内容 (src/content/*)
     ↓
 详情页通过 getCollection 获取
     ↓
-渲染详情页
+SSR 渲染详情页
 ```
 
 ---
@@ -229,40 +278,75 @@ const productsCollection = defineCollection({
 
 ---
 
-## 5. 构建流程
+## 5. 构建与运行
 
 ### 5.1 npm scripts
 
 ```json
 {
-  "generate": "node scripts/generate-product-md.js && node scripts/generate-agent-md.js",
-  "dev": "npm run generate && astro dev",
-  "build": "npm run generate && astro build",
-  "preview": "astro preview"
+  "sitemap": "node scripts/generate-sitemap.js",
+  "dev": "npm run sitemap && astro dev",
+  "build": "npm run sitemap && astro build",
+  "preview": "node dist/server/entry.mjs",
+  "astro": "astro"
 }
 ```
 
-### 5.2 构建流程图
+### 5.2 开发模式
+
+```bash
+# 启动开发服务器（热重载）
+npm run dev
+```
+
+访问：`http://localhost:4321/`
+
+### 5.3 生产构建
+
+```bash
+# 1. 生成 sitemap
+npm run sitemap
+
+# 2. 构建项目
+npm run build
+```
+
+构建输出：
+```
+dist/
+├── client/    # 静态资源（CSS、JS、图片）
+└── server/    # Node.js SSR 服务器入口
+    └── entry.mjs
+```
+
+### 5.4 运行生产服务器
+
+```bash
+# 直接运行
+node dist/server/entry.mjs
+
+# 或使用 systemd 服务（推荐）
+systemctl start ai-links
+```
+
+### 5.5 构建流程图
 
 ```
 npm run build
     ↓
-npm run generate
-    ↓
-generate-product-md.js
-    ↓ 读取 products.json
-    ↓ 生成 Markdown 文件
-generate-agent-md.js
-    ↓ 读取 agents.json
-    ↓ 生成 Markdown 文件
-    ↓
+npm run sitemap
+    ↓ 读取数据库
+    ↓ 生成 sitemap.xml
+    ↓ 生成 robots.txt
 astro build
     ↓
-Content Collections 处理
+SSR 模式构建
     ↓
-静态页面生成
+输出 client/ 和 server/
     ↓
-输出到 dist/
+Node.js 运行 server/entry.mjs
+    ↓
+监听端口 4321
 ```
 
 ---
@@ -273,7 +357,7 @@ Content Collections 处理
 
 | 路由 | 页面文件 | 描述 |
 |-----|---------|------|
-| `/` | index.astro | 首页 |
+| `/` | index.astro | 首页（从数据库统计数据） |
 | `/products` | products.astro | 产品列表 |
 | `/agents` | agents.astro | 智能体列表 |
 | `/aihub` | aihub.astro | AI Hub |
@@ -336,17 +420,18 @@ Content Collections 处理
 
 1. 在 `src/pages/` 创建 `.astro` 文件
 2. 使用 `Layout` 组件包裹
-3. 配置 sidebar slot（如需要筛选）
-4. 导入对应 JSON 数据
+3. 从 `src/lib/db` 导入数据查询函数
+4. 配置 sidebar slot（如需要筛选）
 5. 渲染卡片列表
 
 ### 8.2 添加新数据类型
 
-1. 创建 `src/data/{type}.json`
-2. 在 `src/content/` 创建对应目录
-3. 在 `src/content/config.ts` 添加 collection 定义
-4. 创建列表页和详情页
-5. 更新 `filters.ts` 添加筛选配置
+1. 在数据库中创建新表
+2. 在 `src/lib/db.ts` 添加查询函数
+3. 在 `src/content/` 创建对应目录（如需要 Markdown）
+4. 在 `src/content/config.ts` 添加 collection 定义
+5. 创建列表页和详情页
+6. 更新 `filters.ts` 添加筛选配置
 
 ### 8.3 添加新筛选维度
 
@@ -365,39 +450,150 @@ Content Collections 处理
 npm run build
 ```
 
-输出目录：`dist/`
+输出目录：`dist/`（包含 client/ 和 server/）
 
-### 9.2 部署选项
+### 9.2 生产环境部署
 
-- **静态托管**：Netlify、Vercel、GitHub Pages
-- **CDN 部署**：将 dist/ 内容上传到 CDN
-- **本地预览**：`npm run preview`
+**完整部署流程**：
 
-### 9.3 注意事项
+1. **构建项目**：
+   ```bash
+   npm run build
+   ```
 
-- 构建前需先运行 `npm run generate`
-- 大数据量（1000+条）构建时间约 20-30秒
-- favicon 文件需手动上传到 public/
+2. **配置 systemd 服务**：
+   ```bash
+   systemctl start ai-links
+   systemctl enable ai-links
+   ```
+
+3. **配置 Nginx 反向代理**：
+   ```nginx
+   location / {
+       proxy_pass http://127.0.0.1:4321;
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+   }
+   ```
+
+4. **验证部署**：
+   ```bash
+   curl -s https://ai-links.cn/ | grep 'canonical'
+   ```
+
+### 9.3 部署检查清单
+
+- [ ] 服务状态：`systemctl status ai-links` → Active: active (running)
+- [ ] 端口监听：`lsof -ti:4321` → 有进程 ID
+- [ ] 本地访问：`curl http://localhost:4321/` → 返回 HTML
+- [ ] 域名访问：`curl https://ai-links.cn/` → 返回 HTML
+- [ ] Canonical URL：包含 `href="https://ai-links.cn/"`
+- [ ] Nginx 状态：`nginx -t` → syntax is ok
+- [ ] 日志正常：无 ERROR 级别错误
+
+### 9.4 服务管理
+
+```bash
+# 查看服务状态
+systemctl status ai-links
+
+# 重启服务
+systemctl restart ai-links
+
+# 查看日志
+tail -f /var/log/ai-links-server.log
+
+# 使用管理脚本
+./scripts/manage-service.sh restart
+```
 
 ---
 
 ## 10. 维护建议
 
-### 10.1 数据更新频率
+### 10.1 数据更新
 
-- **产品数据**：每周/每月更新
+- **产品数据**：通过后台脚本或直接操作数据库更新
 - **智能体数据**：每周更新
 - **新闻数据**：每日更新
 - **文章数据**：按需更新
+- **数据库备份**：定期备份 `sqlite_db/ai-links.db`
 
 ### 10.2 性能优化建议
 
-- 定期清理未使用的 favicon
-- 大数据量考虑分批加载
-- 使用 CDN 加速静态资源
+- 数据库查询添加索引（特别是常用查询字段）
+- 定期清理数据库中的冗余数据
+- 使用 CDN 加速静态资源（/logo.jpeg、favicon 等）
+- 启用 Nginx gzip 压缩
 
-### 10.3 代码维护
+### 10.3 日志监控
+
+```bash
+# 查看应用日志
+tail -f /var/log/ai-links-server.log
+
+# 查看系统日志
+journalctl -u ai-links -f
+
+# 查看 Nginx 日志
+tail -f /var/log/nginx/access.log
+tail -f /var/log/nginx/error.log
+```
+
+### 10.4 代码维护
 
 - 组件复用优先使用 BaseCard
 - 筛选配置统一在 filters.ts
 - 客户端脚本使用 lib/ 下的工具函数
+- 数据库操作统一在 db.ts 封装
+
+---
+
+## 11. 相关文档
+
+- **[部署手册](./DEPLOYMENT.md)** - 完整的部署指南和故障排查
+- **[数据添加指南](./DATA-ADDING-GUIDE.md)** - 如何添加新产品、智能体等数据
+- **[提示词添加提示词](./PROMPT-ADD-ARTICLE.md)** - 使用 AI 助手添加文章
+- **[新闻添加提示词](./PROMPT-ADD-NEWS.md)** - 使用 AI 助手添加新闻
+- **[产品添加提示词](./PROMPT-ADD-PRODUCT.md)** - 使用 AI 助手添加产品
+
+---
+
+## 12. 版本历史
+
+- **v2.0 (2026-04-21)**: 迁移到 SSR 架构
+  - ✅ 使用 Astro SSR 模式 + Node.js 适配器
+  - ✅ 使用 SQLite 数据库替代 JSON 文件
+  - ✅ 配置 Nginx 反向代理
+  - ✅ 配置 systemd 开机自启动
+  - ✅ 完整的 SEO 优化（Open Graph、Twitter Card、结构化数据）
+  - ✅ 百度站长验证和 sitemap 自动生成
+
+- **v1.0**: 静态站点版本
+  - 使用 Astro 构建静态 HTML
+  - 数据存储在 JSON 文件中
+  - 部署到静态托管服务
+
+---
+
+## 附录：快速命令参考
+
+```bash
+# 开发
+npm run dev
+
+# 构建
+npm run build
+
+# 重启服务
+systemctl restart ai-links
+
+# 查看日志
+tail -f /var/log/ai-links-server.log
+
+# 数据库备份
+cp sqlite_db/ai-links.db sqlite_db/ai-links.db.backup.$(date +%Y%m%d)
+
+# 生成 sitemap
+npm run sitemap
+```
