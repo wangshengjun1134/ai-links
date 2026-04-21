@@ -22,7 +22,7 @@ const {
   title = "AI Links - 发现最好的 AI 工具、智能体和技能",
   description = "AI Links 收录超过 1000+ AI 产品、智能体 Agent、提示词模板、MCP 服务和插件工具，提供 AI 科普教程和行业资讯，助你快速入门 AI 世界",
   image = "/logo.jpeg",
-  canonicalURL = Astro.url?.href,
+  canonicalURL,
   keywords = ["AI 工具", "人工智能", "智能体", "Agent", "提示词", "Prompt", "MCP", "大模型", "AI 导航"],
   author = "AI Links",
   publishedTime,
@@ -32,6 +32,9 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://ai-links.cn";
+// SSR 模式下使用 siteUrl 构建正确的 canonicalURL
+const pagePath = Astro.url?.pathname || "/";
+const finalCanonicalURL = canonicalURL || `${siteUrl}${pagePath}`;
 const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const currentKeywords = keywords.join(', ');
 ---
@@ -49,7 +52,7 @@ const currentKeywords = keywords.join(', ');
     <meta name="baiduspider" content="index, follow" />
 
     <!-- Canonical URL -->
-    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    <link rel="canonical" href={finalCanonicalURL} />
 
     <!-- Additional head elements from pages (prev/next links, etc.) -->
     <slot name="head" />
@@ -60,7 +63,7 @@ const currentKeywords = keywords.join(', ');
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={publishedTime ? "article" : "website"} />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={finalCanonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={fullImage} />
@@ -80,7 +83,7 @@ const currentKeywords = keywords.join(', ');
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:url" content={finalCanonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullImage} />
@@ -101,7 +104,7 @@ const currentKeywords = keywords.join(', ');
       "@type": publishedTime ? "Article" : "WebSite",
       "name": title,
       "description": description,
-      "url": canonicalURL,
+      "url": finalCanonicalURL,
       "image": fullImage,
       "author": {
         "@type": "Organization",
@@ -119,7 +122,7 @@ const currentKeywords = keywords.join(', ');
       "dateModified": modifiedTime,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": canonicalURL
+        "@id": finalCanonicalURL
       }
     })} />
   </head>

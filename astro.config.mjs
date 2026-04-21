@@ -10,6 +10,7 @@ import { remarkLangBlock } from './src/plugins/remarkLangBlock';
 // output: 'server' 启用 SSR 模式
 // 详情页需要在 getStaticPaths 中预渲染
 export default defineConfig({
+  site: 'https://ai-links.cn',
   output: 'server',
   adapter: node({
     mode: 'standalone'
