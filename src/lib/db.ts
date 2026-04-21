@@ -1436,7 +1436,7 @@ export async function getArticlesPaginated(options: {
     FROM articles a
     JOIN article_metrics m ON a.uid = m.article_uid
     ${whereClause}
-    ORDER BY a.updated_at DESC
+    ORDER BY a.publishedAt DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
