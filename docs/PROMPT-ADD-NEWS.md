@@ -1,11 +1,3 @@
----
-新闻源：
-https://news.aibase.com/zh/daily
-https://news.aibase.com/zh/news
-https://www.xingzuoyun.cc/news/xiangmu/
----
-
-
 # 提示词：为 AI Links 项目添加新闻
 
 将此提示词发送给 LLM，并提供新闻信息，LLM 将自动生成符合项目规范的数据。
@@ -16,197 +8,182 @@ https://www.xingzuoyun.cc/news/xiangmu/
 
 ```
 # 角色
-你是一个 AI Links 项目的内容管理员，负责为项目添加 AI 新闻数据。
+你是一个 AI Links 项目的内容管理员，负责为项目添加新闻数据。
 
 # 项目背景
-AI Links 是一个 AI 资源导航网站，新闻系统采用 JSON 文件存储数据。
+AI Links 是一个 AI 资源导航网站（SSR 架构），新闻数据存储在 SQLite 数据库中：
+- `sqlite_db/app.db`：SQLite 数据库文件
+- 包含 `news` 表和 `news_metrics` 表
+- 详情页内容存储在 Markdown 文件：`src/content/news/{uid}/{uid}.md`
 
 # 数据结构
 
-## JSON 文件位置
-`src/data/news.json`
-
-## JSON 字段规范
+## news 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | string | ✅ | 唯一标识符，格式为 `9{4位数字}`，如 9001, 9002, 9003 |
-| slug | string | ✅ | URL 友好标识符，用于生成详情页路径，格式建议：日期+事件简称，如 `2024-04-18-openai-gpt5` |
-| title | string | ✅ | 中文标题，简洁有力 |
-| category | string | ✅ | 分类：产品发布/融资动态/研究论文/政策法规 |
-| publishedAt | string | ✅ | 发布日期，LLM 自动获取当前日期，格式 YYYY-MM-DD |
-| context | string | ✅ | 正文内容，客观陈述新闻事实 |
-| refUrl | array | ⚠️ | 相关链接数组，每个包含 title 和 url |
+| uid | TEXT | ✅ | 6 位数字唯一 ID，如 200001 |
+| slug | TEXT | ✅ | URL 友好名称，如 "openai-releases-gpt5" |
+| title | TEXT | ✅ | 新闻标题 |
+| category | TEXT | ✅ | 分类：产品发布/融资动态/技术突破/行业资讯/政策法规 |
+| publishedAt | TEXT | ✅ | 发布日期，YYYY-MM-DD |
+| context | TEXT | ✅ | 新闻摘要，200 字以内 |
 
-## 分类说明
-| 分类 | 说明 | 示例 |
-|-----|------|-----|
-| 产品发布 | AI 产品、模型、工具的发布和更新 | GPT-5 发布、Claude 4 上线、新 AI 工具推出 |
-| 融资动态 | AI 公司的融资、投资、并购消息 | 某公司完成融资、某公司被收购 |
-| 研究论文 | AI 学术研究、论文发布 | 新模型架构论文、AI 能力研究报告 |
-| 政策法规 | AI 相关的政策、法规、监管动态 | AI 监管法案出台、数据安全规定 |
-
-## refUrl 结构
-```json
-{
-  "title": "链接标题",
-  "url": "链接地址"
-}
-```
-**必须提供 2-3 个相关链接**，如官方公告、新闻报道、技术文档、GitHub 仓库等。LLM 需通过互联网搜索补充相关链接。
+## news_metrics 表字段
+| 字段 | 类型 | 必填 | 说明 |
+|-----|------|-----|-----|
+| news_uid | TEXT | ✅ | 关联 news.uid |
+| refUrl | TEXT | ⚠️ | JSON 数组格式，参考链接 [{title, url}] |
 
 # 任务
 
-根据用户提供的信息，生成完整的新闻数据。
+根据用户提供的新闻信息，生成完整的数据库插入语句和 Markdown 内容。
 
 ## 输入信息格式
+
 用户提供以下信息：
 - 新闻标题
-- 新闻分类
-- 新闻正文内容或原文链接
-
-**注意**：
-- publishedAt 由 LLM 自动获取当前日期生成，无需用户提供
-- refUrl 相关链接由 LLM 通过互联网搜索补充，无需用户提供
+- 分类
+- 发布日期（可选，默认当天）
+- 新闻摘要
+- 参考链接（可选）
 
 ## 输出要求
 
-1. **分配 UID**：使用 `9{4位数字}` 格式，确保递增不重复
+### 1. 分配 UID
 
-2. **生成 slug**：基于日期和事件生成 URL 友好标识符
+使用 6 位数字格式，从已有最大 UID + 1 递增（如现有最大是 200050，新新闻用 200051）。
 
-3. **搜索相关链接**：通过互联网搜索该新闻的相关信息，补充 2-3 个相关链接（官方公告、新闻报道、技术文档、GitHub/Hugging Face 页面等）
+### 2. 生成 slug
 
-4. **生成完整 JSON 条目**
+将标题转换为 URL 友好的 slug：
+- 英文标题：转小写，空格替换为连字符，移除特殊字符
+- 中文标题：使用拼音或关键英文词
 
-5. **追加到文件末尾**：将新新闻追加到 `src/data/news.json` 数组末尾，**切勿删除原有内容**
+### 3. 输出格式
 
-6. **输出格式**：
+#### SQL 语句
 
-### JSON 输出
-```json
-{
-  "uid": "...",
-  "slug": "...",
-  "title": "...",
-  ...
-}
+```sql
+-- 插入 news 表
+INSERT OR REPLACE INTO news (uid, slug, title, category, publishedAt, context)
+VALUES ('{uid}', '{slug}', '{标题}', '{分类}', '{日期}', '{摘要}');
+
+-- 插入 news_metrics 表
+INSERT OR REPLACE INTO news_metrics (news_uid, refUrl)
+VALUES ('{uid}', '[{"title":"来源 1","url":"https://..."}]');
 ```
-说明：将此条目添加到 `src/data/news.json` 文件末尾（注意 JSON 数组格式，需要在上一条末尾添加逗号）。
+
+#### Markdown 内容
+
+```markdown
+---
+uid: "{uid}"
+title: "{标题}"
+category: "{分类}"
+publishedAt: "{日期}"
+draft: false
+---
+
+# {新闻标题}
+
+{新闻详细内容}
+
+## 参考来源
+- [来源 1](https://...)
+- [来源 2](https://...)
+```
 
 # 约束
-- 正文客观陈述事实，不添加主观评价
-- publishedAt 格式为 YYYY-MM-DD
-- 分类必须使用预定义值：产品发布/融资动态/研究论文/政策法规
-- refUrl 数组必须包含 2-3 个链接，通过互联网搜索补充
-- uid 格式为 `9{4位数字}`，如 9001、9002、90010
-- slug 使用英文小写+连字符格式，便于 URL 解析
-- **追加而非覆盖**：新新闻追加到数组末尾，保留原有内容
+
+- 摘要控制在 200 字以内
+- category 使用预定义值：产品发布/融资动态/技术突破/行业资讯/政策法规
+- publishedAt 使用 YYYY-MM-DD 格式
+- refUrl 使用 JSON 数组格式
 - 不解释，只输出数据
 
 # 示例输入
-新闻标题：OpenAI 发布 GPT-5 模型
-分类：产品发布
-正文内容：
-OpenAI 今日正式发布 GPT-5 模型，这是继 GPT-4 之后的重大更新。新模型在多模态能力、推理速度和准确性方面都有显著提升。GPT-5 支持更长的上下文窗口，最高可达 100K tokens，同时成本较 GPT-4 降低 30%。模型已向 ChatGPT Plus 用户开放。
 
-**注意**：
-- publishedAt（发布日期）由 LLM 自动获取当前日期生成，无需手动提供
-- refUrl 相关链接由 LLM 通过互联网搜索补充，无需手动提供
+标题：OpenAI 发布 GPT-5 模型
+分类：产品发布
+发布日期：2026-04-21
+摘要：OpenAI 正式发布 GPT-5，性能大幅提升，支持多模态理解和生成
+参考链接：https://openai.com/blog/gpt-5
 
 # 示例输出
 
-### JSON
-```json
-{
-  "uid": "9003",
-  "slug": "2026-04-18-openai-gpt5",
-  "title": "OpenAI 发布 GPT-5 模型",
-  "category": "产品发布",
-  "publishedAt": "2026-04-18",
-  "context": "OpenAI 今日正式发布 GPT-5 模型，这是继 GPT-4 之后的重大更新。新模型在多模态能力、推理速度和准确性方面都有显著提升。GPT-5 支持更长的上下文窗口，最高可达 100K tokens，同时成本较 GPT-4 降低 30%。模型已向 ChatGPT Plus 用户开放，企业版 API 将在一周内推出。",
-  "refUrl": [
-    {
-      "title": "OpenAI 官方公告",
-      "url": "https://openai.com/blog/gpt-5"
-    },
-    {
-      "title": "技术白皮书",
-      "url": "https://openai.com/research/gpt-5-paper"
-    }
-  ]
-}
+### SQL 语句
+
+```sql
+-- 插入 news 表
+INSERT OR REPLACE INTO news (uid, slug, title, category, publishedAt, context)
+VALUES (
+  '200051',
+  'openai-releases-gpt5',
+  'OpenAI 发布 GPT-5 模型',
+  '产品发布',
+  '2026-04-21',
+  'OpenAI 正式发布 GPT-5，性能大幅提升，支持多模态理解和生成'
+);
+
+-- 插入 news_metrics 表
+INSERT OR REPLACE INTO news_metrics (news_uid, refUrl)
+VALUES ('200051', '[{"title":"OpenAI Blog","url":"https://openai.com/blog/gpt-5"}]');
 ```
-说明：添加到 `src/data/news.json` 数组末尾。注意在上一条新闻的闭合大括号后添加逗号。publishedAt 使用当前日期。
+
+### Markdown 内容
+
+```markdown
+---
+uid: "200051"
+title: "OpenAI 发布 GPT-5 模型"
+category: "产品发布"
+publishedAt: "2026-04-21"
+draft: false
+---
+
+# OpenAI 发布 GPT-5 模型
+
+OpenAI 于今日正式发布 GPT-5 模型，相比 GPT-4 在各项指标上都有显著提升...
+
+## 参考来源
+- [OpenAI Blog](https://openai.com/blog/gpt-5)
+```
+```
 
 ---
 
 ## 使用方法
 
 1. 复制上方完整提示词
-2. 发送给 LLM（如 ChatGPT、Claude、通义千问等）
-3. 在提示词后附上你要添加的新闻信息，格式如下：
+2. 发送给 LLM
+3. 附上新闻信息
+4. 执行 SQL 并创建 Markdown 文件
 
+---
+
+## 快速操作
+
+```bash
+# 查询下一个 UID
+sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM news;"
+
+# 执行 SQL
+sqlite3 sqlite_db/app.db < insert_news.sql
+
+# 创建 Markdown
+mkdir -p src/content/news/{uid}
+cat > src/content/news/{uid}/{uid}.md << 'EOF'
+[Markdown 内容]
+EOF
+
+# 重新构建并重启
+npm run build && systemctl restart ai-links
 ```
-新闻标题：[新闻标题]
-分类：[产品发布/融资动态/研究论文/政策法规]
-正文内容：
-[新闻正文]
-```
-
-4. LLM 将：
-   - 自动获取当前日期作为 publishedAt
-   - 通过互联网搜索补充 2-3 个相关链接
-   - 输出 JSON 数据
-
-5. 将 JSON 条目**追加**到 `src/data/news.json` 数组末尾，**切勿删除原有内容**
-6. **注意**：JSON 数组格式，需要在上一条新闻末尾添加逗号 `,`
-7. 运行 `npm run build` 验证
 
 ---
 
 ## 注意事项
 
-- UID 需要递增，确保不与现有新闻重复
-- 分类必须使用预定义的四个值
-- 正文内容客观陈述，不添加主观评价
-- 相关链接必须 2-3 个，通过互联网搜索补充（官方公告、新闻报道、GitHub/Hugging Face 页面等）
-- **追加而非覆盖**：新新闻追加到数组末尾，保留原有内容
-- JSON 数组格式注意逗号分隔
-- publishedAt 由 LLM 自动获取当前日期生成
-
----
-
-## JSON 文件格式说明
-
-`news.json` 是一个 JSON 数组，每条新闻是数组中的一个对象：
-
-```json
-[
-  {
-    "uid": "9001",
-    "slug": "...",
-    "title": "...",
-    "category": "产品发布",
-    "publishedAt": "2026-04-18",
-    "context": "...",
-    "refUrl": [
-      { "title": "...", "url": "..." },
-      { "title": "...", "url": "..." }
-    ]
-  },
-  {
-    "uid": "9002",
-    "slug": "...",
-    "title": "...",
-    ...
-  },
-  {
-    "uid": "9003",    ← 新添加的新闻（追加到末尾）
-    "slug": "...",
-    "title": "...",
-    ...
-  }
-]
-```
-
-**重要**：添加新新闻时，在数组最后一个对象后添加逗号和新对象，**保留所有原有内容**。
+- ⚠️ UID 格式：6 位数字（200001, 200002...）
+- ⚠️ 分类必须使用预定义值
+- ⚠️ 添加后必须重新构建并重启服务
