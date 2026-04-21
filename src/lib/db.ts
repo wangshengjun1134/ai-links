@@ -203,7 +203,7 @@ export async function getProductsPaginated(options: {
     FROM products p
     JOIN product_metrics m ON p.uid = m.product_uid
     ${whereClause}
-    ORDER BY p.uid
+    ORDER BY p.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
@@ -477,7 +477,7 @@ export async function getAgentsPaginated(options: {
     FROM agents a
     JOIN agent_metrics m ON a.uid = m.agent_uid
     ${whereClause}
-    ORDER BY a.sort, a.uid
+    ORDER BY a.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
@@ -756,7 +756,7 @@ export async function getPromptsPaginated(options: {
     FROM prompts p
     JOIN prompt_metrics m ON p.uid = m.prompt_uid
     ${whereClause}
-    ORDER BY p.uid
+    ORDER BY p.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
@@ -964,7 +964,7 @@ export async function getToolsPaginated(options: {
     FROM tools t
     JOIN tool_metrics m ON t.uid = m.tool_uid
     ${whereClause}
-    ORDER BY t.uid
+    ORDER BY t.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
@@ -1133,7 +1133,7 @@ export async function getMcpsPaginated(options: {
     FROM mcps m
     JOIN mcp_metrics mm ON m.uid = mm.mcp_uid
     ${whereClause}
-    ORDER BY m.uid
+    ORDER BY m.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
@@ -1318,7 +1318,7 @@ export async function getAihubPaginated(options: {
     FROM aihub a
     JOIN aihub_metrics m ON a.uid = m.aihub_uid
     ${whereClause}
-    ORDER BY a.uid
+    ORDER BY a.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);
@@ -1436,7 +1436,7 @@ export async function getArticlesPaginated(options: {
     FROM articles a
     JOIN article_metrics m ON a.uid = m.article_uid
     ${whereClause}
-    ORDER BY a.publishedAt DESC
+    ORDER BY a.updated_at DESC
     LIMIT ? OFFSET ?
   `;
   const rows = await queryAll<any>(dataSql, [...params, pageSize, offset]);

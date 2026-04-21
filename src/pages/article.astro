@@ -86,6 +86,7 @@ if (search) queryParams.search = search;
       </a>
       {categories.map((cat) => {
         const isActive = category === cat;
+        const catIcon = cat === '博文' ? '📄' : cat === '教程' ? '📘' : cat === '科普' ? '🔬' : '📄';
         return (
           <a
             href={buildFilterUrl(cat)}
@@ -95,7 +96,7 @@ if (search) queryParams.search = search;
                 : 'text-[#525252] hover:bg-[#171717] hover:text-white'
             }`}
           >
-            <span class="text-lg group-hover:scale-110 transition-transform">📄</span> {cat}
+            <span class="text-lg group-hover:scale-110 transition-transform">{catIcon}</span> {cat}
           </a>
         );
       })}
