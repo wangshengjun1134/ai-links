@@ -1,6 +1,6 @@
 -- Agent Metrics INSERT Script
 -- Generated at: 2026-04-20
--- Total records: 103
+-- Total records: 104
 
 -- 插入智能体指标数据
 INSERT OR REPLACE INTO agent_metrics (agent_uid, country, company, useType, modelLevel, hasApi, pricingModel, needVpn, languages, isInternal, category, subCategory, form_factor, capabilities, scenarios, techTags, deployment, agentLevel, interactionMode) VALUES ('20001000', '中国', '科大讯飞股份有限公司', '["web"]', 'B-Tier', 0, '["免费"]', 0, '["中文"]', 0, '智能体基础设施', '多智能体系统', '["浏览器"]', '["任务执行","多智能体协作","工作流编排","多模态","语音交互","检索增强","工具调用","任务规划"]', '["办公效率","企业管理","客户服务"]', '["大语言模型","RAG","多智能体"]', '云端部署', 'L4_多智能体系统', '触发式');
@@ -106,3 +106,4 @@ INSERT OR REPLACE INTO agent_metrics (agent_uid, country, company, useType, mode
 INSERT OR REPLACE INTO agent_metrics (agent_uid, country, company, useType, modelLevel, hasApi, pricingModel, needVpn, languages, isInternal, category, subCategory, form_factor, capabilities, scenarios, techTags, deployment, agentLevel, interactionMode) VALUES ('20101000', '美国', 'Moltbook', '["web"]', 'B-Tier', 0, '["免费","付费"]', 1, '["英文"]', 0, '智能体基础设施', '智能体平台', '["浏览器"]', '[]', '["办公效率"]', '[]', '云端部署', 'L0_对话助手', '触发式');
 INSERT OR REPLACE INTO agent_metrics (agent_uid, country, company, useType, modelLevel, hasApi, pricingModel, needVpn, languages, isInternal, category, subCategory, form_factor, capabilities, scenarios, techTags, deployment, agentLevel, interactionMode) VALUES ('20102000', '中国', '智诊科技', '["web"]', 'A-Tier', 1, '["付费"]', 0, '["中文"]', 0, '企业/行业智能体', '办公智能体', '["浏览器"]', '[]', '["医疗健康"]', '[]', '云端部署', 'L0_对话助手', '触发式');
 INSERT OR REPLACE INTO agent_metrics (agent_uid, country, company, useType, modelLevel, hasApi, pricingModel, needVpn, languages, isInternal, category, subCategory, form_factor, capabilities, scenarios, techTags, deployment, agentLevel, interactionMode) VALUES ('20103000', '中国', '百度智能云', '["desktop"]', 'A-Tier', 0, '["免费","付费"]', 0, '["中文"]', 0, '开发类智能体', '桌面智能体', '["桌面端"]', '["任务执行","检索增强"]', '["办公效率","企业管理","软件开发"]', '["RAG"]', '本地部署', 'L1_工具调用型', '触发式');
+INSERT OR REPLACE INTO agent_metrics (agent_uid, country, company, useType, modelLevel, hasApi, pricingModel, needVpn, languages, isInternal, category, subCategory, form_factor, capabilities, scenarios, techTags, deployment, agentLevel, interactionMode) VALUES ('20104001', '中国', 'AutoGame Limited', '["web"]', 'B-Tier', 1, '["免费"]', 0, '["中文","英文"]', 0, '编程与开发', 'AI基础设施', '["浏览器"]', '["能力继承","资产共享","自我进化"]', '["AI开发","能力复用"]', '["GEP协议","A2A协议"]', '云端部署', 'B-Tier', '触发式');

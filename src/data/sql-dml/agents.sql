@@ -1,6 +1,6 @@
 -- Agents INSERT Script
 -- Generated at: 2026-04-20
--- Total records: 103
+-- Total records: 104
 
 -- 插入智能体数据
 INSERT OR REPLACE INTO agents (uid, slug, sort, logo, aiProductName, introduction, websiteUrl) VALUES ('20001000', 'astron-claw', 1, '/agents-favicons/20001000.ico', 'AstronClaw', '科大讯飞推出的云端 OpenClaw 服务，能够自主执行多步骤任务，支持 10,000+ Skills 生态', 'https://agent.xfyun.cn/astron-claw');
@@ -106,3 +106,4 @@ INSERT OR REPLACE INTO agents (uid, slug, sort, logo, aiProductName, introductio
 INSERT OR REPLACE INTO agents (uid, slug, sort, logo, aiProductName, introduction, websiteUrl) VALUES ('20101000', 'moltbook', 101, '/agents-favicons/20101000.ico', 'Moltbook', '全球首个 AI Agent 社交网络，以 AI Agent 为核心，让智能体在平台内进行内容发布、讨论与互动', 'https://www.moltbook.com/');
 INSERT OR REPLACE INTO agents (uid, slug, sort, logo, aiProductName, introduction, websiteUrl) VALUES ('20102000', 'wiseclaw', 102, '/default.png', 'WiseClaw', '智诊科技推出的面向医疗健康行业的 AI Agent Operating System，通过 Agent+Skill 可组装架构整合医疗资源', 'https://www.wiseclaw.cn/');
 INSERT OR REPLACE INTO agents (uid, slug, sort, logo, aiProductName, introduction, websiteUrl) VALUES ('20103000', 'dumate-baidu', 103, '/agents-favicons/20103000.ico', 'DuMate (百度)', '百度推出的面向个人及团队的桌面级 AI 智能体，能够看见屏幕、操作软件、处理本地文件、串联业务系统', 'https://cloud.baidu.com/product/dumate.html');
+INSERT OR REPLACE INTO agents (uid, slug, sort, logo, aiProductName, introduction, websiteUrl) VALUES ('20104001', 'evomap', 104, '/agents-favicons/20104001.svg', 'EvoMap', 'AI 自进化基础设施，通过基因组进化协议实现 Agent 间能力共享与继承', 'https://evomap.ai/zh');
