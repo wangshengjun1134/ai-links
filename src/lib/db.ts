@@ -1038,6 +1038,47 @@ export async function getToolsCount(): Promise<number> {
   return result?.count || 0;
 }
 
+/**
+ * 根据 slug 获取单个 Tool
+ */
+export async function getToolBySlug(slug: string): Promise<ToolWithMetrics | null> {
+  const sql = `
+    SELECT
+      t.uid, t.slug, t.title, t.description, t.author, t.icon, t.websiteUrl,
+      m.tags, m.language, m.license, m.func
+    FROM tools t
+    JOIN tool_metrics m ON t.uid = m.tool_uid
+    WHERE t.slug = ?
+  `;
+  const row = await queryOne<any>(sql, [slug]);
+
+  if (!row) return null;
+
+  return {
+    uid: row.uid,
+    slug: row.slug,
+    title: row.title,
+    description: row.description,
+    author: row.author,
+    icon: row.icon,
+    websiteUrl: row.websiteUrl,
+    metrics: {
+      tags: JSON.parse(row.tags || '[]'),
+      language: row.language || '',
+      license: row.license || '',
+      func: row.func || '',
+    },
+  };
+}
+
+/**
+ * 获取所有 Tool slug
+ */
+export async function getAllToolSlugs(): Promise<string[]> {
+  const rows = await queryAll<{ slug: string }>('SELECT slug FROM tools');
+  return rows.map(r => r.slug);
+}
+
 // ============================================
 // MCP 服务相关查询
 // ============================================

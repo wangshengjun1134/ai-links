@@ -29,6 +29,15 @@ const mcpsCollection = defineCollection({
   }),
 });
 
+// 插件 Skill：需要 uid 用于匹配
+const toolsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    uid: z.string(),
+    introduction: z.string().optional(),
+  }),
+});
+
 // 文章：有独立的数据结构
 const articleCollection = defineCollection({
   type: 'content',
@@ -48,4 +57,5 @@ export const collections = {
   agents: agentsCollection,
   prompts: promptsCollection,
   mcps: mcpsCollection,
+  tools: toolsCollection,
 };

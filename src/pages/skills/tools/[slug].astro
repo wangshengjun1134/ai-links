@@ -1,0 +1,226 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import { getToolBySlug, getAllToolSlugs } from '../../../lib/db';
+
+// 从数据库获取所有 Tool slug
+const allSlugs = await getAllToolSlugs();
+const posts = await getCollection('tools');
+
+export async function getStaticPaths() {
+  // 生成所有数据库中存在的 Tool 路径
+  return allSlugs.map(slug => {
+    return {
+      params: { slug },
+    };
+  });
+}
+
+// SSR 模式下，从 URL 参数获取 slug
+const urlSlug = Astro.params.slug;
+const toolMeta = await getToolBySlug(urlSlug);
+
+if (!toolMeta) {
+  return Astro.redirect('/skills/tools');
+}
+
+// 通过 uid 找到对应的 Markdown 文件
+const uid = toolMeta.uid;
+const entry = posts.find(p => p.slug === `${uid}/${uid}` || p.slug.split('/').pop() === uid);
+const { Content, headings } = entry ? await entry.render() : { Content: null, headings: [] };
+---
+
+<Layout title={toolMeta.title || '插件详情'}>
+  <div class="flex min-h-screen bg-white bg-clip-content px-[140px]">
+    <article class="flex-1 min-w-0">
+      <div class="mx-auto px-8 md:px-16 py-20">
+
+        <header class="mb-16 pb-12 border-b border-slate-100">
+          <div class="flex items-start gap-6 mb-8">
+            <div class="w-20 h-20 rounded-2xl border border-slate-200 bg-white flex items-center justify-center p-3 shadow-sm">
+              <span class="text-[40px]">🔌</span>
+            </div>
+            <div class="flex-1">
+              <h1 class="text-[44px] font-black text-slate-900 leading-[1.1] tracking-tight mb-3">
+                {toolMeta.title || '插件详情'}
+              </h1>
+              <p class="text-[16px] text-slate-500 leading-relaxed">
+                {entry?.data?.introduction || toolMeta.description}
+              </p>
+            </div>
+          </div>
+
+          <!-- 作者信息 -->
+          {toolMeta.author && (
+            <div class="flex items-center gap-2 mb-6">
+              <span class="text-[12px] text-slate-400 uppercase tracking-wider font-bold">作者</span>
+              <span class="text-[14px] text-slate-700 font-semibold">{toolMeta.author}</span>
+            </div>
+          )}
+
+          <!-- Tags 标签 + ClawdHub 链接 -->
+          <div class="flex flex-wrap items-center gap-2">
+            {toolMeta.metrics?.tags && toolMeta.metrics.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {toolMeta.metrics.tags.map((tag: string) => (
+                  <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[12px] rounded-full font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+            {toolMeta.websiteUrl && (
+              <a
+                href={toolMeta.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ml-auto flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-500 text-[12px] rounded-full font-medium hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+                <span class="underline">ClawdHub</span>
+              </a>
+            )}
+          </div>
+        </header>
+
+        <!-- 详情内容 -->
+        <div id="custom-article-content">
+          <Content />
+        </div>
+
+        <!-- 底部信息 -->
+        <footer class="mt-20 pt-8 border-t border-slate-200">
+          <div class="flex items-center justify-between">
+            <span class="text-[12px] text-slate-400">插件 UID: {toolMeta.uid}</span>
+            <a
+              href="/skills/tools"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[13px] font-bold rounded-full transition-all duration-200"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+              </svg>
+              <span>返回列表</span>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </article>
+
+    <!-- 右侧导航 -->
+    <aside class="w-[320px] shrink-0 border-l border-slate-50 hidden xl:block">
+      <div class="sticky top-0 h-screen p-10 overflow-y-auto custom-scrollbar">
+        <nav class="space-y-1">
+          {headings.filter(h => h.depth >= 2).map((h) => (
+            <a href={`#${h.slug}`} class={`group flex items-center py-2 px-3 transition-all rounded-lg hover:bg-slate-50 hover:text-indigo-600 ${h.depth === 2 ? 'text-[13px] font-bold text-slate-800' : 'text-[12px] text-slate-500 ml-4'}`}>
+              <span class="truncate">{h.text}</span>
+            </a>
+          ))}
+        </nav>
+      </div>
+    </aside>
+  </div>
+</Layout>
+
+<style is:global>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cbd5c1;
+  }
+
+  #custom-article-content h2,
+  #custom-article-content h3,
+  #custom-article-content h4 {
+    scroll-margin-top: 120px;
+  }
+
+  #custom-article-content {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #334155;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  #custom-article-content h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #0f172a;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+  }
+
+  #custom-article-content h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #custom-article-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  #custom-article-content ul {
+    list-style-type: disc;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+
+  #custom-article-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  #custom-article-content strong {
+    color: #0f172a;
+    font-weight: 800;
+  }
+
+  #custom-article-content pre {
+    background-color: #0d1117;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 2.5rem 0;
+    overflow-x: auto;
+    border: 1px solid #1e293b;
+  }
+
+  #custom-article-content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.9em;
+  }
+
+  #custom-article-content :not(pre) > code {
+    background-color: #f1f5f9;
+    color: #4f46e5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.4rem;
+    font-weight: 600;
+  }
+
+  #custom-article-content blockquote {
+    border-left: 4px solid #e2e8f0;
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: #64748b;
+    margin: 2rem 0;
+  }
+
+  #custom-article-content img {
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem 0;
+    max-width: 100%;
+  }
+</style>
