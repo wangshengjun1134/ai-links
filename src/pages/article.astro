@@ -109,15 +109,23 @@ if (search) queryParams.search = search;
 
       <div class="relative w-full max-w-md">
         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[14px] text-[#A3A3A3]">🔍</span>
-        <form action="/article" method="get">
+        <form action="/article" method="get" id="search-form">
           {category && <input type="hidden" name="category" value={category} />}
           <input
             type="text"
             name="search"
+            id="search-input"
             value={search}
-            placeholder="搜索教程..."
-            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-4 text-[13.5px] text-[#171717] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
+            placeholder="搜索文章..."
+            class="w-full bg-white border border-[#E5E5E5] rounded-full py-2.5 pl-11 pr-10 text-[13.5px] text-[#171717] placeholder-[#A3A3A3] focus:border-[#171717] outline-none"
           />
+          <button
+            type="button"
+            id="clear-search"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-[14px] text-[#A3A3A3] hover:text-[#171717] cursor-pointer transition-colors hidden"
+          >
+            ✕
+          </button>
         </form>
       </div>
 
@@ -200,3 +208,39 @@ if (search) queryParams.search = search;
     )}
   </div>
 </Layout>
+
+<script>
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const clearBtn = document.getElementById('clear-search');
+
+  // 根据输入内容显示/隐藏清除按钮
+  const toggleClearBtn = () => {
+    if (input && clearBtn) {
+      if (input.value.trim()) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+    }
+  };
+
+  // 初始化状态
+  toggleClearBtn();
+
+  // 监听输入变化
+  input?.addEventListener('input', toggleClearBtn);
+
+  // 点击清除
+  clearBtn?.addEventListener('click', () => {
+    if (input) {
+      input.value = '';
+      clearBtn.classList.add('hidden');
+      // 如果当前是搜索结果页，跳转到无搜索参数的页面
+      if (window.location.search.includes('search=')) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('search');
+        window.location.href = url.toString();
+      }
+    }
+  });
+</script>

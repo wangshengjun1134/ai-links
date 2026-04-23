@@ -131,11 +131,18 @@ const categories = [
             type="text" 
             id="hero-search"
             placeholder="搜索 AI 工具、智能体、技能..." 
-            class="w-full bg-white border border-[#E5E5E5] rounded-2xl py-4 px-6 pl-14 text-[15px] font-medium text-[#171717] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-8 focus:ring-[#171717]/5 outline-none transition-all duration-300 shadow-sm hover:shadow-md"
+            class="w-full bg-white border border-[#E5E5E5] rounded-2xl py-4 px-6 pl-14 pr-12 text-[15px] font-medium text-[#171717] placeholder-[#A3A3A3] focus:border-[#171717] focus:ring-8 focus:ring-[#171717]/5 outline-none transition-all duration-300 shadow-sm hover:shadow-md"
           />
           <svg class="w-5 h-5 absolute left-5 top-1/2 -translate-y-1/2 text-[#A3A3A3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
+          <button
+            type="button"
+            id="clear-search"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-[16px] text-[#A3A3A3] hover:text-[#171717] cursor-pointer transition-colors hidden"
+          >
+            ✕
+          </button>
         </div>
         
         <!-- 统计数据 -->
@@ -243,16 +250,37 @@ const categories = [
 
 <script>
   // 搜索功能
-  const heroSearch = document.getElementById('hero-search');
+  const heroSearch = document.getElementById('hero-search') as HTMLInputElement;
+  const clearBtn = document.getElementById('clear-search');
+
+  const toggleClearBtn = () => {
+    if (heroSearch && clearBtn) {
+      if (heroSearch.value.trim()) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+    }
+  };
+
+  toggleClearBtn();
+  heroSearch?.addEventListener('input', toggleClearBtn);
+
   if (heroSearch) {
     heroSearch.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         const query = heroSearch.value.trim();
         if (query) {
-          // 跳转到产品页面并带上搜索参数
           window.location.href = `/products?search=${encodeURIComponent(query)}`;
         }
       }
     });
   }
+
+  clearBtn?.addEventListener('click', () => {
+    if (heroSearch) {
+      heroSearch.value = '';
+      clearBtn.classList.add('hidden');
+    }
+  });
 </script>
