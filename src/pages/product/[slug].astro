@@ -2,11 +2,9 @@
 // 详情页使用预渲染（SSG）
 export const prerender = true;
 
+import { getCollection } from 'astro:content';
 import DetailPageLayout from '../../layouts/DetailPageLayout.astro';
-import { marked } from 'marked';
 import { getProductBySlug, getAllProductSlugs } from '../../lib/db';
-import fs from 'fs';
-import path from 'path';
 
 // 构建时从数据库获取 slug 列表
 export async function getStaticPaths() {
@@ -25,12 +23,15 @@ if (!p) {
   return Astro.redirect('/404');
 }
 
-// 尝试读取 Markdown 正文内容
-let detailContent = '';
-const mdPath = path.join(process.cwd(), 'src', 'content', 'products', p.uid, `${p.uid}.md`);
-if (fs.existsSync(mdPath)) {
-  detailContent = fs.readFileSync(mdPath, 'utf-8');
-}
+// 通过 uid 找到对应的 Markdown 文件
+// content collection 的 slug 格式是小写的 "uid/uid"
+const posts = await getCollection('products');
+const uid = p.uid;
+const lowerUid = uid.toLowerCase();
+const entry = posts.find(e => e.slug === `${lowerUid}/${lowerUid}` || e.id === `${uid}/${uid}.md`);
+
+// 获取 Content 组件和 headings
+const { Content, headings } = entry ? await entry.render() : { Content: null, headings: [] };
 
 const product = {
   uid: p.uid,
@@ -39,7 +40,6 @@ const product = {
   aiProductName: p.aiProductName,
   introduction: p.introduction,
   websiteUrl: p.websiteUrl,
-  detail: detailContent || p.introduction,
   metrics: {
     level1: p.metrics.level1 || '',
     level2: p.metrics.level2 || '',
@@ -54,16 +54,6 @@ const product = {
     rawProductType: p.metrics.rawProductType || [],
   },
 };
-
-// 渲染 Markdown 正文为 HTML
-const contentHtml = product.detail
-  ? await marked.parse(product.detail)
-  : `<p>${product.introduction}</p>`;
-
-// 提取 productType 信息
-const level1 = product.metrics.level1 || null;
-const level2 = product.metrics.level2 || null;
-const tags = product.metrics.tags || [];
 ---
 
 <DetailPageLayout
@@ -76,8 +66,9 @@ const tags = product.metrics.tags || [];
   websiteUrl={product.websiteUrl}
   uid={product.uid}
   uidLabel="产品 UID"
-  level1={level1}
-  level2={level2}
-  tags={tags}
-  contentHtml={contentHtml}
+  level1={product.metrics.level1 || null}
+  level2={product.metrics.level2 || null}
+  tags={product.metrics.tags || []}
+  content={Content}
+  headings={headings}
 />
