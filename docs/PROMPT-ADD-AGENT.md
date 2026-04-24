@@ -22,7 +22,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），智能体数据存储
 ## agents 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | TEXT | ✅ | 6 位数字唯一 ID，如 300001 |
+| uid | TEXT | ✅ | 两位字母前缀 AG- + 6位数字，如 AG-000001 |
 | slug | TEXT | ✅ | URL 友好名称 |
 | logo | TEXT | ✅ | Logo 路径，格式 `/agents-favicons/{uid}.png` |
 | aiProductName | TEXT | ✅ | 智能体名称 |
@@ -80,7 +80,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），智能体数据存储
 
 ### 1. 分配 UID
 
-使用 6 位数字格式，从已有最大 UID + 1 递增（如现有最大是 300050，新智能体用 300051）。
+使用两位字母前缀 AG- + 6位数字格式，从已有最大 UID + 1 递增（如现有最大是 AG-000050，新智能体用 AG-000051）。
 
 ### 2. 生成 slug
 
@@ -160,9 +160,9 @@ draft: false
 -- 插入 agents 表
 INSERT OR REPLACE INTO agents (uid, slug, logo, aiProductName, introduction, websiteUrl)
 VALUES (
-  '300051',
+  'AG-000051',
   'claude',
-  '/agents-favicons/300051.png',
+  '/agents-favicons/AG-000051.png',
   'Claude',
   'Anthropic 开发的 AI 助手，擅长写作和分析',
   'https://claude.ai'
@@ -171,7 +171,7 @@ VALUES (
 -- 插入 agent_metrics 表
 INSERT OR REPLACE INTO agent_metrics (agent_uid, category, agentLevel, tags, company, country, hasApi, needVpn)
 VALUES (
-  '300051',
+  'AG-000051',
   '通用助手',
   'S-Tier',
   '["AI 助手","写作","分析"]',
@@ -186,7 +186,7 @@ VALUES (
 
 ```markdown
 ---
-uid: "300051"
+uid: "AG-000051"
 title: "Claude"
 category: "通用助手"
 agentLevel: "S-Tier"
@@ -253,6 +253,6 @@ npm run build && systemctl restart ai-links
 
 ## 注意事项
 
-- ⚠️ UID 格式：6 位数字（300001, 300002...）
+- ⚠️ UID 格式：两位字母前缀 AG- + 6位数字（AG-000001, AG-000002...）
 - ⚠️ 分类和等级必须使用预定义值
 - ⚠️ 添加后必须重新构建并重启服务

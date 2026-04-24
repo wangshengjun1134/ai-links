@@ -28,9 +28,9 @@
 
 ```json
 {
-  "uid": "10012345",
+  "uid": "PD-000123",
   "slug": "product-name",
-  "logo": "/product-favicons/10012345.ico",
+  "logo": "/product-favicons/PD-000123.ico",
   "aiProductName": "产品名称",
   "introduction": "产品简介（一句话描述，50字以内）",
   "websiteUrl": "https://example.com",
@@ -58,7 +58,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | string | ✅ | 8位数字唯一ID，从 10000001 开始 |
+| uid | string | ✅ | 新格式：两位字母前缀+6位数字，如 `PD-000001`（产品）、`AG-000001`（智能体） |
 | slug | string | ✅ | URL友好的名称，用于详情页路由 |
 | logo | string | ✅ | favicon路径，格式 `/product-favicons/{uid}.ico` |
 | aiProductName | string | ✅ | 产品显示名称 |
@@ -78,7 +78,7 @@
 
 ```markdown
 ---
-uid: "10012345"
+uid: "PD-000123"
 aiProductName: "产品名称"
 introduction: "产品简介"
 company: "公司名称"
@@ -110,7 +110,7 @@ logo: "/product-favicons/10012345.ico"
 
 ### 2.4 favicon 处理
 
-将产品图标下载并保存到 `public/product-favicons/{uid}.ico` 或 `.png`。
+将产品图标下载并保存到 `public/product-favicons/{uid}.ico` 或 `.png`（如 `PD-000123.ico`）。
 
 ---
 
@@ -122,9 +122,9 @@ logo: "/product-favicons/10012345.ico"
 
 ```json
 {
-  "uid": "20012345",
+  "uid": "AG-000123",
   "slug": "agent-name",
-  "logo": "/agents-favicons/20012345.ico",
+  "logo": "/agents-favicons/AG-000123.ico",
   "aiProductName": "智能体名称",
   "introduction": "一句话简介",
   "websiteUrl": "https://example.com",
@@ -172,7 +172,7 @@ logo: "/product-favicons/10012345.ico"
 
 ```json
 {
-  "uid": "30012345",
+  "uid": "PM-000123",
   "title": "提示词标题",
   "description": "提示词描述",
   "author": "作者名称",
@@ -204,7 +204,7 @@ logo: "/product-favicons/10012345.ico"
 
 ```json
 {
-  "uid": "80012345",
+  "uid": "MC-000123",
   "title": "MCP 服务名称",
   "description": "服务描述",
   "author": "作者",
@@ -269,11 +269,23 @@ npm run dev
 
 ### Step 2: 分配 UID
 
-根据类型分配 UID：
-- 产品：10000001 - 19999999
-- 智能体：20000001 - 29999999
-- 提示词：30000001 - 39999999
-- MCP：80000001 - 89999999
+根据类型分配 UID，格式为两位字母前缀+6位数字：
+
+| 类型 | 前缀 | 示例 |
+|-----|------|-----|
+| 产品 | PD | PD-000001 |
+| 智能体 | AG | AG-000001 |
+| 提示词 | PM | PM-000001 |
+| MCP 服务 | MC | MC-000001 |
+| 文章 | AR | AR-000001 |
+| 新闻 | NE | NE-000001 |
+| 工具 | TO | TO-000001 |
+| AI Hub | AH | AH-000001 |
+
+查询当前最大 UID：
+```bash
+sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM products;"
+```
 
 ### Step 3: 生成 slug
 

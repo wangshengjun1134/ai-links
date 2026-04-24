@@ -152,9 +152,9 @@ draft: false
 ## 输出要求
 
 1. **分配 UID**：
-   - 统一使用 5 位数字格式（如 10001, 10002, 10003...）
+   - 统一使用两位字母前缀 `AR-` + 6位数字格式（如 AR-000001, AR-000002, AR-000003...）
    - 确保不与已有 UID 冲突（查询数据库确认下一个可用 UID）
-   - 当前已有 UID：10003-10007，建议从 10008 开始
+   - 当前已有 UID：AR-000003-AR-000007，建议从 AR-000008 开始
 
 2. **生成 SQL 插入语句**：输出完整的 SQL INSERT 语句
 
@@ -216,7 +216,7 @@ db.exec(`INSERT INTO article ...`);
 -- 添加到 SQLite 数据库 articles 表
 INSERT OR REPLACE INTO articles (uid, slug, title, titleEn, description, author, category, readTime, publishedAt, websiteUrl)
 VALUES (
-  '10008',
+  'AR-000008',
   'mcp-protocol-guide',
   'MCP 协议入门：让 AI 连接一切',
   NULL,
@@ -230,7 +230,7 @@ VALUES (
 
 -- 同时添加到 article_metrics 表
 INSERT OR REPLACE INTO article_metrics (article_uid, tags)
-VALUES ('10008', '["MCP","协议","AI 工具"]');
+VALUES ('AR-000008', '["MCP","协议","AI 工具"]');
 ```
 
 执行方式：
@@ -245,7 +245,7 @@ node -e "const db = require('better-sqlite3')('sqlite_db/app.db'); db.exec(\`INS
 ### Markdown
 ```markdown
 ---
-uid: "10008"
+uid: "AR-000008"
 title: "MCP 协议入门：让 AI 连接一切"
 author: "AI Links Team"
 category: "教程"
@@ -275,10 +275,10 @@ MCP 协议为 AI 应用提供了标准化的扩展能力...
 操作说明：
 ```bash
 # 创建目录
-mkdir -p src/content/article/10008
+mkdir -p src/content/article/AR-000008
 
 # 创建 Markdown 文件
-cat > src/content/article/10008/10008.md << 'EOF'
+cat > src/content/article/AR-000008/AR-000008.md << 'EOF'
 [上述 Markdown 内容]
 EOF
 
@@ -362,7 +362,7 @@ echo "✅ 文章添加完成！"
 使用方法：
 ```bash
 chmod +x scripts/add-article.sh
-./scripts/add-article.sh 10008 article.md "INSERT OR REPLACE INTO articles ..."
+./scripts/add-article.sh AR-000008 article.md "INSERT OR REPLACE INTO articles ..."
 ```
 
 ---
@@ -371,7 +371,7 @@ chmod +x scripts/add-article.sh
 
 - ⚠️ **SSR 架构变更**：文章元数据现在存储在 SQLite 数据库中，不再是 JSON 文件
 - ⚠️ 添加文章后**必须重新构建并重启服务**才能生效
-- ⚠️ **UID 格式**：统一使用 5 位数字（10001, 10002, 10003...），不再使用 g-{数字} 格式
+- ⚠️ **UID 格式**：统一使用两位字母前缀 `AR-` + 6位数字（AR-000001, AR-000002, AR-000003...）
 - 💡 **查询下一个 UID**：`sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM articles;"`
 - 如果是英文文章，LLM 会自动生成双语对照格式
 - 提供完整的正文内容，LLM 才能正确格式化
@@ -392,24 +392,24 @@ sqlite3 sqlite_db/ai-links.db "SELECT uid, title, category, published_at FROM ar
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM articles WHERE uid = '10008';"
+sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM articles WHERE uid = 'AR-000008';"
 ```
 
 ### 查看下一个可用 UID
 ```bash
 # 查看最大 UID
 sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM articles;"
-# 输出：10007，则下一个使用 10008
+# 输出：AR-000007，则下一个使用 AR-000008
 ```
 
 ### 删除文章
 ```bash
 # 从数据库删除
-sqlite3 sqlite_db/app.db "DELETE FROM articles WHERE uid = '10008';"
-sqlite3 sqlite_db/app.db "DELETE FROM article_metrics WHERE article_uid = '10008';"
+sqlite3 sqlite_db/app.db "DELETE FROM articles WHERE uid = 'AR-000008';"
+sqlite3 sqlite_db/app.db "DELETE FROM article_metrics WHERE article_uid = 'AR-000008';"
 
 # 删除 Markdown 文件
-rm -rf src/content/article/10008/
+rm -rf src/content/article/AR-000008/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links

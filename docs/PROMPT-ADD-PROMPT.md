@@ -22,7 +22,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），提示词数据存储
 ## prompts 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | TEXT | ✅ | 8 位数字唯一 ID，如 30001000 |
+| uid | TEXT | ✅ | 唯一 ID，格式 PM- + 6位数字，如 PM-000001 |
 | slug | TEXT | ✅ | URL 友好名称 |
 | title | TEXT | ✅ | 提示词标题 |
 | description | TEXT | ⚠️ | 描述，100 字以内 |
@@ -93,11 +93,12 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），提示词数据存储
 
 ### 1. 分配 UID
 
-使用 8 位数字格式，从已有最大 UID + 1000 递增（如现有最大是 30006000，新提示词用 30007000）。
+使用格式：`PM-` 前缀 + 6位数字，如 PM-000001。从已有最大 UID 数字部分 + 1 递增。
 
 查询当前最大 UID：
 ```bash
 sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM prompts;"
+# 输出示例：PM-000005，则下一个使用 PM-000006
 ```
 
 ### 2. 生成 slug
@@ -186,18 +187,18 @@ draft: false
 -- 插入 prompts 表
 INSERT OR REPLACE INTO prompts (uid, slug, title, description, websiteUrl, icon)
 VALUES (
-  '30007000',
+  'PM-000001',
   'academic-paper-polishing',
   '专业论文润色 Prompt',
   '用于学术论文润色和语法修正的提示词模板',
   '',
-  '/prompts/30007000.png'
+  '/prompts/PM-000001.png'
 );
 
 -- 插入 prompt_metrics 表
 INSERT OR REPLACE INTO prompt_metrics (prompt_uid, scenario, task, modality, tags)
 VALUES (
-  '30007000',
+  'PM-000001',
   '学术研究',
   '文本改写',
   '文本到文本',
@@ -209,7 +210,7 @@ VALUES (
 
 ```markdown
 ---
-uid: "30007000"
+uid: "PM-000001"
 title: "专业论文润色 Prompt"
 scenario: "学术研究"
 task: "文本改写"
@@ -299,19 +300,19 @@ This study investigates the relationship between sleep and memory. We found that
 ```bash
 # 查询下一个 UID
 sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM prompts;"
-# 输出：30006000，则下一个使用 30007000
+# 输出示例：PM-000005，则下一个使用 PM-000006
 
 # 执行 SQL
 sqlite3 sqlite_db/app.db < insert_prompt.sql
 
 # 创建目录和 Markdown 文件
-mkdir -p src/content/prompts/{uid}
-cat > src/content/prompts/{uid}/{uid}.md << 'EOF'
+mkdir -p src/content/prompts/PM-000001
+cat > src/content/prompts/PM-000001/PM-000001.md << 'EOF'
 [LLM 输出的 Markdown 内容]
 EOF
 
 # 下载图标（如有）
-curl -o public/prompts/{uid}.png {icon_url}
+curl -o public/prompts/PM-000001.png {icon_url}
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links
@@ -364,7 +365,7 @@ npm run build && systemctl restart ai-links
 
 ## 注意事项
 
-- ⚠️ **UID 格式**：8 位数字（30001000, 30002000...）
+- ⚠️ **UID 格式**：PM- 前缀 + 6位数字（PM-000001, PM-000002...）
 - ⚠️ **分类必须使用预定义值**：scenario、task、modality
 - ⚠️ **必须包含完整 Prompt**：Markdown 中必须有完整的提示词模板
 - ⚠️ **添加后必须重新构建并重启服务**：`npm run build && systemctl restart ai-links`
@@ -382,17 +383,17 @@ sqlite3 sqlite_db/app.db "SELECT uid, title, scenario, task FROM prompts ORDER B
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM prompts WHERE uid = '30007000';"
+sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM prompts WHERE uid = 'PM-000001';"
 ```
 
 ### 删除提示词
 ```bash
 # 从数据库删除
-sqlite3 sqlite_db/app.db "DELETE FROM prompts WHERE uid = '30007000';"
-sqlite3 sqlite_db/app.db "DELETE FROM prompt_metrics WHERE prompt_uid = '30007000';"
+sqlite3 sqlite_db/app.db "DELETE FROM prompts WHERE uid = 'PM-000001';"
+sqlite3 sqlite_db/app.db "DELETE FROM prompt_metrics WHERE prompt_uid = 'PM-000001';"
 
 # 删除 Markdown 文件
-rm -rf src/content/prompts/30007000/
+rm -rf src/content/prompts/PM-000001/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links

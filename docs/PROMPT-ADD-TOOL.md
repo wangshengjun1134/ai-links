@@ -22,7 +22,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），插件 Skill 数据�
 ## tools 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | TEXT | ✅ | 唯一 ID，如 t-1, t-2 |
+| uid | TEXT | ✅ | 唯一 ID，格式 TO-000001 |
 | slug | TEXT | ✅ | URL 友好名称 |
 | title | TEXT | ✅ | 插件名称 |
 | description | TEXT | ✅ | 描述，100 字以内 |
@@ -60,7 +60,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），插件 Skill 数据�
 
 ### 1. 分配 UID
 
-使用 `t-{数字}` 格式，从已有最大数字 + 1 递增（如现有最大是 t-5，新插件用 t-6）。
+使用 `TO-{6位数字}` 格式，从已有最大数字 + 1 递增（如现有最大是 TO-000005，新插件用 TO-000006）。
 
 查询当前最大 UID：
 ```bash
@@ -171,19 +171,19 @@ GitHub：https://github.com/example/google-search-tool
 -- 插入 tools 表
 INSERT OR REPLACE INTO tools (uid, slug, title, description, author, icon, websiteUrl)
 VALUES (
-  't-6',
+  'TO-000006',
   'google-search-tool',
   'Google Search Tool',
   '让 AI 助手能够实时搜索互联网信息，获取最新新闻和数据',
   'AI Links Team',
-  '/skills/tools/t-6.png',
+  '/skills/tools/TO-000006.png',
   'https://github.com/example/google-search-tool'
 );
 
 -- 插入 tool_metrics 表
 INSERT OR REPLACE INTO tool_metrics (tool_uid, tags, language, license, func)
 VALUES (
-  't-6',
+  'TO-000006',
   '["搜索","实时数据","网络"]',
   'TypeScript',
   'MIT',
@@ -195,7 +195,7 @@ VALUES (
 
 ```markdown
 ---
-uid: "t-6"
+uid: "TO-000006"
 title: "Google Search Tool"
 author: "AI Links Team"
 language: "TypeScript"
@@ -321,7 +321,7 @@ GitHub/官网：[URL]
 ```bash
 # 查询当前最大 UID
 sqlite3 sqlite_db/app.db "SELECT uid FROM tools ORDER BY uid DESC LIMIT 1;"
-# 输出：t-5，则下一个使用 t-6
+# 输出：TO-000005，则下一个使用 TO-000006
 
 # 执行 SQL
 sqlite3 sqlite_db/app.db < insert_tool.sql
@@ -377,7 +377,7 @@ npm run build && systemctl restart ai-links
 
 ## 注意事项
 
-- ⚠️ **UID 格式**：`t-{数字}`（t-1, t-2, t-3...）
+- ⚠️ **UID 格式**：`TO-{6位数字}`（TO-000001, TO-000002, TO-000003...）
 - ⚠️ **description 控制在 100 字以内**
 - ⚠️ **tags 使用 JSON 数组格式**
 - ⚠️ **添加后必须重新构建并重启服务**：`npm run build && systemctl restart ai-links`
@@ -400,17 +400,17 @@ sqlite3 sqlite_db/app.db "SELECT t.uid, t.title, m.language, m.license, m.tags F
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM tools WHERE uid = 't-6';"
+sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM tools WHERE uid = 'TO-000006';"
 ```
 
 ### 删除插件
 ```bash
 # 从数据库删除
-sqlite3 sqlite_db/app.db "DELETE FROM tools WHERE uid = 't-6';"
-sqlite3 sqlite_db/app.db "DELETE FROM tool_metrics WHERE tool_uid = 't-6';"
+sqlite3 sqlite_db/app.db "DELETE FROM tools WHERE uid = 'TO-000006';"
+sqlite3 sqlite_db/app.db "DELETE FROM tool_metrics WHERE tool_uid = 'TO-000006';"
 
 # 删除 Markdown 文件
-rm -rf src/content/tools/t-6/
+rm -rf src/content/tools/TO-000006/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links

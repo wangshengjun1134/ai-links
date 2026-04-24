@@ -22,7 +22,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），MCP 服务数据存�
 ## mcps 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | TEXT | ✅ | 6 位数字唯一 ID，如 400001 |
+| uid | TEXT | ✅ | 唯一 ID，格式：MC- + 6 位数字，如 MC-000001 |
 | slug | TEXT | ✅ | URL 友好名称 |
 | logo | TEXT | ✅ | Logo 路径，格式 `/mcp-favicons/{uid}.png` |
 | aiProductName | TEXT | ✅ | MCP 服务名称 |
@@ -85,7 +85,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），MCP 服务数据存�
 
 ### 1. 分配 UID
 
-使用 6 位数字格式，从已有最大 UID + 1 递增（如现有最大是 400050，新 MCP 用 400051）。
+使用 `MC-` 前缀 + 6 位数字格式，从已有最大 UID + 1 递增（如现有最大是 MC-000050，新 MCP 用 MC-000051）。
 
 ### 2. 生成 slug
 
@@ -177,9 +177,9 @@ draft: false
 -- 插入 mcps 表
 INSERT OR REPLACE INTO mcps (uid, slug, logo, aiProductName, introduction, websiteUrl)
 VALUES (
-  '400051',
+  'MC-000051',
   'filesystem-mcp',
-  '/mcp-favicons/400051.png',
+  '/mcp-favicons/MC-000051.png',
   'Filesystem MCP',
   '提供文件系统访问能力的 MCP 服务',
   'https://github.com/modelcontextprotocol/servers'
@@ -188,7 +188,7 @@ VALUES (
 -- 插入 mcp_metrics 表
 INSERT OR REPLACE INTO mcp_metrics (mcp_uid, serverType, authType, deployment, tags, company, country)
 VALUES (
-  '400051',
+  'MC-000051',
   '文件服务',
   '无认证',
   'npm',
@@ -202,7 +202,7 @@ VALUES (
 
 ```markdown
 ---
-uid: "400051"
+uid: "MC-000051"
 title: "Filesystem MCP"
 serverType: "文件服务"
 authType: "无认证"
@@ -281,6 +281,6 @@ npm run build && systemctl restart ai-links
 
 ## 注意事项
 
-- ⚠️ UID 格式：6 位数字（400001, 400002...）
+- ⚠️ UID 格式：MC- + 6 位数字（MC-000001, MC-000002...）
 - ⚠️ 分类必须使用预定义值
 - ⚠️ 添加后必须重新构建并重启服务

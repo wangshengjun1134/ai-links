@@ -21,7 +21,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），新闻数据存储在
 ## news 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | TEXT | ✅ | 6 位数字唯一 ID，如 200001 |
+| uid | TEXT | ✅ | 唯一 ID，格式：NE- + 6位数字，如 NE-000001 |
 | slug | TEXT | ✅ | URL 友好名称，如 "openai-releases-gpt5" |
 | title | TEXT | ✅ | 新闻标题 |
 | category | TEXT | ✅ | 分类：产品发布/融资动态/技术突破/行业资讯/政策法规 |
@@ -51,7 +51,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），新闻数据存储在
 
 ### 1. 分配 UID
 
-使用 6 位数字格式，从已有最大 UID + 1 递增（如现有最大是 200050，新新闻用 200051）。
+使用 `NE-` 前缀 + 6位数字格式，从已有最大 UID + 1 递增（如现有最大是 NE-000050，新新闻用 NE-000051）。
 
 ### 2. 生成 slug
 
@@ -117,7 +117,7 @@ draft: false
 -- 插入 news 表
 INSERT OR REPLACE INTO news (uid, slug, title, category, publishedAt, context)
 VALUES (
-  '200051',
+  'NE-000051',
   'openai-releases-gpt5',
   'OpenAI 发布 GPT-5 模型',
   '产品发布',
@@ -127,14 +127,14 @@ VALUES (
 
 -- 插入 news_metrics 表
 INSERT OR REPLACE INTO news_metrics (news_uid, refUrl)
-VALUES ('200051', '[{"title":"OpenAI Blog","url":"https://openai.com/blog/gpt-5"}]');
+VALUES ('NE-000051', '[{"title":"OpenAI Blog","url":"https://openai.com/blog/gpt-5"}]');
 ```
 
 ### Markdown 内容
 
 ```markdown
 ---
-uid: "200051"
+uid: "NE-000051"
 title: "OpenAI 发布 GPT-5 模型"
 category: "产品发布"
 publishedAt: "2026-04-21"
@@ -184,6 +184,6 @@ npm run build && systemctl restart ai-links
 
 ## 注意事项
 
-- ⚠️ UID 格式：6 位数字（200001, 200002...）
+- ⚠️ UID 格式：NE- + 6位数字（NE-000001, NE-000002...）
 - ⚠️ 分类必须使用预定义值
 - ⚠️ 添加后必须重新构建并重启服务

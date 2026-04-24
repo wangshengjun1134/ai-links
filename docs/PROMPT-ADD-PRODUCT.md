@@ -22,7 +22,7 @@ AI Links 是一个 AI 资源导航网站，产品数据存储在 SQLite 数据�
 ## products 表字段
 | 字段 | 类型 | 必填 | 说明 |
 |-----|------|-----|-----|
-| uid | TEXT | ✅ | 8位数字唯一ID，如 10586000 |
+| uid | TEXT | ✅ | 新格式：两位字母前缀+6位数字，如 `PD-000001` |
 | slug | TEXT | ✅ | URL友好名称，如 "chatgpt"、"qwen3" |
 | logo | TEXT | ✅ | Logo路径，格式 `/product-favicons/{uid}.png` |
 | aiProductName | TEXT | ✅ | 产品显示名称 |
@@ -88,7 +88,13 @@ AI Links 是一个 AI 资源导航网站，产品数据存储在 SQLite 数据�
 
 ### 1. 分配 UID
 
-使用 8 位数字格式，从已有最大 UID + 1000 递增（如现有最大是 10586000，新产品用 10587000）。
+使用新格式：两位字母前缀 `PD-` + 6位数字。查询当前最大 UID 并递增：
+
+```bash
+sqlite3 sqlite_db/app.db "SELECT uid FROM products ORDER BY uid DESC LIMIT 1;"
+```
+
+如现有最大是 `PD-000987`，新产品用 `PD-000988`。
 
 ### 2. 生成 slug
 
@@ -156,11 +162,11 @@ VALUES ('{uid}', '{level1}', '{level2}', '["标签1","标签2"]', '{国家}', '{
 ```sql
 -- 插入 products 表
 INSERT INTO products (uid, slug, logo, aiProductName, introduction, websiteUrl)
-VALUES ('10587000', 'cursor', '/product-favicons/10587000.png', 'Cursor', 'AI 代码编辑器，帮助开发者更快编写代码', 'https://cursor.sh');
+VALUES ('PD-000988', 'cursor', '/product-favicons/PD-000988.png', 'Cursor', 'AI 代码编辑器，帮助开发者更快编写代码', 'https://cursor.sh');
 
 -- 插入 product_metrics 表
 INSERT INTO product_metrics (product_uid, level1, level2, tags, country, company, hasApi, needVpn, pricingModel, useType, languages)
-VALUES ('10587000', '开发与技术', '编程类', '["AI编辑器","代码生成"]', '美国', 'Cursor Inc.', 0, 0, '["免费","订阅"]', '["native"]', '["英文"]');
+VALUES ('PD-000988', '开发与技术', '编程类', '["AI编辑器","代码生成"]', '美国', 'Cursor Inc.', 0, 0, '["免费","订阅"]', '["native"]', '["英文"]');
 ```
 
 说明：在数据库 `sqlite_db/app.db` 中执行以上 SQL 语句。
@@ -175,11 +181,11 @@ Cursor 是一款 AI 驱动的代码编辑器，基于 VS Code 构建，帮助开
 提供免费版本和 Pro 订阅版本（$20/月）。
 ```
 
-说明：创建目录 `src/content/products/10587000/`，创建文件 `10587000.md`，写入内容。
+说明：创建目录 `src/content/products/PD-000988/`，创建文件 `PD-000988.md`，写入内容。
 
 ### Logo
 
-从 https://cursor.sh 获取 Logo，保存为 `public/product-favicons/10587000.png`。
+从 https://cursor.sh 获取 Logo，保存为 `public/product-favicons/PD-000988.png`。
 ```
 
 ---
@@ -223,10 +229,10 @@ const db = new Database('sqlite_db/app.db');
 // 插入数据
 db.exec(`
   INSERT INTO products (uid, slug, logo, aiProductName, introduction, websiteUrl)
-  VALUES ('10587000', 'cursor', '/product-favicons/10587000.png', 'Cursor', 'AI 代码编辑器', 'https://cursor.sh');
+  VALUES ('PD-000988', 'cursor', '/product-favicons/PD-000988.png', 'Cursor', 'AI 代码编辑器', 'https://cursor.sh');
 
   INSERT INTO product_metrics (product_uid, level1, level2, country, company)
-  VALUES ('10587000', '开发与技术', '编程类', '美国', 'Cursor Inc.');
+  VALUES ('PD-000988', '开发与技术', '编程类', '美国', 'Cursor Inc.');
 `);
 
 db.close();
