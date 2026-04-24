@@ -25,9 +25,16 @@ if (!mcpMeta) {
 }
 
 // 通过 uid 找到对应的 Markdown 文件
+// content collection 的 slug 格式是小写的 "uid/uid"，需要将 uid 转为小写来匹配
 const uid = mcpMeta.uid;
-const entry = posts.find(p => p.slug === `${uid}/${uid}` || p.slug.split('/').pop() === uid);
-const { Content, headings } = entry ? await entry.render() : { Content: null, headings: [] };
+const lowerUid = uid.toLowerCase();
+const entry = posts.find(p => p.slug === `${lowerUid}/${lowerUid}` || p.slug.split('/').pop() === lowerUid);
+
+if (!entry) {
+  return Astro.redirect('/skills/mcp');
+}
+
+const { Content, headings } = await entry.render();
 ---
 
 <Layout title={mcpMeta.title || 'MCP 服务详情'}>
