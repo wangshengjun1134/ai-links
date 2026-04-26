@@ -27,12 +27,26 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Qwen Code memory
+.qwen/
+
+# Qoder
 .qoder/
 
-# database files
-sqlite_db/app.db-wal
-sqlite_db/app.db-shm
+# 内容数据仓库（独立管理）
+ai-links-data/
+
+# database files (已迁移到 ai-links-data)
+sqlite_db/
+
+# junction 目录链接（指向 ai-links-data）
+src/content/
+public/agents-favicons/
+public/aihub-favicons/
+public/mcp-favicons/
+public/product-favicons/
 
 # temp files
 temp_*.html
 dist.zip
+docs/TEST.md

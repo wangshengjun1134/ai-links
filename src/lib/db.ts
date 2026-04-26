@@ -7,8 +7,8 @@ import initSqlJs from 'sql.js';
 import fs from 'fs';
 import path from 'path';
 
-// 数据库路径
-const dbPath = path.resolve(process.cwd(), 'sqlite_db', 'app.db');
+// 数据库路径 - 从 ai-links-data 子模块读取
+const dbPath = path.resolve(process.cwd(), 'ai-links-data', 'sqlite_db', 'app.db');
 
 // wasm 文件路径
 const wasmPath = path.join(process.cwd(), 'node_modules', 'sql.js', 'dist', 'sql-wasm.wasm');

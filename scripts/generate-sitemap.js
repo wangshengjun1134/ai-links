@@ -31,7 +31,7 @@ const staticPages = [
 
 // 从数据库生成产品详情页
 function generateProductPages() {
-  const dbPath = path.join(rootDir, 'sqlite_db', 'app.db');
+  const dbPath = path.join(rootDir, 'ai-links-data', 'sqlite_db', 'app.db');
   if (!fs.existsSync(dbPath)) {
     console.error('数据库不存在:', dbPath);
     return [];
@@ -45,7 +45,7 @@ function generateProductPages() {
 
 // 从数据库生成智能体详情页
 function generateAgentPages() {
-  const dbPath = path.join(rootDir, 'sqlite_db', 'app.db');
+  const dbPath = path.join(rootDir, 'ai-links-data', 'sqlite_db', 'app.db');
   if (!fs.existsSync(dbPath)) {
     console.error('数据库不存在:', dbPath);
     return [];
@@ -59,7 +59,7 @@ function generateAgentPages() {
 
 // 从数据库生成提示词详情页
 function generatePromptPages() {
-  const dbPath = path.join(rootDir, 'sqlite_db', 'app.db');
+  const dbPath = path.join(rootDir, 'ai-links-data', 'sqlite_db', 'app.db');
   if (!fs.existsSync(dbPath)) {
     console.error('数据库不存在:', dbPath);
     return [];
@@ -73,7 +73,7 @@ function generatePromptPages() {
 
 // 从数据库生成 MCP 详情页
 function generateMcpPages() {
-  const dbPath = path.join(rootDir, 'sqlite_db', 'app.db');
+  const dbPath = path.join(rootDir, 'ai-links-data', 'sqlite_db', 'app.db');
   if (!fs.existsSync(dbPath)) {
     console.error('数据库不存在:', dbPath);
     return [];
@@ -87,7 +87,7 @@ function generateMcpPages() {
 
 // 从数据库生成文章详情页
 function generateArticlePages() {
-  const dbPath = path.join(rootDir, 'sqlite_db', 'app.db');
+  const dbPath = path.join(rootDir, 'ai-links-data', 'sqlite_db', 'app.db');
   if (!fs.existsSync(dbPath)) {
     console.error('数据库不存在:', dbPath);
     return [];
@@ -101,7 +101,7 @@ function generateArticlePages() {
 
 // 从数据库生成新闻详情页
 function generateNewsPages() {
-  const dbPath = path.join(rootDir, 'sqlite_db', 'app.db');
+  const dbPath = path.join(rootDir, 'ai-links-data', 'sqlite_db', 'app.db');
   if (!fs.existsSync(dbPath)) {
     console.error('数据库不存在:', dbPath);
     return [];

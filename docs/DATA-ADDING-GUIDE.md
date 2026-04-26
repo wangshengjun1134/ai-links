@@ -1,95 +1,140 @@
 # AI Links 数据添加操作手册
 
-本手册描述如何向 AI Links 项目添加各类数据（产品、智能体、提示词、MCP服务等），便于 AI 自动化添加数据。
+本手册描述如何向 AI Links 项目添加各类数据（产品、智能体、提示词、MCP服务等）。
 
 ---
 
-## 1. 数据类型概览
+## 1. 数据架构概览
 
-| 数据类型 | JSON 文件 | Content 目录 | favicon 目录 | 详情页路由 |
-|---------|----------|-------------|-------------|-----------|
-| AI 产品 | `src/data/products.json` | `src/content/products/` | `public/product-favicons/` | `/product/[slug]` |
-| 智能体 | `src/data/agents.json` | `src/content/agents/` | `public/agents-favicons/` | `/agent/[slug]` |
-| 提示词 | `src/data/prompts.json` | `src/content/prompts/` | `public/prompts/` | `/skills/prompts/[uid]` |
-| MCP 服务 | `src/data/mcp.json` | `src/content/mcps/` | `public/mcp-favicons/` | `/skills/mcps/[uid]` |
-| 工具插件 | `src/data/tools.json` | - | - | 无详情页 |
-| AI Hub | `src/data/aihub.json` | - | `public/aihub-favicons/` | 无详情页 |
-| 大模型 | `src/data/llms.json` | - | - | 无详情页 |
-| 文章 | `src/data/article.json` | `src/content/article/` | - | `/article/[uid]` |
-| 新闻 | `src/data/news.json` | - | - | 无详情页 |
+### 1.1 数据分离架构
 
----
+项目采用**源码与数据分离**架构：
 
-## 2. AI 产品添加流程
-
-### 2.1 JSON 数据格式
-
-在 `src/data/products.json` 中添加条目：
-
-```json
-{
-  "uid": "PD-000123",
-  "slug": "product-name",
-  "logo": "/product-favicons/PD-000123.ico",
-  "aiProductName": "产品名称",
-  "introduction": "产品简介（一句话描述，50字以内）",
-  "websiteUrl": "https://example.com",
-  "metrics": {
-    "productType": {
-      "level1": "一级分类",
-      "level2": "二级分类",
-      "tags": ["标签1", "标签2"]
-    },
-    "company": "公司名称",
-    "country": "国家",
-    "pricingModel": ["免费", "订阅"],
-    "useType": ["个人", "企业"],
-    "languages": ["中文", "英文"],
-    "modelLevel": "S-Tier",
-    "hasApi": true,
-    "needVpn": false,
-    "isInternal": false,
-    "rawProductType": ["补充分类"]
-  }
-}
+```
+ai-links (源码仓库)
+    └── ai-links-data/ (内容仓库)
+        ├── sqlite_db/app.db       # SQLite 数据库
+        ├── content/               # Markdown 详情
+        └── favicons/              # 图标图片
 ```
 
-### 2.2 字段说明
+### 1.2 数据存储位置
 
-| 字段 | 类型 | 必填 | 说明 |
-|-----|------|-----|-----|
-| uid | string | ✅ | 新格式：两位字母前缀+6位数字，如 `PD-000001`（产品）、`AG-000001`（智能体） |
-| slug | string | ✅ | URL友好的名称，用于详情页路由 |
-| logo | string | ✅ | favicon路径，格式 `/product-favicons/{uid}.ico` |
-| aiProductName | string | ✅ | 产品显示名称 |
-| introduction | string | ✅ | 一句话简介 |
-| websiteUrl | string | ✅ | 官网地址 |
-| metrics.productType.level1 | string | ✅ | 一级分类（如"内容创作"、"开发工具"） |
-| metrics.productType.level2 | string | ✅ | 二级分类（如"写作类"、"编程类"） |
-| metrics.company | string | ✅ | 开发公司 |
-| metrics.country | string | ✅ | 所属国家 |
-| metrics.modelLevel | string | ⚠️ | 等级：S-Tier/A-Tier/B-Tier，可选 |
-| metrics.hasApi | boolean | ⚠️ | 是否提供API |
-| metrics.needVpn | boolean | ⚠️ | 国内是否需要代理 |
+| 数据类型 | 数据库表 | Content 目录 | favicon 目录 |
+|---------|---------|-------------|-------------|
+| AI 产品 | `products` + `product_metrics` | `ai-links-data/content/products/` | `ai-links-data/favicons/product-favicons/` |
+| 智能体 | `agents` + `agent_metrics` | `ai-links-data/content/agents/` | `ai-links-data/favicons/agents-favicons/` |
+| 提示词 | `prompts` + `prompt_metrics` | `ai-links-data/content/prompts/` | - |
+| MCP 服务 | `mcps` + `mcp_metrics` | `ai-links-data/content/mcps/` | `ai-links-data/favicons/mcp-favicons/` |
+| 工具 | `tools` + `tool_metrics` | `ai-links-data/content/tools/` | - |
+| 文章 | `articles` + `article_metrics` | `ai-links-data/content/article/` | - |
+| 新闻 | `news` | - | - |
+| AI Hub | `aihub` + `aihub_metrics` | - | `ai-links-data/favicons/aihub-favicons/` |
 
-### 2.3 Content Markdown 格式
+---
 
-运行 `npm run generate` 后会自动生成到 `src/content/products/{slug}.md`，也可手动创建：
+## 2. 数据添加流程
+
+### 2.1 标准流程
+
+```bash
+# 步骤 1: 分配 UID
+# 步骤 2: 插入数据库记录
+# 步骤 3: 创建 Markdown 详情文件
+# 步骤 4: 上传图标文件
+# 步骤 5: 验证并构建
+```
+
+### 2.2 UID 格式规范
+
+| 类型 | 前缀 | 示例 | 数据库查询 |
+|-----|------|-----|-----------|
+| 产品 | PD | PD-000001 | `SELECT MAX(uid) FROM products;` |
+| 智能体 | AG | AG-000001 | `SELECT MAX(uid) FROM agents;` |
+| 提示词 | PM | PM-000001 | `SELECT MAX(uid) FROM prompts;` |
+| MCP 服务 | MC | MC-000001 | `SELECT MAX(uid) FROM mcps;` |
+| 工具 | TO | TO-000001 | `SELECT MAX(uid) FROM tools;` |
+| 文章 | AR | AR-000001 | `SELECT MAX(uid) FROM articles;` |
+| 新闻 | NE | NE-000001 | `SELECT MAX(uid) FROM news;` |
+| AI Hub | AH | AH-000001 | `SELECT MAX(uid) FROM aihub;` |
+
+---
+
+## 3. AI 产品添加
+
+### 3.1 数据库表结构
+
+```sql
+-- 主表
+CREATE TABLE products (
+    uid TEXT PRIMARY KEY,
+    slug TEXT UNIQUE NOT NULL,
+    logo TEXT,
+    aiProductName TEXT NOT NULL,
+    introduction TEXT,
+    websiteUrl TEXT,
+    detail TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 属性表
+CREATE TABLE product_metrics (
+    product_uid TEXT PRIMARY KEY REFERENCES products(uid),
+    level1 TEXT,
+    level2 TEXT,
+    tags TEXT,           -- JSON 数组
+    country TEXT,
+    company TEXT,
+    hasApi INTEGER,
+    needVpn INTEGER,
+    pricingModel TEXT,   -- JSON 数组
+    useType TEXT,        -- JSON 数组
+    languages TEXT,      -- JSON 数组
+    rawProductType TEXT  -- JSON 数组
+);
+```
+
+### 3.2 SQL 插入示例
+
+```sql
+-- 插入产品主表
+INSERT INTO products (uid, slug, logo, aiProductName, introduction, websiteUrl)
+VALUES ('PD-000123', 'product-name', 'product-favicons/PD-000123.png', '产品名称', '产品简介', 'https://example.com');
+
+-- 插入产品属性表
+INSERT INTO product_metrics (
+    product_uid, level1, level2, tags, country, company,
+    hasApi, needVpn, pricingModel, useType, languages, rawProductType
+)
+VALUES (
+    'PD-000123',
+    '内容创作',
+    '写作类',
+    '["AI写作", "内容生成"]',
+    '中国',
+    '公司名称',
+    1,
+    0,
+    '["免费", "订阅制"]',
+    '["web", "pc"]',
+    '["中文", "英语"]',
+    '[]'
+);
+```
+
+### 3.3 Markdown 详情文件
+
+在 `ai-links-data/content/products/{uid}/{uid}.md` 创建：
 
 ```markdown
 ---
 uid: "PD-000123"
-aiProductName: "产品名称"
 introduction: "产品简介"
-company: "公司名称"
-country: "国家"
-modelLevel: "S-Tier"
-websiteUrl: "https://example.com"
-logo: "/product-favicons/10012345.ico"
 ---
 
 ## 【产品概述】
-产品的核心定位和主要功能的描述。
+产品的核心定位和主要功能描述。
 
 ## 【核心功能】
 1. **功能一**：描述
@@ -103,231 +148,15 @@ logo: "/product-favicons/10012345.ico"
 
 ## 【定价信息】
 免费/付费/订阅等。
-
-## 【公司信息】
-开发公司背景。
 ```
 
-### 2.4 favicon 处理
+### 3.4 图标文件
 
-将产品图标下载并保存到 `public/product-favicons/{uid}.ico` 或 `.png`（如 `PD-000123.ico`）。
+上传到 `ai-links-data/favicons/product-favicons/PD-000123.png`（或 .ico、.svg）
 
----
+### 3.5 分类字段参考
 
-## 3. 智能体添加流程
-
-### 3.1 JSON 数据格式
-
-在 `src/data/agents.json` 中添加：
-
-```json
-{
-  "uid": "AG-000123",
-  "slug": "agent-name",
-  "logo": "/agents-favicons/AG-000123.ico",
-  "aiProductName": "智能体名称",
-  "introduction": "一句话简介",
-  "websiteUrl": "https://example.com",
-  "metrics": {
-    "category": "通用智能体",
-    "subCategory": "对话型智能体",
-    "agentLevel": "L2_工作流型",
-    "company": "公司名称",
-    "country": "国家",
-    "productType": {
-      "level1": "智能体",
-      "level2": "通用智能体",
-      "tags": ["自动化", "多模态"]
-    }
-  }
-}
-```
-
-### 3.2 agentLevel 分类
-
-| 等级 | 说明 |
-|-----|-----|
-| L0_对话助手 | 纯对话交互 |
-| L1_工具调用型 | 可调用外部工具 |
-| L2_工作流型 | 可执行复杂工作流 |
-| L3_自主执行型 | 可自主规划和执行 |
-| L4_多智能体系统 | 多Agent协作 |
-
-### 3.3 category 分类
-
-- `通用智能体`
-- `任务执行智能体`
-- `内容创作智能体`
-- `开发类智能体`
-- `企业/行业智能体`
-- `智能体基础设施`
-
----
-
-## 4. 提示词添加流程
-
-### 4.1 JSON 数据格式
-
-在 `src/data/prompts.json` 中添加：
-
-```json
-{
-  "uid": "PM-000123",
-  "title": "提示词标题",
-  "description": "提示词描述",
-  "author": "作者名称",
-  "category": {
-    "scenario": "内容创作",
-    "task": "写作",
-    "modality": "text"
-  },
-  "tags": ["SEO", "营销", "文案"],
-  "content": "完整的提示词内容..."
-}
-```
-
-### 4.2 分类字段
-
-| 字段 | 可选值 |
-|-----|-------|
-| scenario | 内容创作、办公效率、数据分析、编程开发、学习教育、多模态生成、AI Agent |
-| task | 写作、总结、改写、翻译、生成、分析、提取、规划 |
-| modality | text、image、video、audio、multimodal |
-
----
-
-## 5. MCP 服务添加流程
-
-### 5.1 JSON 数据格式
-
-在 `src/data/mcp.json` 中添加：
-
-```json
-{
-  "uid": "MC-000123",
-  "title": "MCP 服务名称",
-  "description": "服务描述",
-  "author": "作者",
-  "tags": ["数据库", "SQLite"],
-  "category": {
-    "serverType": "数据库",
-    "authType": "api_key",
-    "deploy": "local"
-  },
-  "content": "安装和使用说明..."
-}
-```
-
-### 5.2 分类字段
-
-| 字段 | 可选值 |
-|-----|-------|
-| serverType | 数据库、文件存储、搜索引擎、社交媒体、云服务、开发工具 |
-| authType | api_key、oauth、none |
-| deploy | local、docker、cloud、npx |
-
----
-
-## 6. 自动化添加脚本流程
-
-### 6.1 执行步骤
-
-```bash
-# 1. 添加 JSON 数据到对应文件
-# 2. 下载 favicon 到对应目录
-# 3. 运行生成脚本
-npm run generate
-
-# 4. 验证构建
-npm run build
-
-# 5. 本地预览
-npm run dev
-```
-
-### 6.2 generate 脚本说明
-
-项目有两个生成脚本：
-- `scripts/generate-product-md.js`：从 products.json 生成产品 Markdown
-- `scripts/generate-agent-md.js`：从 agents.json 生成智能体 Markdown
-
-这些脚本会：
-1. 读取 JSON 数据
-2. 根据模板生成 Markdown 文件
-3. 写入到 `src/content/` 目录
-
----
-
-## 7. AI 自动添加数据的完整流程
-
-### Step 1: 收集信息
-
-从目标网站/产品获取：
-- 名称、简介、官网地址
-- 公司、国家、分类信息
-- favicon（下载或从网站获取）
-
-### Step 2: 分配 UID
-
-根据类型分配 UID，格式为两位字母前缀+6位数字：
-
-| 类型 | 前缀 | 示例 |
-|-----|------|-----|
-| 产品 | PD | PD-000001 |
-| 智能体 | AG | AG-000001 |
-| 提示词 | PM | PM-000001 |
-| MCP 服务 | MC | MC-000001 |
-| 文章 | AR | AR-000001 |
-| 新闻 | NE | NE-000001 |
-| 工具 | TO | TO-000001 |
-| AI Hub | AH | AH-000001 |
-
-查询当前最大 UID：
-```bash
-sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM products;"
-```
-
-### Step 3: 生成 slug
-
-将产品名转换为 URL友好的 slug：
-- 转小写
-- 空格替换为连字符
-- 移除特殊字符
-
-### Step 4: 添加 JSON 数据
-
-将数据写入对应的 JSON 文件末尾。
-
-### Step 5: 添加 favicon
-
-下载图标并保存到对应的 favicon 目录。
-
-### Step 6: 运行生成脚本
-
-执行 `npm run generate` 生成 Markdown 内容。
-
-### Step 7: 验证
-
-执行 `npm run build` 确认无错误。
-
----
-
-## 8. 注意事项
-
-1. **UID 唯一性**：确保 UID 不重复
-2. **slug 格式**：只能包含字母、数字、连字符
-3. **favicon 格式**：支持 .ico、.png、.svg
-4. **分类一致性**：使用预定义的分类值，参见 `src/data/filters.ts`
-5. **中文编码**：JSON 文件使用 UTF-8 编码
-6. **Markdown 格式**：详情页 Markdown 需遵循固定模板格式
-
----
-
-## 9. 快速参考
-
-### 一级分类列表
-
-**产品 level1 分类**：
+**level1 一级分类**：
 - 内容创作
 - 视频与音频
 - 平台与基础设施
@@ -338,7 +167,82 @@ sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM products;"
 - 图像与设计
 - 学术研究
 
-**智能体 category 分类**：
+**level2 二级分类**（部分）：
+- 写作类、翻译类、学术类
+- 视频类、音频类、数字人
+- 图像生成、图像处理、设计类
+- 编程类、AI技术、开发平台
+- 数据类、办公类、营销类
+
+---
+
+## 4. 智能体添加
+
+### 4.1 数据库表结构
+
+```sql
+CREATE TABLE agents (
+    uid TEXT PRIMARY KEY,
+    slug TEXT UNIQUE NOT NULL,
+    logo TEXT,
+    aiProductName TEXT NOT NULL,
+    introduction TEXT,
+    websiteUrl TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE agent_metrics (
+    agent_uid TEXT PRIMARY KEY REFERENCES agents(uid),
+    country TEXT,
+    company TEXT,
+    useType TEXT,
+    modelLevel TEXT,
+    hasApi INTEGER,
+    pricingModel TEXT,
+    needVpn INTEGER,
+    languages TEXT,
+    isInternal INTEGER,
+    category TEXT,
+    subCategory TEXT,
+    form_factor TEXT,
+    capabilities TEXT,
+    scenarios TEXT,
+    techTags TEXT,
+    deployment TEXT,
+    agentLevel TEXT,
+    interactionMode TEXT
+);
+```
+
+### 4.2 SQL 插入示例
+
+```sql
+INSERT INTO agents (uid, slug, logo, aiProductName, introduction, websiteUrl)
+VALUES ('AG-000123', 'agent-name', 'agents-favicons/AG-000123.png', '智能体名称', '简介', 'https://example.com');
+
+INSERT INTO agent_metrics (
+    agent_uid, category, subCategory, agentLevel, country, company,
+    form_factor, capabilities, scenarios, techTags, deployment
+)
+VALUES (
+    'AG-000123',
+    '通用智能体',
+    '对话型智能体',
+    'L1_工具调用型',
+    '中国',
+    '公司名称',
+    '["浏览器", "桌面端"]',
+    '["任务执行", "工具调用"]',
+    '["个人助手", "办公效率"]',
+    '["大语言模型", "RAG"]',
+    '云端部署'
+);
+```
+
+### 4.3 分类字段参考
+
+**category 分类**：
 - 通用智能体
 - 任务执行智能体
 - 内容创作智能体
@@ -346,8 +250,233 @@ sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM products;"
 - 企业/行业智能体
 - 智能体基础设施
 
-### 模型等级
+**agentLevel 等级**：
+- L0_对话助手
+- L1_工具调用型
+- L2_工作流型
+- L3_自主执行型
+- L4_多智能体系统
 
-- S-Tier（顶级）
-- A-Tier（优秀）
-- B-Tier（良好）
+---
+
+## 5. 提示词添加
+
+### 5.1 数据库表结构
+
+```sql
+CREATE TABLE prompts (
+    uid TEXT PRIMARY KEY,
+    slug TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    websiteUrl TEXT,
+    icon TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE prompt_metrics (
+    prompt_uid TEXT PRIMARY KEY REFERENCES prompts(uid),
+    scenario TEXT,
+    task TEXT,
+    modality TEXT,
+    tags TEXT
+);
+```
+
+### 5.2 SQL 插入示例
+
+```sql
+INSERT INTO prompts (uid, slug, title, description, websiteUrl)
+VALUES ('PM-000123', 'prompt-slug', '提示词标题', '提示词描述', 'https://example.com');
+
+INSERT INTO prompt_metrics (prompt_uid, scenario, task, modality, tags)
+VALUES ('PM-000123', '内容创作', '写作', 'text', '["SEO", "营销"]');
+```
+
+### 5.3 分类字段参考
+
+| 字段 | 可选值 |
+|-----|-------|
+| scenario | 内容创作、办公效率、数据分析、编程开发、学习教育、多模态生成、AI Agent |
+| task | 写作、总结、改写、翻译、生成、分析、提取、规划 |
+| modality | text、image、video、audio、multimodal |
+
+---
+
+## 6. MCP 服务添加
+
+### 6.1 数据库表结构
+
+```sql
+CREATE TABLE mcps (
+    uid TEXT PRIMARY KEY,
+    slug TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    author TEXT,
+    icon TEXT,
+    github_url TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE mcp_metrics (
+    mcp_uid TEXT PRIMARY KEY REFERENCES mcps(uid),
+    tags TEXT,
+    serverType TEXT,
+    authType TEXT,
+    deployment TEXT
+);
+```
+
+### 6.2 SQL 插入示例
+
+```sql
+INSERT INTO mcps (uid, slug, title, description, author, github_url)
+VALUES ('MC-000123', 'mcp-slug', 'MCP 名称', '描述', '作者', 'https://github.com/example/mcp');
+
+INSERT INTO mcp_metrics (mcp_uid, tags, serverType, authType, deployment)
+VALUES ('MC-000123', '["数据库", "SQLite"]', '数据库', 'api_key', 'local');
+```
+
+---
+
+## 7. 工具添加
+
+### 7.1 数据库表结构
+
+```sql
+CREATE TABLE tools (
+    uid TEXT PRIMARY KEY,
+    slug TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    author TEXT,
+    icon TEXT,
+    websiteUrl TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tool_metrics (
+    tool_uid TEXT PRIMARY KEY REFERENCES tools(uid),
+    tags TEXT,
+    language TEXT,
+    license TEXT,
+    func TEXT
+);
+```
+
+---
+
+## 8. 完整添加流程示例
+
+### 示例：添加新产品
+
+```bash
+# 1. 查询当前最大 UID
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM products;"
+# 结果: PD-000999
+
+# 2. 分配新 UID: PD-001000
+
+# 3. 准备数据
+# - 名称: 新产品名称
+# - slug: new-product-name
+# - 简介: 一句话描述
+# - 官网: https://example.com
+# - 分类: 内容创作 / 写作类
+# - 公司/国家: XXX公司 / 中国
+
+# 4. 执行 SQL 插入
+sqlite3 ai-links-data/sqlite_db/app.db "
+INSERT INTO products (uid, slug, logo, aiProductName, introduction, websiteUrl)
+VALUES ('PD-001000', 'new-product', 'product-favicons/PD-001000.png', '新产品', '简介', 'https://example.com');
+
+INSERT INTO product_metrics (product_uid, level1, level2, country, company, tags)
+VALUES ('PD-001000', '内容创作', '写作类', '中国', '公司', '[]');
+"
+
+# 5. 创建 Markdown 详情
+mkdir -p ai-links-data/content/products/PD-001000
+cat > ai-links-data/content/products/PD-001000/PD-001000.md << 'EOF'
+---
+uid: "PD-001000"
+introduction: "产品简介"
+---
+
+## 【产品概述】
+详细描述...
+EOF
+
+# 6. 上传图标
+# 将图标文件放到 ai-links-data/favicons/product-favicons/PD-001000.png
+
+# 7. 验证构建
+npm run build
+
+# 8. 提交内容仓库
+cd ai-links-data
+git add .
+git commit -m "添加新产品 PD-001000"
+git push
+```
+
+---
+
+## 9. 数据库操作命令
+
+### 9.1 查询命令
+
+```bash
+# 查看表结构
+sqlite3 ai-links-data/sqlite_db/app.db ".schema products"
+
+# 查询最大 UID
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM products;"
+
+# 查询所有分类
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT DISTINCT level1 FROM product_metrics;"
+
+# 查询产品数量
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT COUNT(*) FROM products;"
+```
+
+### 9.2 数据备份
+
+```bash
+# 备份数据库
+cp ai-links-data/sqlite_db/app.db ai-links-data/sqlite_db/app.db.backup.$(date +%Y%m%d)
+
+# 导出为 SQL
+sqlite3 ai-links-data/sqlite_db/app.db .dump > backup.sql
+```
+
+---
+
+## 10. 注意事项
+
+1. **UID 唯一性**：确保 UID 不重复，使用正确的类型前缀
+2. **slug 格式**：只能包含字母、数字、连字符，避免中文
+3. **JSON 字段**：tags、pricingModel 等字段存储为 JSON 数组字符串
+4. **图标格式**：支持 .png、.ico、.svg，建议使用 PNG
+5. **Markdown 格式**：详情文件必须有 YAML frontmatter，包含 uid 和 introduction
+6. **目录结构**：Markdown 文件放在 `ai-links-data/content/{type}/{uid}/{uid}.md`
+
+---
+
+## 11. 相关文档
+
+- **[PROJECT-OVERVIEW.md](./PROJECT-OVERVIEW.md)** - 项目整体架构
+- **[SUBMODULE-SETUP.md](./SUBMODULE-SETUP.md)** - 数据仓库配置
+- **[PROMPT-ADD-PRODUCT.md](./PROMPT-ADD-PRODUCT.md)** - AI 辅助添加产品提示词
+- **[PROMPT-ADD-TOOL.md](./PROMPT-ADD-TOOL.md)** - AI 辅助添加工具提示词
+
+---
+
+## 版本历史
+
+- **v2.1 (2026-04-27)**: 数据分离架构，数据存储在 ai-links-data 仓库
+- **v2.0 (2026-04-21)**: SQLite 数据库替代 JSON 文件
+- **v1.0**: JSON 文件存储
