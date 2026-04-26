@@ -1,6 +1,3 @@
----
-https://readhub.cn/hot
----
 # 提示词：为 AI Links 项目添加文章
 
 将此提示词发送给 LLM，并提供文章信息，LLM 将自动生成符合项目规范的数据。
@@ -15,43 +12,64 @@ https://readhub.cn/hot
 
 # 项目背景
 AI Links 是一个 AI 资源导航网站（SSR 架构），文章系统采用 **SQLite 数据库 + Markdown 双文件结构**：
-- SQLite 数据库存储文章元数据（表名：`article`）
+- SQLite 数据库存储文章元数据（表名：`articles` 和 `article_metrics`）
 - Markdown 文件存储文章正文内容（用于 Content Collections）
+
+# 数据分离架构
+
+项目采用源码与数据分离架构，所有内容数据存储在 `ai-links-data/` 目录：
+- 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown：`ai-links-data/content/article/{uid}/{uid}.md`
+- 图片：`ai-links-data/content/article/{uid}/images/`
 
 # 数据结构
 
 ## SQLite 数据库
-数据库文件位置：`sqlite_db/ai-links.db`
-表名：`article`
 
-### 表结构
+### articles 表（主表）
 ```sql
-CREATE TABLE article (
+CREATE TABLE articles (
     uid TEXT PRIMARY KEY,
+    slug TEXT UNIQUE NOT NULL,
     title TEXT NOT NULL,
-    title_en TEXT,
+    titleEn TEXT,
     description TEXT,
     author TEXT,
-    category TEXT,  -- 博文/教程/科普/资讯
-    read_time TEXT,
-    published_at TEXT,  -- YYYY-MM-DD
-    website_url TEXT,
+    category TEXT,
+    readTime TEXT,
+    publishedAt TEXT,
+    websiteUrl TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
+### article_metrics 表（属性表）
+```sql
+CREATE TABLE article_metrics (
+    article_uid TEXT PRIMARY KEY REFERENCES articles(uid),
+    tags TEXT
+);
+```
+
+⚠️ **重要**：必须同时插入两张表的数据！缺少 `article_metrics` 记录会导致文章无法显示（查询使用 JOIN）。
+
 ### SQL 插入语句格式
 ```sql
-INSERT INTO article (uid, title, title_en, description, author, category, read_time, published_at, website_url)
-VALUES ('{uid}', '{标题}', '{英文标题}', '{简介}', '{作者}', '{分类}', '{阅读时长}', '{发布日期}', '{原文链接}');
+-- 1. 插入 articles 表
+INSERT INTO articles (uid, slug, title, titleEn, description, author, category, readTime, publishedAt, websiteUrl)
+VALUES ('{uid}', '{slug}', '{标题}', '{英文标题}', '{简介}', '{作者}', '{分类}', '{阅读时长}', '{发布日期}', '{原文链接}');
+
+-- 2. 插入 article_metrics 表（必须！）
+INSERT INTO article_metrics (article_uid, tags)
+VALUES ('{uid}', '["标签1","标签2"]');
 ```
 
 ## Markdown 文件位置
-`src/content/article/{uid}/{uid}.md`
+`ai-links-data/content/article/{uid}/{uid}.md`
 
 ## 图片文件位置
-`src/content/article/{uid}/images/`
+`ai-links-data/content/article/{uid}/images/`
 
 如果原文包含图片，需要下载图片并保存到 images 文件夹下，Markdown 中引用路径为 `./images/{图片文件名}`。
 
@@ -147,33 +165,40 @@ draft: false
 - 分类类型
 - 是否为英文原文需要翻译
 
-**注意**：published_at 由 LLM 自动获取当前日期生成，无需用户提供。
+**注意**：publishedAt 由 LLM 自动获取当前日期生成，无需用户提供。
 
 ## 输出要求
 
 1. **分配 UID**：
    - 统一使用两位字母前缀 `AR-` + 6位数字格式（如 AR-000001, AR-000002, AR-000003...）
    - 确保不与已有 UID 冲突（查询数据库确认下一个可用 UID）
-   - 当前已有 UID：AR-000003-AR-000007，建议从 AR-000008 开始
 
-2. **生成 SQL 插入语句**：输出完整的 SQL INSERT 语句
+2. **生成 slug**：
+   - 将标题转换为 URL友好的 slug（小写、连字符分隔）
 
-3. **生成 Markdown 内容**：
+3. **生成 SQL 插入语句**：
+   - 必须同时生成 articles 表和 article_metrics 表的 INSERT 语句
+
+4. **生成 Markdown 内容**：
    - 中文文章：标准 Markdown 格式
    - 英文文章：双语对照格式，完整翻译
 
-4. **输出格式**：
+5. **输出格式**：
 
 ### SQL 输出
 ```sql
--- 添加到 SQLite 数据库 article 表
-INSERT INTO article (uid, title, title_en, description, author, category, read_time, published_at, website_url)
-VALUES ('...', '...', ...);
+-- 1. 添加到 articles 表
+INSERT INTO articles (uid, slug, title, titleEn, description, author, category, readTime, publishedAt, websiteUrl)
+VALUES ('AR-000008', 'article-slug', '文章标题', 'English Title', '简介', '作者', '博文', '15 分钟', '2026-04-27', 'https://example.com');
+
+-- 2. 添加到 article_metrics 表（必须！否则文章不会显示）
+INSERT INTO article_metrics (article_uid, tags)
+VALUES ('AR-000008', '["AI","技术","产品设计"]');
 ```
-说明：在数据库管理工具中执行此 SQL，或使用以下 Node.js 脚本：
-```javascript
-const db = require('better-sqlite3')('sqlite_db/ai-links.db');
-db.exec(`INSERT INTO article ...`);
+
+执行方式：
+```bash
+sqlite3 ai-links-data/sqlite_db/app.db "INSERT INTO articles ...; INSERT INTO article_metrics ...;"
 ```
 
 ### Markdown 输出
@@ -181,21 +206,22 @@ db.exec(`INSERT INTO article ...`);
 完整 Markdown 内容...
 ```
 说明：
-1. 创建目录 `src/content/article/{uid}/`
-2. 如有图片，创建目录 `src/content/article/{uid}/images/`
+1. 创建目录 `ai-links-data/content/article/{uid}/`
+2. 如有图片，创建目录 `ai-links-data/content/article/{uid}/images/`
 3. 下载原文图片到 images 目录
 4. 在目录中创建文件 `{uid}.md`
 5. 将上述内容写入文件
 
 # 约束
 - 简介控制在 100 字以内
-- published_at 使用当前日期，格式 YYYY-MM-DD（如 2026-04-17）
+- publishedAt 使用当前日期，格式 YYYY-MM-DD（如 2026-04-27）
 - 分类使用预定义值：博文/教程/科普/资讯
 - 英文文章必须完整翻译，不可遗漏
 - 翻译需准确，保持原文语气和风格
 - **抓取原文时，完整保留原文内容，不得擅自删减、修改或遗漏任何段落**
-- **原文中的图片需要下载并保存到 `src/content/article/{uid}/images/` 目录**
+- **原文中的图片需要下载并保存到 images 目录**
 - **Markdown 中图片引用路径使用相对路径 `./images/{图片文件名}`**
+- ⚠️ **必须同时插入 articles 和 article_metrics 两张表！**
 - 不解释，只输出数据
 
 # 示例输入
@@ -207,14 +233,14 @@ db.exec(`INSERT INTO article ...`);
 什么是 MCP？MCP（Model Context Protocol）是一种开放协议...
 （用户提供完整正文）
 
-**注意**：published_at 由 LLM 自动使用当前日期（如今天是 2026-04-17）。
+**注意**：publishedAt 由 LLM 自动使用当前日期（如今天是 2026-04-27）。
 
 # 示例输出
 
 ### SQL
 ```sql
--- 添加到 SQLite 数据库 articles 表
-INSERT OR REPLACE INTO articles (uid, slug, title, titleEn, description, author, category, readTime, publishedAt, websiteUrl)
+-- 1. 添加到 articles 表
+INSERT INTO articles (uid, slug, title, titleEn, description, author, category, readTime, publishedAt, websiteUrl)
 VALUES (
   'AR-000008',
   'mcp-protocol-guide',
@@ -224,22 +250,18 @@ VALUES (
   'AI Links Team',
   '教程',
   '12 分钟',
-  '2026-04-21',
+  '2026-04-27',
   ''
 );
 
--- 同时添加到 article_metrics 表
-INSERT OR REPLACE INTO article_metrics (article_uid, tags)
+-- 2. 添加到 article_metrics 表（必须！）
+INSERT INTO article_metrics (article_uid, tags)
 VALUES ('AR-000008', '["MCP","协议","AI 工具"]');
 ```
 
 执行方式：
 ```bash
-# 方式 1: 使用 SQLite 命令行
-sqlite3 sqlite_db/app.db < insert_article.sql
-
-# 方式 2: 使用 Node.js 脚本
-node -e "const db = require('better-sqlite3')('sqlite_db/app.db'); db.exec(\`INSERT OR REPLACE INTO articles...\`);"
+sqlite3 ai-links-data/sqlite_db/app.db "INSERT INTO articles ...; INSERT INTO article_metrics ...;"
 ```
 
 ### Markdown
@@ -250,7 +272,7 @@ title: "MCP 协议入门：让 AI 连接一切"
 author: "AI Links Team"
 category: "教程"
 readTime: "12 分钟"
-publishedAt: "2026-04-21"
+publishedAt: "2026-04-27"
 draft: false
 ---
 
@@ -275,14 +297,15 @@ MCP 协议为 AI 应用提供了标准化的扩展能力...
 操作说明：
 ```bash
 # 创建目录
-mkdir -p src/content/article/AR-000008
+mkdir ai-links-data/content/article/AR-000008
 
-# 创建 Markdown 文件
-cat > src/content/article/AR-000008/AR-000008.md << 'EOF'
-[上述 Markdown 内容]
-EOF
+# 创建 Markdown 文件（写入上述内容）
+# 文件路径: ai-links-data/content/article/AR-000008/AR-000008.md
 
-# 重新构建项目
+# 执行 SQL
+sqlite3 ai-links-data/sqlite_db/app.db "INSERT INTO articles ...; INSERT INTO article_metrics ...;"
+
+# 重新构建项目（详情页是预渲染的）
 npm run build
 
 # 重启服务
@@ -308,18 +331,14 @@ systemctl restart ai-links
 [文章完整正文]
 ```
 
-**注意**：published_at（发布日期）由 LLM 自动获取当前日期，无需手动提供。
+**注意**：publishedAt（发布日期）由 LLM 自动获取当前日期，无需手动提供。
 
 4. LLM 将输出 SQL 和 Markdown 数据
 5. **执行 SQL 插入数据库**：
    ```bash
-   # 方式 1: SQLite 命令行
-   sqlite3 sqlite_db/ai-links.db "INSERT INTO article ..."
-   
-   # 方式 2: 创建 SQL 文件后执行
-   sqlite3 sqlite_db/ai-links.db < insert_article.sql
+   sqlite3 ai-links-data/sqlite_db/app.db "INSERT INTO articles ...; INSERT INTO article_metrics ...;"
    ```
-6. **创建 Markdown 文件**并写入内容
+6. **创建 Markdown 文件**并写入内容到 `ai-links-data/content/article/{uid}/{uid}.md`
 7. **重新构建并重启服务**：
    ```bash
    npm run build
@@ -329,57 +348,32 @@ systemctl restart ai-links
 
 ---
 
-## 快速添加脚本
+## ⚠️ 重要注意事项
 
-可以创建一个自动化脚本 `scripts/add-article.sh`：
+### 必须插入两张表
 
-```bash
-#!/bin/bash
-# 添加文章到数据库和文件系统
+**问题**：文章列表查询使用 `JOIN article_metrics`，如果只插入 `articles` 表而没有插入 `article_metrics` 表，文章不会显示在列表页！
 
-UID=$1
-MD_FILE=$2
-SQL=$3
-
-# 创建目录
-mkdir -p src/content/article/$UID
-
-# 移动 Markdown 文件
-mv $MD_FILE src/content/article/$UID/$UID.md
-
-# 执行 SQL
-sqlite3 sqlite_db/ai-links.db "$SQL"
-
-# 重新构建
-npm run build
-
-# 重启服务
-systemctl restart ai-links
-
-echo "✅ 文章添加完成！"
+**正确做法**：
+```sql
+-- 必须两条 SQL 都执行
+INSERT INTO articles (uid, slug, ...) VALUES (...);
+INSERT INTO article_metrics (article_uid, tags) VALUES (...);
 ```
 
-使用方法：
+**验证**：
 ```bash
-chmod +x scripts/add-article.sh
-./scripts/add-article.sh AR-000008 article.md "INSERT OR REPLACE INTO articles ..."
+# 检查文章是否有 metrics 记录
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT a.uid, a.title, m.tags FROM articles a JOIN article_metrics m ON a.uid = m.article_uid WHERE a.uid='AR-000008';"
 ```
 
----
+### 其他注意事项
 
-## 注意事项
-
-- ⚠️ **SSR 架构变更**：文章元数据现在存储在 SQLite 数据库中，不再是 JSON 文件
-- ⚠️ 添加文章后**必须重新构建并重启服务**才能生效
-- ⚠️ **UID 格式**：统一使用两位字母前缀 `AR-` + 6位数字（AR-000001, AR-000002, AR-000003...）
-- 💡 **查询下一个 UID**：`sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM articles;"`
-- 如果是英文文章，LLM 会自动生成双语对照格式
-- 提供完整的正文内容，LLM 才能正确格式化
-- UID 需要手动确认不与现有文章重复
-- published_at 由 LLM 自动使用当前日期生成，无需手动提供
-- **抓取原文时必须完整保留所有内容，不得擅自删减**
-- **原文图片需下载到 images 目录，不能只保留外部链接**
-- 构建后检查日志是否有错误：`tail -f /var/log/ai-links-server.log`
+- ⚠️ **数据分离架构**：数据存储在 `ai-links-data/` 目录，不是 `src/content/` 或 `sqlite_db/`
+- ⚠️ 添加文章后**必须重新构建**才能在详情页显示（详情页是预渲染的）
+- ⚠️ **UID 格式**：统一使用两位字母前缀 `AR-` + 6位数字（AR-000001, AR-000002...）
+- 💡 **查询下一个 UID**：`sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM articles;"`
+- 开发模式下数据库有缓存，可能需要重启 `npm run dev` 才能看到新数据
 
 ---
 
@@ -387,29 +381,34 @@ chmod +x scripts/add-article.sh
 
 ### 查看现有文章
 ```bash
-sqlite3 sqlite_db/ai-links.db "SELECT uid, title, category, published_at FROM article ORDER BY published_at DESC;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid, title, category, publishedAt FROM articles ORDER BY publishedAt DESC;"
 ```
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM articles WHERE uid = 'AR-000008';"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT COUNT(*) FROM articles WHERE uid = 'AR-000008';"
 ```
 
 ### 查看下一个可用 UID
 ```bash
-# 查看最大 UID
-sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM articles;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM articles;"
 # 输出：AR-000007，则下一个使用 AR-000008
+```
+
+### 检查文章是否有 metrics
+```bash
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT a.uid, m.tags FROM articles a LEFT JOIN article_metrics m ON a.uid = m.article_uid WHERE m.article_uid IS NULL;"
+# 如果有输出，说明这些文章缺少 metrics，需要补充
 ```
 
 ### 删除文章
 ```bash
-# 从数据库删除
-sqlite3 sqlite_db/app.db "DELETE FROM articles WHERE uid = 'AR-000008';"
-sqlite3 sqlite_db/app.db "DELETE FROM article_metrics WHERE article_uid = 'AR-000008';"
+# 从数据库删除（必须删除两张表）
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM articles WHERE uid = 'AR-000008';"
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM article_metrics WHERE article_uid = 'AR-000008';"
 
 # 删除 Markdown 文件
-rm -rf src/content/article/AR-000008/
+rm -rf ai-links-data/content/article/AR-000008/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links
@@ -422,3 +421,4 @@ npm run build && systemctl restart ai-links
 - [PROJECT-OVERVIEW.md](./PROJECT-OVERVIEW.md) - 项目整体架构说明
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - 部署手册
 - [DATA-ADDING-GUIDE.md](./DATA-ADDING-GUIDE.md) - 数据添加通用指南
+- [SUBMODULE-SETUP.md](./SUBMODULE-SETUP.md) - 数据仓库配置指南
