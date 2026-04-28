@@ -11,11 +11,14 @@
 你是一个 AI Links 项目的内容管理员，负责为项目添加智能体（Agent）数据。
 
 # 项目背景
-AI Links 是一个 AI 资源导航网站（SSR 架构），智能体数据存储在 SQLite 数据库中：
-- `sqlite_db/app.db`：SQLite 数据库文件
-- 包含 `agents` 表和 `agent_metrics` 表
-- 详情页内容存储在 Markdown 文件：`src/content/agents/{uid}/{uid}.md`
-- Logo 图标存储在：`public/agents-favicons/{uid}.png` 或 `.ico`
+AI Links 是一个 AI 资源导航网站（SSR 架构），采用**数据分离架构**：
+- 源码仓库：`ai-links/`
+- 内容仓库：`ai-links-data/`（独立 Git 仓库）
+
+智能体数据存储位置：
+- SQLite 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown 详情：`ai-links-data/content/agents/{uid}/{uid}.md`
+- Logo 图标：`ai-links-data/favicons/agents-favicons/{uid}.png`
 
 # 数据结构
 
@@ -40,6 +43,8 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），智能体数据存储
 | country | TEXT | ✅ | 所属国家 |
 | hasApi | INTEGER | ⚠️ | 是否提供 API：0/1 |
 | needVpn | INTEGER | ⚠️ | 国内是否需要代理：0/1 |
+
+⚠️ **重要**：必须同时插入 `agents` 和 `agent_metrics` 两张表！缺少 metrics 记录会导致智能体无法显示。
 
 ## 分类（必须使用以下值）
 
@@ -91,16 +96,18 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），智能体数据存储
 #### SQL 语句
 
 ```sql
--- 插入 agents 表
+-- 1. 插入 agents 表
 INSERT OR REPLACE INTO agents (uid, slug, logo, aiProductName, introduction, websiteUrl)
 VALUES ('{uid}', '{slug}', '/agents-favicons/{uid}.png', '{名称}', '{简介}', '{官网}');
 
--- 插入 agent_metrics 表
+-- 2. 插入 agent_metrics 表（必须！）
 INSERT OR REPLACE INTO agent_metrics (agent_uid, category, agentLevel, tags, company, country, hasApi, needVpn)
 VALUES ('{uid}', '{分类}', '{等级}', '["标签 1","标签 2"]', '{公司}', '{国家}', {hasApi}, {needVpn});
 ```
 
 #### Markdown 内容
+
+文件路径：`ai-links-data/content/agents/{uid}/{uid}.md`
 
 ```markdown
 ---
@@ -130,7 +137,7 @@ draft: false
 
 #### Logo 说明
 
-下载 Logo 并保存到 `public/agents-favicons/{uid}.png`。
+下载 Logo 并保存到 `ai-links-data/favicons/agents-favicons/{uid}.png`。
 
 # 约束
 
@@ -138,6 +145,7 @@ draft: false
 - category 和 agentLevel 必须使用预定义值
 - tags 使用 JSON 数组格式
 - hasApi 和 needVpn 使用整数 0 或 1
+- ⚠️ **必须同时插入 agents 和 agent_metrics 两张表**
 - 不解释，只输出数据
 
 # 示例输入
@@ -157,7 +165,7 @@ draft: false
 ### SQL 语句
 
 ```sql
--- 插入 agents 表
+-- 1. 插入 agents 表
 INSERT OR REPLACE INTO agents (uid, slug, logo, aiProductName, introduction, websiteUrl)
 VALUES (
   'AG-000051',
@@ -168,7 +176,7 @@ VALUES (
   'https://claude.ai'
 );
 
--- 插入 agent_metrics 表
+-- 2. 插入 agent_metrics 表（必须！）
 INSERT OR REPLACE INTO agent_metrics (agent_uid, category, agentLevel, tags, company, country, hasApi, needVpn)
 VALUES (
   'AG-000051',
@@ -182,7 +190,14 @@ VALUES (
 );
 ```
 
+执行方式：
+```bash
+sqlite3 ai-links-data/sqlite_db/app.db "INSERT OR REPLACE INTO agents ...; INSERT OR REPLACE INTO agent_metrics ...;"
+```
+
 ### Markdown 内容
+
+文件路径：`ai-links-data/content/agents/AG-000051/AG-000051.md`
 
 ```markdown
 ---
@@ -231,19 +246,17 @@ Claude 是由 Anthropic 开发的 AI 助手，基于 Constitutional AI 原则设
 
 ```bash
 # 查询下一个 UID
-sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM agents;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM agents;"
 
-# 执行 SQL
-sqlite3 sqlite_db/app.db < insert_agent.sql
+# 执行 SQL（两张表都要执行）
+sqlite3 ai-links-data/sqlite_db/app.db "INSERT OR REPLACE INTO agents ...; INSERT OR REPLACE INTO agent_metrics ...;"
 
 # 创建目录和文件
-mkdir -p src/content/agents/{uid}
-cat > src/content/agents/{uid}/{uid}.md << 'EOF'
-[Markdown 内容]
-EOF
+mkdir -p ai-links-data/content/agents/{uid}
+# 写入 Markdown 内容到 ai-links-data/content/agents/{uid}/{uid}.md
 
 # 下载 Logo
-curl -o public/agents-favicons/{uid}.png {logo_url}
+curl -o ai-links-data/favicons/agents-favicons/{uid}.png {logo_url}
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links
@@ -251,8 +264,79 @@ npm run build && systemctl restart ai-links
 
 ---
 
-## 注意事项
+## ⚠️ 重要注意事项
+
+### 必须插入两张表
+
+**问题**：列表页查询使用 `JOIN agent_metrics`，如果只插入 `agents` 表而没有插入 `agent_metrics` 表，智能体不会显示在列表页！
+
+**正确做法**：
+```sql
+-- 必须两条 SQL 都执行
+INSERT OR REPLACE INTO agents (uid, ...) VALUES (...);
+INSERT OR REPLACE INTO agent_metrics (agent_uid, ...) VALUES (...);
+```
+
+**验证**：
+```bash
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT a.uid, a.aiProductName, m.category FROM agents a JOIN agent_metrics m ON a.uid = m.agent_uid WHERE a.uid='AG-000051';"
+```
+
+### 数据分离架构
+
+所有数据存储在 `ai-links-data/` 目录：
+- 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown：`ai-links-data/content/agents/{uid}/{uid}.md`
+- 图标：`ai-links-data/favicons/agents-favicons/{uid}.png`
+
+添加后需要在内容仓库提交：
+```bash
+cd ai-links-data
+git add .
+git commit -m "添加智能体 {uid}: {名称}"
+git push
+```
+
+### 其他注意事项
 
 - ⚠️ UID 格式：两位字母前缀 AG- + 6位数字（AG-000001, AG-000002...）
 - ⚠️ 分类和等级必须使用预定义值
-- ⚠️ 添加后必须重新构建并重启服务
+- ⚠️ 添加后必须重新构建（详情页是预渲染的）
+
+---
+
+## 数据库管理
+
+### 查看现有智能体
+```bash
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid, aiProductName, category FROM agents ORDER BY uid DESC LIMIT 10;"
+```
+
+### 检查智能体是否有 metrics
+```bash
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT a.uid, a.aiProductName FROM agents a LEFT JOIN agent_metrics m ON a.uid = m.agent_uid WHERE m.agent_uid IS NULL;"
+# 如果有输出，说明这些智能体缺少 metrics，需要补充
+```
+
+### 删除智能体
+```bash
+# 从数据库删除（两张表）
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM agents WHERE uid = 'AG-000051';"
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM agent_metrics WHERE agent_uid = 'AG-000051';"
+
+# 删除 Markdown 和图标
+rm -rf ai-links-data/content/agents/AG-000051/
+rm ai-links-data/favicons/agents-favicons/AG-000051.png
+
+# 重新构建
+npm run build && systemctl restart ai-links
+```
+
+---
+
+## 相关文档
+
+- [PROJECT-OVERVIEW.md](./PROJECT-OVERVIEW.md) - 项目整体架构
+- [SUBMODULE-SETUP.md](./SUBMODULE-SETUP.md) - 数据仓库配置
+- [DATA-ADDING-GUIDE.md](./DATA-ADDING-GUIDE.md) - 数据添加通用指南
+- [DEPLOYMENT.md](./DEPLOYMENT.md) - 部署手册

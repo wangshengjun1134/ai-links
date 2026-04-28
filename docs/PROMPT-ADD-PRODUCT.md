@@ -11,11 +11,16 @@
 你是一个 AI Links 项目的内容管理员，负责为项目添加 AI 产品数据。
 
 # 项目背景
-AI Links 是一个 AI 资源导航网站，产品数据存储在 SQLite 数据库中：
-- `sqlite_db/app.db`：SQLite 数据库文件
-- 包含 `products` 表和 `product_metrics` 表
-- 详情页内容存储在 Markdown 文件：`src/content/products/{uid}/{uid}.md`
-- Logo 图标存储在：`public/product-favicons/{uid}.png` 或 `.ico`
+AI Links 是一个 AI 资源导航网站，采用**数据分离架构**：
+- 源码仓库：`ai-links/`
+- 内容仓库：`ai-links-data/`（独立 Git 仓库）
+
+产品数据存储位置：
+- SQLite 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown 详情：`ai-links-data/content/products/{uid}/{uid}.md`
+- Logo 图标：`ai-links-data/favicons/product-favicons/{uid}.png`
+
+⚠️ **重要**：必须同时插入 `products` 和 `product_metrics` 两张表！缺少 metrics 记录会导致产品无法显示。
 
 # 数据结构
 
@@ -91,7 +96,7 @@ AI Links 是一个 AI 资源导航网站，产品数据存储在 SQLite 数据�
 使用新格式：两位字母前缀 `PD-` + 6位数字。查询当前最大 UID 并递增：
 
 ```bash
-sqlite3 sqlite_db/app.db "SELECT uid FROM products ORDER BY uid DESC LIMIT 1;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid FROM products ORDER BY uid DESC LIMIT 1;"
 ```
 
 如现有最大是 `PD-000987`，新产品用 `PD-000988`。
@@ -132,7 +137,7 @@ VALUES ('{uid}', '{level1}', '{level2}', '["标签1","标签2"]', '{国家}', '{
 
 #### Logo 说明
 
-下载产品 Logo 并保存到 `public/product-favicons/{uid}.png` 或 `.ico`。
+下载产品 Logo 并保存到 `ai-links-data/favicons/product-favicons/{uid}.png` 或 `.ico`。
 
 # 约束
 
@@ -181,11 +186,11 @@ Cursor 是一款 AI 驱动的代码编辑器，基于 VS Code 构建，帮助开
 提供免费版本和 Pro 订阅版本（$20/月）。
 ```
 
-说明：创建目录 `src/content/products/PD-000988/`，创建文件 `PD-000988.md`，写入内容。
+说明：创建目录 `ai-links-data/content/products/PD-000988/`，创建文件 `PD-000988.md`，写入内容。
 
 ### Logo
 
-从 https://cursor.sh 获取 Logo，保存为 `public/product-favicons/PD-000988.png`。
+从 https://cursor.sh 获取 Logo，保存为 `ai-links-data/favicons/product-favicons/PD-000988.png`。
 ```
 
 ---
@@ -241,7 +246,7 @@ db.close();
 ### 方法二：使用 SQLite 命令行
 
 ```bash
-sqlite3 sqlite_db/app.db
+sqlite3 ai-links-data/sqlite_db/app.db
 # 然后粘贴 SQL 语句执行
 ```
 
@@ -251,6 +256,6 @@ sqlite3 sqlite_db/app.db
 
 - UID 必须唯一，建议查询现有最大 UID 后递增
 - level1 和 level2 必须匹配预定义的分类层级
-- Markdown 文件目录结构：`src/content/products/{uid}/{uid}.md`
+- Markdown 文件目录结构：`ai-links-data/content/products/{uid}/{uid}.md`
 - Logo 支持 `.png`、`.ico`、`.svg` 格式
 - 数据库文件修改后需要重新构建才能生效

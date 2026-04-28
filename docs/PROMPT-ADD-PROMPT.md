@@ -11,11 +11,15 @@
 你是一个 AI Links 项目的内容管理员，负责为项目添加提示词（Prompt）数据。
 
 # 项目背景
-AI Links 是一个 AI 资源导航网站（SSR 架构），提示词数据存储在 SQLite 数据库中：
-- `sqlite_db/app.db`：SQLite 数据库文件
-- 包含 `prompts` 表和 `prompt_metrics` 表
-- 详情页内容存储在 Markdown 文件：`src/content/prompts/{uid}/{uid}.md`
-- 图标存储在：`public/prompts/{uid}.png` 或 `.ico`
+AI Links 是一个 AI 资源导航网站，采用**数据分离架构**：
+- 源码仓库：`ai-links/`
+- 内容仓库：`ai-links-data/`（独立 Git 仓库）
+
+提示词数据存储位置：
+- SQLite 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown 详情：`ai-links-data/content/prompts/{uid}/{uid}.md`
+
+⚠️ **重要**：必须同时插入 `prompts` 和 `prompt_metrics` 两张表！缺少 metrics 记录会导致提示词无法显示。
 
 # 数据结构
 
@@ -97,7 +101,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），提示词数据存储
 
 查询当前最大 UID：
 ```bash
-sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM prompts;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM prompts;"
 # 输出示例：PM-000005，则下一个使用 PM-000006
 ```
 
@@ -299,15 +303,15 @@ This study investigates the relationship between sleep and memory. We found that
 
 ```bash
 # 查询下一个 UID
-sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM prompts;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM prompts;"
 # 输出示例：PM-000005，则下一个使用 PM-000006
 
 # 执行 SQL
-sqlite3 sqlite_db/app.db < insert_prompt.sql
+sqlite3 ai-links-data/sqlite_db/app.db < insert_prompt.sql
 
 # 创建目录和 Markdown 文件
-mkdir -p src/content/prompts/PM-000001
-cat > src/content/prompts/PM-000001/PM-000001.md << 'EOF'
+mkdir -p ai-links-data/content/prompts/PM-000001
+cat > ai-links-data/content/prompts/PM-000001/PM-000001.md << 'EOF'
 [LLM 输出的 Markdown 内容]
 EOF
 
@@ -378,22 +382,22 @@ npm run build && systemctl restart ai-links
 
 ### 查看现有提示词
 ```bash
-sqlite3 sqlite_db/app.db "SELECT uid, title, scenario, task FROM prompts ORDER BY uid DESC LIMIT 10;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid, title, scenario, task FROM prompts ORDER BY uid DESC LIMIT 10;"
 ```
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM prompts WHERE uid = 'PM-000001';"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT COUNT(*) FROM prompts WHERE uid = 'PM-000001';"
 ```
 
 ### 删除提示词
 ```bash
 # 从数据库删除
-sqlite3 sqlite_db/app.db "DELETE FROM prompts WHERE uid = 'PM-000001';"
-sqlite3 sqlite_db/app.db "DELETE FROM prompt_metrics WHERE prompt_uid = 'PM-000001';"
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM prompts WHERE uid = 'PM-000001';"
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM prompt_metrics WHERE prompt_uid = 'PM-000001';"
 
 # 删除 Markdown 文件
-rm -rf src/content/prompts/PM-000001/
+rm -rf ai-links-data/content/prompts/PM-000001/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links

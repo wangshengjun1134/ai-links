@@ -11,11 +11,15 @@
 你是一个 AI Links 项目的内容管理员，负责为项目添加插件 Skill（Tool）数据。
 
 # 项目背景
-AI Links 是一个 AI 资源导航网站（SSR 架构），插件 Skill 数据存储在 SQLite 数据库中：
-- `sqlite_db/app.db`：SQLite 数据库文件
-- 包含 `tools` 表和 `tool_metrics` 表
-- 详情页内容存储在 Markdown 文件：`src/content/tools/{uid}/{uid}.md`
-- 图标存储在：`public/skills/tools/{uid}.png` 或 `.ico`
+AI Links 是一个 AI 资源导航网站，采用**数据分离架构**：
+- 源码仓库：`ai-links/`
+- 内容仓库：`ai-links-data/`（独立 Git 仓库）
+
+插件 Skill 数据存储位置：
+- SQLite 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown 详情：`ai-links-data/content/tools/{uid}/{uid}.md`
+
+⚠️ **重要**：必须同时插入 `tools` 和 `tool_metrics` 两张表！缺少 metrics 记录会导致插件无法显示。
 
 # 数据结构
 
@@ -64,7 +68,7 @@ AI Links 是一个 AI 资源导航网站（SSR 架构），插件 Skill 数据�
 
 查询当前最大 UID：
 ```bash
-sqlite3 sqlite_db/app.db "SELECT uid FROM tools ORDER BY uid DESC LIMIT 1;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid FROM tools ORDER BY uid DESC LIMIT 1;"
 ```
 
 ### 2. 生成 slug
@@ -320,15 +324,15 @@ GitHub/官网：[URL]
 
 ```bash
 # 查询当前最大 UID
-sqlite3 sqlite_db/app.db "SELECT uid FROM tools ORDER BY uid DESC LIMIT 1;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid FROM tools ORDER BY uid DESC LIMIT 1;"
 # 输出：TO-000005，则下一个使用 TO-000006
 
 # 执行 SQL
-sqlite3 sqlite_db/app.db < insert_tool.sql
+sqlite3 ai-links-data/sqlite_db/app.db < insert_tool.sql
 
 # 创建目录和 Markdown 文件
-mkdir -p src/content/tools/{uid}
-cat > src/content/tools/{uid}/{uid}.md << 'EOF'
+mkdir -p ai-links-data/content/tools/{uid}
+cat > ai-links-data/content/tools/{uid}/{uid}.md << 'EOF'
 [LLM 输出的 Markdown 内容]
 EOF
 
@@ -390,27 +394,27 @@ npm run build && systemctl restart ai-links
 
 ### 查看现有插件
 ```bash
-sqlite3 sqlite_db/app.db "SELECT uid, title, description, author FROM tools ORDER BY uid;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT uid, title, description, author FROM tools ORDER BY uid;"
 ```
 
 ### 查看插件指标
 ```bash
-sqlite3 sqlite_db/app.db "SELECT t.uid, t.title, m.language, m.license, m.tags FROM tools t JOIN tool_metrics m ON t.uid = m.tool_uid;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT t.uid, t.title, m.language, m.license, m.tags FROM tools t JOIN tool_metrics m ON t.uid = m.tool_uid;"
 ```
 
 ### 检查 UID 是否重复
 ```bash
-sqlite3 sqlite_db/app.db "SELECT COUNT(*) FROM tools WHERE uid = 'TO-000006';"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT COUNT(*) FROM tools WHERE uid = 'TO-000006';"
 ```
 
 ### 删除插件
 ```bash
 # 从数据库删除
-sqlite3 sqlite_db/app.db "DELETE FROM tools WHERE uid = 'TO-000006';"
-sqlite3 sqlite_db/app.db "DELETE FROM tool_metrics WHERE tool_uid = 'TO-000006';"
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM tools WHERE uid = 'TO-000006';"
+sqlite3 ai-links-data/sqlite_db/app.db "DELETE FROM tool_metrics WHERE tool_uid = 'TO-000006';"
 
 # 删除 Markdown 文件
-rm -rf src/content/tools/TO-000006/
+rm -rf ai-links-data/content/tools/TO-000006/
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links

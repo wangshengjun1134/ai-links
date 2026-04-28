@@ -11,11 +11,16 @@
 你是一个 AI Links 项目的内容管理员，负责为项目添加 MCP 服务数据。
 
 # 项目背景
-AI Links 是一个 AI 资源导航网站（SSR 架构），MCP 服务数据存储在 SQLite 数据库中：
-- `sqlite_db/app.db`：SQLite 数据库文件
-- 包含 `mcps` 表和 `mcp_metrics` 表
-- 详情页内容存储在 Markdown 文件：`src/content/mcps/{uid}/{uid}.md`
-- Logo 图标存储在：`public/mcp-favicons/{uid}.png` 或 `.ico`
+AI Links 是一个 AI 资源导航网站，采用**数据分离架构**：
+- 源码仓库：`ai-links/`
+- 内容仓库：`ai-links-data/`（独立 Git 仓库）
+
+MCP 服务数据存储位置：
+- SQLite 数据库：`ai-links-data/sqlite_db/app.db`
+- Markdown 详情：`ai-links-data/content/mcps/{uid}/{uid}.md`
+- Logo 图标：`ai-links-data/favicons/mcp-favicons/{uid}.png`
+
+⚠️ **重要**：必须同时插入 `mcps` 和 `mcp_metrics` 两张表！缺少 metrics 记录会导致 MCP 无法显示。
 
 # 数据结构
 
@@ -149,7 +154,7 @@ draft: false
 
 #### Logo 说明
 
-下载 Logo 并保存到 `public/mcp-favicons/{uid}.png`。
+下载 Logo 并保存到 `ai-links-data/favicons/mcp-favicons/{uid}.png`。
 
 # 约束
 
@@ -259,19 +264,19 @@ npx -y @modelcontextprotocol/server-filesystem
 
 ```bash
 # 查询下一个 UID
-sqlite3 sqlite_db/app.db "SELECT MAX(uid) FROM mcps;"
+sqlite3 ai-links-data/sqlite_db/app.db "SELECT MAX(uid) FROM mcps;"
 
 # 执行 SQL
-sqlite3 sqlite_db/app.db < insert_mcp.sql
+sqlite3 ai-links-data/sqlite_db/app.db < insert_mcp.sql
 
 # 创建目录和文件
-mkdir -p src/content/mcps/{uid}
-cat > src/content/mcps/{uid}/{uid}.md << 'EOF'
+mkdir -p ai-links-data/content/mcps/{uid}
+cat > ai-links-data/content/mcps/{uid}/{uid}.md << 'EOF'
 [Markdown 内容]
 EOF
 
 # 下载 Logo
-curl -o public/mcp-favicons/{uid}.png {logo_url}
+curl -o ai-links-data/favicons/mcp-favicons/{uid}.png {logo_url}
 
 # 重新构建并重启
 npm run build && systemctl restart ai-links
